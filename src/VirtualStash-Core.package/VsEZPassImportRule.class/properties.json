@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VsExplicitCounterpartyImportRule",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsEZPassImportRule",
+	"type" : "normal"
+}

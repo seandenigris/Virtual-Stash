@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Pre2013",
+	"classinstvars" : [
+		"pre2013"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"reimbursibleExpenses",
+		"accountNames",
+		"generalJournal"
+	],
+	"name" : "VsPre2013Books",
+	"type" : "normal"
+}

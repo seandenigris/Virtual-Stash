@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "PP2CompositeNode",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"memo",
+		"header"
+	],
+	"name" : "VsOFX_ExtInfoParser",
+	"type" : "normal"
+}

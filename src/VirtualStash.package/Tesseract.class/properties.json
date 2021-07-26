@@ -1,0 +1,16 @@
+{
+	"category" : "VirtualStash-Tesseract",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"inputFile",
+		"tempFileBase",
+		"tempFileExtension" ],
+	"name" : "Tesseract",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

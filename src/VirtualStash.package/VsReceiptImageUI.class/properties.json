@@ -1,0 +1,15 @@
+{
+	"category" : "VirtualStash-Receipts-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"receipt",
+		"selection" ],
+	"name" : "VsReceiptImageUI",
+	"pools" : [
+		 ],
+	"super" : "ImageMorph",
+	"type" : "normal" }

@@ -1,0 +1,4 @@
+private
+import
+
+	VsReceiptBrowser open.

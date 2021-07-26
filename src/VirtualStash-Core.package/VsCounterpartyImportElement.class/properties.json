@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "BrVerticalPane",
+	"category" : "VirtualStash-Core-GToolkit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"transactionGroup",
+		"editorInputElement",
+		"matchList",
+		"paymentProcessor",
+		"paymentProcessorInputElement",
+		"input",
+		"memoInputElement"
+	],
+	"name" : "VsCounterpartyImportElement",
+	"type" : "normal"
+}

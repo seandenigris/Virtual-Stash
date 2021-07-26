@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "VsAssetAccount",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsBankAccount",
+	"type" : "normal"
+}

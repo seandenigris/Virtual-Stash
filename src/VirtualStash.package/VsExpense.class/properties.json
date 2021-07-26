@@ -1,0 +1,17 @@
+{
+	"category" : "VirtualStash",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"date",
+		"description",
+		"category",
+		"amount" ],
+	"name" : "VsExpense",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

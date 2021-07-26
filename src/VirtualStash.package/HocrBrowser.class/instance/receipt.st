@@ -1,0 +1,4 @@
+private
+receipt
+	
+	^ receipt.

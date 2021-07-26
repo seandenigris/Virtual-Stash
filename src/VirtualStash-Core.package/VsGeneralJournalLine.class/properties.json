@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"account",
+		"debit",
+		"credit",
+		"memo"
+	],
+	"name" : "VsGeneralJournalLine",
+	"type" : "normal"
+}

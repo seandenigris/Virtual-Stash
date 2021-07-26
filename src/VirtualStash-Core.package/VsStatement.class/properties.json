@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "RlPDF",
+	"category" : "VirtualStash-Core-Statements",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"closingDate"
+	],
+	"name" : "VsStatement",
+	"type" : "normal"
+}

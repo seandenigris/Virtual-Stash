@@ -1,0 +1,4 @@
+initialization
+addButton
+
+	^ addButton.

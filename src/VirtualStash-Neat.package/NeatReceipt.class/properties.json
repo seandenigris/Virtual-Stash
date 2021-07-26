@@ -1,0 +1,21 @@
+{
+	"category" : "VirtualStash-Neat",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"vendor",
+		"date",
+		"amount",
+		"paymentType",
+		"category",
+		"notes",
+		"fileSize",
+		"file" ],
+	"name" : "NeatReceipt",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

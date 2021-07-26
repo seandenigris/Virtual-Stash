@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "HocrLine",
+	"category" : "VirtualStash-Core-Receipts",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"receipt"
+	],
+	"name" : "ReceiptHocrLine",
+	"type" : "normal"
+}

@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStashSeaside-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"monthlyExpenses" ],
+	"name" : "ExpenseRecorder",
+	"pools" : [
+		 ],
+	"super" : "WAComponent",
+	"type" : "normal" }

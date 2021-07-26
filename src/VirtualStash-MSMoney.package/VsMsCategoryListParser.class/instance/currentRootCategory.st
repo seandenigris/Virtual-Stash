@@ -1,0 +1,3 @@
+accessing
+currentRootCategory
+	^ currentRootCategory

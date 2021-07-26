@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-Receipts",
+	"classinstvars" : [
+		"wallet" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "VsPaymentType",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

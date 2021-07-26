@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"expenses" ],
+	"name" : "VsExpenseReport",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

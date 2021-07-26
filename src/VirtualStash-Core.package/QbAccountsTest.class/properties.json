@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "VirtualStash-Core-Tests",
+	"classinstvars" : [
+		"accounts"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "QbAccountsTest",
+	"type" : "normal"
+}

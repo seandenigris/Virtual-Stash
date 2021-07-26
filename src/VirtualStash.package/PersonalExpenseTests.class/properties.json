@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PersonalExpenseTests",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

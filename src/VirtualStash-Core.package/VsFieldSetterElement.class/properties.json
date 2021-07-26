@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "BrHorizontalPane",
+	"category" : "VirtualStash-Core-GToolkit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"checkbox",
+		"label",
+		"argument",
+		"setter",
+		"target"
+	],
+	"name" : "VsFieldSetterElement",
+	"type" : "normal"
+}

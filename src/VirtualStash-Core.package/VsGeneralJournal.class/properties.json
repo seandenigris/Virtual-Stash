@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [
+		"business",
+		"personal"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"entries"
+	],
+	"name" : "VsGeneralJournal",
+	"type" : "normal"
+}

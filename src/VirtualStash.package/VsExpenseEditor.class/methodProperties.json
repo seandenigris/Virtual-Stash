@@ -1,0 +1,24 @@
+{
+	"class" : {
+		"captureExpense" : "SeanDeNigris 5/4/2013 22:02",
+		"enterExpenseInto:" : "SeanDeNigris 5/4/2013 22:08",
+		"open" : "SeanDeNigris 9/16/2014 12:37",
+		"spec" : "SeanDeNigris 5/4/2013 22:22",
+		"title" : "SeanDeNigris 5/4/2013 22:19" },
+	"instance" : {
+		"account" : "SeanDeNigris 5/4/2013 22:14",
+		"accountLabel" : "SeanDeNigris 5/4/2013 22:14",
+		"accountNameCompletion" : "SeanDeNigris 5/5/2013 01:16",
+		"amount" : "SeanDeNigris 5/4/2013 22:14",
+		"amountCompletion" : "SeanDeNigris 5/5/2013 02:16",
+		"amountLabel" : "SeanDeNigris 5/4/2013 22:14",
+		"books:" : "SeanDeNigris 5/4/2013 22:08",
+		"date" : "SeanDeNigris 5/4/2013 22:14",
+		"dateLabel" : "SeanDeNigris 5/4/2013 22:14",
+		"description" : "SeanDeNigris 5/4/2013 22:14",
+		"descriptionCompletion" : "SeanDeNigris 5/5/2013 02:15",
+		"descriptionLabel" : "SeanDeNigris 5/4/2013 22:14",
+		"initialExtent" : "SeanDeNigris 9/16/2014 12:38",
+		"initializeDialogWindow:" : "SeanDeNigris 5/4/2013 22:09",
+		"initializeWidgets" : "SeanDeNigris 5/5/2013 10:06",
+		"ok" : "SeanDeNigris 5/5/2013 01:26" } }

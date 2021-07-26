@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-Receipts",
+	"classinstvars" : [
+		"uniqueInstance" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"receipts" ],
+	"name" : "VsReceiptFile",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

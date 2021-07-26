@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VsImportRule",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsProcessorImportRule",
+	"type" : "normal"
+}

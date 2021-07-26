@@ -1,0 +1,5 @@
+Date,Transaction ID,Transaction Number,Description,Notes,Commodity/Currency,Void Reason,Number/Action,Memo,Full Account Name,Account Name,Amount With Sym,Amount Num.,Reconcile,Reconcile Date,Rate/Price
+8/2/18,ab305cd640984e268ff4471404abc634,Invoice,Leaky Cauldron,,CURRENCY::USD,,4,,Expenses:Dining Out,Dining Out,$140.25 ,140.25,n,,1
+,,,,,,,4,Butter beer,Assets:Cash,Cash,($140.25),-140.25,n,,1
+9/25/18,04ab5c8573524d9b892d3e9fd2abc1d4,Invoice,Ollivanders,Return of Elder Wand,CURRENCY::USD,,3,,Assets:Cash,Cash,$200.00 ,200,n,,1
+,,,,,,,,,Income:Rewards,Rewards,($200.00),-200.00,n,,1

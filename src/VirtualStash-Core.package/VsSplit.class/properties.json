@@ -1,0 +1,22 @@
+{
+	"classtraitcomposition" : "VsTSplittable classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"account",
+		"accountSource",
+		"amount",
+		"memo",
+		"number",
+		"price",
+		"reconcileDate",
+		"status"
+	],
+	"name" : "VsSplit",
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"traitcomposition" : "VsTSplittable",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "VirtualStash-Core-Bookkeeping"
+}

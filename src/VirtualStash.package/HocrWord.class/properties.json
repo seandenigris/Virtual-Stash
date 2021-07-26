@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-Tesseract",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "HocrWord",
+	"pools" : [
+		 ],
+	"super" : "HocrNode",
+	"type" : "normal" }

@@ -1,0 +1,22 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"transaction",
+		"partyName",
+		"partyAliases",
+		"addressBook",
+		"party",
+		"parsingResult",
+		"paymentProcessor",
+		"memo",
+		"counterpartyInput",
+		"patch"
+	],
+	"name" : "VsImportRule",
+	"type" : "normal"
+}

@@ -1,0 +1,114 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-06-09T17:55:07.582259-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-06-09T17:59:16.581521-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "OgeVEL6ADQC8mS+QDXP93w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "They are missing in GnuCash, but [here](https://bugzilla.gnome.org/show_bug.cgi?id=113772#c6) is a brilliant workaround:\r>There have been a lot of requests and discussions on this subject. Based on discussion in the mailing lists, I think there are also a lot of misconceptions about it. I think some people see that as going against the principle of double booking. Also the term \"categories\" reminds people of the quicken categories and therefore does not get a very good reception!\r>\r>I want to add my comments here because I too would love this feature. I am currently using a work-around I describe at the end...\r>\r>1) This has nothing to do with quicken categories. Quicken categories are a half backed attempt at expense/income accounts. This is not what this is about. If we have to compare this feature to a quicken feature then it would be classes. But let's just forget about quicken please...\r>\r>2) This is about adding features to perform analytical accounting: that is the ability to tag and report transactions along limitless user-defined dimension codes. In ERP and some accounting systems that implement the feature, these \"categories\" or \"classes\" are often called \"dimensions\" and maybe this should be the term, or event better \"analytical dimensions\" to be precise and avoid any quicken comparison (enough with quicken already!).\r>\r>3) Analytical accounting is traditionally used for various tasks such as:\r>\r>- project or job costing: all transactions related to a particular project are tagged with a particular dimension, allowing to easily extract all expenses on a particular project for instance. \r>- Grant/Budget accounting: if you are a non-profit organization, your are required to tag specific expenses that will then be reported to the funder as \"charged\" to a particular grant, although in your GL the grants are just reported as income for instance without needing to attach specific expenses to them.\r>- Department costing: expenses for each department are tagged in order to help track budgets or project for next year or ....\r>\r>4) Analytical accounting has NOTHING to do with double entry accounting.  Double entry is essential to ensure your main ledger is properly balanced and all transaction properly accounted for. Analytical accounting (as its name implies) is only used for managerial analysis -- in fact accountants have usually no direct need for it and it has no legal/tax implications.\r>\r>5) Yes, you can implement analytical accounting by using transitional accounts in you main chart of account (as Craig Lawson describes in his original post), but it is unnecessarily burdensome, as it multiplies the number of transactions that in fact should not be reported in the general ledger. As Craig Lawson says here in his original post, these are not accounting matters but \"orthogonal\" often time-bound managerial issues: how much stuff did we sell at event XYZ, what are the total expenses on project ABC.  In fact, as Craig correctly points out, a single transaction can be and is often assigned to several dimensions: for instance an rent expense for a showroom (booked in the \"rent\" expense account--rent is the NATURE of the expense) could be tagged as related to the marketing department (a department dimension) and event XYZ for instance (an event dimension). Multiple assignments is almost impossible with GL accounts.\r>\r>6) Analytical \"accounts\" do not balance in the same manner as GL accounts AND NEITHER SHOULD THEY as this is not their purpose. That said some checks can be put in place if necessary.  For instance, if the rule is that all expenses have to be assigned to a \"department\" dimension then it is easy to ensure it is so; any expense not assigned need to be checked and fixed. But again, this has nothing to do with double-entry accounting. It is not incompatible with it: it functions in a completely parallel, orthogonal dimension.\r>\r>7) The current work-around I am using is to create my dimensions has a bunch of accounts under a new high-level structure (Dimensions for instance). Then I create a sub-account for each type of dimension Departments, Projects, Events, etc). Finally under each sub-account I create sub-accounts for each actual dimension. These accounts will never have any money in them so they will not interfere with the real GL accounts.  Instead, I simply use them to add additional splits pointing to the dimension accounts (with no amount) to any GL transaction I want to tag. \r>\r>For instance: I want to tag a $1000 rent expense to the 'Marketing' department dimension and 'ABC Street Fair' event dimension; I create the following split.\r>\rAccount                                | Debit | Credit\r- ------------------------------------- | ----- | ------\r\rAssets:Current Assets:Checking Account |       | $1000\rExpenses:Rent                          | $1000                 \rDimension:Events:ABC Street Fair\rDimension:Department:Marketing\r>\r>Then I can actually use the \"Transaction Report\" to see all transaction related to Dimension:Events:ABC Street Fair for instance.\r>\r>- Go in Reports-Transaction Report, then in the Report Options, go to the accounts tab.  \r>- Select all Report Accounts EXCEPT the dimension accounts and sub-accounts. \r>- In the Filter accounts, select the dimension you want to report on (e.g. Dimension:Events:ABC Street Fair). \r>- In the filter type, select \"Include Transactions to/from Filter accounts\").\r>- Change Display, General and sorting options as needed.\r>- Now you have a transaction report for all transactions attached to the ABC Street Fair dimension.\r>\r>A few enhancements: remove all bank/credit-card accounts from the report so that you just see the income/expenses.\r"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-06-09T17:59:16.576855-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-06-09T17:59:16.576855-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Il5sH76ADQC83w1WDXP93w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Analytical Dimensions (AKA Tags)"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-06-09T17:55:07.582254-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2021-06-09T17:55:07.582254-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "GnuCash"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "12dd7410-be80-0d00-bc8f-07ef0d73fddf"
+	}
+}

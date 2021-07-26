@@ -1,0 +1,24 @@
+{
+	"classtraitcomposition" : "VsTTransactable classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"accountSource",
+		"date",
+		"memo",
+		"number",
+		"receipt",
+		"reference",
+		"splits",
+		"voidReason",
+		"counterparty",
+		"processor"
+	],
+	"name" : "VsTransaction",
+	"commentStamp" : "<historical>",
+	"super" : "MAObject",
+	"traitcomposition" : "VsTTransactable",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "VirtualStash-Core-Bookkeeping"
+}

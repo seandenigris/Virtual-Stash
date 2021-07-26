@@ -1,0 +1,16 @@
+{
+	"category" : "VirtualStash-MSMoney",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"name",
+		"group",
+		"children" ],
+	"name" : "VsMsCategory",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

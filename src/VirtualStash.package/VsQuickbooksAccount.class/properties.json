@@ -1,0 +1,16 @@
+{
+	"category" : "VirtualStash-QuickBooks",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"name",
+		"type",
+		"balance" ],
+	"name" : "VsQuickbooksAccount",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

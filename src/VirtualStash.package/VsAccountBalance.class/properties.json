@@ -1,0 +1,15 @@
+{
+	"category" : "VirtualStash",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"account",
+		"balance" ],
+	"name" : "VsAccountBalance",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

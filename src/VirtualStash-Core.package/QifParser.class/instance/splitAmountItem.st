@@ -1,0 +1,3 @@
+rules
+splitAmountItem
+	^ self amountItemWithCode: $$

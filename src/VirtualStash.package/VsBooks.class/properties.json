@@ -1,0 +1,15 @@
+{
+	"category" : "VirtualStash",
+	"classinstvars" : [
+		"uniqueInstance" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"reimbursibleExpenses",
+		"accountNames" ],
+	"name" : "VsBooks",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

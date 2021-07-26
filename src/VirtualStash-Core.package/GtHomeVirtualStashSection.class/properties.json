@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GtHomeSection",
+	"category" : "VirtualStash-Core-GToolkit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"cardsContainer"
+	],
+	"name" : "GtHomeVirtualStashSection",
+	"type" : "normal"
+}

@@ -1,0 +1,15 @@
+{
+	"category" : "VirtualStash-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"addButton",
+		"list" ],
+	"name" : "VsExpenseJournalUI",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

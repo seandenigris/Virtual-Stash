@@ -1,0 +1,7 @@
+type,full_name,name,code,description,color,notes,commoditym,commodityn,hidden,tax,placeholder
+ASSET,Assets,Assets,,,,,USD,CURRENCY,F,F,T
+ASSET,Assets:Cash,Cash,,Cash,,,USD,CURRENCY,F,F,F
+INCOME,Income,Income,,Income,,,USD,CURRENCY,F,F,F
+INCOME,Income:Rewards,Rewards,,,,,USD,CURRENCY,F,F,F
+EXPENSE,Expenses,Expenses,,,,,USD,CURRENCY,F,F,T
+EXPENSE,Expenses:Dining Out,Dining Out,,,,,USD,CURRENCY,F,F,F

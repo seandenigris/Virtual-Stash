@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		 ],
+	"name" : "VsInfo",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

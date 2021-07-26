@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VsPaymentMethod",
+	"category" : "VirtualStash-Core-Receipts",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsCash",
+	"type" : "normal"
+}

@@ -1,0 +1,4 @@
+accessing
+receiptModel
+
+	^ receiptModel.

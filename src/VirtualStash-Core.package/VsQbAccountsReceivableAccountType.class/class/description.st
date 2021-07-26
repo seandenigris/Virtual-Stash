@@ -1,0 +1,4 @@
+accessing
+description
+	
+	^ 'Accounts Receivable'.

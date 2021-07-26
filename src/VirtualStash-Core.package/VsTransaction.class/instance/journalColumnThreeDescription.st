@@ -1,0 +1,3 @@
+GnuCash
+journalColumnThreeDescription
+	^ self counterpartyDescription

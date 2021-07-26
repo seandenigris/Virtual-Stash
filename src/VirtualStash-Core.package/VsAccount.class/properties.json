@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"isPlaceholder",
+		"openingBalance",
+		"name",
+		"number",
+		"parent",
+		"notes",
+		"books",
+		"issuer"
+	],
+	"name" : "VsAccount",
+	"type" : "normal"
+}

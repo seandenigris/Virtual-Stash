@@ -1,0 +1,18 @@
+{
+	"category" : "VirtualStash-Receipts-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"list",
+		"image",
+		"ocr",
+		"detail",
+		"receiptModel" ],
+	"name" : "VsReceiptBrowser",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

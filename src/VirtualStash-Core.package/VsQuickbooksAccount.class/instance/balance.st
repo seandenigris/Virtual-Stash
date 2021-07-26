@@ -1,0 +1,3 @@
+private
+balance
+	self shouldBeImplemented.

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MACSVTwoStageImporter",
+	"category" : "VirtualStash-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"books"
+	],
+	"name" : "VsTransactionImporter",
+	"type" : "normal"
+}

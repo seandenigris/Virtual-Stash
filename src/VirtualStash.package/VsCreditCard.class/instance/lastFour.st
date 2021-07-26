@@ -1,0 +1,4 @@
+accessing
+lastFour
+
+	^ lastFour

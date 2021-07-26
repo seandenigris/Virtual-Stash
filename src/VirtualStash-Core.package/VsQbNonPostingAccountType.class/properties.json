@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VsQbAccountType",
+	"category" : "VirtualStash-Core-QuickBooks",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsQbNonPostingAccountType",
+	"type" : "normal"
+}

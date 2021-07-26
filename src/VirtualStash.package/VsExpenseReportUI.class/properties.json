@@ -1,0 +1,20 @@
+{
+	"category" : "VirtualStash-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"addButton",
+		"list",
+		"month",
+		"year",
+		"summary",
+		"nextMonthButton",
+		"previousMonthButton" ],
+	"name" : "VsExpenseReportUI",
+	"pools" : [
+		"ChronologyConstants" ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

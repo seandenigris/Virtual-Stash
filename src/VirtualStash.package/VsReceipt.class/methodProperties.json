@@ -1,0 +1,27 @@
+{
+	"class" : {
+		"fromImagesIn:" : "SeanDeNigris 10/18/2013 15:07" },
+	"instance" : {
+		"amount" : "SeanDeNigris 10/24/2013 20:05",
+		"amount:" : "SeanDeNigris 10/24/2013 20:05",
+		"asMorph" : "SeanDeNigris 11/13/2013 17:15",
+		"date" : "SeanDeNigris 10/24/2013 20:05",
+		"date:" : "SeanDeNigris 10/24/2013 20:05",
+		"descriptionAmount" : "SeanDeNigris 10/24/2013 20:23",
+		"descriptionDate" : "SeanDeNigris 10/24/2013 20:23",
+		"descriptionPaymentType" : "SeanDeNigris 10/24/2013 20:31",
+		"form" : "SeanDeNigris 10/20/2013 13:08",
+		"guessDate" : "SeanDeNigris 10/24/2013 19:55",
+		"guessPaymentType" : "SeanDeNigris 11/13/2013 18:06",
+		"guessTotal" : "SeanDeNigris 11/13/2013 18:18",
+		"guessVendor" : "SeanDeNigris 11/13/2013 16:58",
+		"hocr" : "SeanDeNigris 9/16/2014 10:26",
+		"imageFile" : "SeanDeNigris 9/16/2014 10:01",
+		"imageFile:" : "SeanDeNigris 10/18/2013 15:08",
+		"imageFileName" : "SeanDeNigris 9/16/2014 10:00",
+		"imageFileName:" : "SeanDeNigris 9/16/2014 10:00",
+		"ocr" : "SeanDeNigris 10/19/2013 10:51",
+		"paymentType" : "SeanDeNigris 10/24/2013 20:05",
+		"paymentType:" : "SeanDeNigris 10/24/2013 20:05",
+		"vendor" : "SeanDeNigris 10/24/2013 20:05",
+		"vendor:" : "SeanDeNigris 10/24/2013 20:05" } }

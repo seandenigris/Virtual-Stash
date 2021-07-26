@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "RlHOCRElement",
+	"category" : "VirtualStash-Core-GToolkit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsReceiptElement",
+	"type" : "normal"
+}

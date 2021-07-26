@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"transaction",
+		"input",
+		"prefixWordCount",
+		"counterparty",
+		"suffix",
+		"alias"
+	],
+	"name" : "VsTransactionFixer",
+	"type" : "normal"
+}

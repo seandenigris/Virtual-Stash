@@ -1,0 +1,13 @@
+{
+	"class" : {
+		"on:for:inCategory:" : "SeanDeNigris 5/20/2011 10:50",
+		"paid:on:for:inCategory:" : "SeanDeNigris 5/20/2011 10:58" },
+	"instance" : {
+		"account" : "SeanDeNigris 5/5/2013 12:28",
+		"account:" : "SeanDeNigris 8/19/2013 15:58",
+		"amount" : "SeanDeNigris 5/23/2011 20:18",
+		"category" : "SeanDeNigris 5/23/2011 20:14",
+		"date" : "SeanDeNigris 5/22/2011 23:16",
+		"description" : "SeanDeNigris 5/22/2011 22:53",
+		"printOn:" : "SeanDeNigris 5/22/2011 22:30",
+		"setAmount:date:description:category:" : "SeanDeNigris 5/20/2011 10:59" } }

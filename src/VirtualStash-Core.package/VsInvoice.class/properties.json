@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"DB"
+	],
+	"instvars" : [
+		"id",
+		"date",
+		"vendor",
+		"file"
+	],
+	"name" : "VsInvoice",
+	"type" : "normal"
+}

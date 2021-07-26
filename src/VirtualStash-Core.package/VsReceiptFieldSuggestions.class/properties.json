@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "VirtualStash-Core-Receipts",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"suggestions",
+		"bestGuess"
+	],
+	"name" : "VsReceiptFieldSuggestions",
+	"type" : "normal"
+}

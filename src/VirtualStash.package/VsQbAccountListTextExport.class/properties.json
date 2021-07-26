@@ -1,0 +1,17 @@
+{
+	"category" : "VirtualStash-QuickBooks",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"name",
+		"type",
+		"balance",
+		"file" ],
+	"name" : "VsQbAccountListTextExport",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,0 +1,4 @@
+accessing
+string
+
+	^ xmlElement contentString.

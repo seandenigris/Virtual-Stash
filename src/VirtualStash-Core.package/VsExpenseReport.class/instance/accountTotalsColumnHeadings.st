@@ -1,0 +1,4 @@
+text
+accountTotalsColumnHeadings
+
+	^ #('Account' 'Total').

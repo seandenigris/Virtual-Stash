@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-QuickBooks",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "VsQbIncomeAccountType",
+	"pools" : [
+		 ],
+	"super" : "VsQbAccountType",
+	"type" : "normal" }

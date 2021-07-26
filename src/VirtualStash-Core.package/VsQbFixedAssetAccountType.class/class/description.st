@@ -1,0 +1,4 @@
+accessing
+description
+	
+	^ 'Fixed Asset'.

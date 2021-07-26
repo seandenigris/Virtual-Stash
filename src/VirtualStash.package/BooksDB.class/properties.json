@@ -1,0 +1,14 @@
+{
+	"category" : "VirtualStash-Persistence",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 6/4/2011 20:20",
+	"instvars" : [
+		 ],
+	"name" : "BooksDB",
+	"pools" : [
+		 ],
+	"super" : "SpFileDatabase",
+	"type" : "normal" }

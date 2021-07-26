@@ -1,0 +1,4 @@
+private
+tempFile
+
+	^ tempFileBase, tempFileExtension.

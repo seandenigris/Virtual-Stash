@@ -1,0 +1,23 @@
+{
+	"category" : "VirtualStash-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"books",
+		"dateLabel",
+		"accountLabel",
+		"descriptionLabel",
+		"amountLabel",
+		"date",
+		"account",
+		"description",
+		"amount",
+		"model" ],
+	"name" : "VsExpenseEditor",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

@@ -1,0 +1,3 @@
+*VirtualStash-Core
+vsCounterpartyRuleClass
+	^ VsMunicipalityImportRule

@@ -1,0 +1,20 @@
+{
+	"category" : "VirtualStash-Receipts",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"imageFileName",
+		"ocr",
+		"hocr",
+		"vendor",
+		"date",
+		"amount",
+		"paymentType" ],
+	"name" : "VsReceipt",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "VsLiabilityAccount",
+	"category" : "VirtualStash-Core-Bookkeeping",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "VsCreditCardAccount",
+	"type" : "normal"
+}
