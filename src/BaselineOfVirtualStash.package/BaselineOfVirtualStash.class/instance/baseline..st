@@ -7,7 +7,7 @@ baseline: spec
 			baseline: 'Aconcagua' with: [
 				spec repository: 'github://seandenigris/aconcagua:denigris' ];
 			baseline: 'Magritte' with: [ spec repository: 'github://seandenigris/Magritte' ];
-			baseline: 'MyPeople' with: [ spec repository: 'gitlab://seandenigris/My-People' ];
+			baseline: 'MyPeople' with: [ spec repository: 'github://seandenigris/My-People' ];
 			baseline: 'NeoCSV' with: [ 
 				spec 
 					repository: 'github://seandenigris/NeoCSV';
