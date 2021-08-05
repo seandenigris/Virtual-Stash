@@ -6,7 +6,10 @@ baseline: spec
 		spec 
 			baseline: 'Aconcagua' with: [
 				spec repository: 'github://seandenigris/aconcagua:denigris' ];
-			baseline: 'Magritte' with: [ spec repository: 'github://seandenigris/Magritte' ];
+			baseline: 'Magritte' with: [ 
+				spec 
+					repository: 'github://seandenigris/Magritte';
+					loads: #(#default #'Magritte-Money') ];
 			baseline: 'MyPeople' with: [ spec repository: 'github://seandenigris/My-People' ];
 			baseline: 'NeoCSV' with: [ 
 				spec 
