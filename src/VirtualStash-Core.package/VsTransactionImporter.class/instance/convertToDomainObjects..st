@@ -7,7 +7,7 @@ convertToDomainObjects: aCollectionOfDictionaries
 			newTransaction := VsTransaction new
 				accountSource: books;
 				yourself.
-			self initializeDomainObject: newTransaction fromRecord: rowDict.
+			self initializeTransaction: newTransaction fromRecord: rowDict.
 			split := VsSplit new
 				accountSource: books;
 				yourself.

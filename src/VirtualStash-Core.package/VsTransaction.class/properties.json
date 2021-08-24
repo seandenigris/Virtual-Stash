@@ -3,6 +3,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"accountSource",
+		"addressBook",
 		"date",
 		"memo",
 		"number",

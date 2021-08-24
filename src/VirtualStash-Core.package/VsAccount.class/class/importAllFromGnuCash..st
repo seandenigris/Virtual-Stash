@@ -1,3 +1,5 @@
 importing
 importAllFromGnuCash: csvFile
-	^ (self maCSVImporter: VsAccountImporter) importFile: csvFile.
+	^ (self maCSVImporter: VsAccountImporter)
+		source: csvFile;
+		execute.

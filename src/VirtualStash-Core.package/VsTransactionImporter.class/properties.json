@@ -6,7 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"books"
+		"addressBook",
+		"books",
+		"targetCollection"
 	],
 	"name" : "VsTransactionImporter",
 	"type" : "normal"
