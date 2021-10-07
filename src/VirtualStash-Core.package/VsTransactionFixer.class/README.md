@@ -1,1 +1,0 @@
-I am an example of naivety and NIH syndrome. I am a hand-rolled attempt to determine whether a counterparty is a variant (e.g. misspelled). I will probably go away as we are currently exploring leveraging Python for this task.

@@ -1,1 +1,0 @@
-self uniqueInstance receipts: (VsReceipt fromImagesIn: FileLocator imageDirectory parent parent / 'ScanSnap')

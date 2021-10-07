@@ -1,4 +1,0 @@
-text
-accountTotalsColumnHeadings
-
-	^ #('Account' 'Total').

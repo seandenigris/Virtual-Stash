@@ -1,2 +1,0 @@
-(name 'VirtualStash-Neat-SeanDeNigris.2' message '- Import CSV- Convert NeatReceipts to VsReceipts' id 'c5bda801-1739-4075-abc3-84cf0de26e10' date '17 February 2016' time '1:27:02.972306 pm' author 'SeanDeNigris' ancestors ((name 'VirtualStash-Neat-SeanDeNigris.1' message 'v. 01:- [FEATURE]: Domain objects from Neat CSV export- [KILLER FEATURE]: Match up receipts to OCR-ed PDF files in Neat Library
-' id 'ca4f8d46-ce85-507c-8466-a3a3edbe0e30' date '22 August 2015' time '11:37:19 am' author 'SeanDeNigris' ancestors () stepChildren ())) stepChildren ())

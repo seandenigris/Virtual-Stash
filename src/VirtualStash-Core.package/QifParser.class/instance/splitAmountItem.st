@@ -1,3 +1,0 @@
-rules
-splitAmountItem
-	^ self amountItemWithCode: $$

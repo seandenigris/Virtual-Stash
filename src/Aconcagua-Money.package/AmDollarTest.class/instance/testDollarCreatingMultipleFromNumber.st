@@ -1,3 +1,0 @@
-accessing
-testDollarCreatingMultipleFromNumber
-	^ 10 dollars

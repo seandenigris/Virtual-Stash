@@ -1,3 +1,0 @@
-testing
-primaryParser
-	^ 'Eventbrite' asPParser

@@ -1,4 +1,0 @@
-accessing
-string
-
-	^ xmlElement contentString.

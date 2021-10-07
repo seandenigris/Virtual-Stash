@@ -1,4 +1,0 @@
-accessing
-description
-	
-	^ 'Credit Card'.

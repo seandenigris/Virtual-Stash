@@ -1,1 +1,0 @@
-HocrBrowser openOn: VsReceiptFile uniqueInstance receipts atRandom.

@@ -1,4 +1,0 @@
-initialization
-list
-
-	^ list.

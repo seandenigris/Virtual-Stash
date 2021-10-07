@@ -1,3 +1,0 @@
-accessing
-primaryParser
-	self subclassResponsibility

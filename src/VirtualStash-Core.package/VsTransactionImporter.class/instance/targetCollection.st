@@ -1,4 +1,0 @@
-accessing
-targetCollection
-
-	^ targetCollection

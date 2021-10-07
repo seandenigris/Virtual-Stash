@@ -1,3 +1,0 @@
-accessing
-primaryParser
-	^ 'CHECK' asPParser

@@ -1,4 +1,0 @@
-private
-tempFile
-
-	^ tempFileBase, tempFileExtension.

@@ -1,3 +1,0 @@
-private
-balance
-	self shouldBeImplemented.

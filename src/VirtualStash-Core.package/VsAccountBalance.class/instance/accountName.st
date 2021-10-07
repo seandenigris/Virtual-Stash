@@ -1,4 +1,0 @@
-private
-accountName
-
-	^ account.

@@ -1,4 +1,0 @@
-private
-amount
-
-	^ amount.
