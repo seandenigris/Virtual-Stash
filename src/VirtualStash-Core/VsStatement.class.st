@@ -7,6 +7,11 @@ Class {
 	#category : 'VirtualStash-Core-Statements'
 }
 
+{ #category : #testing }
+VsStatement class >> isClassFor: aFile [
+	^ false
+]
+
 { #category : #accessing }
 VsStatement >> <= rhs [ 
 	^ self month <= rhs month
