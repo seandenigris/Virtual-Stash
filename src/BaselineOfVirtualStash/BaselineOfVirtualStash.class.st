@@ -9,6 +9,11 @@ BaselineOfVirtualStash class >> dataFolder [
 	^ FileLocator dynabookData / 'Virtual Stash'
 ]
 
+{ #category : #testing }
+BaselineOfVirtualStash class >> isDynabook [
+	^ true
+]
+
 { #category : #baseline }
 BaselineOfVirtualStash >> baseline: spec [
 	<baseline>
