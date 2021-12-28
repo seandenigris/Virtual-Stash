@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfVirtualStash,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfVirtualStash'
+	#category : #BaselineOfVirtualStash
 }
 
 { #category : #accessing }
@@ -63,5 +63,7 @@ BaselineOfVirtualStash >> customProjectAttributes [
 
 { #category : #testing }
 BaselineOfVirtualStash >> isGTImage [
-	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'GToolkit-' ]
+	
+	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'Lepiter-' ].
+	"Implementation note: used to check for GToolkit prefix, but P7 has a GToolkit-Examples package. Lepiter, OTOH, could only be loaded in a GT image"
 ]
