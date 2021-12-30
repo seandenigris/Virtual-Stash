@@ -18,7 +18,7 @@ PBPharoPlatform >> copyApplicationTo: appFolder application: application [
 			<< '" "';
 			<< dstFilename;
 			<< '"' ].
-	proc := PBUnixSubprocess new 
+	proc := GtSubprocessWithInMemoryOutput new 
 		shellCommand: cpCommand;
 		runAndWait.
 	proc isSuccess ifFalse:
@@ -29,6 +29,7 @@ PBPharoPlatform >> copyApplicationTo: appFolder application: application [
 		error signal ].
 	
 	(appFolder / 'Pipfile') delete.
-	FileLocator localDirectory / 'Iceberg' / 'seandenigris' / 'Virtual-Stash' / 'python' / 'Pipfile' copyTo: appFolder / 'Pipfile'..
+	FileLocator localDirectory / 'Iceberg' / 'seandenigris' / 'Virtual-Stash' / 'python' / 'Pipfile' copyTo: appFolder / 'Pipfile'.
+
 
 ]
