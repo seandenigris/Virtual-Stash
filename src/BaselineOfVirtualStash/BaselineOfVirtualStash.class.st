@@ -31,8 +31,6 @@ BaselineOfVirtualStash >> baseline: spec [
 				spec 
 					repository: 'github://seandenigris/NeoCSV';
 					loads: #('magritte') ];
-			baseline: 'PetitParser2' with: [
-				spec repository: 'github://seandenigris/PetitParser2' ];
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'ResourcesLive' with: [
@@ -43,15 +41,22 @@ BaselineOfVirtualStash >> baseline: spec [
 		spec
 			package: 'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
 			package: 'VirtualStash-Core' with: [
-				spec requires: #('Aconcagua' 'Aconcagua-Money' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PetitParser2' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence') ] ].
+				spec requires: #('Aconcagua' 'Aconcagua-Money' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence') ] ].
 				
 	spec for: #notGToolkit do: [
-		spec baseline: 'XMLParser' with: [
+		spec 
+			baseline: 'PetitParser2' with: [
+				spec repository: 'github://seandenigris/PetitParser2' ];
+			baseline: 'XMLParser' with: [
 				spec repository: 'github://seandenigris/XML-XMLParser' ].
 		spec 
 			package: 'VirtualStash-Core' with: [ 
-				spec requires: 'XMLParser' ] ]
-
+				spec requires: #('PetitParser2' 'XMLParser') ] ].
+				
+	spec for: #GToolkit do: [
+		spec 
+			package: 'VirtualStash-GtHome';
+			group: #default with: #(#'VirtualStash-Core') ]
 ]
 
 { #category : #accessing }

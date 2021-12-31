@@ -1,6 +1,6 @@
 Extension { #name : #GtHome }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : #'*VirtualStash-GtHome' }
 GtHome >> virtualStashSection [
 	<gtHomeSection>
 	^ GtHomeVirtualStashSection new
