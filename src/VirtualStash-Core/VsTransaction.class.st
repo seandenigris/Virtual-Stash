@@ -11,9 +11,9 @@ We start with CSV format, since we already have  a parser for that. The tricky b
 "
 Class {
 	#name : #VsTransaction,
-	#superclass : #MAObject,
-	#traits : 'VsTTransactable',
-	#classTraits : 'VsTTransactable classTrait',
+	#superclass : #Object,
+	#traits : 'MATPropertyOwner + VsTTransactable',
+	#classTraits : 'MATPropertyOwner classTrait + VsTTransactable classTrait',
 	#instVars : [
 		'accountSource',
 		'addressBook',
@@ -27,7 +27,7 @@ Class {
 		'counterparty',
 		'processor'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #examples }
