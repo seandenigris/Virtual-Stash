@@ -5,7 +5,7 @@ Class {
 		'accounts',
 		'books'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -53,6 +53,21 @@ VsChartOfAccounts >> gtSearchAccountsFor: aStep [
 		allCandidates: [ self accounts ];
 		itemName: #displayString;
 		matchSubstrings
+]
+
+{ #category : #accessing }
+VsChartOfAccounts >> gtViewAllAccountsOn: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Accounts (all)' translated;
+		priority: 5;
+		items: [ self accounts sorted: #name ascending ];
+		column: 'Name' text: [ :e | e name ] width: 200;
+		column: 'Parent' text: [ :e | 
+			e parent 
+				ifNotNil: [ :p | p  name ]
+				ifNil: [ '' ] ];
+		actionUpdateButtonTooltip: 'Update'.
 ]
 
 { #category : #accessing }
