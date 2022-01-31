@@ -19,7 +19,7 @@ Class {
 		'business',
 		'oldPersonal'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #persistence }
@@ -282,7 +282,9 @@ VsBooks >> initialize [
 VsBooks >> printOn: aStream [
 	aStream
 		nextPutAll: self title;
-		nextPutAll: ' books'
+		nextPutAll: ' books - ';
+		print: self generalJournal entries size;
+		nextPutAll: ' transactions'
 ]
 
 { #category : #'as yet unclassified' }
