@@ -258,6 +258,20 @@ VsBooks >> gtSearchTransactionsFor: aStep [
 ]
 
 { #category : #accessing }
+VsBooks >> gtViewGeneralJournalOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'General Journal' translated;
+		priority: 5;
+		object: [ self generalJournal ];
+		view: #gtViewGeneralJournalOn:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect Journal'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self generalJournal ]
+]
+
+{ #category : #accessing }
 VsBooks >> importAccountsFromGnuCashCSV: file [
 	| accnts |
 	self accounts isEmptyOrNil ifFalse: [ self error: 'this doesn''t handle books with existing accounts' ].
