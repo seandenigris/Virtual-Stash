@@ -1,14 +1,6 @@
 {
 	"__schema" : "4.1",
 	"__type" : "page",
-	"uid" : {
-		"__type" : "uuid",
-		"uuid" : "87e07310-be80-0d00-bc8e-b1d80d73fddf"
-	},
-	"pageType" : {
-		"__type" : "namedPage",
-		"title" : "Counterparty"
-	},
 	"children" : {
 		"__type" : "snippets",
 		"items" : [
@@ -485,7 +477,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2022-04-15T11:12:52.902463-04:00"
+												"dateAndTimeString" : "2021-06-09T18:01:51.098929-04:00"
 											}
 										},
 										"uid" : {
@@ -495,7 +487,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "2. Explicit, but purely financial e.g. PayPal, QuickPay; even really credit card companies, but at least there you have the asset account on the other side to distinguish; Concur is a payment processor, but not a general one; typically the user will know that it's on behalf of one or a small number of partners"
+										"string" : "2. Explicit, but purely financial e.g. PayPal, QuickPay; even really credit card companies, but at least there you have the asset account on the other side to distinguish"
 									},
 									{
 										"__type" : "textSnippet",
@@ -1370,5 +1362,13 @@
 			"__type" : "dateAndTime",
 			"dateAndTimeString" : "2021-06-09T17:55:07.581522-04:00"
 		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Counterparty"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "87e07310-be80-0d00-bc8e-b1d80d73fddf"
 	}
 }
