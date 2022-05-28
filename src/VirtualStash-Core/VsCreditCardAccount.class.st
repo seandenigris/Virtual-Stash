@@ -1,12 +1,20 @@
 Class {
 	#name : #VsCreditCardAccount,
 	#superclass : #VsLiabilityAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#instVars : [
+		'benefits'
+	],
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
 VsCreditCardAccount class >> gnuCashType [
 	^ 'CREDIT'
+]
+
+{ #category : #accessing }
+VsCreditCardAccount >> benefits [
+	^ benefits ifNil: [ benefits := OrderedCollection new ]
 ]
 
 { #category : #accessing }
