@@ -12,7 +12,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : #'VirtualStash-Core-Receipts'
 }
 
 { #category : #'as yet unclassified' }
@@ -68,20 +68,6 @@ VsReceiptFile >> browse [
 	self class browser openOn: self
 ]
 
-{ #category : #magritte }
-VsReceiptFile >> descriptionReceipts [
-	<magritteDescription>
-	<gtInspectorPresentationOrder: 2>
-	^ MAToManyRelationDescription new
-		accessor: #receipts;
-		label: 'Receipts';
-		classes: {VsReceipt};
-		glmPresentation: #list;
-		priority: 100;
-		beRequired;
-		yourself
-]
-
 { #category : #private }
 VsReceiptFile >> import [
 
@@ -107,11 +93,26 @@ VsReceiptFile >> oldReceipts: anObject [
 { #category : #accessing }
 VsReceiptFile >> receipts [
 
-	^ receipts.
+	^ self maLazyInstVarUsing: self receiptsDescription
 ]
 
 { #category : #private }
 VsReceiptFile >> receipts: aCollection [ 
 
 	receipts := aCollection.
+]
+
+{ #category : #magritte }
+VsReceiptFile >> receiptsDescription [
+	<magritteDescription>
+	<gtInspectorPresentationOrder: 2>
+	^ MAToManyRelationDescription new
+		accessor: #receipts;
+		label: 'Receipts';
+		classes: {VsReceipt};
+		glmPresentation: #list;
+		default: (SortedCollection sortUsing: #date ascending);
+		priority: 100;
+		beRequired;
+		yourself
 ]

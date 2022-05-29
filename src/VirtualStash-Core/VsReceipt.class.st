@@ -25,7 +25,7 @@ Class {
 		'amount',
 		'paymentMethod'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : #'VirtualStash-Core-Receipts'
 }
 
 { #category : #accessing }
@@ -420,7 +420,7 @@ VsReceipt >> submit [
 ]
 
 { #category : #magritte }
-VsReceipt >> submitD [
+VsReceipt >> submitDescription [
 	<magritteActionDescription>
 	^ MAActionDescription new
 		action: #submit;
