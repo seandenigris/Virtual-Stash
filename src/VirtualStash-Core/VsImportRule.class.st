@@ -43,7 +43,7 @@ Class {
 		'counterpartyInput',
 		'patch'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -723,7 +723,7 @@ VsImportRule >> primaryParserFromOptions: aCollectionOfStrings [
 
 { #category : #accessing }
 VsImportRule >> printOn: aStream [
-	aStream nextPutAll: (self className allButFirst: 2) normalizeCamelCase
+	aStream nextPutAll: (self className allButFirst: 'Vs' size) normalizeCamelCase
 ]
 
 { #category : #accessing }
