@@ -3,7 +3,7 @@ self open
 "
 Class {
 	#name : #VsReceiptBrowser,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'list',
 		'image',
@@ -11,7 +11,7 @@ Class {
 		'detail',
 		'receiptModel'
 	],
-	#category : 'VirtualStash-Core-Receipts-UI'
+	#category : #'VirtualStash-Core-Receipts-UI'
 }
 
 { #category : #'as yet unclassified' }

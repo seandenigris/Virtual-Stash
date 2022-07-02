@@ -5,14 +5,14 @@ VsReceiptUI new
 "
 Class {
 	#name : #VsReceiptUI,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'ocr',
 		'detail',
 		'image',
 		'receipt'
 	],
-	#category : 'VirtualStash-Core-Receipts-UI'
+	#category : #'VirtualStash-Core-Receipts-UI'
 }
 
 { #category : #'instance creation' }

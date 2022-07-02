@@ -3,7 +3,7 @@ self open.
 "
 Class {
 	#name : #VsExpenseReportUI,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'addButton',
 		'list',
@@ -16,7 +16,7 @@ Class {
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : 'VirtualStash-Core-UI'
+	#category : #'VirtualStash-Core-UI'
 }
 
 { #category : #'instance creation' }

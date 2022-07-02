@@ -3,7 +3,7 @@ self open.
 "
 Class {
 	#name : #VsExpenseEditor,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'books',
 		'dateLabel',
@@ -16,7 +16,7 @@ Class {
 		'amount',
 		'model'
 	],
-	#category : 'VirtualStash-Core-UI'
+	#category : #'VirtualStash-Core-UI'
 }
 
 { #category : #'instance creation' }

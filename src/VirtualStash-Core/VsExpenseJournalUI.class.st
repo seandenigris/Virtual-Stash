@@ -3,12 +3,12 @@ self open.
 "
 Class {
 	#name : #VsExpenseJournalUI,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'addButton',
 		'list'
 	],
-	#category : 'VirtualStash-Core-UI'
+	#category : #'VirtualStash-Core-UI'
 }
 
 { #category : #'instance creation' }
