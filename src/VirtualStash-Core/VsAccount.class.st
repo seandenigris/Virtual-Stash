@@ -26,7 +26,7 @@ Class {
 		'books',
 		'issuer'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -87,7 +87,6 @@ VsAccount >> childrenDescription [
 	^ MAToManyRelationDescription new
 			accessor: #children;
 			label: 'Children';
-			glmPresentation: #list;
 			yourself
 ]
 

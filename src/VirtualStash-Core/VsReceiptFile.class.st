@@ -110,7 +110,6 @@ VsReceiptFile >> receiptsDescription [
 		accessor: #receipts;
 		label: 'Receipts';
 		classes: {VsReceipt};
-		glmPresentation: #list;
 		default: (SortedCollection sortUsing: #date ascending);
 		priority: 100;
 		beRequired;
