@@ -16,6 +16,8 @@ The solution is to have multiple hierarchies representing the relevant dimension
 Class {
 	#name : #VsAccount,
 	#superclass : #Object,
+	#traits : 'MATPropertyOwner',
+	#classTraits : 'MATPropertyOwner classTrait',
 	#instVars : [
 		'isPlaceholder',
 		'openingBalance',
