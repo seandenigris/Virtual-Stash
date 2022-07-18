@@ -286,18 +286,9 @@ VsReceipt >> imageFolder [
 	^ FileLocator dynabookData / 'Virtual Stash' / 'Inbox'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VsReceipt >> importFile: file [
-
-	self importFile: file moving: true
-]
-
-{ #category : #'as yet unclassified' }
-VsReceipt >> importFile: file moving: aBoolean [
-
-	| r |
-	r := RlResourceLibrary uniqueInstance import: file into: Path workingDirectory moving: aBoolean.
-	self resource: r
+	self resource: file asRlResource import
 ]
 
 { #category : #testing }
