@@ -1,3 +1,11 @@
+"
+# Installation
+Requires the following CLI utilities to be installed:
+- Tesseract
+- Imagemagick
+
+If these binaries are not reachable via PATH, see {{gtClass:SuGenericUnixCommand}} for configuration information.
+"
 Class {
 	#name : #BaselineOfVirtualStash,
 	#superclass : #BaselineOf,
