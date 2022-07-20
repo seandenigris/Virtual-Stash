@@ -375,6 +375,16 @@ VsReceipt >> personalTransactionDescription [
 			yourself
 ]
 
+{ #category : #accessing }
+VsReceipt >> possibleDates [
+	^ self hocr words 
+		inject: Set new 
+		into: [ :set :word | 
+			[ set add: word string asDate ] 
+				onErrorDo: [ ].
+			set ]
+]
+
 { #category : #'as yet unclassified' }
 VsReceipt >> possibleVendors [
 
