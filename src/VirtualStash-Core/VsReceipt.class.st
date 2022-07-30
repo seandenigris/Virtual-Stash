@@ -16,6 +16,8 @@ A common scenario is that you have a bunch of files that you want to turn into r
 Class {
 	#name : #VsReceipt,
 	#superclass : #Object,
+	#traits : 'MATPropertyOwner',
+	#classTraits : 'MATPropertyOwner classTrait',
 	#instVars : [
 		'resource',
 		'ocr',
@@ -457,9 +459,4 @@ VsReceipt >> vendorDescription [
 			priority: 400;
 			beRequired;
 			yourself
-]
-
-{ #category : #testing }
-VsReceipt >> wants_hOCR [
-	^ true
 ]

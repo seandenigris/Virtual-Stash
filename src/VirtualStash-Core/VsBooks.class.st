@@ -9,7 +9,8 @@ Class {
 	#instVars : [
 		'title',
 		'generalJournal',
-		'chartOfAccounts'
+		'chartOfAccounts',
+		'taxDocuments'
 	],
 	#classVars : [
 		'PaymentProcessors'
@@ -313,6 +314,18 @@ VsBooks >> printRegister: account [
 					tab;
 					print: balance ]
 				separatedBy: [ str crlf ] ]
+]
+
+{ #category : #accessing }
+VsBooks >> taxDocuments [
+
+	^ taxDocuments ifNil: [ taxDocuments := SortedCollection sortUsing: #year descending undefinedFirst ]
+]
+
+{ #category : #accessing }
+VsBooks >> taxDocuments: anObject [
+
+	taxDocuments := anObject
 ]
 
 { #category : #accessing }

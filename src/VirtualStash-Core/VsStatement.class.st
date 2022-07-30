@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'closingDate'
 	],
-	#category : 'VirtualStash-Core-Statements'
+	#category : #'VirtualStash-Core-Statements'
 }
 
 { #category : #testing }
@@ -40,6 +40,11 @@ VsStatement >> month [
 	| tokens |
 	tokens := self file base splitOn: '-'.
 	^ Month year: tokens first asNumber month: tokens second asNumber
+]
+
+{ #category : #accessing }
+VsStatement >> wantsHOCR [
+	^ false
 ]
 
 { #category : #accessing }

@@ -75,6 +75,14 @@ VsReceiptFile >> import [
 ]
 
 { #category : #accessing }
+VsReceiptFile >> maGtFormFor: aView [
+	
+	^ (super maGtFormFor: aView)
+		priority: 105;
+		yourself
+]
+
+{ #category : #accessing }
 VsReceiptFile >> nonReceipts [
 
 	^ nonReceipts ifNil: [ nonReceipts := OrderedCollection new ].
@@ -109,8 +117,8 @@ VsReceiptFile >> receiptsDescription [
 	^ MAToManyRelationDescription new
 		accessor: #receipts;
 		label: 'Receipts';
-		classes: {VsReceipt};
-		default: (SortedCollection sortUsing: #date ascending);
+		classes: VsReceipt withAllSubclasses;
+		default: (SortedCollection sortUsing: #date descending undefinedFirst);
 		priority: 100;
 		beRequired;
 		yourself
