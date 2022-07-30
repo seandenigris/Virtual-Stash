@@ -80,6 +80,48 @@ VsReceipt >> amountDescription [
 ]
 
 { #category : #accessing }
+VsReceipt >> asEditorElement [
+	| container figure maForm aResizer |
+	container := BrHorizontalPane new
+		vMatchParent;
+		hMatchParent.
+
+	figure := self asElement
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c linear weight: 2.5 ];
+		margin: (BlInsets all: 5).
+
+	maForm := (self magritteDescription elementBuilderFor: self)
+		addButtons;
+		element.
+
+	maForm
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent.
+			c linear weight: 1 ].
+		
+	aResizer := BlElement new.
+	aResizer background: (Color gray alpha: 0.5).
+	aResizer geometry: (BlRoundedRectangleGeometry cornerRadius: 2).
+	aResizer constraintsDo: [ :c |
+		c ignoreByLayout.
+		c vertical exact: 70.
+		c horizontal exact: 4.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignRight ].
+	aResizer addEventHandler: (BlResizerRightListener new resizeTarget: figure).
+	figure addChild: aResizer.
+
+	^ container
+		addChild: figure;
+		addChild: maForm;
+		yourself
+]
+
+{ #category : #accessing }
 VsReceipt >> asElement [
 	^ RlHOCRElement new
 		client: self;
@@ -181,9 +223,9 @@ VsReceipt >> form [
 VsReceipt >> gtFigureFor: aView [
     <gtView>
     ^ aView pannable
-        title: 'Figure';
-        priority: 1;
-        stencil: [ self asElement ]
+        title: 'Editor';
+        priority: 0.5;
+        stencil: [ self asEditorElement ]
 ]
 
 { #category : #accessing }

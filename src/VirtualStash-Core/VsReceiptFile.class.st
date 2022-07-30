@@ -68,6 +68,16 @@ VsReceiptFile >> browse [
 	self class browser openOn: self
 ]
 
+{ #category : #accessing }
+VsReceiptFile >> gtViewReceiptsFor: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Receipts';
+		priority: 35;
+		items: [ self receipts ]
+]
+
 { #category : #private }
 VsReceiptFile >> import [
 
