@@ -10,7 +10,9 @@ Class {
 		'title',
 		'generalJournal',
 		'chartOfAccounts',
-		'taxDocuments'
+		'taxDocuments',
+		'receiptFile',
+		'billFile'
 	],
 	#classVars : [
 		'PaymentProcessors'
@@ -273,6 +275,20 @@ VsBooks >> gtViewGeneralJournalOn: aView [
 ]
 
 { #category : #accessing }
+VsBooks >> gtViewReceiptsOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Receipts' translated;
+		priority: 7;
+		object: [ self receiptFile ];
+		view: #gtViewItemsFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect File'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
+]
+
+{ #category : #accessing }
 VsBooks >> importAccountsFromGnuCashCSV: file [
 	| accnts |
 	self accounts isEmptyOrNil ifFalse: [ self error: 'this doesn''t handle books with existing accounts' ].
@@ -314,6 +330,18 @@ VsBooks >> printRegister: account [
 					tab;
 					print: balance ]
 				separatedBy: [ str crlf ] ]
+]
+
+{ #category : #accessing }
+VsBooks >> receiptFile [
+
+	^ receiptFile ifNil: [ receiptFile := VsReceiptFile new ]
+]
+
+{ #category : #accessing }
+VsBooks >> receiptFile: anObject [
+
+	receiptFile := anObject
 ]
 
 { #category : #accessing }
