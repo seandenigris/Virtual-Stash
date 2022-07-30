@@ -94,6 +94,18 @@ VsBooks >> accounts [
 	^ self chartOfAccounts ifNotNil: [ :coa | coa accounts ].
 ]
 
+{ #category : #accessing }
+VsBooks >> billFile [
+
+	^ billFile ifNil: [ billFile := VsBillFile new ]
+]
+
+{ #category : #accessing }
+VsBooks >> billFile: anObject [
+
+	billFile := anObject
+]
+
 { #category : #'account-compatibility' }
 VsBooks >> books [
 	"Baskstop to simplify account implementation"

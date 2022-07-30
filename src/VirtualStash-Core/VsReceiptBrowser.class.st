@@ -65,6 +65,6 @@ VsReceiptBrowser >> receiptModel [
 
 { #category : #accessing }
 VsReceiptBrowser >> receipts [
-
+	self error: 'no longer one file; now one per book'.
 	^ VsReceiptFile uniqueInstance receipts.
 ]

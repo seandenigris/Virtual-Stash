@@ -40,7 +40,6 @@ VirtualStashDB class >> schema [
 			ResourcesLiveDB.
 			VsBooks.
 			VsPaymentMethod.
-			VsPre2013Books. 
-			VsReceiptFile
+			VsPre2013Books
 		}.
 ]
