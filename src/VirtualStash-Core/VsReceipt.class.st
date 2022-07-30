@@ -501,3 +501,8 @@ VsReceipt >> vendorDescription [
 			beRequired;
 			yourself
 ]
+
+{ #category : #testing }
+VsReceipt >> wantsHOCR [
+	^ true
+]

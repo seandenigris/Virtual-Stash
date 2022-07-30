@@ -46,8 +46,3 @@ VsStatement >> month [
 VsStatement >> wantsHOCR [
 	^ false
 ]
-
-{ #category : #accessing }
-VsStatement >> wants_hOCR [
-	^ false
-]
