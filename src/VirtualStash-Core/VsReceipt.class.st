@@ -493,12 +493,10 @@ VsReceipt >> vendor: anObject [
 { #category : #magritte }
 VsReceipt >> vendorDescription [
 	<magritteDescription>
-	^ MASingleOptionDescription new
+	^ MAToOneRelationDescription new
 			accessor: #vendor;
-			label: 'Vendor';
-			display: [ :e | e name ];
-			options: MpAddressBook default contacts;
 			priority: 400;
+			gtSearchSource: (MessageSend receiver: MpAddressBook selector: #uniqueInstance);
 			beRequired;
 			yourself
 ]
