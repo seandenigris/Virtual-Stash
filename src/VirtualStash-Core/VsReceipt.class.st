@@ -55,6 +55,15 @@ VsReceipt class >> fromImagesIn: directory [
 	^ self fromFiles: images
 ]
 
+{ #category : #'instance creation' }
+VsReceipt class >> fromResourceable: aResourceable [
+
+	^ self new
+		resource: aResourceable asRlResource;
+		yourself
+
+]
+
 { #category : #accessing }
 VsReceipt >> amount [
 	^ amount
