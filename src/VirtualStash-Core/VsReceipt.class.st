@@ -406,6 +406,7 @@ VsReceipt >> personalTransaction [
 
 { #category : #transactions }
 VsReceipt >> personalTransaction: transaction [
+	transaction ifNil: [ ^ self ].
 	transaction receipt: self.
 	VsBooks personal generalJournal add: transaction
 ]
