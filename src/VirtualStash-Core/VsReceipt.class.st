@@ -271,7 +271,10 @@ VsReceipt >> gtOCRFor: aView [
 { #category : #'ocr-guessing' }
 VsReceipt >> guessDate [
 
-	^ self resource possibleDates.
+	| candidates |
+	candidates := self possibleDates.
+	candidates size = 0 ifTrue: [ ^ nil ].
+	^ candidates atRandom
 ]
 
 { #category : #'ocr-guessing' }
@@ -421,12 +424,7 @@ VsReceipt >> personalTransactionDescription [
 
 { #category : #accessing }
 VsReceipt >> possibleDates [
-	^ self hocr words 
-		inject: Set new 
-		into: [ :set :word | 
-			[ set add: word string asDate ] 
-				onErrorDo: [ ].
-			set ]
+	^ self resource possibleDates.
 ]
 
 { #category : #'as yet unclassified' }
@@ -438,6 +436,7 @@ VsReceipt >> possibleVendors [
 { #category : #printing }
 VsReceipt >> printOn: aStream [
 
+	super printOn: aStream.
 	vendor ifNotNil: [ aStream nextPutAll: self vendor name ].
 	amount ifNotNil: [ aStream space; print: self amount ].
 	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
