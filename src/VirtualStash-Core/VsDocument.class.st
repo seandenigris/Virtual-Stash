@@ -167,9 +167,9 @@ VsDocument >> counterpartyDescription [
 { #category : #accessing }
 VsDocument >> counterpartyGtSearchSource [
 	| result |
-	result := MAGtCompositeSearch new.
+	result := PeGtCompositeSearch new.
 	result children 
-		add: (MAGtDelegatedSearch to: self message: #counterpartiesGtSpotterFor:);
+		add: (PeGtDelegatedSearch to: self message: #counterpartiesGtSpotterFor:);
 		add: self addressBook.
 	^ result
 ]
