@@ -64,7 +64,7 @@ VsDocument >> amountDescription [
 		beRequired;
 		propertyAt: #shortcut put: #a;
 		propertyAt: #whitelist put: '$1234567890#.';
-		propertyAt: #completionSource put: [ :doc | doc amountsRecognized collect: #asString ];
+		propertyAt: #completions put: [ :doc | doc amountsRecognized collect: #asString ];
 		yourself
 ]
 
@@ -87,7 +87,12 @@ VsDocument >> asEditorElement [
 			c linear weight: 2.5 ];
 		margin: (BlInsets all: 5).
 
-	maForm := (self magritteDescription elementBuilderFor: self)
+	maForm := self magritteElementBuilder
+		completionControllerClass: PeGtCompletionController;
+		completionStrategy: [ 
+			PeGtCompletionStrategy new
+				minimumPrefixLength: 0;
+				yourself ];
 		addButtons;
 		element.
 
@@ -200,7 +205,7 @@ VsDocument >> dateDescription [
 			default: Date today;
 			priority: 100;
 			propertyAt: #shortcut put:#d;
-			propertyAt: #completionSource put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
+			propertyAt: #completions put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
 			yourself
 ]
 
