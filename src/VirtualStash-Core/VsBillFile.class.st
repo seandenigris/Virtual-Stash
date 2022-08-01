@@ -11,10 +11,14 @@ Class {
 VsBillFile >> gtViewItemsFor: aView [
 	<gtView>
 	
-	^ aView list
-		title: 'Bills';
-		priority: 35;
-		items: [ self items ]
+	^ aView columnedList
+		title: 'Bills' translated;
+		priority: 10;
+		items: [ self items ];
+		column: 'Date' translated text: [ :e | e date mmddyyyy ];
+		column: 'Vendor' translated text: [ :e | e counterparty fullName ];
+		column: 'Total' translated text: [ :e | e amount ];
+		yourself
 ]
 
 { #category : #accessing }

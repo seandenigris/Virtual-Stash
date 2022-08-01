@@ -273,6 +273,20 @@ VsBooks >> gtSearchTransactionsFor: aStep [
 ]
 
 { #category : #accessing }
+VsBooks >> gtViewBillsOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Bills' translated;
+		priority: 8;
+		object: [ self billFile ];
+		view: #gtViewItemsFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect File'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self billFile ]
+]
+
+{ #category : #accessing }
 VsBooks >> gtViewGeneralJournalOn: aView [
 	<gtView>
 	
