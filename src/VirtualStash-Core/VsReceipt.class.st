@@ -17,10 +17,8 @@ Class {
 	#name : #VsReceipt,
 	#superclass : #VsDocument,
 	#instVars : [
-		'vendor',
-		'date',
-		'amount',
-		'paymentMethod'
+		'paymentMethod',
+		'vendor'
 	],
 	#category : #'VirtualStash-Core-Receipts'
 }
@@ -30,30 +28,6 @@ VsReceipt class >> exampleCash [
 	<gtExample>
 	^ self new
 		resource: (FileLocator virtualStashData / 'Examples' / 'Receipt_20151230_0004.pdf') asRlResource;
-		yourself
-]
-
-{ #category : #accessing }
-VsReceipt >> amount [
-	^ amount
-]
-
-{ #category : #accessing }
-VsReceipt >> amount: anObject [
-	amount := anObject
-]
-
-{ #category : #magritte }
-VsReceipt >> amountDescription [
-	<magritteDescription>
-	^ MANumberDescription new
-		accessor: #amount;
-		label: 'Amount';
-		display: [ :e | '$' , e asString ];
-		priority: 200;
-		beRequired;
-		propertyAt: #shortcut put: #a;
-		propertyAt: #whitelist put: '$1234567890#.';
 		yourself
 ]
 
@@ -112,43 +86,10 @@ VsReceipt >> businessTransactionDescription [
 			yourself
 ]
 
-{ #category : #accessing }
-VsReceipt >> date [
-	^ date
-]
-
-{ #category : #accessing }
-VsReceipt >> date: anObject [
-	date := anObject
-]
-
-{ #category : #magritte }
-VsReceipt >> dateDescription [
-	<magritteDescription>
-	^ MADateDescription new
-			accessor: #date;
-			label: 'Date';
-			display: [ :e | e monthName , ' ' , e dayOfMonth asString , ', ' , e year asString ];
-			beRequired;
-			default: Date today;
-			priority: 100;
-			propertyAt: #shortcut put:#d;
-			yourself
-]
-
 { #category : #'as yet unclassified' }
 VsReceipt >> enterAsPersonal [
 
 	VsGeneralJournal uniqueInstance addEntryFromReceipt: self
-]
-
-{ #category : #'ocr-guessing' }
-VsReceipt >> guessDate [
-
-	| candidates |
-	candidates := self possibleDates.
-	candidates size = 0 ifTrue: [ ^ nil ].
-	^ candidates atRandom
 ]
 
 { #category : #'ocr-guessing' }
@@ -175,12 +116,6 @@ VsReceipt >> guessTotal [
 	^ suggestions
 		bestGuess: bestGuess;
 		yourself.
-]
-
-{ #category : #'ocr-guessing' }
-VsReceipt >> guessVendor [
-
-	^ self hocr words detect: [ :e | e string = 'H&M' ] ifNone: [ '?' ].
 ]
 
 { #category : #magritte }
@@ -247,11 +182,6 @@ VsReceipt >> personalTransactionDescription [
 			initializer: [ :e | self initializeTransaction: e in: VsBooks personal ];
 			priority: 600;
 			yourself
-]
-
-{ #category : #accessing }
-VsReceipt >> possibleDates [
-	^ self resource possibleDates.
 ]
 
 { #category : #'as yet unclassified' }
