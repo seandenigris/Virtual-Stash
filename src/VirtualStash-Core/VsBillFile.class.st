@@ -15,9 +15,9 @@ VsBillFile >> gtViewItemsFor: aView [
 		title: 'Bills' translated;
 		priority: 10;
 		items: [ self items ];
-		column: 'Date' translated text: [ :e | e date mmddyyyy ];
-		column: 'Vendor' translated text: [ :e | e counterparty fullName ];
-		column: 'Total' translated text: [ :e | e amount ];
+		column: 'Date' translated text: [ :e | e maToString: e dateDescription ];
+		column: 'Vendor' translated text: [ :e | e maToString: e counterpartyDescription ];
+		column: 'Total' translated text: [ :e | e maToString: e amountDescription ];
 		yourself
 ]
 
