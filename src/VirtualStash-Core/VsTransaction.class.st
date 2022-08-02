@@ -370,7 +370,7 @@ VsTransaction >> receiptDescription [
 
 { #category : #accessing }
 VsTransaction >> registerString [
-	^ (self maToString: #dateDescription), '	', (self maToString: #counterpartyDescription), '	', (self maToString: #accountsDescription), '	', (self maToString: #amountDescription)
+	^ (self maToString: self dateDescription), '	', (self maToString: self counterpartyDescription), '	', (self maToString: self accountsDescription), '	', (self maToString: self amountDescription)
 ]
 
 { #category : #accessing }
