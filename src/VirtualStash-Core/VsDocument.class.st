@@ -311,5 +311,5 @@ VsDocument >> tesseractInputFile [
 
 { #category : #testing }
 VsDocument >> wantsHOCR [
-	^ true
+	^ false
 ]
