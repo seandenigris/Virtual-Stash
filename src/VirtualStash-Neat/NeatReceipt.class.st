@@ -11,11 +11,21 @@ Class {
 		'fileSize',
 		'file'
 	],
-	#category : 'VirtualStash-Neat'
+	#category : #'VirtualStash-Neat'
 }
 
-{ #category : #examples }
+{ #category : #'instance creation' }
 NeatReceipt class >> allFromCSV: file [
+	"Neat claims to have export capability, but in fact your data is locked in the applicated because you can access your files, and you can access your meta info, but you can't associate one to the other. For example, if I can export the vendor, date, and amount to CSV, and see the folder where the libraray stores all the PDFs, but don't have the filename! But... we are smarter than them :) They do give the file size, which is fairly unique (no duplicates in 1877 real receipts tested)"
+
+	| receipts |
+	receipts := NeatReceipt allWithoutFilesFromCSV: file.
+	self findFilesFor: receipts.
+	^ receipts
+]
+
+{ #category : #private }
+NeatReceipt class >> allWithoutFilesFromCSV: file [
 	| reader |
 	^ file readStreamDo: [ :rs | 
 			reader := NeoCSVReader on: rs.
@@ -34,22 +44,14 @@ NeatReceipt class >> allFromCSV: file [
 			  upToEnd ].
 ]
 
-{ #category : #examples }
+{ #category : #private }
 NeatReceipt class >> findFilesFor: receiptCollection [
-	[ :job |
-	receiptCollection doWithIndex: [ :e :i | 
-		job progress: i / receiptCollection size.
-		e findFile ] ] asJob run
-]
-
-{ #category : #examples }
-NeatReceipt class >> importFromCSV: file [
-	"Neat claims to have export capability, but in fact your data is locked in the applicated because you can access your files, and you can access your meta info, but you can't associate one to the other. For example, if I can export the vendor, date, and amount to CSV, and see the folder where the libraray stores all the PDFs, but don't have the filename! But... we are smarter than them :) They do give the file size, which is fairly unique (no duplicates in 1877 real receipts tested)"
-
-	| receipts |
-	receipts := NeatReceipt allFromCSV: file.
-	self findFilesFor: receipts.
-	^ receipts
+	[ [ :job |
+		receiptCollection doWithIndex: [ :e :i | 
+			job increment.
+			e findFile ] ] asJob
+				max: receiptCollection size;
+				run ] forkAt: Processor userBackgroundPriority
 ]
 
 { #category : #accessing }
@@ -116,7 +118,7 @@ NeatReceipt >> fileSize: anObject [
 { #category : #actions }
 NeatReceipt >> findFile [
 	| neatLibraryFolder matches |
-	neatLibraryFolder := FileLocator documents / 'Neat Library.nrmlib'.
+	neatLibraryFolder := FileLocator virtualStashData / 'Neat Library.nrmlib'.
 	matches := neatLibraryFolder files select: [ :e | e size = self fileSize ].
 	self assert: matches size = 1 description: 'Two files in Neat Library with same size!'. "I did a test on a real library with 1877 files and they all had distinct sizes, so we should be okay"
 	file := matches first.
