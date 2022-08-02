@@ -200,7 +200,7 @@ VsDocument >> dateDescription [
 	^ MADateDescription new
 			accessor: #date;
 			label: 'Date';
-			display: [ :e | e monthName , ' ' , e dayOfMonth asString , ', ' , e year asString ];
+			display: #mmddyyyy;
 			beRequired;
 			default: Date today;
 			priority: 100;
