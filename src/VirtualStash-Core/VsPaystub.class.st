@@ -27,6 +27,11 @@ VsPaystub >> dateGuess [
 
 { #category : #accessing }
 VsPaystub >> datesRecognized [
+	^ self datesRecognizedHocr collect: #value
+]
+
+{ #category : #accessing }
+VsPaystub >> datesRecognizedHocr [
 	^ self hocr words 
 		inject: Bag new 
 		into: [ :col :word | 
@@ -47,6 +52,20 @@ VsPaystub >> end [
 VsPaystub >> end: anObject [
 
 	end := anObject
+]
+
+{ #category : #accessing }
+VsPaystub >> endDescription [
+	<magritteDescription>
+	^ MADateDescription new
+			accessor: #end;
+			display: #mmddyyyy;
+			beRequired;
+			default: self guessEnd;
+			shouldCacheDefault: true;
+			priority: 200;
+			propertyAt: #completions put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
+			yourself
 ]
 
 { #category : #accessing }
