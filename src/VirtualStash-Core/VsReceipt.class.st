@@ -17,8 +17,7 @@ Class {
 	#name : #VsReceipt,
 	#superclass : #VsDocument,
 	#instVars : [
-		'paymentMethod',
-		'vendor'
+		'paymentMethod'
 	],
 	#category : #'VirtualStash-Core-Receipts'
 }
@@ -217,21 +216,10 @@ VsReceipt >> submitDescription [
 
 { #category : #accessing }
 VsReceipt >> vendor [
-	^ vendor
+	^ counterparty
 ]
 
 { #category : #accessing }
 VsReceipt >> vendor: anObject [
-	vendor := anObject
-]
-
-{ #category : #magritte }
-VsReceipt >> vendorDescription [
-	<magritteDescription>
-	^ MAToOneRelationDescription new
-			accessor: #vendor;
-			priority: 400;
-			gtSearchSource: (MessageSend receiver: MpAddressBook selector: #uniqueInstance);
-			beRequired;
-			yourself
+	counterparty := anObject
 ]
