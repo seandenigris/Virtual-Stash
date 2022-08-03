@@ -315,6 +315,19 @@ VsBooks >> gtViewReceiptsOn: aView [
 ]
 
 { #category : #accessing }
+VsBooks >> gtViewTaxDocumentsOn: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Tax Docs' translated;
+		priority: 8;
+		items: [ self taxDocuments ];
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self taxDocuments ]
+]
+
+{ #category : #accessing }
 VsBooks >> importAccountsFromGnuCashCSV: file [
 	| accnts |
 	self accounts isEmptyOrNil ifFalse: [ self error: 'this doesn''t handle books with existing accounts' ].
