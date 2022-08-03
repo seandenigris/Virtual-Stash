@@ -293,6 +293,24 @@ VsDocument >> ocr [
 ]
 
 { #category : #accessing }
+VsDocument >> printFieldsOn: aStream [
+
+	counterparty ifNotNil: [ aStream print: self counterparty name ].
+	amount ifNotNil: [ aStream space; print: self amount ].
+	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
+]
+
+{ #category : #accessing }
+VsDocument >> printOn: aStream [
+
+	self printFieldsOn: aStream.
+	
+	aStream nextPutAll: ' ('.
+	super printOn: aStream.
+	aStream nextPut: $).
+]
+
+{ #category : #accessing }
 VsDocument >> resource [
 	^ resource
 ]
