@@ -70,7 +70,11 @@ VsDocument >> amountDescription [
 
 { #category : #accessing }
 VsDocument >> amountsRecognized [
-	^ ((PP2MoneyParser new sea ==> #second) plus parse: self ocr) asSet
+	| parseResult |
+	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self ocr.
+	^ parseResult isPetit2Success
+		ifTrue: [ parseResult asSet ]
+		ifFalse: [ #() ]
 ]
 
 { #category : #accessing }
