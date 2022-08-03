@@ -36,7 +36,7 @@ VsPaystub >> datesRecognizedHocr [
 		inject: Bag new 
 		into: [ :col :word | 
 			| parseResult isNewDate |
-			parseResult := PP2DateParser new mmddyyyy parse: word string onError: [ nil ].
+			parseResult := Date pp2Parser mmddyyyy parse: word string onError: [ nil ].
 			isNewDate := parseResult isNotNil and: [ col noneSatisfy: [ :e | e value = parseResult ] ].
 			isNewDate ifTrue: [ col add: word -> parseResult ].
 			col ].
