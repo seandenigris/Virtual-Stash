@@ -172,6 +172,14 @@ VsTransaction >> date: anObject [
 ]
 
 { #category : #GnuCash }
+VsTransaction >> gnuCashCounterpartyDescription: aDescription [
+	<magritteDescription: #counterpartyDescription>
+	^ aDescription
+		propertyAt: #csvFieldName put: 'Description';
+		yourself
+]
+
+{ #category : #GnuCash }
 VsTransaction >> gnuCashDateDescription: aDescription [
 	<magritteDescription: #dateDescription>
 	^ aDescription
@@ -213,14 +221,6 @@ VsTransaction >> gnuCashNumberDescription: aDescription [
 	<magritteDescription: #numberDescription>
 	^ aDescription
 		propertyAt: #csvFieldName put: 'Transaction Number';
-		yourself
-]
-
-{ #category : #GnuCash }
-VsTransaction >> gnuCashPayeeDescription: aDescription [
-	<magritteDescription: #counterpartyDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Description';
 		yourself
 ]
 
