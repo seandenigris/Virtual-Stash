@@ -15,7 +15,7 @@ Class {
 		'business',
 		'personal'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -73,7 +73,7 @@ VsGeneralJournal >> descriptionEntries [
 { #category : #accessing }
 VsGeneralJournal >> entries [
 
-	^ entries ifNil: [ entries := SortedCollection sortUsing: #date asSortFunction ]
+	^ entries ifNil: [ entries := SortedCollection sortUsing: #date descending undefinedFirst ]
 ]
 
 { #category : #accessing }
