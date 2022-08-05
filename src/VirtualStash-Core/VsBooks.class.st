@@ -287,6 +287,20 @@ VsBooks >> gtViewBillsOn: aView [
 ]
 
 { #category : #accessing }
+VsBooks >> gtViewChartOfAccountsOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Accounts' translated;
+		priority: 10;
+		object: [ self chartOfAccounts ];
+		view: #gtViewGraphFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect Accounts'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self chartOfAccounts ]
+]
+
+{ #category : #accessing }
 VsBooks >> gtViewGeneralJournalOn: aView [
 	<gtView>
 	
