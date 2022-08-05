@@ -153,7 +153,7 @@ VsTransaction >> counterparty: anObject [
 VsTransaction >> counterpartyDescription [
 	
 	<magritteDescription>
-	^ MAToManyRelationDescription new
+	^ MAToOneRelationDescription new
 			accessor: #counterparty;
 			gtSearchSource: (MessageSend receiver: self selector: #addressBook);
 			priority: 300;
