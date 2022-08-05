@@ -3,10 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'csvFieldName',
-		'reader',
-		'target',
-		'receiverBlock',
-		'group'
+		'group',
+		'descriptionName'
 	],
 	#category : #'VirtualStash-Core'
 }
@@ -24,6 +22,18 @@ VsCSVImporterField >> csvFieldName: anObject [
 ]
 
 { #category : #accessing }
+VsCSVImporterField >> descriptionName [
+
+	^ descriptionName
+]
+
+{ #category : #accessing }
+VsCSVImporterField >> descriptionName: anObject [
+
+	descriptionName := anObject
+]
+
+{ #category : #accessing }
 VsCSVImporterField >> group [
 
 	^ group
@@ -35,81 +45,22 @@ VsCSVImporterField >> group: anObject [
 	group := anObject
 ]
 
-{ #category : #accessing }
-VsCSVImporterField >> reader [
-
-	^ reader
-]
-
-{ #category : #accessing }
-VsCSVImporterField >> reader: anObject [
-
-	reader := anObject
-]
-
-{ #category : #accessing }
-VsCSVImporterField >> receiverBlock [
-
-	^ receiverBlock ifNil: [ [ :obj | obj ] ]
-]
-
-{ #category : #accessing }
-VsCSVImporterField >> receiverBlock: anObject [
-
-	receiverBlock := anObject
-]
-
-{ #category : #accessing }
-VsCSVImporterField >> target [
-
-	^ target
-]
-
-{ #category : #accessing }
-VsCSVImporterField >> target: anObject [
-
-	target := anObject
-]
-
-{ #category : #private }
-VsCSVImporterField >> write: aString describedBy: elemDesc withBlockWriterTo: anObject [
-	| aReader value |
-	aReader := self reader 
-		ifNil: [ 
-			elemDesc csvReader "ifNil: #yourself" ].
-			Halt now.
-	value := aReader value: aString.
-	self target value: anObject value: value. 
-]
-
 { #category : #writing }
 VsCSVImporterField >> write: aString to: anObject [
-
-	| elementDescription receiver |
 	
+	| elementDescription value |
 	aString ifNil: [ ^ self ].
-	
-	receiver := self receiverBlock value: anObject.
-	
-	elementDescription := receiver magritteDescription 
-		detect: [ :e | e name = self target ]
+		
+	elementDescription := anObject magritteDescription 
+		detect: [ :e | e name = self descriptionName ]
 		ifNone: [ 
 			self 
 				write: aString 
-				toPropertyOf: receiver.
+				toPropertyOf: anObject.
 				^ self ].
 			
-	self target isBlock 
-		ifTrue: [
-			self 
-				write: aString 
-				describedBy: elementDescription 
-				withBlockWriterTo: receiver ]
-		ifFalse: [
-			self 
-				write: aString 
-				using: elementDescription 
-				to: receiver ]
+	value := elementDescription csvReader value: aString.
+	elementDescription write: value to: anObject
 ]
 
 { #category : #private }
@@ -117,12 +68,4 @@ VsCSVImporterField >> write: aString toPropertyOf: anObject [
 	anObject 
 		propertyAt: self target 
 		put: aString
-]
-
-{ #category : #private }
-VsCSVImporterField >> write: aString using: elemDesc to: anObject [ 
-	| aReader value |
-	aReader := self reader ifNil: [ elemDesc csvReader ].
-	value := aReader value: aString.
-	elemDesc write: value to: anObject
 ]

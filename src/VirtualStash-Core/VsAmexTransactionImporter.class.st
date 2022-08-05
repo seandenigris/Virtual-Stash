@@ -31,29 +31,24 @@ VsAmexTransactionImporter >> books: anObject [
 	books := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #API }
 VsAmexTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
+
 	^ aCollectionOfDictionaries collect: [ :rowDict | 
 		| newTransaction split |
-		newTransaction := VsTransaction new
-			accountSource: books;
-			addTalent: VsTAmexTransaction;
-			yourself.
+		newTransaction := self transactionInitializedFromRecord: rowDict.
+		split := self splitInitializedFromRecord: rowDict.
+		
+		"We pass the transaction here (we didn't for split) because the address may or may not be added to the transaction as part of processing the fields"
+		self
+			initializeAddressOf: newTransaction 
+			fromRecord: rowDict.
 			
-		split := VsSplit new
-			"addTalent: VsTAmexSplit;"
-			yourself.
-			
-		self 
-			initializeDomainObject: newTransaction fromRecord: rowDict;
-			initializeDomainObject: split fromRecord: rowDict group: #split ignoringUnmapped: true;
-			initializeAddressOf: newTransaction fromRecord: rowDict.
-		newTransaction removeTalent: VsTAmexTransaction.
 		newTransaction splits add: split.
 		newTransaction ]
 ]
 
-{ #category : #accessing }
+{ #category : #executing }
 VsAmexTransactionImporter >> execute [
 	| transactions |
 	transactions := super execute.
@@ -78,38 +73,27 @@ VsAmexTransactionImporter >> fieldMap [
 	^ fieldData collect: [ :col |
 		VsCSVImporterField new
 			csvFieldName: col first;
-			target: col second;
+			descriptionName: col second;
 			group: col third;
 			yourself ]
 ]
 
-{ #category : #accessing }
-VsAmexTransactionImporter >> ignoredFields [
-	^ #('Address' 'City/State' 'Zip Code' 'Country')
-]
-
-{ #category : #accessing }
+{ #category : #private }
 VsAmexTransactionImporter >> initializeAddressOf: aTransaction fromRecord: aDictionary [
 
-	| address usaAliases country ignoredFields |
+	| address usaAliases country |
 	country := (aDictionary at: 'Country') ifNil: [ ^ self ].
 		
 	usaAliases := #('UNITED STATES OF AMERICA (THE)' 'UNITED STATES').
 	(usaAliases includes: country) ifFalse: [ self error: 'No model for international addresses' ].
 	
 	address := MpUSAddress new
-		addTalent: VsTAmexAddress;
-		yourself.
-	
-	ignoredFields := self fieldMap reject: [ :e | self ignoredFields includes: e csvFieldName ].
-	ignoredFields := ignoredFields collect: #csvFieldName.
-	self 
-		initializeDomainObject: address
-		fromRecord: aDictionary 
-		group: #address
-		ignoringUnmapped: true.
-		
-	address removeTalent: VsTAmexAddress.
+		addTalent: VsTAmexAddress during: [
+			self 
+				initializeDomainObject: address
+				fromRecord: aDictionary 
+				group: #address
+				ignoringUnmapped: true ].
 	
 	aTransaction propertyAt: #amexAddress put: address
 ]
@@ -148,57 +132,16 @@ VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDicti
 ]
 
 { #category : #accessing }
-VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDictionary ignoring: fieldNames andUnmapped: ignoreUnmappedBoolean [
-	
-	aDictionary keysAndValuesDo: [ :k :stringValue |
-		(fieldNames includes: k) 
-			ifFalse: [ 
-				| field |
-				field := self fieldMap
-					detect: [ :e | e csvFieldName = k ]
-					ifNone: [ 
-						ignoreUnmappedBoolean
-							ifTrue: [ nil ]
-							ifFalse: [ 
-								VsCSVImporterField new
-								csvFieldName: k;
-								target: k uncapitalized asSymbol;
-								yourself ] ].
-				field ifNotNil: [ field write: stringValue to: anObject ] ] ].
-	
-	^ anObject
-	
-	"Implementation note: Used to be a class-side utility method, but we needed an instance-side version because some objects may need configuration during instance creation"
-]
+VsAmexTransactionImporter >> splitInitializedFromRecord: aDictionary [
 
-{ #category : #accessing }
-VsAmexTransactionImporter >> initializeMagritteFieldsOfDomainObject: anObject fromRecord: aDictionary [
-	"We needed an instance-side version because some objects may need configuration during instance creation"
-	anObject magritteDescription do: [ :desc | 
-		desc
-			propertyAt: #csvFieldName
-			ifPresent: [ :fieldName | 
-				| stringValue value |
-				stringValue := aDictionary at: fieldName.
-				self flag: 'This next part looks very memento-like'.
-				stringValue ifNotNil: [ 
-					value := desc csvReader value: stringValue.
-					desc write: value to: anObject ] ] ].
-	^ anObject
-]
-
-{ #category : #accessing }
-VsAmexTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
-	
-	self initializeDomainObject: aTransaction fromRecord: aDict.
-	
-	self addressBook ifNil: [ ^ self ].
-	
-	aTransaction addressBook: self addressBook.
-	self addressBook 
-		entryNamed: aTransaction counterparty 
-		ifFound: [ :e | aTransaction counterparty: e ]
-		ifNone: []
+	| result |
+	result := VsSplit new.
+			
+	^ self
+		initializeDomainObject: result 
+			fromRecord: aDictionary 
+			group: #split 
+			ignoringUnmapped: true.
 ]
 
 { #category : #accessing }
@@ -211,4 +154,29 @@ VsAmexTransactionImporter >> targetCollection [
 VsAmexTransactionImporter >> targetCollection: anObject [
 
 	targetCollection := anObject
+]
+
+{ #category : #accessing }
+VsAmexTransactionImporter >> transactionInitializedFromRecord: aDict [
+
+	| result |
+	result := VsTransaction new
+		accountSource: books;
+		addTalent: VsTAmexTransaction 
+			during: [ :trns |
+				self 
+					initializeDomainObject: trns 
+					fromRecord: aDict ];
+		yourself.
+	
+	self addressBook ifNil: [ ^ result ].
+	
+	result addressBook: self addressBook.
+	
+	self addressBook 
+		entryNamed: result counterparty 
+		ifFound: [ :e | result counterparty: e ]
+		ifNone: [].
+		
+	^ result
 ]
