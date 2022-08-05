@@ -34,6 +34,8 @@ BaselineOfVirtualStash >> baseline: spec [
 				spec 
 					repository: 'github://seandenigris/Magritte';
 					loads: #(#default #'Magritte-Money') ];
+			baseline: 'Mocketry' with: [
+				spec repository: 'github://seandenigris/Mocketry' ];
 			baseline: 'MyPeople' with: [ spec repository: 'github://seandenigris/My-People' ];
 			baseline: 'NeoCSV' with: [ 
 				spec 
@@ -44,12 +46,12 @@ BaselineOfVirtualStash >> baseline: spec [
 			baseline: 'ResourcesLive' with: [
 				spec repository: 'github://seandenigris/Resources-Live' ];
 			baseline: 'SimplePersistence' with: [ spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: 'Mocketry' with: [
-				spec repository: 'github://seandenigris/Mocketry' ].
+			baseline: 'Talents' with: [
+				spec repository: 'github://tesonep/pharo-talents' ].
 		spec
 			package: 'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
 			package: 'VirtualStash-Core' with: [
-				spec requires: #('Aconcagua' 'Aconcagua-Money' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence') ] ].
+				spec requires: #('Aconcagua' 'Aconcagua-Money' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence' 'Talents') ] ].
 				
 	spec for: #notGToolkit do: [
 		spec 
