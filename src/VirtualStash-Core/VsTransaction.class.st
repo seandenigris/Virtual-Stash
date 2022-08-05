@@ -96,7 +96,7 @@ VsTransaction >> amount [
 	debits := self splits select: #isDebit.
 	creditTotal := credits inject: 0 dollars into: [ :sum :e | sum + e amount ].
 	debitTotal := debits inject: 0 dollars into: [ :sum :e | sum + e amount ].
-	^ creditTotal max: debitTotal
+	^ { creditTotal. debitTotal } detectMax: #abs
 ]
 
 { #category : #'magritte-accessing' }
