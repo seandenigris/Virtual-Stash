@@ -201,15 +201,22 @@ VsDocument >> date: anObject [
 { #category : #magritte }
 VsDocument >> dateDescription [
 	<magritteDescription>
+	
+	| default |
+	default := self datesRecognized 
+		ifNotEmpty: [ :ds | ds atRandom ] 
+		ifEmpty: [ Date today ].
+	
 	^ MADateDescription new
 			accessor: #date;
 			label: 'Date';
 			display: #mmddyyyy;
 			beRequired;
-			default: Date today;
+			default: default;
 			priority: 100;
 			propertyAt: #shortcut put:#d;
-			propertyAt: #completions put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
+			propertyAt: #completions put: [ :doc | 
+				(doc datesRecognized add: Date today) collect: #mmddyyyy ];
 			yourself
 ]
 
