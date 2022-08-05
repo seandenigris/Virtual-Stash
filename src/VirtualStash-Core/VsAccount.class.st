@@ -305,5 +305,5 @@ VsAccount >> rootFolder [
 VsAccount >> transactionsFromCSV_FileNamed: aString [
 	| csvFile |
 	csvFile := self rootFolder / 'Exports' / aString.
-	^ (self class maCSVImporter: VsTransactionImporter) importFile: csvFile.
+	^ (self class maCSVImporter: VsGnuCashTransactionImporter) importFile: csvFile.
 ]

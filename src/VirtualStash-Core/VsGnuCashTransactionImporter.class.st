@@ -1,38 +1,43 @@
+"
+GnuCash transaction export CSV files have rows which may either represent:
+- a transaction and a split contained by it
+- a split contained by the previous transaction (from a prior row)
+"
 Class {
-	#name : #VsTransactionImporter,
+	#name : #VsGnuCashTransactionImporter,
 	#superclass : #MACSVTwoStageImporter,
 	#instVars : [
 		'addressBook',
 		'books',
 		'targetCollection'
 	],
-	#category : 'VirtualStash-Core'
+	#category : #'VirtualStash-Core'
 }
 
 { #category : #accessing }
-VsTransactionImporter >> addressBook [
-	"By default, leave counterpartys as strings, don't convert to domain objects. This is because e.g. GnuCash doesn't have a strong counterparty concept, but a generic description, which could be any unstructured text and might lead to false matches"
+VsGnuCashTransactionImporter >> addressBook [
+	"By default, leave counterparties as strings, don't convert to domain objects. This is because e.g. GnuCash doesn't have a strong counterparty concept, but a generic description, which could be any unstructured text and might lead to false matches"
 	^ addressBook
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> addressBook: anObject [
+VsGnuCashTransactionImporter >> addressBook: anObject [
 
 	addressBook := anObject
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> books [
+VsGnuCashTransactionImporter >> books [
 	^ books
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> books: anObject [
+VsGnuCashTransactionImporter >> books: anObject [
 	books := anObject
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
+VsGnuCashTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 	^ aCollectionOfDictionaries
 		inject: OrderedCollection new
 		into: [ :col :rowDict | 
@@ -53,7 +58,7 @@ VsTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> execute [
+VsGnuCashTransactionImporter >> execute [
 	| transactions |
 	transactions := super execute.
 	self targetCollection ifNotNil: [ :col | col addAll: transactions ].
@@ -61,7 +66,7 @@ VsTransactionImporter >> execute [
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
+VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
 	
 	self initializeDomainObject: aTransaction fromRecord: aDict.
 	
@@ -75,13 +80,13 @@ VsTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> targetCollection [
+VsGnuCashTransactionImporter >> targetCollection [
 
 	^ targetCollection
 ]
 
 { #category : #accessing }
-VsTransactionImporter >> targetCollection: anObject [
+VsGnuCashTransactionImporter >> targetCollection: anObject [
 
 	targetCollection := anObject
 ]
