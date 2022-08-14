@@ -88,9 +88,9 @@ VsAmexTransactionImporter >> initializeAddressOf: aTransaction fromRecord: aDict
 	(usaAliases includes: country) ifFalse: [ self error: 'No model for international addresses' ].
 	
 	address := MpUSAddress new
-		addTalent: VsTAmexAddress during: [
+		addTalent: VsTAmexAddress during: [ :addrs |
 			self 
-				initializeDomainObject: address
+				initializeDomainObject: addrs
 				fromRecord: aDictionary 
 				group: #address
 				ignoringUnmapped: true ].
