@@ -121,7 +121,7 @@ VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDicti
 					ifFalse: [ 
 						VsCSVImporterField new
 						csvFieldName: k;
-						target: k uncapitalized asSymbol;
+						descriptionName: k uncapitalized asSymbol;
 						yourself ] ].
 		(field isNotNil and: [ field group = aSymbol ]) ifTrue: [ 
 			field write: stringValue to: anObject ] ].

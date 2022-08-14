@@ -66,6 +66,6 @@ VsCSVImporterField >> write: aString to: anObject [
 { #category : #private }
 VsCSVImporterField >> write: aString toPropertyOf: anObject [
 	anObject 
-		propertyAt: self target 
+		propertyAt: self descriptionName 
 		put: aString
 ]
