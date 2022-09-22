@@ -42,7 +42,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-09-22T15:13:27.45124-04:00"
+									"dateAndTimeString" : "2022-09-22T15:13:03.989297-04:00"
 								}
 							},
 							"uid" : {
@@ -52,7 +52,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Donation of compensation - two options: 1) donate from the organization in their name as long as the board approves 2) officer recieves pay and donates themselves"
+							"string" : "Donation of compensation - two options: 1) donate from the organization in their name as long as the board approves 2) "
 						},
 						{
 							"__type" : "textSnippet",
