@@ -45,12 +45,12 @@ VsChartOfAccounts >> books: aVsBooks [
 ]
 
 { #category : #accessing }
-VsChartOfAccounts >> gtSearchAccountsFor: aStep [
+VsChartOfAccounts >> gtSearchAccountsFor: aSearch [
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		title: 'Accounts';
 		priority: 1;
-		allCandidates: [ self accounts ];
+		items: [ self accounts ];
 		itemName: #displayString;
 		matchSubstrings
 ]

@@ -77,12 +77,12 @@ VsGeneralJournal >> entries [
 ]
 
 { #category : #accessing }
-VsGeneralJournal >> gtSearchTransactionsFor: aStep [
+VsGeneralJournal >> gtSearchTransactionsFor: aSearch [
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		title: 'Transactions';
 		priority: 2;
-		allCandidates: [ self transactions ];
+		items: [ self transactions ];
 		itemName: #displayString;
 		matchSubstrings
 ]
