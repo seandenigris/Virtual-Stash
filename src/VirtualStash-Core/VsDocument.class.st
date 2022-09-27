@@ -132,14 +132,13 @@ VsDocument >> asElement [
 ]
 
 { #category : #accessing }
-VsDocument >> counterpartiesGtSpotterFor: aStep [
+VsDocument >> counterpartiesGtSpotterFor: aSearch [
 	
-	^ aStep listProcessor
+	^ aSearch list
 		priority: 5;
 		title: 'Recognized';
-		allCandidates: [ self counterpartiesRecognized ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7;
+		items: [ self counterpartiesRecognized ];
+		matchSubstrings;
 		itemName:[ :aContact | aContact fullName ] 
 ]
 
