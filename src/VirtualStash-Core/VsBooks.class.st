@@ -295,9 +295,7 @@ VsBooks >> gtViewChartOfAccountsOn: aView [
 		priority: 10;
 		object: [ self chartOfAccounts ];
 		view: #gtViewGraphFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect Accounts'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self chartOfAccounts ]
+		inspectButtonFor: [ self chartOfAccounts ]
 ]
 
 { #category : #accessing }
@@ -309,9 +307,7 @@ VsBooks >> gtViewGeneralJournalOn: aView [
 		priority: 5;
 		object: [ self generalJournal ];
 		view: #gtViewGeneralJournalOn:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect Journal'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self generalJournal ]
+		inspectButtonFor: [ self generalJournal ]
 ]
 
 { #category : #accessing }
@@ -336,9 +332,7 @@ VsBooks >> gtViewTaxDocumentsOn: aView [
 		title: 'Tax Docs' translated;
 		priority: 8;
 		items: [ self taxDocuments ];
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self taxDocuments ]
+		inspectButtonFor: [ self taxDocuments ]
 ]
 
 { #category : #accessing }
