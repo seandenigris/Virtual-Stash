@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'sourceCurrency',
 		'targetCurrency',
-		'date'
+		'date',
+		'json',
+		'feePercentage'
 	],
 	#category : #'VirtualStash-Core-Bookkeeping'
 }
@@ -13,10 +15,10 @@ Class {
 VsVisaExchangeRates class >> exampleUSDtoEUR [
 	<gtExample>
 	^ self
-		given: []
-		when: [ self from: 'USD' to: 'EUR' on: Date today ]
-		then: [ :calc |
-			calc url asString should equal: 'https://bd.visa.com/travel-with-visa/exchange-rate-calculator.html?utcConvertedDate=&submitButton=Calculate%20Exchange%20Rates&fromCurr=USD&toCurr=EUR&fee=0&exchangedate=2%252F10%252F2022'.
+		given: [ '3/1/2023' asDate ]
+		when: [ :date | self from: 'USD' to: 'EUR' on: date ]
+		then: [ :calc :date |
+			calc url asString should equal: 'https://bd.visa.com/cmsapi/fx/rates?amount=1&fee=0&utcConvertedDate=03/01/2023&exchangedate=03/01/2023&fromCurr=EUR&toCurr=USD'.
 			calc ]
 ]
 
@@ -30,9 +32,20 @@ VsVisaExchangeRates class >> from: source to: target on: aDate [
 ]
 
 { #category : #accessing }
+VsVisaExchangeRates class >> nowUSDtoEUR [
+	| converter |
+	converter := self
+		from: 'USD'
+		to: 'EUR'
+		on: Date today.
+		
+	^ converter oneUnitSource
+]
+
+{ #category : #accessing }
 VsVisaExchangeRates >> date [
 
-	^ date
+	^ date ifNil: [ Date today ]
 ]
 
 { #category : #accessing }
@@ -42,17 +55,49 @@ VsVisaExchangeRates >> date: anObject [
 ]
 
 { #category : #accessing }
+VsVisaExchangeRates >> dateForUrl [
+
+	^ String streamContents: [ :str | 
+		str
+			nextPutAll: (self date monthIndex asString padLeftTo: 2 with: $0);
+			nextPutAll: '/';
+			nextPutAll: (self date dayOfMonth asString padLeftTo: 2 with: $0);
+			nextPutAll: '/';
+			nextPutAll: (self date year asString) ]
+			
+	"Implementation note: 400 error when dates not padded"
+]
+
+{ #category : #accessing }
+VsVisaExchangeRates >> exchangeRate [
+
+	^ self oneUnitSource
+]
+
+{ #category : #accessing }
+VsVisaExchangeRates >> feePercentage [
+	^ feePercentage ifNil: [ 0 ]
+]
+
+{ #category : #accessing }
+VsVisaExchangeRates >> feePercentage: anObject [
+	feePercentage := anObject
+]
+
+{ #category : #accessing }
+VsVisaExchangeRates >> json [
+
+	^ json ifNil: [ json := STONJSON fromString: self url retrieveContents ]
+]
+
+{ #category : #accessing }
 VsVisaExchangeRates >> oneUnitSource [
-	| soup |
-	soup := Soup fromUrl: self url.
-	^ ((soup hr nextSibling nextSibling / #p) second text splitOn: Character space) fourth asNumber
+	^ (self json at: 'convertedAmount') asNumber
 ]
 
 { #category : #accessing }
 VsVisaExchangeRates >> oneUnitTarget [
-	| soup |
-	soup := Soup fromUrl: self url.
-	^ ((soup hr nextSibling nextSibling / #p) first text splitOn: Character space) fourth asNumber
+	^ (self json at: 'reverseAmount') asNumber
 ]
 
 { #category : #accessing }
@@ -81,10 +126,12 @@ VsVisaExchangeRates >> targetCurrency: anObject [
 
 { #category : #accessing }
 VsVisaExchangeRates >> url [
-	^ 'https://bd.visa.com/travel-with-visa/exchange-rate-calculator.html?utcConvertedDate=&submitButton=Calculate+Exchange+Rates' asUrl
-		queryAt: #fromCurr put: self sourceCurrency;
-		queryAt: #toCurr put: self targetCurrency;
-		queryAt: #fee put: 0;
-		queryAt: #exchangedate put: self date mmddyyyy urlEncoded;
+	^ 'https://bd.visa.com/cmsapi/fx/rates' asUrl
+		queryAt: #amount put: 1;
+		queryAt: #fee put: self feePercentage;
+		queryAt: #utcConvertedDate put: self dateForUrl;
+		queryAt: #exchangedate put: self dateForUrl;
+		queryAt: #fromCurr put: self targetCurrency;
+		queryAt: #toCurr put: self sourceCurrency;
 		yourself
 ]

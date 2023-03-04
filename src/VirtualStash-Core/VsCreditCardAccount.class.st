@@ -2,7 +2,8 @@ Class {
 	#name : #VsCreditCardAccount,
 	#superclass : #VsLiabilityAccount,
 	#instVars : [
-		'benefits'
+		'benefits',
+		'foreignTransactionFee'
 	],
 	#category : #'VirtualStash-Core-Bookkeeping'
 }
@@ -28,6 +29,16 @@ VsCreditCardAccount >> convertAmexOldStyleFilenames [
 			newBase := month year asString , '-'
 				, (month index printStringPadded: 2).
 			e moveFileTo: e parent / newBase , 'pdf' ]
+]
+
+{ #category : #accessing }
+VsCreditCardAccount >> foreignTransactionFee [
+	^ foreignTransactionFee
+]
+
+{ #category : #accessing }
+VsCreditCardAccount >> foreignTransactionFee: aNumber [
+	foreignTransactionFee := aNumber
 ]
 
 { #category : #accessing }
