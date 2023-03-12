@@ -215,7 +215,7 @@ VsDocument >> dateDescription [
 			priority: 100;
 			propertyAt: #shortcut put:#d;
 			propertyAt: #completions put: [ :doc | 
-				(doc datesRecognized add: Date today) collect: #mmddyyyy ];
+				(doc datesRecognized add: Date today; yourself) collect: #mmddyyyy ];
 			yourself
 ]
 

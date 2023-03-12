@@ -22,7 +22,7 @@ VsPaystub >> dateGuess [
 	candidates := self datesRecognized.
 	candidates size = 0 ifTrue: [ ^ nil ].
 	
-	^ self datesRecognized detectMin: [ :e | e key boundingBox center x ].
+	^ self datesRecognizedHocr detectMin: [ :e | e key boundingBox center x ].
 ]
 
 { #category : #accessing }
@@ -61,7 +61,7 @@ VsPaystub >> endDescription [
 			accessor: #end;
 			display: #mmddyyyy;
 			beRequired;
-			default: self guessEnd;
+			default: self endGuess;
 			shouldCacheDefault: true;
 			priority: 200;
 			propertyAt: #completions put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
@@ -69,11 +69,11 @@ VsPaystub >> endDescription [
 ]
 
 { #category : #accessing }
-VsPaystub >> guessEnd [
+VsPaystub >> endGuess [
 
 	| candidates |
 	candidates := self datesRecognized.
 	candidates size = 0 ifTrue: [ ^ nil ].
 	
-	^ self datesRecognized detectMax: [ :e | e key boundingBox center x ].
+	^ self datesRecognizedHocr detectMax: [ :e | e key boundingBox center x ].
 ]
