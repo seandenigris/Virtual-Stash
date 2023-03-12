@@ -8,6 +8,35 @@ Class {
 }
 
 { #category : #accessing }
+VsPaystub >> amountGuess [
+
+	| candidates maxX maxY relativeX relativeY bottomRightHocr |
+	candidates := self amountsRecognizedHocr.
+	candidates size = 0 ifTrue: [ ^ nil ].
+	
+	"Amount on bottom right"
+	maxX := candidates asOrderedCollection max: [ :e | e key boundingBox center x ].
+	maxY := candidates asOrderedCollection max: [ :e | e key boundingBox center y ].
+	bottomRightHocr := candidates detectMax: [ :e | 
+		relativeX := e key boundingBox center x / maxX.
+		relativeY := e key boundingBox center y / maxY * maxX.
+		relativeX + relativeY ].
+	^ bottomRightHocr value
+]
+
+{ #category : #accessing }
+VsPaystub >> amountsRecognizedHocr [
+	^ self hocr words 
+		inject: Bag new 
+		into: [ :col :word | 
+			| parseResult isNewAmt |
+			parseResult := PP2MoneyParser parse: word string onError: [ nil ].
+			isNewAmt := parseResult isNotNil and: [ col noneSatisfy: [ :e | e value = parseResult ] ].
+			isNewAmt ifTrue: [ col add: word -> parseResult ].
+			col ].
+]
+
+{ #category : #accessing }
 VsPaystub >> counterpartyDescription [
 	
 	^ (super counterpartyDescription)

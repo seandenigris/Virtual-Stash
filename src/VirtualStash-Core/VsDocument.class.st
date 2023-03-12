@@ -65,6 +65,7 @@ VsDocument >> amountDescription [
 		propertyAt: #shortcut put: #a;
 		propertyAt: #whitelist put: '$1234567890#.';
 		propertyAt: #completions put: [ :doc | doc amountsRecognized collect: #asString ];
+		default: self amountGuess;
 		yourself
 ]
 
