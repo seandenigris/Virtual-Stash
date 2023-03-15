@@ -10,30 +10,16 @@ Class {
 { #category : #accessing }
 VsPaystub >> amountGuess [
 
-	| candidates maxX maxY relativeX relativeY bottomRightHocr |
-	candidates := self amountsRecognizedHocr.
-	candidates size = 0 ifTrue: [ ^ nil ].
-	
-	"Amount on bottom right"
-	maxX := candidates asOrderedCollection max: [ :e | e key boundingBox center x ].
-	maxY := candidates asOrderedCollection max: [ :e | e key boundingBox center y ].
-	bottomRightHocr := candidates detectMax: [ :e | 
-		relativeX := e key boundingBox center x / maxX.
-		relativeY := e key boundingBox center y / maxY * maxX.
-		relativeX + relativeY ].
-	^ bottomRightHocr value
-]
-
-{ #category : #accessing }
-VsPaystub >> amountsRecognizedHocr [
-	^ self hocr words 
-		inject: Bag new 
-		into: [ :col :word | 
-			| parseResult isNewAmt |
-			parseResult := PP2MoneyParser parse: word string onError: [ nil ].
-			isNewAmt := parseResult isNotNil and: [ col noneSatisfy: [ :e | e value = parseResult ] ].
-			isNewAmt ifTrue: [ col add: word -> parseResult ].
-			col ].
+	^ self 
+		cache: #amount
+		guess: [ 
+			self hocr lines 
+				detect: [ :e | e words size = 3 and: [ e words first string = 'DIRECT' and: [ e words second string = 'DEP' ] ] ]
+				ifFound: [ :line | 
+					| trimmed |
+					trimmed := line words third string select: [ :c | c isDigit or: [ c = $. ] ].
+					trimmed vsAsUSD ]
+				ifNone: [ nil ] ]
 ]
 
 { #category : #accessing }
@@ -47,11 +33,14 @@ VsPaystub >> counterpartyDescription [
 { #category : #accessing }
 VsPaystub >> dateGuess [
 
-	| candidates |
-	candidates := self datesRecognized.
-	candidates size = 0 ifTrue: [ ^ nil ].
-	
-	^ self datesRecognizedHocr detectMin: [ :e | e key boundingBox center x ].
+	^ self 
+		cache: #date
+		guess: [ 
+			| candidates |
+			candidates := self datesRecognizedHocr.
+			candidates size = 0
+				ifFalse: [ candidates detectMin: [ :e | e key boundingBox center x ] ]
+				ifTrue: [ nil ] ].
 ]
 
 { #category : #accessing }
@@ -100,9 +89,12 @@ VsPaystub >> endDescription [
 { #category : #accessing }
 VsPaystub >> endGuess [
 
-	| candidates |
-	candidates := self datesRecognized.
-	candidates size = 0 ifTrue: [ ^ nil ].
-	
-	^ self datesRecognizedHocr detectMax: [ :e | e key boundingBox center x ].
+	^ self 
+		cache: #end
+		guess: [ 
+			| candidates |
+			candidates := self datesRecognizedHocr.
+			candidates size = 0
+				ifFalse: [ candidates detectMax: [ :e | e key boundingBox center x ] ]
+				ifTrue: [ nil ] ].
 ]

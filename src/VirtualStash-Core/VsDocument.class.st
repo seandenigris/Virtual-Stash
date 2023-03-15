@@ -70,6 +70,11 @@ VsDocument >> amountDescription [
 ]
 
 { #category : #accessing }
+VsDocument >> amountGuess [
+	^ self cache: #amount guess: [ self amountsRecognized max ]
+]
+
+{ #category : #accessing }
 VsDocument >> amountsRecognized [
 	| parseResult |
 	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self ocr.
@@ -130,6 +135,18 @@ VsDocument >> asElement [
 	^ RlHOCRElement new
 		client: self;
 		yourself.
+]
+
+{ #category : #accessing }
+VsDocument >> cache: aSymbol guess: aBlock [
+
+	| key |
+	key := (aSymbol, 'Guess') asSymbol.
+	self 
+		propertyAt: key
+		ifPresent: [ :guess | ^ guess ].
+		
+	^ self propertyAt: key putRemovingNil: aBlock value
 ]
 
 { #category : #accessing }
@@ -223,10 +240,14 @@ VsDocument >> dateDescription [
 { #category : #'ocr-guessing' }
 VsDocument >> dateGuess [
 
-	| candidates |
-	candidates := self datesRecognized.
-	candidates size = 0 ifTrue: [ ^ nil ].
-	^ candidates atRandom
+	^ self
+		cache: #date
+		guess: [
+			| candidates |
+			candidates := self datesRecognized.
+			candidates size = 0
+				ifFalse: [ candidates atRandom ]
+				ifTrue: [ nil ] ]
 ]
 
 { #category : #accessing }

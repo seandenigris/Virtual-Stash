@@ -30,6 +30,18 @@ VsReceipt class >> exampleCash [
 		yourself
 ]
 
+{ #category : #accessing }
+VsReceipt >> amountsRecognizedHocr [
+	^ self hocr words 
+		inject: Bag new 
+		into: [ :col :word | 
+			| parseResult isNewAmt |
+			parseResult := PP2MoneyParser parse: word string onError: [ nil ].
+			isNewAmt := parseResult isNotNil and: [ col noneSatisfy: [ :e | e value = parseResult ] ].
+			isNewAmt ifTrue: [ col add: word -> parseResult ].
+			col ].
+]
+
 { #category : #converting }
 VsReceipt >> asMorph [
 
