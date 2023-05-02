@@ -163,7 +163,7 @@ VsAccount >> issuerDescription [
 	^ MASingleOptionDescription new
 		accessor: #issuer;
 		extensible: true;
-		options: MpAddressBook default contacts;
+		options: MpAddressBook uniqueInstance contacts;
 		yourself
 ]
 
