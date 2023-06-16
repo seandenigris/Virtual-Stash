@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'Aconcagua-Money'
+	#category : #'Aconcagua-Money'
 }
 
 { #category : #accessing }
@@ -28,11 +28,17 @@ AmDollar class >> new [
 
 { #category : #accessing }
 AmDollar class >> parser [
-	^ RxMatcher forString: '\$(\d+(.\d+)?)'.
+	^ RxMatcher forString: '\$(\d+(.\d+)?)( USD)?'.
 	"| symbol amount |
 	symbol := $$ asPParser.
 	amount := #digit asPParser plus, ($. asPParser, #digit asPParser, #digit asPParser) optional.
 	^ (symbol, amount flatten) ==> [ :n | n second asNumber dollars ]"
+]
+
+{ #category : #accessing }
+AmDollar class >> readFrom: aStream [
+
+	^ self fromString: aStream contents
 ]
 
 { #category : #comparing }
