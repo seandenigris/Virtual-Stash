@@ -21,7 +21,6 @@ Class {
 		'memo',
 		'number',
 		'receipt',
-		'reference',
 		'splits',
 		'voidReason',
 		'counterparty',
@@ -80,7 +79,7 @@ VsTransaction >> accountsDescription [
 { #category : #accessing }
 VsTransaction >> addressBook [
 
-	^ addressBook ifNil: [ addressBook := MpAddressBook default ]
+	^ addressBook ifNil: [ addressBook := MpAddressBook uniqueInstance ]
 ]
 
 { #category : #accessing }
@@ -343,7 +342,7 @@ VsTransaction >> processorDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 			accessor: #processor;
-			options: MpAddressBook default organizations;
+			options: self addressBook organizations;
 			priority: 550;
 			yourself
 ]
