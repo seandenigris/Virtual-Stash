@@ -40,7 +40,7 @@ BaselineOfVirtualStash >> baseline: spec [
 			baseline: 'NeoCSV' with: [ 
 				spec 
 					repository: 'github://seandenigris/NeoCSV';
-					loads: #('magritte') ];
+					loads: #('Neo-CSV-Magritte') ];
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'ResourcesLive' with: [
