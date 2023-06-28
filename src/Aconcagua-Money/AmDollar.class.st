@@ -9,11 +9,12 @@ Class {
 
 { #category : #accessing }
 AmDollar class >> fromString: aString [
-	| parser amount |
+	| parser amountString safeAmountString |
 	parser := self parser.
 	(parser matches: aString) ifFalse: [ self error ].
-	amount := (parser subexpression: 2) asNumber.
-	^ amount dollars.
+	amountString := (parser subexpression: 2).
+	safeAmountString := amountString copyWithout: $,.
+	^ safeAmountString asNumber dollars.
 ]
 
 { #category : #accessing }
@@ -28,7 +29,7 @@ AmDollar class >> new [
 
 { #category : #accessing }
 AmDollar class >> parser [
-	^ RxMatcher forString: '\$(\d+(.\d+)?)( USD)?'.
+	^ RxMatcher forString: '\(?\$?((\d|,)+(.\d+)?\)?)( USD)?'.
 	"| symbol amount |
 	symbol := $$ asPParser.
 	amount := #digit asPParser plus, ($. asPParser, #digit asPParser, #digit asPParser) optional.
