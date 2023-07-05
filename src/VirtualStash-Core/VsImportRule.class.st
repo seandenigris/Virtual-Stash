@@ -389,13 +389,9 @@ VsImportRule class >> exampleZaraDotCom [
 
 { #category : #accessing }
 VsImportRule class >> for: aTransaction [
-	^ self all 
-		detect: [ :e | e appliesTo: aTransaction ]
-		ifFound: [ :r | 
-			r
-				transaction: aTransaction;
-				yourself ]
-		ifNone: [ nil ]
+	^ (self allFor: aTransaction)
+		ifNotEmpty: [ :rules | rules first ]
+		ifEmpty: [ nil ]
 ]
 
 { #category : #accessing }
