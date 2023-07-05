@@ -140,7 +140,7 @@ VsSplit >> isCredit [
 
 { #category : #accessing }
 VsSplit >> isDebit [
-	^ self amount strictlyPositive
+	^ self amount amount strictlyPositive
 ]
 
 { #category : #'as yet unclassified' }
