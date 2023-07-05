@@ -51,6 +51,16 @@ VsImportRule class >> all [
 	^ self generic, ((VsImportRule allSubclasses reject: #isAbstract) collect: #new) "We refer to the class explicitly so that this works the same from the subclasses"
 ]
 
+{ #category : #accessing }
+VsImportRule class >> allFor: aTransaction [
+	^ self all 
+		select: [ :e | e appliesTo: aTransaction ]
+		thenCollect: [ :r | 
+			r
+				transaction: aTransaction;
+				yourself ]
+]
+
 { #category : #testing }
 VsImportRule class >> appliesTo: aVsTransaction [
 	^ self new appliesTo: aVsTransaction

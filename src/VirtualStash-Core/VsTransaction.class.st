@@ -246,6 +246,18 @@ VsTransaction >> gtViewJournalOn: aView [
 ]
 
 { #category : #accessing }
+VsTransaction >> gtViewRulesOn: aView [
+
+	<gtView>
+	^ aView list
+		title: 'Rules';
+		priority: 75;
+		items: [ VsImportRule allFor: self ];
+		actionUpdateButton;
+		yourself
+]
+
+{ #category : #accessing }
 VsTransaction >> importedName [
 	^ self maLazyPropertyUsing: (self importedNameDescription)
 ]
