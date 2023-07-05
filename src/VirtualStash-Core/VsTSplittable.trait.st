@@ -1,6 +1,6 @@
 Trait {
 	#name : #VsTSplittable,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #'magritte-accessing' }
@@ -30,7 +30,7 @@ VsTSplittable >> amountToString: aNumber [
 { #category : #'magritte-accessing' }
 VsTSplittable >> creditAmountDescription [
 	<magritteDescription>
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 			accessor: #creditAmount;
 			label: 'Credit';
 			priority: 700;
@@ -41,7 +41,7 @@ VsTSplittable >> creditAmountDescription [
 { #category : #'magritte-accessing' }
 VsTSplittable >> debitAmountDescription [
 	<magritteDescription>
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #debitAmount;
 		label: 'Debit';
 		priority: 600;

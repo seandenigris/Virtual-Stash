@@ -101,9 +101,8 @@ VsTransaction >> amount [
 { #category : #'magritte-accessing' }
 VsTransaction >> amountDescription [
 	"<magritteDescription>"
-	^ MANumberDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #amount;
-		display: [ :e | '$' , e asString ];
 		priority: 500;
 		beReadOnly;
 		yourself
