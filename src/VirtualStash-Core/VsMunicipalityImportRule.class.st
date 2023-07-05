@@ -1,7 +1,7 @@
 Class {
 	#name : #VsMunicipalityImportRule,
 	#superclass : #VsExplicitCounterpartyImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #examples }
@@ -81,7 +81,9 @@ VsMunicipalityImportRule >> appliesTo: aVsTransaction [
 
 { #category : #accessing }
 VsMunicipalityImportRule >> commonName [
-	^ self party propertyAt: #vsCommonName
+	^ self party 
+		propertyAt: #vsCommonName
+		ifAbsent: [ self party name ]
 ]
 
 { #category : #accessing }
