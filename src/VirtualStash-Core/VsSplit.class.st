@@ -19,7 +19,7 @@ Class {
 		'reconcileDate',
 		'status'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -135,12 +135,12 @@ VsSplit >> gnuCashReconcileDateDescription: aDescription [
 
 { #category : #accessing }
 VsSplit >> isCredit [
-	^ self amount amount < 0
+	^ self amount negative
 ]
 
 { #category : #accessing }
 VsSplit >> isDebit [
-	^ self amount amount > 0
+	^ self amount strictlyPositive
 ]
 
 { #category : #'as yet unclassified' }
