@@ -354,7 +354,7 @@ VsTransaction >> processorDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 			accessor: #processor;
-			options: self addressBook organizations;
+			options: self addressBook organizations asEntityCollection;
 			priority: 550;
 			yourself
 ]
@@ -414,7 +414,7 @@ VsTransaction >> splitsDescription [
 VsTransaction >> uncategorizedAmount [
 
 	| categorizedAmount |
-	categorizedAmount := self entries inject: 0 into: [ :sum :e | sum + e amount ].
+	categorizedAmount := self splits inject: 0 into: [ :sum :e | sum + e amount ].
 	^ self amount - categorizedAmount
 ]
 
