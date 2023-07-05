@@ -548,7 +548,7 @@ VsImportRule >> accountNamed: fullNameString [
 { #category : #accessing }
 VsImportRule >> addressBook [
 	"Hook for testing so we don't pollute the default AddressBook"
-	^ addressBook ifNil: [ MpAddressBook default ]
+	^ addressBook ifNil: [ MpAddressBook uniqueInstance ]
 ]
 
 { #category : #accessing }
