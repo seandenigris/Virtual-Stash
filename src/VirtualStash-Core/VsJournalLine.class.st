@@ -6,7 +6,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
@@ -60,7 +60,7 @@ VsJournalLine >> doesNotUnderstand: aMessage [
 { #category : #accessing }
 VsJournalLine >> fieldStringUsing: aDescription [
 	^ (self model magritteDescription includes: aDescription)
-		ifTrue: [ aDescription toString: (aDescription read: self model) ]
+		ifTrue: [ aDescription readToString: self model ]
 		ifFalse: [ '' ]
 ]
 
