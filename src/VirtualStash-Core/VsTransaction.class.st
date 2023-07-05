@@ -79,7 +79,7 @@ VsTransaction >> accountsDescription [
 { #category : #accessing }
 VsTransaction >> addressBook [
 
-	^ addressBook ifNil: [ addressBook := MpAddressBook uniqueInstance ]
+	^ addressBook ifNil: [ MpAddressBook uniqueInstance ]
 ]
 
 { #category : #accessing }
