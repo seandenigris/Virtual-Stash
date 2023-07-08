@@ -1,13 +1,13 @@
 Class {
 	#name : #VsQuickPayImportRule,
 	#superclass : #VsProcessorImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #'initialization-release' }
 VsQuickPayImportRule >> initialize [
 	super initialize.
-	paymentProcessor := self addressBook ensureOrganizationNamed: 'Chase'.
+	paymentProcessor := self ensureProcessorNamed: 'Chase'.
 	memo := 'Quick Pay'
 ]
 

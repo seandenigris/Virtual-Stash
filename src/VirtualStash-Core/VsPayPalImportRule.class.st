@@ -1,13 +1,13 @@
 Class {
 	#name : #VsPayPalImportRule,
 	#superclass : #VsProcessorImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #'initialization-release' }
 VsPayPalImportRule >> initialize [
 	super initialize.
-	paymentProcessor := self addressBook ensureOrganizationNamed: 'PayPal'
+	paymentProcessor := self ensureProcessorNamed: 'PayPal'
 ]
 
 { #category : #testing }
