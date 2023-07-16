@@ -5,7 +5,7 @@ Class {
 		'transactions',
 		'input'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #examples }
@@ -18,6 +18,12 @@ VsTransactionImportGroup class >> example [
 { #category : #accessing }
 VsTransactionImportGroup >> accounts [
 	^ (self transactions flatCollect: [ :e | e splits collect: #account ]) asSet
+]
+
+{ #category : #accessing }
+VsTransactionImportGroup >> addressBook [
+
+	^ MpAddressBook uniqueInstance
 ]
 
 { #category : #actions }
@@ -40,7 +46,7 @@ VsTransactionImportGroup >> beOrgTitleCased [
 { #category : #accessing }
 VsTransactionImportGroup >> bePerson [
 	| person |
-	person := MpPerson ensureNamed: self input suggestion.
+	person := self addressBook ensurePersonNamed: self input suggestion.
 	self transactions do: [ :t | t counterparty: person ]
 ]
 

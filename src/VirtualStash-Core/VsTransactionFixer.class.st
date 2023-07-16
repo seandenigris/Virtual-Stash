@@ -12,12 +12,18 @@ Class {
 		'suffix',
 		'alias'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : #'VirtualStash-Core-Bookkeeping'
 }
 
 { #category : #accessing }
 VsTransactionFixer class >> isDeprecated [
 	^ true.
+]
+
+{ #category : #accessing }
+VsTransactionFixer >> addressBook [
+
+	^ MpAddressBook uniqueInstance
 ]
 
 { #category : #accessing }
@@ -43,7 +49,7 @@ VsTransactionFixer >> aliasDescription [
 { #category : #accessing }
 VsTransactionFixer >> apply [
 	| party |
-	party := MpOrganization ensureNamed: self counterparty.
+	party := self addressBook ensureOrganizationNamed: self counterparty.
 	self applyAliasTo: party.
 	self transaction
 		counterparty: party;
