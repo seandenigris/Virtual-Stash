@@ -77,18 +77,7 @@ VsGeneralJournal >> entries [
 ]
 
 { #category : #accessing }
-VsGeneralJournal >> gtSearchTransactionsFor: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Transactions';
-		priority: 2;
-		items: [ self transactions ];
-		itemName: #displayString;
-		matchSubstrings
-]
-
-{ #category : #accessing }
-VsGeneralJournal >> gtViewGeneralJournalOn: aView [
+VsGeneralJournal >> entriesGtViewOn: aView [
 	<gtView>
 	| result |
 	result := aView columnedList
@@ -99,6 +88,17 @@ VsGeneralJournal >> gtViewGeneralJournalOn: aView [
 		yourself.
 	VsJournalLine configureGtColumnedList: result.
 	^ result
+]
+
+{ #category : #accessing }
+VsGeneralJournal >> gtSearchTransactionsFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Transactions';
+		priority: 2;
+		items: [ self transactions ];
+		itemName: #displayString;
+		matchSubstrings
 ]
 
 { #category : #accessing }

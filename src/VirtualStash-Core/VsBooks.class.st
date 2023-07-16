@@ -306,7 +306,7 @@ VsBooks >> gtViewGeneralJournalOn: aView [
 		title: 'General Journal' translated;
 		priority: 5;
 		object: [ self generalJournal ];
-		view: #gtViewGeneralJournalOn:;
+		view: #entriesGtViewOn:;
 		inspectButtonFor: [ self generalJournal ]
 ]
 
