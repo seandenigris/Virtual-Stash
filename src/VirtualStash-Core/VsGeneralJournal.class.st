@@ -51,6 +51,12 @@ VsGeneralJournal >> add: entry [
 	^ self entries add: entry
 ]
 
+{ #category : #'adding/removing' }
+VsGeneralJournal >> addAll: transactionCollection [
+
+	^ self entries addAll: transactionCollection
+]
+
 { #category : #magritte }
 VsGeneralJournal >> asMorph [
 
