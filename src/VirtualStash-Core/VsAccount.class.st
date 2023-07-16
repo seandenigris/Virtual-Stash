@@ -117,6 +117,52 @@ VsAccount >> gnuCashAccountFullName [
 	^ path, self name
 ]
 
+{ #category : #'GT Views' }
+VsAccount >> gtViewGeneralJournalOn: aView [
+	<gtView>
+	
+	| journalBlock |
+	journalBlock := [ 
+		| myTransactions myJournal |
+		
+		myTransactions := self books generalJournal entries select: [ :trans | trans accounts includes: self ].
+		
+		myJournal := VsGeneralJournal new
+			addAll: myTransactions;
+			yourself ].
+	
+	^ aView forward
+		title: 'General Journal' translated;
+		priority: 5;
+		object: journalBlock;
+		view: #entriesGtViewOn:
+]
+
+{ #category : #accessing }
+VsAccount >> gtViewGraphFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Graph';
+		painting: [ :m |
+			m nodes
+				stencil: [ :obj | 
+					BlTextElement new
+						text: obj name asRopedText;
+						background: Color white;
+						margin: (BlInsets all: 20);
+						padding: (BlInsets all: 5);
+						effect:
+							(BlGaussianShadowEffect
+								color: (Color gray alpha: 0.5)
+								width: 5
+								offset: 0 @ 0);
+						yourself ];
+				with: self withAllChildren.
+			m edges connectFrom: #parent.
+			m layout horizontalTree.
+			m ]
+]
+
 { #category : #utilities }
 VsAccount >> isCredit: aNumber [
 	^ self normalBalance = #credit
@@ -306,4 +352,12 @@ VsAccount >> transactionsFromCSV_FileNamed: aString [
 	| csvFile |
 	csvFile := self rootFolder / 'Exports' / aString.
 	^ (self class maCSVImporter: VsGnuCashTransactionImporter) importFile: csvFile.
+]
+
+{ #category : #accessing }
+VsAccount >> withAllChildren [
+
+	^ OrderedCollection streamContents: [ :str |
+		str << self.
+		self children do: [ :chld | str nextPutAll: chld withAllChildren ] ].
 ]
