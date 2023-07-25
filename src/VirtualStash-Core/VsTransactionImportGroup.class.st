@@ -1,3 +1,6 @@
+"
+I represent a collection of transactions whose counterparty is the same string (actually a VsImportName). This string is considered to be my ""input"", for which I lookup rules to convert to a real counterparty.
+"
 Class {
 	#name : #VsTransactionImportGroup,
 	#superclass : #Object,
@@ -10,8 +13,16 @@ Class {
 
 { #category : #examples }
 VsTransactionImportGroup class >> example [
+
+	| ta partyInput |
+	ta := VsTransaction example.
+	partyInput := VsImportName fromString: ta counterparty fullName.
+	partyInput transaction: ta.
+	ta 
+		counterparty: partyInput;
+		importedName: partyInput.
 	^ self new
-		transactions: { VsTransaction example };
+		transactions: {  ta };
 		yourself
 ]
 
@@ -171,7 +182,7 @@ VsTransactionImportGroup >> printOn: aStream [
 VsTransactionImportGroup >> rankedMatches [
 
 	| choices reply |
-	choices := MpAddressBook default contacts collect: #fullName.
+	choices := MpAddressBook uniqueInstance contacts collect: #fullName.
 	reply := PBApplication uniqueInstance newCommandStringFactory
     addAllBindings: { 
         #choices -> choices asArray.

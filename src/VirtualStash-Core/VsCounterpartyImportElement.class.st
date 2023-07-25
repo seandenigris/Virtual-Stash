@@ -10,7 +10,7 @@ Class {
 		'input',
 		'memoInputElement'
 	],
-	#category : 'VirtualStash-Core-GToolkit'
+	#category : #'VirtualStash-Core-GToolkit'
 }
 
 { #category : #accessing }
@@ -241,7 +241,7 @@ VsCounterpartyImportElement >> transactionGroup [
 
 { #category : #accessing }
 VsCounterpartyImportElement >> transactionGroup: anObject [
-	| counterpartySuggestion nameTokens |
+	
 	transactionGroup := anObject.
 	editorInputElement text: self transactionGroup input suggestion.
 	memoInputElement text: self transactionGroup memo.
