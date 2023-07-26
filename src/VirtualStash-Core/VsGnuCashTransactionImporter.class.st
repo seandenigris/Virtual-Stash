@@ -73,8 +73,9 @@ VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: 
 	self addressBook ifNil: [ ^ self ].
 	
 	aTransaction addressBook: self addressBook.
+
 	self addressBook 
-		entryNamed: aTransaction counterparty 
+		entryNamed: aTransaction importedName 
 		ifFound: [ :e | aTransaction counterparty: e ]
 		ifNone: []
 ]

@@ -171,7 +171,7 @@ VsTransaction >> date: anObject [
 
 { #category : #GnuCash }
 VsTransaction >> gnuCashCounterpartyDescription: aDescription [
-	<magritteDescription: #counterpartyDescription>
+	<magritteDescription: #importedNameDescription>
 	^ aDescription
 		propertyAt: #csvFieldName put: 'Description';
 		yourself
@@ -268,6 +268,8 @@ VsTransaction >> importedName: aString [
 
 { #category : #'magritte-accessing' }
 VsTransaction >> importedNameDescription [
+	<magritteDescription>
+	
 	^ MAStringDescription new
 		accessor: #importedName;
 		yourself
