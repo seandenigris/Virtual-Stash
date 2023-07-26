@@ -16,22 +16,6 @@ VsPackagePrice class >> named: aString [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
-VsPackagePrice >> add: aVsItemPrice [ 
-	^ self items add: aVsItemPrice
-]
-
-{ #category : #'as yet unclassified' }
-VsPackagePrice >> add: anInteger of: aVsItemPrice [
-
-	| adjustedItem |
-	adjustedItem := aVsItemPrice copy
-		quantity: anInteger;
-		yourself.
-		
-	^ self items add: adjustedItem.
-]
-
 { #category : #accessing }
 VsPackagePrice >> add: anInteger ofItem: aVsItem [
 
@@ -108,16 +92,6 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
-]
-
-{ #category : #accessing }
-VsPackagePrice >> items [
-	^ items ifNil: [ items := OrderedCollection new ]
-]
-
-{ #category : #accessing }
-VsPackagePrice >> items: anObject [
-	items := anObject
 ]
 
 { #category : #accessing }

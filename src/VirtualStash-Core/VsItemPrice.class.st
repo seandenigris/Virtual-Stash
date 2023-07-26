@@ -58,11 +58,6 @@ VsItemPrice >> name [
 ]
 
 { #category : #accessing }
-VsItemPrice >> name: anObject [
-	name := anObject
-]
-
-{ #category : #accessing }
 VsItemPrice >> quantity [
 	^ quantity ifNil: [ 1 ]
 ]
