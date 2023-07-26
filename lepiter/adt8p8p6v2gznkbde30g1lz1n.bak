@@ -85,6 +85,108 @@
 					"__type" : "textStyle"
 				},
 				"string" : "The Brick page from the GT book points to {{gtClass:BrGlamorousComponentsLists|label=Lists}}, but the most interesting example, columnedListWithLookAndModelForColors, seems broken - asked on Discord."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T21:53:44.81072-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T21:53:48.469243-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KZHP2ru9DQCjZeVyAIpkrw=="
+				},
+				"code" : "BrColumnedList"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T22:37:37.206079-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T22:38:24.451426-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "nsC2d7y9DQCkvEPGAIpkrw=="
+				},
+				"code" : "ta := VsBooks exampleHarryPotter generalJournal transactions atRandom."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T22:38:25.261158-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-25T22:48:58.862459-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NgOUery9DQCmbzxuAIpkrw=="
+				},
+				"code" : "list := BrColumnedList new\r\tpadding: (BlInsets top: 5);\r\tmatchParent;\r\tyourself.\rlist column\r\t\ttitle: 'Date';\r\t\twidth: 100;\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction date mmddyyyy ].\rlist column\r\t\ttitle: 'Counterparty';\r\t\twidth: 100;\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction counterparty fullName ].\r\t\t\t\rlist column\r\t\ttitle: 'Amount';\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction splits atRandom amount ].\r\t\t\t\rlist\r\taddAptitude: BrColumnedListHeaderAptitude;\r\titems: { ta }.\rlist"
 			}
 		]
 	},
