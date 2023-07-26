@@ -1,14 +1,25 @@
 Class {
 	#name : #VsItemPrice,
-	#superclass : #Object,
+	#superclass : #VsPrice,
 	#instVars : [
-		'name',
+		'item',
 		'quantity',
 		'unitPrice',
 		'date'
 	],
-	#category : #'VirtualStash-Core'
+	#category : #'VirtualStash-Core-Vendors'
 }
+
+{ #category : #accessing }
+VsItemPrice class >> named: aString [
+
+	| item |
+	item := VsItem new name: aString; yourself.
+
+	^ self new
+		item: item;
+		yourself
+]
 
 { #category : #accessing }
 VsItemPrice >> date [
@@ -21,8 +32,29 @@ VsItemPrice >> date: anObject [
 ]
 
 { #category : #accessing }
+VsItemPrice >> item [
+	^ item
+]
+
+{ #category : #accessing }
+VsItemPrice >> item: anObject [
+	item := anObject
+]
+
+{ #category : #accessing }
+VsItemPrice >> itemDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		accessor: #item;
+		priority: 300;
+		classes: VsItem withAllSubclasses;
+		referenceDisplay: #displayString;
+		yourself
+]
+
+{ #category : #accessing }
 VsItemPrice >> name [
-	^ name
+	^ self item name
 ]
 
 { #category : #accessing }
@@ -32,7 +64,7 @@ VsItemPrice >> name: anObject [
 
 { #category : #accessing }
 VsItemPrice >> quantity [
-	^ quantity
+	^ quantity ifNil: [ 1 ]
 ]
 
 { #category : #accessing }
@@ -41,7 +73,19 @@ VsItemPrice >> quantity: anObject [
 ]
 
 { #category : #accessing }
+VsItemPrice >> quantityDescription [
+	<magritteDescription>
+	
+	^ MANumberDescription new
+		accessor: #quantity;
+		priority: 200;
+		yourself
+]
+
+{ #category : #accessing }
 VsItemPrice >> total [
+	self quantity ifNil: [ ^ nil ].
+	self unitPrice ifNil: [ ^ nil ].
 
 	^ self quantity * self unitPrice
 ]
@@ -54,4 +98,16 @@ VsItemPrice >> unitPrice [
 { #category : #accessing }
 VsItemPrice >> unitPrice: anObject [
 	unitPrice := anObject
+]
+
+{ #category : #accessing }
+VsItemPrice >> unitPriceDescription [
+	<magritteDescription>
+	
+	^ MAMoneyDescription new
+		accessor: #unitPrice;
+		priority: 400;
+		beRequired;
+		stringReader: VsMAMoneyStringReader;
+		yourself
 ]

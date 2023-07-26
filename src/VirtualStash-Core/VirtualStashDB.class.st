@@ -10,7 +10,7 @@ self restoreLastBackup.
 Class {
 	#name : #VirtualStashDB,
 	#superclass : #SpFileDatabase,
-	#category : 'VirtualStash-Core-Persistence'
+	#category : #'VirtualStash-Core-Persistence'
 }
 
 { #category : #accessing }
@@ -40,6 +40,7 @@ VirtualStashDB class >> schema [
 			ResourcesLiveDB.
 			VsBooks.
 			VsPaymentMethod.
-			VsPre2013Books
+			VsPre2013Books.
+			VsPriceList.
 		}.
 ]
