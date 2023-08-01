@@ -103,7 +103,7 @@ VsPriceList >> pricesGtViewOn: aView [
 		actionUpdateButton;
 		yourself.
 		
-	VsPrice new magritteDescription do: [ :desc |
+	VsPrice magritteTemplate magritteDescription do: [ :desc |
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result

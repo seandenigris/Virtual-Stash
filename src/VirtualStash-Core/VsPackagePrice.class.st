@@ -88,7 +88,7 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 		items: [ self itemPrices ];
 		actionUpdateButton.
 		
-	VsItemPrice new magritteDescription do: [ :desc |
+	VsItemPrice magritteTemplate magritteDescription do: [ :desc |
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
