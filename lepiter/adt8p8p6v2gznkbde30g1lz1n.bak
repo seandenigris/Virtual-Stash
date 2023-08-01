@@ -134,6 +134,40 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-27T08:02:18.183772-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-27T08:02:53.633631-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AM8Eedi9DQCyfLZgDccSfg=="
+				},
+				"code" : "BrTabGroup \"has border only on bottom per tangentstorm https://discord.com/channels/729445214812504107/745659858665341080/1133945349615124582\" "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-07-25T22:37:37.206079-04:00"
 					}
 				},
@@ -145,14 +179,82 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-25T22:38:24.451426-04:00"
+						"dateAndTimeString" : "2023-07-26T21:54:59.029665-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "nsC2d7y9DQCkvEPGAIpkrw=="
 				},
-				"code" : "ta := VsBooks exampleHarryPotter generalJournal transactions atRandom."
+				"code" : "ts := VsBooks exampleHarryPotter generalJournal transactions."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-30T01:40:35.83098-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-30T07:58:09.737628-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2Lp0fQ++DQCqDDXxBKgSDw=="
+				},
+				"code" : "editorStencil := [ :tx |\r\tBrEditor new\r\t\taptitude: \"BrGlamorousEditorAptitude +\" BrGlamorousEditableLabelAptitude + BrGlamorousInputFieldSpacingAptitude;\r\t\tmargin: (BlInsets all: 5);\r\t\ttext: tx date mmddyyyy;\r\t\thMatchParent;\r\t\tvFitContent ].\rlabelStencil := [ :tx |\r\tBrLabel new\r\t\taptitude: BrGlamorousLabelAptitude new;\r\t\tmargin: (BlInsets all: 5);\r\t\ttext: tx date mmddyyyy;\r\t\thMatchParent\";\r\t\tvExact: 50\" ].\r\t\t\rdynamicStencil := [ :tx |\r\t| frame |\r\tframe := BrFrame new.\r\t\r\tframe userData at: #transaction put: true.\r\t\r\tframe\r\t\taddChild: (labelStencil value: tx);\r\t\thMatchParent;\r\t\tyourself. ].\r\t\t\rcellStencil := dynamicStencil."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-30T01:37:47.732165-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-07-30T01:50:02.78249-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "U8lvcw++DQCowptcBKgSDw=="
+				},
+				"code" : "VsTransactionGtListView new\r\titems: ts;\r\tcolumn: 'Date'\r\t\tstencil: cellStencil\r\t\twidth: 100;\r\t\t\"dataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction date mmddyyyy ].\"\r\tasElementDo: #yourself"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -179,14 +281,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-07-25T22:48:58.862459-04:00"
+						"dateAndTimeString" : "2023-07-30T02:10:47.615947-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "NgOUery9DQCmbzxuAIpkrw=="
 				},
-				"code" : "list := BrColumnedList new\r\tpadding: (BlInsets top: 5);\r\tmatchParent;\r\tyourself.\rlist column\r\t\ttitle: 'Date';\r\t\twidth: 100;\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction date mmddyyyy ].\rlist column\r\t\ttitle: 'Counterparty';\r\t\twidth: 100;\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction counterparty fullName ].\r\t\t\t\rlist column\r\t\ttitle: 'Amount';\r\t\tcellStencil: [\r\t\t\tBrLabel new\r\t\t\t\taptitude: BrGlamorousLabelAptitude new;\r\t\t\t\thMatchParent;\r\t\t\t\tvExact: 50 ];\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction splits atRandom amount ].\r\t\t\t\rlist\r\taddAptitude: BrColumnedListHeaderAptitude;\r\titems: { ta }.\rlist"
+				"code" : "list := BrColumnedList new\r\tpadding: (BlInsets all: 5);\r\tmatchParent;\r\trowStencil: (VsColumnedListRowElementStencilBuilder\r\t\t\tnew cellSpacing: 5);\r\tyourself.\rlist column\r\t\ttitle: 'Date';\r\t\twidth: 100;\r\t\tcellStencil: cellStencil;\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction date mmddyyyy ].\rlist column\r\t\ttitle: 'Counterparty';\r\t\twidth: 200;\r\t\tcellStencil: cellStencil;\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction counterparty fullName ].\r\t\t\t\rlist column\r\t\ttitle: 'Amount';\r\t\tcellStencil: cellStencil;\r\t\tdataBinder: [ :aCellElement :aTransaction |\r\t\t\taCellElement text: aTransaction splits atRandom amount ].\r\t\t\t\rlist\r\taddAptitude: BrColumnedListHeaderAptitude;\r\titems: ts.\rlist"
 			}
 		]
 	},
