@@ -30,6 +30,12 @@ VsItem >> price [
 ]
 
 { #category : #accessing }
+VsItem >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
+]
+
+{ #category : #accessing }
 VsItem >> unknownPrice [
 
 	^ VsUnknownPrice new
