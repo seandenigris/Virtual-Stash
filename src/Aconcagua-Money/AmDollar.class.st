@@ -14,7 +14,7 @@ AmDollar class >> fromString: aString [
 	(parser matches: aString) ifFalse: [ self error ].
 	amountString := (parser subexpression: 2).
 	safeAmountString := amountString copyWithout: $,.
-	^ safeAmountString asNumber dollars.
+	^ safeAmountString dollars.
 ]
 
 { #category : #accessing }
