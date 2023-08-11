@@ -22,6 +22,17 @@ VsItemPrice class >> named: aString [
 ]
 
 { #category : #accessing }
+VsItemPrice >> = rhs [
+
+	self item = rhs item ifFalse: [ ^ false ].
+	self quantity = rhs quantity ifFalse: [ ^ false ].
+	self unitPrice = rhs unitPrice ifFalse: [ ^ false ].
+	self date = rhs date ifFalse: [ ^ false ].
+	
+	^ true
+]
+
+{ #category : #accessing }
 VsItemPrice >> date [
 	^ date
 ]
@@ -29,6 +40,18 @@ VsItemPrice >> date [
 { #category : #accessing }
 VsItemPrice >> date: anObject [
 	date := anObject
+]
+
+{ #category : #accessing }
+VsItemPrice >> displayStringOn: aStream [
+
+	aStream display: self total
+]
+
+{ #category : #accessing }
+VsItemPrice >> hash [
+
+	^ ((self item hash bitXor: self quantity hash) bitXor: self unitPrice hash) bitXor: self date hash
 ]
 
 { #category : #accessing }
@@ -54,7 +77,13 @@ VsItemPrice >> itemDescription [
 
 { #category : #accessing }
 VsItemPrice >> name [
-	^ self item name
+	^ self item ifNotNil: #name
+]
+
+{ #category : #accessing }
+VsItemPrice >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : #accessing }
