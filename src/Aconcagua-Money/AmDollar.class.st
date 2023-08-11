@@ -29,7 +29,7 @@ AmDollar class >> new [
 
 { #category : #accessing }
 AmDollar class >> parser [
-	^ RxMatcher forString: '\(?\$?((\d|,)+(.\d+)?\)?)( USD)?'.
+	^ RxMatcher forString: '\(?\$?(-?(\d|,)+(.\d+)?\)?)( USD)?'.
 	"| symbol amount |
 	symbol := $$ asPParser.
 	amount := #digit asPParser plus, ($. asPParser, #digit asPParser, #digit asPParser) optional.
