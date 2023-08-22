@@ -89,6 +89,17 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> itemSearchNewFor: aSearch [
+	<gtSearch>
+	
+	^ VsPrice 
+		search:self
+		new: VsItemPrice
+		for: aSearch 
+		priority: 200
+]
+
+{ #category : #accessing }
 VsPackagePrice >> name [
 	^ name
 ]
@@ -96,6 +107,17 @@ VsPackagePrice >> name [
 { #category : #accessing }
 VsPackagePrice >> name: anObject [
 	name := anObject
+]
+
+{ #category : #accessing }
+VsPackagePrice >> packageSearchNewFor: aSearch [
+	<gtSearch>
+	
+	^ VsPrice 
+		search:self
+		new: VsPackagePrice
+		for: aSearch 
+		priority: 100
 ]
 
 { #category : #accessing }

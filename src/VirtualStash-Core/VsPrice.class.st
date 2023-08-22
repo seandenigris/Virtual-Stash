@@ -4,6 +4,20 @@ Class {
 	#category : #'VirtualStash-Core-Vendors'
 }
 
+{ #category : #utility }
+VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
+	
+	^ aSearch explicit
+		title: 'New ', (aClass name allButFirst: 'Vs' size);
+		itemName: #displayString;
+		priority: aNumber;
+		search: [ :aContext | 
+			| input |
+			input := aContext searchQuery trimBoth.
+			{ aClass named: input } asAsyncStream ];
+		send: [ :result | client add: result ]
+]
+
 { #category : #accessing }
 VsPrice >> dateDescription [
 	<magritteDescription>

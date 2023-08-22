@@ -42,8 +42,9 @@ VsPriceList >> add: aVsItemPrice [
 VsPriceList >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
-	^ self 
-		searchNew: VsItemPrice
+	^ VsPrice 
+		search:self
+		new: VsItemPrice
 		for: aSearch 
 		priority: 200
 ]
@@ -52,8 +53,9 @@ VsPriceList >> itemSearchNewFor: aSearch [
 VsPriceList >> packageSearchNewFor: aSearch [
 	<gtSearch>
 	
-	^ self 
-		searchNew: VsPackagePrice
+	^ VsPrice 
+		search:self
+		new: VsPackagePrice
 		for: aSearch 
 		priority: 100
 ]
@@ -107,18 +109,4 @@ VsPriceList >> pricesGtViewOn: aView [
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
-]
-
-{ #category : #accessing }
-VsPriceList >> searchNew: aClass for: aSearch priority: aNumber [
-	
-	^ aSearch explicit
-		title: 'New ', (aClass name allButFirst: 'Vs' size);
-		itemName: #displayString;
-		priority: aNumber;
-		search: [ :aContext | 
-			| input |
-			input := aContext searchQuery trimBoth.
-			{ aClass named: input } asAsyncStream ];
-		send: [ :result | self add: result ]
 ]
