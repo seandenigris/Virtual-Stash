@@ -53,6 +53,12 @@ VsPrice >> printOn: aStream [
 ]
 
 { #category : #accessing }
+VsPrice >> total [
+
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
 VsPrice >> totalDescription [
 	<magritteDescription>
 	
