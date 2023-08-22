@@ -17,6 +17,11 @@ VsPackagePrice class >> named: aString [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> add: aVsItem [
+	^ self addItem: aVsItem
+]
+
+{ #category : #accessing }
 VsPackagePrice >> add: anInteger ofItem: aVsItem [
 
 	| itemPrice |
@@ -33,11 +38,21 @@ VsPackagePrice >> addItem: aVsItem [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> children [
+	^ children ifNil: [ children := OrderedCollection new ]
+]
+
+{ #category : #accessing }
+VsPackagePrice >> children: anObject [
+	children := anObject
+]
+
+{ #category : #accessing }
 VsPackagePrice >> date [
 
 	self refreshPrices.
 
-	^ self itemPrices 
+	^ self children 
 		ifNotEmpty: [ :pxs | pxs min: #date ]
 		ifEmpty: [ nil ]
 ]
@@ -50,23 +65,13 @@ VsPackagePrice >> item [
 ]
 
 { #category : #accessing }
-VsPackagePrice >> itemPrices [
-	^ itemPrices  ifNil: [ itemPrices := OrderedCollection new ]
-]
-
-{ #category : #accessing }
-VsPackagePrice >> itemPrices: anObject [
-	itemPrices := anObject
-]
-
-{ #category : #accessing }
 VsPackagePrice >> itemPricesDescription [
 	<magritteDescription>
 	
 	^ MAToManyRelationDescription new
-		accessor: #itemPrices;
+		accessor: #children;
 		referenceDisplay: #displayString;
-		classes: { VsItemPrice. VsUnknownPrice };
+		classes: VsPriceLine withAllSubclasses;
 		gtSearchSource: (MessageSend receiver: self selector: #priceList);
 		yourself
 ]
@@ -79,10 +84,10 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 	result := aView columnedList
 		title: 'Components';
 		priority: 50;
-		items: [ self itemPrices ];
+		items: [ self children ];
 		actionUpdateButton.
 		
-	VsItemPrice magritteTemplate magritteDescription do: [ :desc |
+	VsPriceLine magritteTemplate magritteDescription do: [ :desc |
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
@@ -129,7 +134,7 @@ VsPackagePrice >> priceList [
 { #category : #accessing }
 VsPackagePrice >> refreshPrices [
 
-	self itemPrices
+	self children
 		select: [ :px | px isKindOf: VsUnknownPrice ]
 		thenDo: [ :px |
 			| latestPrice |
@@ -143,7 +148,7 @@ VsPackagePrice >> total [
 
 	self refreshPrices.
 
-	^ self itemPrices
+	^ self children
 		inject: 0
 		into: [ :sum :price |
 			price total ifNil: [ ^ nil ]. "we don't have a price for a component"
