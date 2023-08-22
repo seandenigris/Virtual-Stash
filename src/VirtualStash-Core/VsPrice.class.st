@@ -18,7 +18,10 @@ VsPrice >> dateDescription [
 { #category : #accessing }
 VsPrice >> displayStringOn: aStream [
 
-	self name ifNotNil: [ :n | aStream << n ]
+	self name ifNotNil: [ :n | aStream << n ].
+	aStream 
+		nextPutAll: ' @ ';
+		display: self total
 ]
 
 { #category : #accessing }
@@ -27,6 +30,12 @@ VsPrice >> nameDescription [
 	^ MAStringDescription new
 		accessor: #name;
 		yourself
+]
+
+{ #category : #accessing }
+VsPrice >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : #accessing }

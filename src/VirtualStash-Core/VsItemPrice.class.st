@@ -43,12 +43,6 @@ VsItemPrice >> date: anObject [
 ]
 
 { #category : #accessing }
-VsItemPrice >> displayStringOn: aStream [
-
-	aStream display: self total
-]
-
-{ #category : #accessing }
 VsItemPrice >> hash [
 
 	^ ((self item hash bitXor: self quantity hash) bitXor: self unitPrice hash) bitXor: self date hash
@@ -78,12 +72,6 @@ VsItemPrice >> itemDescription [
 { #category : #accessing }
 VsItemPrice >> name [
 	^ self item ifNotNil: #name
-]
-
-{ #category : #accessing }
-VsItemPrice >> printOn: aStream [
-
-	self printFromDisplayStringOn: aStream
 ]
 
 { #category : #accessing }

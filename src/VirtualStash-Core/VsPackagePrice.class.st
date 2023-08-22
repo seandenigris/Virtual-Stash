@@ -2,8 +2,8 @@ Class {
 	#name : #VsPackagePrice,
 	#superclass : #VsPrice,
 	#instVars : [
-		'itemPrices',
-		'name'
+		'name',
+		'children'
 	],
 	#category : #'VirtualStash-Core-Vendors'
 }
@@ -40,12 +40,6 @@ VsPackagePrice >> date [
 	^ self itemPrices 
 		ifNotEmpty: [ :pxs | pxs min: #date ]
 		ifEmpty: [ nil ]
-]
-
-{ #category : #accessing }
-VsPackagePrice >> displayStringOn: aStream [
-
-	self name ifNotNil: [ :n | aStream << n ]
 ]
 
 { #category : #accessing }
