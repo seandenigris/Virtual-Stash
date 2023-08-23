@@ -3,9 +3,9 @@ Class {
 	#superclass : #VsPrice,
 	#instVars : [
 		'item',
-		'quantity',
 		'unitPrice',
-		'date'
+		'date',
+		'isPrivate'
 	],
 	#category : #'VirtualStash-Core-Vendors'
 }
@@ -25,11 +25,15 @@ VsItemPrice class >> named: aString [
 VsItemPrice >> = rhs [
 
 	self item = rhs item ifFalse: [ ^ false ].
-	self quantity = rhs quantity ifFalse: [ ^ false ].
 	self unitPrice = rhs unitPrice ifFalse: [ ^ false ].
 	self date = rhs date ifFalse: [ ^ false ].
 	
 	^ true
+]
+
+{ #category : #accessing }
+VsItemPrice >> bePrivate [
+	^ self isPrivate: true
 ]
 
 { #category : #accessing }
@@ -46,6 +50,16 @@ VsItemPrice >> date: anObject [
 VsItemPrice >> hash [
 
 	^ ((self item hash bitXor: self quantity hash) bitXor: self unitPrice hash) bitXor: self date hash
+]
+
+{ #category : #accessing }
+VsItemPrice >> isPrivate [
+	^ isPrivate ifNil: [ false ]
+]
+
+{ #category : #accessing }
+VsItemPrice >> isPrivate: aBoolean [
+	isPrivate := aBoolean
 ]
 
 { #category : #accessing }
@@ -75,31 +89,10 @@ VsItemPrice >> name [
 ]
 
 { #category : #accessing }
-VsItemPrice >> quantity [
-	^ quantity ifNil: [ 1 ]
-]
-
-{ #category : #accessing }
-VsItemPrice >> quantity: anObject [
-	quantity := anObject
-]
-
-{ #category : #accessing }
-VsItemPrice >> quantityDescription [
-	<magritteDescription>
-	
-	^ MANumberDescription new
-		accessor: #quantity;
-		priority: 200;
-		yourself
-]
-
-{ #category : #accessing }
 VsItemPrice >> total [
-	self quantity ifNil: [ ^ nil ].
 	self unitPrice ifNil: [ ^ nil ].
 
-	^ self quantity * self unitPrice
+	^ self unitPrice
 ]
 
 { #category : #accessing }

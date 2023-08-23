@@ -89,8 +89,7 @@ VsPriceList >> pricesGtSearchOn: aSearch [
 		priority: 2;
 		items: [ self prices ];
 		itemName: #displayString;
-		matchSubstrings;
-		send: #copy
+		matchSubstrings
 ]
 
 { #category : #accessing }
@@ -101,7 +100,7 @@ VsPriceList >> pricesGtViewOn: aView [
 	result := aView columnedList
 		title: 'Prices' translated;
 		priority: 5;
-		items: [ self prices ];
+		items: [ self rootPrices ];
 		actionUpdateButton;
 		yourself.
 		
@@ -109,4 +108,10 @@ VsPriceList >> pricesGtViewOn: aView [
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
+]
+
+{ #category : #accessing }
+VsPriceList >> rootPrices [
+
+	^ self prices reject: #isPrivate
 ]

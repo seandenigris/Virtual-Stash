@@ -9,17 +9,6 @@ Class {
 }
 
 { #category : #accessing }
-VsPriceLine class >> named: aString [
-
-	| item |
-	item := VsItem new name: aString; yourself.
-
-	^ self new
-		item: item;
-		yourself
-]
-
-{ #category : #accessing }
 VsPriceLine >> = rhs [
 
 	self price = rhs price ifFalse: [ ^ false ].
@@ -32,6 +21,28 @@ VsPriceLine >> = rhs [
 VsPriceLine >> date [
 
 	^ self price date
+]
+
+{ #category : #accessing }
+VsPriceLine >> dateDescription [
+	<magritteDescription>
+	
+	^ MADateDescription new
+		accessor: #date;
+		priority: 100;
+		beReadOnly;
+		yourself
+]
+
+{ #category : #accessing }
+VsPriceLine >> displayStringOn: aStream [
+
+	self quantity ifNotNil: [ :qty | 
+		aStream << qty asString << 'x ' ].
+	self price name ifNotNil: [ :n | aStream << n ].
+	aStream 
+		nextPutAll: ' @ ';
+		display: self total
 ]
 
 { #category : #accessing }
@@ -58,7 +69,14 @@ VsPriceLine >> priceDescription [
 		accessor: #price;
 		priority: 400;
 		beRequired;
+		referenceDisplay: #displayString;
 		yourself
+]
+
+{ #category : #accessing }
+VsPriceLine >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : #accessing }

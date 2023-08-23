@@ -24,12 +24,13 @@ VsPackagePrice >> add: aVsItem [
 { #category : #accessing }
 VsPackagePrice >> add: anInteger ofItem: aVsItem [
 
-	| itemPrice |
-	itemPrice := aVsItem price copy
+	| line |
+	line := VsPriceLine new
+		price: aVsItem price;
 		quantity: anInteger;
 		yourself.
 		
-	^ self itemPrices add: itemPrice.
+	^ self children add: line.
 ]
 
 { #category : #accessing }
@@ -58,6 +59,19 @@ VsPackagePrice >> date [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> dateDescription [
+	
+	^ super dateDescription
+		beReadOnly;
+		yourself
+]
+
+{ #category : #accessing }
+VsPackagePrice >> isPrivate [
+	^ false
+]
+
+{ #category : #accessing }
 VsPackagePrice >> item [
 	"Item Price compatibility"
 
@@ -73,6 +87,10 @@ VsPackagePrice >> itemPricesDescription [
 		referenceDisplay: #displayString;
 		classes: VsPriceLine withAllSubclasses;
 		gtSearchSource: (MessageSend receiver: self selector: #priceList);
+		gtSearchTransform: [ :px | 
+			VsPriceLine new
+				price: px;
+				yourself ];
 		yourself
 ]
 
@@ -98,7 +116,7 @@ VsPackagePrice >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
 	^ VsPrice 
-		search:self
+		search: self
 		new: VsItemPrice
 		for: aSearch 
 		priority: 200
