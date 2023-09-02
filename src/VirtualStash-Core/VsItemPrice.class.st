@@ -59,6 +59,7 @@ VsItemPrice >> isPrivate [
 
 { #category : #accessing }
 VsItemPrice >> isPrivate: aBoolean [
+	"aBoolean - should be true if the priced item is not generally useful or interesting, except as a component of a particular package. For example, a fee that only applies to one particular product"
 	isPrivate := aBoolean
 ]
 

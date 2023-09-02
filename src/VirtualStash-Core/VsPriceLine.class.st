@@ -38,10 +38,12 @@ VsPriceLine >> dateDescription [
 VsPriceLine >> displayStringOn: aStream [
 
 	self quantity ifNotNil: [ :qty | 
-		aStream << qty asString << 'x ' ].
+		aStream << qty asString ].
 	self price name ifNotNil: [ :n | aStream << n ].
+	aStream nextPutAll: ' @ '.
+	self unitPrice ifNotNil: [ :n | aStream print: n ].
 	aStream 
-		nextPutAll: ' @ ';
+		nextPutAll: ' = ';
 		display: self total
 ]
 
@@ -53,7 +55,7 @@ VsPriceLine >> hash [
 
 { #category : #accessing }
 VsPriceLine >> price [
-	^ price
+	^ price ifNil: [ price := VsItemPrice new ]
 ]
 
 { #category : #accessing }
@@ -69,7 +71,8 @@ VsPriceLine >> priceDescription [
 		accessor: #price;
 		priority: 400;
 		beRequired;
-		referenceDisplay: #displayString;
+		referenceDisplay: #total;
+		classes: VsPrice allSubclasses;
 		yourself
 ]
 
@@ -108,7 +111,36 @@ VsPriceLine >> total [
 ]
 
 { #category : #accessing }
+VsPriceLine >> totalDescription [
+	<magritteDescription>
+	
+	^ MAMoneyDescription new
+		accessor: #total;
+		priority: 500;
+		beReadOnly;
+		stringReader: VsMAMoneyStringReader;
+		yourself
+]
+
+{ #category : #accessing }
 VsPriceLine >> unitPrice [
 
 	^ self price total
+]
+
+{ #category : #accessing }
+VsPriceLine >> unitPrice: aMeasure [
+
+	^ self price unitPrice: aMeasure
+]
+
+{ #category : #accessing }
+VsPriceLine >> unitPriceDescription [
+	<magritteDescription>
+	
+	^ MAMoneyDescription new
+		accessor: #unitPrice;
+		priority: 400;
+		stringReader: VsMAMoneyStringReader;
+		yourself
 ]

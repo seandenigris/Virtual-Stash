@@ -15,7 +15,9 @@ VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 			| input |
 			input := aContext searchQuery trimBoth.
 			{ aClass named: input } asAsyncStream ];
-		send: [ :result | client add: result ]
+		send: [ :result | 
+			client list add: result.
+			client add: result ]
 ]
 
 { #category : #accessing }
@@ -36,6 +38,12 @@ VsPrice >> displayStringOn: aStream [
 	aStream 
 		nextPutAll: ' @ ';
 		display: self total
+]
+
+{ #category : #accessing }
+VsPrice >> list [
+
+	^ VsPriceList uniqueInstance
 ]
 
 { #category : #accessing }

@@ -22,11 +22,11 @@ VsPackagePrice >> add: aVsItem [
 ]
 
 { #category : #accessing }
-VsPackagePrice >> add: anInteger ofItem: aVsItem [
+VsPackagePrice >> add: anInteger ofItem: aVsItemPrice [
 
 	| line |
 	line := VsPriceLine new
-		price: aVsItem price;
+		price: aVsItemPrice;
 		quantity: anInteger;
 		yourself.
 		
@@ -54,7 +54,7 @@ VsPackagePrice >> date [
 	self refreshPrices.
 
 	^ self children 
-		ifNotEmpty: [ :pxs | pxs min: #date ]
+		ifNotEmpty: [ :lines | lines min: #date ]
 		ifEmpty: [ nil ]
 ]
 
