@@ -95,6 +95,14 @@ VsBooks >> accounts [
 ]
 
 { #category : #accessing }
+VsBooks >> accountsGtSearchFor: aStep [
+	<gtSearch>
+	^ (self chartOfAccounts accountsGtSearchFor: aStep)
+		priority: 20;
+		yourself
+]
+
+{ #category : #accessing }
 VsBooks >> billFile [
 
 	^ billFile ifNil: [ billFile := VsBillFile new ]
@@ -104,6 +112,20 @@ VsBooks >> billFile [
 VsBooks >> billFile: anObject [
 
 	billFile := anObject
+]
+
+{ #category : #accessing }
+VsBooks >> billsGtViewOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Bills' translated;
+		priority: 8;
+		object: [ self billFile ];
+		view: #gtViewItemsFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect File'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self billFile ]
 ]
 
 { #category : #'account-compatibility' }
@@ -136,6 +158,18 @@ VsBooks >> chartOfAccountsDescription [
 		default: (VsChartOfAccounts new books: self; yourself);
 		shouldCacheDefault: true;
 		yourself
+]
+
+{ #category : #accessing }
+VsBooks >> chartOfAccountsGtViewOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Accounts' translated;
+		priority: 10;
+		object: [ self chartOfAccounts ];
+		view: #gtViewGraphFor:;
+		inspectButtonFor: [ self chartOfAccounts ]
 ]
 
 { #category : #serializing }
@@ -257,49 +291,7 @@ VsBooks >> generalJournalElementExample [
 ]
 
 { #category : #accessing }
-VsBooks >> gtSearchAccountsFor: aStep [
-	<gtSearch>
-	^ (self chartOfAccounts gtSearchAccountsFor: aStep)
-		priority: 20;
-		yourself
-]
-
-{ #category : #accessing }
-VsBooks >> gtSearchTransactionsFor: aStep [
-	<gtSearch>
-	^ (self generalJournal gtSearchTransactionsFor: aStep)
-		priority: 10;
-		yourself
-]
-
-{ #category : #accessing }
-VsBooks >> gtViewBillsOn: aView [
-	<gtView>
-	
-	^ aView forward
-		title: 'Bills' translated;
-		priority: 8;
-		object: [ self billFile ];
-		view: #gtViewItemsFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect File'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self billFile ]
-]
-
-{ #category : #accessing }
-VsBooks >> gtViewChartOfAccountsOn: aView [
-	<gtView>
-	
-	^ aView forward
-		title: 'Accounts' translated;
-		priority: 10;
-		object: [ self chartOfAccounts ];
-		view: #gtViewGraphFor:;
-		inspectButtonFor: [ self chartOfAccounts ]
-]
-
-{ #category : #accessing }
-VsBooks >> gtViewGeneralJournalOn: aView [
+VsBooks >> generalJournalGtViewOn: aView [
 	<gtView>
 	
 	^ aView forward
@@ -308,31 +300,6 @@ VsBooks >> gtViewGeneralJournalOn: aView [
 		object: [ self generalJournal ];
 		view: #entriesGtViewOn:;
 		inspectButtonFor: [ self generalJournal ]
-]
-
-{ #category : #accessing }
-VsBooks >> gtViewReceiptsOn: aView [
-	<gtView>
-	
-	^ aView forward
-		title: 'Receipts' translated;
-		priority: 7;
-		object: [ self receiptFile ];
-		view: #gtViewItemsFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect
-			tooltip: 'Inspect File'
-			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
-]
-
-{ #category : #accessing }
-VsBooks >> gtViewTaxDocumentsOn: aView [
-	<gtView>
-	
-	^ aView list
-		title: 'Tax Docs' translated;
-		priority: 8;
-		items: [ self taxDocuments ];
-		inspectButtonFor: [ self taxDocuments ]
 ]
 
 { #category : #accessing }
@@ -392,6 +359,20 @@ VsBooks >> receiptFile: anObject [
 ]
 
 { #category : #accessing }
+VsBooks >> receiptsGtViewOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Receipts' translated;
+		priority: 7;
+		object: [ self receiptFile ];
+		view: #gtViewItemsFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect File'
+			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
+]
+
+{ #category : #accessing }
 VsBooks >> taxDocuments [
 
 	^ taxDocuments ifNil: [ taxDocuments := SortedCollection sortUsing: #year descending undefinedFirst ]
@@ -401,6 +382,17 @@ VsBooks >> taxDocuments [
 VsBooks >> taxDocuments: anObject [
 
 	taxDocuments := anObject
+]
+
+{ #category : #accessing }
+VsBooks >> taxDocumentsGtViewOn: aView [
+	<gtView>
+	
+	^ aView list
+		title: 'Tax Docs' translated;
+		priority: 8;
+		items: [ self taxDocuments ];
+		inspectButtonFor: [ self taxDocuments ]
 ]
 
 { #category : #accessing }
@@ -422,4 +414,12 @@ VsBooks >> transactionImporter [
 	^ VsGnuCashTransactionImporter new 
 		books: self;
 		targetCollection: self generalJournal transactions.
+]
+
+{ #category : #accessing }
+VsBooks >> transactionsGtSearchFor: aStep [
+	<gtSearch>
+	^ (self generalJournal transactionsGtSearchFor: aStep)
+		priority: 10;
+		yourself
 ]

@@ -97,17 +97,6 @@ VsGeneralJournal >> entriesGtViewOn: aView [
 ]
 
 { #category : #accessing }
-VsGeneralJournal >> gtSearchTransactionsFor: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Transactions';
-		priority: 2;
-		items: [ self transactions ];
-		itemName: #displayString;
-		matchSubstrings
-]
-
-{ #category : #accessing }
 VsGeneralJournal >> gtViewImportEditorOn: aView [
 	<gtView>
 	| result |
@@ -198,6 +187,17 @@ VsGeneralJournal >> todos [
 { #category : #'as yet unclassified' }
 VsGeneralJournal >> transactions [
 	^ self entries
+]
+
+{ #category : #accessing }
+VsGeneralJournal >> transactionsGtSearchFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Transactions';
+		priority: 2;
+		items: [ self transactions ];
+		itemName: #displayString;
+		matchSubstrings
 ]
 
 { #category : #accessing }

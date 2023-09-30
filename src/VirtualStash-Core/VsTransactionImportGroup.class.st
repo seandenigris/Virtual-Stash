@@ -88,7 +88,7 @@ VsTransactionImportGroup >> descriptionContainer [
 ]
 
 { #category : #accessing }
-VsTransactionImportGroup >> gtViewGeneralJournalOn: aView [
+VsTransactionImportGroup >> generalJournalGtViewOn: aView [
 	<gtView>
 	| result |
 	result := aView columnedList

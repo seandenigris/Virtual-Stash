@@ -109,16 +109,8 @@ VsAccount >> fullName [
 		ifNotEmpty: [ :p | p, ':', self name ]
 ]
 
-{ #category : #accessing }
-VsAccount >> gnuCashAccountFullName [
-	"The reason this selector is so complex (e.g. vs. #fullName) is that we need something unique to implement on ByteString while assembling the account tree from CSV"
-	| path |
-	path := parent ifNotNil: [ :p | p gnuCashAccountFullName, ':' ] ifNil: [ '' ].
-	^ path, self name
-]
-
 { #category : #'GT Views' }
-VsAccount >> gtViewGeneralJournalOn: aView [
+VsAccount >> generalJournalGtViewOn: aView [
 	<gtView>
 	
 	| journalBlock |
@@ -136,6 +128,14 @@ VsAccount >> gtViewGeneralJournalOn: aView [
 		priority: 5;
 		object: journalBlock;
 		view: #entriesGtViewOn:
+]
+
+{ #category : #accessing }
+VsAccount >> gnuCashAccountFullName [
+	"The reason this selector is so complex (e.g. vs. #fullName) is that we need something unique to implement on ByteString while assembling the account tree from CSV"
+	| path |
+	path := parent ifNotNil: [ :p | p gnuCashAccountFullName, ':' ] ifNil: [ '' ].
+	^ path, self name
 ]
 
 { #category : #accessing }

@@ -28,6 +28,17 @@ VsChartOfAccounts >> accountsDescription [
 ]
 
 { #category : #accessing }
+VsChartOfAccounts >> accountsGtSearchFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		title: 'Accounts';
+		priority: 1;
+		items: [ self accounts ];
+		itemName: #displayString;
+		matchSubstrings
+]
+
+{ #category : #accessing }
 VsChartOfAccounts >> add: aVsAccount [
 	aVsAccount books: self books.
 	^ self accounts add: aVsAccount
@@ -42,17 +53,6 @@ VsChartOfAccounts >> books [
 { #category : #accessing }
 VsChartOfAccounts >> books: aVsBooks [
 	books := aVsBooks
-]
-
-{ #category : #accessing }
-VsChartOfAccounts >> gtSearchAccountsFor: aSearch [
-	<gtSearch>
-	^ aSearch list
-		title: 'Accounts';
-		priority: 1;
-		items: [ self accounts ];
-		itemName: #displayString;
-		matchSubstrings
 ]
 
 { #category : #accessing }
