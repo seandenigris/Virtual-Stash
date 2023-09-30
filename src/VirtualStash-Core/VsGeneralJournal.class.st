@@ -176,7 +176,7 @@ VsGeneralJournal >> gtViewTodosOn: aView [
 		itemDataBinder: [ :elem :item | 
 			elem text: item todoString asRopedText.
 			elem userData at: #todo put: item ];
-		actionUpdateButtonTooltip: 'Update list';
+		actionUpdateButton;
 		yourself
 ]
 

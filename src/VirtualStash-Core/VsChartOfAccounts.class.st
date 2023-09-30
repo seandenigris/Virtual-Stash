@@ -67,7 +67,7 @@ VsChartOfAccounts >> gtViewAllAccountsOn: aView [
 			e parent 
 				ifNotNil: [ :p | p  name ]
 				ifNil: [ '' ] ];
-		actionUpdateButtonTooltip: 'Update'.
+		actionUpdateButton.
 ]
 
 { #category : #accessing }
