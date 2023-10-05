@@ -30,6 +30,8 @@ BaselineOfVirtualStash >> baseline: spec [
 		spec 
 			baseline: 'Aconcagua' with: [
 				spec repository: 'github://seandenigris/aconcagua:denigris' ];
+			baseline: 'DynabookFoundation' with: [
+				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: 'Magritte' with: [ 
 				spec 
 					repository: 'github://seandenigris/Magritte';
@@ -51,7 +53,7 @@ BaselineOfVirtualStash >> baseline: spec [
 		spec
 			package: 'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
 			package: 'VirtualStash-Core' with: [
-				spec requires: #('Aconcagua' 'Aconcagua-Money' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence' 'Talents') ] ].
+				spec requires: #('Aconcagua' 'Aconcagua-Money' 'DynabookFoundation' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence' 'Talents') ] ].
 				
 	spec for: #notGToolkit do: [
 		spec 

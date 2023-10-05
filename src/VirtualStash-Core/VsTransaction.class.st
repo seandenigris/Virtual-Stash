@@ -12,8 +12,8 @@ We start with CSV format, since we already have  a parser for that. The tricky b
 Class {
 	#name : #VsTransaction,
 	#superclass : #Object,
-	#traits : 'MATPropertyOwner + VsTTransactable',
-	#classTraits : 'MATPropertyOwner classTrait + VsTTransactable classTrait',
+	#traits : 'DbTDomainObject + VsTTransactable',
+	#classTraits : 'DbTDomainObject classTrait + VsTTransactable classTrait',
 	#instVars : [
 		'accountSource',
 		'addressBook',
