@@ -35,11 +35,13 @@ VsReceiptFile >> itemsDescription [
 		classes: VsReceipt withAllSubclasses;
 		gtSearchDelegateTo: self resourceLibrary 
 			message: #resourcesSearchRecentFor: 
-			transform: [ :resource | 
-				| receipt |
-				receipt := VsReceipt fromResourceable: resource.
-				Halt now.
-				self items add: receipt ];
+			do: [ :search |
+				search
+					title: 'New item from recent resource';
+					send: [ :resource | 
+						| receipt |
+						receipt := VsReceipt fromResourceable: resource.
+						self items add: receipt ] ];
 		yourself
 ]
 
