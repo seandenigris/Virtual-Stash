@@ -21,11 +21,10 @@ VsReceiptFile >> browse [
 	self class browser openOn: self
 ]
 
-{ #category : #accessing }
-VsReceiptFile >> gtViewItemsFor: aView [
-	
-	^ (super gtViewItemsFor: aView)
-		title: 'Receipts'
+{ #category : #magritte }
+VsReceiptFile >> itemClass [
+
+	^ VsReceipt
 ]
 
 { #category : #magritte }
@@ -34,7 +33,21 @@ VsReceiptFile >> itemsDescription [
 	^ super itemsDescription
 		label: 'Receipts';
 		classes: VsReceipt withAllSubclasses;
+		gtSearchDelegateTo: self resourceLibrary 
+			message: #resourcesSearchRecentFor: 
+			transform: [ :resource | 
+				| receipt |
+				receipt := VsReceipt fromResourceable: resource.
+				Halt now.
+				self items add: receipt ];
 		yourself
+]
+
+{ #category : #accessing }
+VsReceiptFile >> itemsGtViewFor: aView [
+	
+	^ (super itemsGtViewFor: aView)
+		title: 'Receipts'
 ]
 
 { #category : #accessing }
@@ -59,4 +72,9 @@ VsReceiptFile >> oldReceipts: anObject [
 VsReceiptFile >> receipts [
 
 	^ self items
+]
+
+{ #category : #accessing }
+VsReceiptFile >> resourceLibrary [
+	^ RlResourceLibrary uniqueInstance
 ]
