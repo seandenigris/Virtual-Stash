@@ -62,10 +62,11 @@ VsDocument >> amountDescription [
 		display: [ :e | '$' , e asString ];
 		priority: 200;
 		beRequired;
+		propertyAt: #isHighlight put: true;
 		propertyAt: #shortcut put: #a;
 		propertyAt: #whitelist put: '$1234567890#.';
 		propertyAt: #completions put: [ :doc | doc amountsRecognized collect: #asString ];
-		default: self amountGuess;
+		initialAnswer: [ self amountGuess ];
 		yourself
 ]
 
@@ -187,6 +188,7 @@ VsDocument >> counterpartyDescription [
 			gtSearchSource: (MessageSend receiver: self selector: #counterpartyGtSearchSource);
 			priority: 200;
 			classes: MpRelatableEntity allSubclasses;
+			propertyAt: #isHighlight put: true;
 			yourself
 ]
 
@@ -219,18 +221,17 @@ VsDocument >> date: anObject [
 VsDocument >> dateDescription [
 	<magritteDescription>
 	
-	| default |
-	default := self datesRecognized 
-		ifNotEmpty: [ :ds | ds atRandom ] 
-		ifEmpty: [ Date today ].
-	
 	^ MADateDescription new
 			accessor: #date;
 			label: 'Date';
 			display: #mmddyyyy;
 			beRequired;
-			default: default;
+			initialAnswer: [
+				self datesRecognized 
+					ifNotEmpty: [ :ds | ds atRandom ] 
+					ifEmpty: [ Date today ]];
 			priority: 100;
+			propertyAt: #isHighlight put: true;
 			propertyAt: #shortcut put:#d;
 			propertyAt: #completions put: [ :doc | 
 				(doc datesRecognized add: Date today; yourself) collect: #mmddyyyy ];
