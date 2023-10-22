@@ -22,34 +22,15 @@ VsReceiptFile >> browse [
 ]
 
 { #category : #magritte }
-VsReceiptFile >> itemClass [
+VsReceiptFile >> itemBaseClass [
 
 	^ VsReceipt
 ]
 
 { #category : #magritte }
-VsReceiptFile >> itemsDescription [
+VsReceiptFile >> itemsTypeLabel [
 
-	^ super itemsDescription
-		label: 'Receipts';
-		classes: VsReceipt withAllSubclasses;
-		gtSearchDelegateTo: self resourceLibrary 
-			message: #resourcesSearchRecentFor: 
-			do: [ :search |
-				search
-					title: 'New item from recent resource';
-					send: [ :resource | 
-						| receipt |
-						receipt := VsReceipt fromResourceable: resource.
-						self items add: receipt ] ];
-		yourself
-]
-
-{ #category : #accessing }
-VsReceiptFile >> itemsGtViewFor: aView [
-	
-	^ (super itemsGtViewFor: aView)
-		title: 'Receipts'
+	^ 'Receipts'
 ]
 
 { #category : #accessing }
@@ -74,9 +55,4 @@ VsReceiptFile >> oldReceipts: anObject [
 VsReceiptFile >> receipts [
 
 	^ self items
-]
-
-{ #category : #accessing }
-VsReceiptFile >> resourceLibrary [
-	^ RlResourceLibrary uniqueInstance
 ]

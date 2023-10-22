@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-VsBillFile >> itemClass [
+VsBillFile >> itemBaseClass [
 	^ VsBill
 ]
 
@@ -41,10 +41,18 @@ VsBillFile >> itemsDescription [
 
 	^ MAToManyRelationDescription new
 		accessor: #items;
-		classes: VsBill withAllSubclasses;
 		default: (SortedCollection sortUsing: #date descending undefinedFirst);
 		priority: 100;
-		beRequired;
+		classes: self itemBaseClass withAllSubclasses;
+		gtSearchDelegateTo: self resourceLibrary 
+			message: #resourcesSearchRecentFor: 
+			do: [ :search |
+				search
+					title: 'New item from recent resource';
+					send: [ :resource | 
+						| newItem |
+						newItem := self itemBaseClass fromResourceable: resource.
+						self items add: newItem ] ];
 		beReadOnly;
 		yourself
 ]
@@ -53,11 +61,12 @@ VsBillFile >> itemsDescription [
 VsBillFile >> itemsGtViewFor: aView [
 	<gtView>
 	^ (aView
-		maColumnedListOf: self itemClass
+		maColumnedListOf: self itemBaseClass
 		descriptionsSelect: [ :desc | desc propertyAt: #isHighlight ifAbsent: [ false ] ])
-		title: 'Bills' translated;
+		title: self itemsTypeLabel translated;
 		priority: 10;
 		items: [ self items ];
+		actionUpdateButton;
 		yourself
 ]
 
@@ -67,7 +76,35 @@ VsBillFile >> itemsSearchFor: aSearch [
 	
 	^ self 
 		items: [ self items ] 
-		searchTitled: 'Items' 
+		searchTitled: self itemsTypeLabel translated
 		priority: 10 
 		for: aSearch
+]
+
+{ #category : #accessing }
+VsBillFile >> itemsSearchNewFor: aSearch [
+	<gtSearch>
+	
+	^ (PeGtDelegatedSearch
+		to: self resourceLibrary 
+		message: #resourcesSearchRecentFor: 
+		configured: [ :search |
+			search
+				title: 'New item from recent resource';
+				send: [ :resource | 
+					| newItem |
+					newItem := self itemBaseClass fromResourceable: resource.
+					self items add: newItem ] ])
+		gtSpotterOn: aSearch
+]
+
+{ #category : #accessing }
+VsBillFile >> itemsTypeLabel [
+
+	^ 'Bills'
+]
+
+{ #category : #accessing }
+VsBillFile >> resourceLibrary [
+	^ RlResourceLibrary uniqueInstance
 ]
