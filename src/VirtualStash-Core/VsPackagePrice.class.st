@@ -137,7 +137,7 @@ VsPackagePrice >> packageSearchNewFor: aSearch [
 	<gtSearch>
 	
 	^ VsPrice 
-		search:self
+		search: self
 		new: VsPackagePrice
 		for: aSearch 
 		priority: 100

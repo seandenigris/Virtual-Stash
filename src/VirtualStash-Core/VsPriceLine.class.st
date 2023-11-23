@@ -35,6 +35,18 @@ VsPriceLine >> dateDescription [
 ]
 
 { #category : #accessing }
+VsPriceLine >> descriptionDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new
+		label: 'Description';
+		accessor: #(price name);
+		priority: 400;
+		beRequired;
+		yourself
+]
+
+{ #category : #accessing }
 VsPriceLine >> displayStringOn: aStream [
 
 	self quantity ifNotNil: [ :qty | 
