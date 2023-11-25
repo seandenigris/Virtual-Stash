@@ -117,14 +117,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:15.378398-04:00"
+									"dateAndTimeString" : "2023-11-24T18:23:19.440751-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "56S6Ib6ADQC85NZHDXP93w=="
 							},
-							"code" : "person := MpAddressBook default ensurePersonNamed: 'My Friend'.\rself counterparty: person"
+							"code" : "person := MpAddressBook uniqueInstance ensurePersonNamed: 'My Friend'.\rtrans counterparty: person"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -151,14 +151,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:16.999093-04:00"
+									"dateAndTimeString" : "2023-11-24T18:24:02.463618-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "+sL0Ir6ADQC85f8uDXP93w=="
 							},
-							"code" : "party := MpOrganization ensureNamed: 'My org'.\rself counterparty: party"
+							"code" : "party := MpAddressBook uniqueInstance ensureOrganizationNamed: 'My org'.\rtrans counterparty: party"
 						},
 						{
 							"__type" : "textSnippet",
@@ -222,14 +222,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:56.336309-04:00"
+									"dateAndTimeString" : "2023-11-24T18:24:15.310751-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "0wZDJb6ADQC855/pDXP93w=="
 							},
-							"code" : "person := MpAddressBook default ensurePersonNamed: self first counterparty.\rself do: [ :e | e counterparty: person ]"
+							"code" : "person := MpAddressBook uniqueInstance ensurePersonNamed: self first counterparty.\rself do: [ :e | e counterparty: person ]"
 						}
 					]
 				},
@@ -745,7 +745,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2021-06-09T18:02:11.966677-04:00"
+												"dateAndTimeString" : "2023-11-24T18:35:26.102669-05:00"
 											}
 										},
 										"uid" : {
@@ -755,7 +755,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "I'm now thinking 3 is the same as 1 and 2."
+										"string" : "I'm now thinking 3 is the same as 1 and 2. And what about a combination e.g. buy on EventBrite and pay with PayPal. The most general term that comes to mind is \"facilitators\"."
 									},
 									{
 										"__type" : "textSnippet",

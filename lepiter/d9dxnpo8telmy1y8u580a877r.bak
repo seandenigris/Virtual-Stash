@@ -1,6 +1,14 @@
 {
 	"__schema" : "4.1",
 	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "87e07310-be80-0d00-bc8e-b1d80d73fddf"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Counterparty"
+	},
 	"children" : {
 		"__type" : "snippets",
 		"items" : [
@@ -109,14 +117,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:15.378398-04:00"
+									"dateAndTimeString" : "2023-11-24T18:23:19.440751-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "56S6Ib6ADQC85NZHDXP93w=="
 							},
-							"code" : "person := MpAddressBook default ensurePersonNamed: 'My Friend'.\rself counterparty: person"
+							"code" : "person := MpAddressBook uniqueInstance ensurePersonNamed: 'My Friend'.\rtrans counterparty: person"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -143,14 +151,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:16.999093-04:00"
+									"dateAndTimeString" : "2023-11-24T18:24:02.463618-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "+sL0Ir6ADQC85f8uDXP93w=="
 							},
-							"code" : "party := MpOrganization ensureNamed: 'My org'.\rself counterparty: party"
+							"code" : "party := MpAddressBook uniqueInstance ensureOrganizationNamed: 'My org'.\rtrans counterparty: party"
 						},
 						{
 							"__type" : "textSnippet",
@@ -214,14 +222,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T18:00:56.336309-04:00"
+									"dateAndTimeString" : "2023-11-24T18:24:15.310751-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "0wZDJb6ADQC855/pDXP93w=="
 							},
-							"code" : "person := MpAddressBook default ensurePersonNamed: self first counterparty.\rself do: [ :e | e counterparty: person ]"
+							"code" : "person := MpAddressBook uniqueInstance ensurePersonNamed: self first counterparty.\rself do: [ :e | e counterparty: person ]"
 						}
 					]
 				},
@@ -477,7 +485,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2021-06-09T18:01:51.098929-04:00"
+												"dateAndTimeString" : "2022-04-15T11:12:52.902463-04:00"
 											}
 										},
 										"uid" : {
@@ -487,7 +495,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "2. Explicit, but purely financial e.g. PayPal, QuickPay; even really credit card companies, but at least there you have the asset account on the other side to distinguish"
+										"string" : "2. Explicit, but purely financial e.g. PayPal, QuickPay; even really credit card companies, but at least there you have the asset account on the other side to distinguish; Concur is a payment processor, but not a general one; typically the user will know that it's on behalf of one or a small number of partners"
 									},
 									{
 										"__type" : "textSnippet",
@@ -737,7 +745,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2021-06-09T18:02:11.966677-04:00"
+												"dateAndTimeString" : "2023-11-24T18:35:07.509598-05:00"
 											}
 										},
 										"uid" : {
@@ -747,7 +755,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "I'm now thinking 3 is the same as 1 and 2."
+										"string" : "I'm now thinking 3 is the same as 1 and 2. And what about a combination e.g. buy on EventBrite and pay with PayPal. The most general term that comes to mind is \"facilitator\" or "
 									},
 									{
 										"__type" : "textSnippet",
@@ -1362,13 +1370,5 @@
 			"__type" : "dateAndTime",
 			"dateAndTimeString" : "2021-06-09T17:55:07.581522-04:00"
 		}
-	},
-	"pageType" : {
-		"__type" : "namedPage",
-		"title" : "Counterparty"
-	},
-	"uid" : {
-		"__type" : "uuid",
-		"uuid" : "87e07310-be80-0d00-bc8e-b1d80d73fddf"
 	}
 }
