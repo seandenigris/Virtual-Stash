@@ -21,7 +21,82 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-06-23T22:14:57.572579-04:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-11-24T22:26:40.493558-05:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "+GbAazi7DQC84fgGB5xAaQ=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "QFX - Intuit's proprietary version of OFX; standard with additional licensing fields ([per Wikipedia](https://en.wikipedia.org/wiki/QFX_(file_format)))"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-06-23T23:29:57.515071-04:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-06-23T23:32:50.89014-04:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "mA34dzm7DQCs4+OuBMsq9A=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "QBO - seems very similar to QFX; compared same collection of transactions in both, looked the same but different md5, both were parsable into XML"
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -31,7 +106,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-06-23T22:14:57.572579-04:00"
+									"dateAndTimeString" : "2023-11-24T22:26:40.491109-05:00"
 								}
 							},
 							"editEmail" : {
@@ -42,17 +117,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-06-23T23:29:54.72712-04:00"
+									"dateAndTimeString" : "2023-11-24T22:26:40.491109-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "+GbAazi7DQC84fgGB5xAaQ=="
+								"uidString" : "4EjJX1PHDQCMZkZXBopwjg=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "QFX - Intuit's proprietary version of OFX; standard with additional licensing fields ([per Wikipedia](https://en.wikipedia.org/wiki/QFX_(file_format)))"
+							"string" : "Other variants:"
 						},
 						{
 							"__type" : "textSnippet",
@@ -68,7 +143,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-06-23T23:29:57.515071-04:00"
+									"dateAndTimeString" : "2023-11-24T22:26:55.755099-05:00"
 								}
 							},
 							"editEmail" : {
@@ -79,17 +154,51 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-06-23T23:32:50.89014-04:00"
+									"dateAndTimeString" : "2023-11-24T22:27:03.610137-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "mA34dzm7DQCs4+OuBMsq9A=="
+								"uidString" : "E16yYFPHDQCMl7fVBopwjg=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "QBO - seems very similar to QFX; compared same collection of transactions in both, looked the same but different md5, both were parsable into XML"
+							"string" : "These can be converted to XML "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-11-24T22:26:48.139743-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-11-24T22:26:52.362093-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Oys+YFPHDQCMck11Bopwjg=="
+							},
+							"code" : "These "
 						}
 					]
 				},
@@ -112,7 +221,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-11-24T13:23:53.391242-05:00"
+						"dateAndTimeString" : "2023-11-24T22:26:32.809797-05:00"
 					}
 				},
 				"uid" : {
@@ -122,7 +231,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "OFX - seems to have the most information, like Transaction ID, which helps to match up previously imported transactions to new ones"
+				"string" : "OFX (and veriants below) - seems to have the most information, like Transaction ID, which helps to match up previously imported transactions to new ones."
 			},
 			{
 				"__type" : "textSnippet",
@@ -186,7 +295,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-11-24T13:24:30.168045-05:00"
+						"dateAndTimeString" : "2023-11-24T13:24:42.411716-05:00"
 					}
 				},
 				"uid" : {
@@ -196,7 +305,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "CSV - Missing a few things, like FITID, lumps name and memo together; seemingly functio"
+				"string" : "CSV - Missing a few things, like FITID, lumps name and memo together; seemingly functionally equivalent to QIF, with the benefit of easy parsing."
 			}
 		]
 	},
