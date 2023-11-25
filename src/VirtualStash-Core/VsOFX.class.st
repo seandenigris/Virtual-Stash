@@ -32,3 +32,45 @@ ET.tostring(root).decode()';
 	
 	^ XMLDOMParser parse: xmlString
 ]
+
+{ #category : #accessing }
+VsOFX >> fieldNames [
+
+	^ (self transactionTags asSet flatCollect: [ :e | e elements collect: #name ]) asArray
+]
+
+{ #category : #accessing }
+VsOFX >> transactionTags [ 
+
+	^ (self asXML // #STMTTRN) asOrderedCollection.
+]
+
+{ #category : #accessing }
+VsOFX >> transactionsIn: anAccount withImbalance: imbalanceAccount [
+
+	^ self transactionTags collect: [ :e | 
+		| transaction split imbalanceSplit |
+		split := VsSplit new
+			amount: (e elementAt: 'TRNAMT') contentString dollars;
+			account: anAccount;
+			yourself.
+			
+		imbalanceSplit := VsSplit new
+			amount: (e elementAt: 'TRNAMT') contentString dollars negated;
+			account: imbalanceAccount;
+			yourself.
+			
+		transaction := VsTransaction new
+			date: (VsOfxDatetimeParser parse: (e elementAt: 'DTPOSTED') contentString) asDate;
+			propertyAt: 'ofxFITID' put: (e elementAt: 'FITID') contentString asNumber;
+			propertyAt: 'ofxTRNTYPE' put: (e elementAt: 'TRNTYPE') contentString;
+			number: ((e elementAt: 'CHECKNUM') ifNotNil: #contentString);
+			importedName: (e elementAt: 'NAME') contentString;
+			memo: ((e elementAt: 'MEMO') ifNotNil: #contentString);
+			yourself.
+			
+		transaction splits 
+			add: split;
+			add: imbalanceSplit.
+		transaction ]
+]
