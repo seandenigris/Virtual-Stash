@@ -133,7 +133,7 @@ VsTransaction >> commodityDescription [
 	^ MAStringDescription new
 		accessor: #commodity;
 		default: 'CURRENCY::USD';
-		propertyAt: #csvFieldName put: 'Commodity/Currency';
+		"propertyAt: #csvFieldName put: 'Commodity/Currency';"
 		yourself
 ]
 

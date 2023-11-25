@@ -92,47 +92,6 @@ VsSplit >> debitAmount [
 		ifFalse: [ nil ]
 ]
 
-{ #category : #'magritte-accessing' }
-VsSplit >> gnuCashAmountDescription: aDescription [
-	<magritteDescription: #amountDescription>
-	^ aDescription
-		csvFieldName: 'Amount Num.';
-		csvReader: [ :str | str vsAsUSD ];
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
-VsSplit >> gnuCashMemoDescription: aDescription [
-	<magritteDescription: #memoDescription>
-	^ aDescription
-		csvFieldName: 'Memo';
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
-VsSplit >> gnuCashNumberDescription: aDescription [
-	<magritteDescription: #numberDescription>
-	^ aDescription
-		csvFieldName: 'Number/Action';
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
-VsSplit >> gnuCashPriceDescription: aDescription [
-	<magritteDescription: #priceDescription>
-	^ aDescription
-		csvFieldName: 'Rate/Price';
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
-VsSplit >> gnuCashReconcileDateDescription: aDescription [
-	<magritteDescription: #reconcileDateDescription>
-	^ aDescription
-		csvFieldName: 'Reconcile Date';
-		yourself
-]
-
 { #category : #accessing }
 VsSplit >> isCredit [
 	^ self amount negative

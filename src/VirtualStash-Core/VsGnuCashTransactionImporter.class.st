@@ -42,17 +42,15 @@ VsGnuCashTransactionImporter >> convertToDomainObjects: aCollectionOfDictionarie
 		inject: OrderedCollection new
 		into: [ :col :rowDict | 
 			| newTransaction split recordedTransaction |
-			newTransaction := VsTransaction new
-				accountSource: books;
-				yourself.
-			self initializeTransaction: newTransaction fromRecord: rowDict.
-			split := VsSplit new
-				accountSource: books;
-				yourself.
-			self initializeDomainObject: split fromRecord: rowDict.
+				
+			newTransaction := self initializeTransaction: VsTransaction new fromRecord: rowDict.
+			
+			split := self initializeSplit: VsSplit new fromRecord: rowDict.
+			
 			recordedTransaction := newTransaction isValid
 				ifTrue: [ col add: newTransaction ]
 				ifFalse: [ col last ].
+				
 			recordedTransaction splits add: split.
 			col ]
 ]
@@ -66,6 +64,40 @@ VsGnuCashTransactionImporter >> execute [
 ]
 
 { #category : #accessing }
+VsGnuCashTransactionImporter >> initializeSplit: aSplit fromRecord: aDict [
+
+	aSplit accountSource: self books.
+	
+	self 
+		initializeDomainObject: aSplit 
+		fromRecord: aDict
+		mapping: [ :builder |
+			builder
+				map: 'Full Account Name' 
+					fieldTo: #accountDescription
+					using: [ :s | self books accounts detect: [ :accnt |
+						accnt gnuCashAccountFullName = s ] ];
+				map: 'Amount Num.' 
+					fieldTo: #amountDescription
+					using: [ :str | str vsAsUSD ];
+				map: 'Memo' fieldTo: #memoDescription;
+				map: 'Rate/Price' fieldTo: #priceDescription;
+				map: 'Reconcile Date' fieldTo: #reconcileDateDescription;
+				map: 'Reconcile' 
+					fieldTo: #statusDescription
+					using: [ :s | VsReconciliationStatus fromGnuCashCode: s ] ].
+	
+	self addressBook ifNil: [ ^ self ].
+	
+	aSplit addressBook: self addressBook.
+
+	self addressBook 
+		entryNamed: aSplit importedName 
+		ifFound: [ :e | aSplit counterparty: e ]
+		ifNone: []
+]
+
+{ #category : #accessing }
 VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
 	
 	self 
@@ -75,6 +107,7 @@ VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: 
 			builder
 				map: 'Date' fieldTo: #dateDescription;
 				map: 'Description' fieldTo: #importedNameDescription;
+				map: 'Transaction ID' fieldTo: #gnuCashIDDescription;
 				map: 'Notes' fieldTo: #memoDescription;
 				map: 'Transaction Number' fieldTo: #numberDescription;
 				map: 'Void Reason' fieldTo: #voidReasonDescription ].

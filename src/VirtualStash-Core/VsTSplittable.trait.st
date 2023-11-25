@@ -50,26 +50,6 @@ VsTSplittable >> debitAmountDescription [
 ]
 
 { #category : #'magritte-accessing' }
-VsTSplittable >> gnuCashAccountDescription: aDescription [
-	<magritteDescription: #accountDescription>
-	^ aDescription
-		csvFieldName: 'Full Account Name';
-		csvReader: [ :s | 
-			aDescription options detect: [ :accnt |
-				accnt gnuCashAccountFullName = s ] ];
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
-VsTSplittable >> gnuCashStatusDescription: aDescription [
-	<magritteDescription: #statusDescription>
-	^ aDescription
-		csvFieldName: 'Reconcile';
-		csvReader: [ :s | VsReconciliationStatus fromGnuCashCode: s ];
-		yourself
-]
-
-{ #category : #'magritte-accessing' }
 VsTSplittable >> statusDescription [
 	<magritteDescription>
 
