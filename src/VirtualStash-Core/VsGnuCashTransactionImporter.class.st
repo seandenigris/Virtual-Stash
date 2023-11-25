@@ -68,7 +68,16 @@ VsGnuCashTransactionImporter >> execute [
 { #category : #accessing }
 VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
 	
-	self initializeDomainObject: aTransaction fromRecord: aDict.
+	self 
+		initializeDomainObject: aTransaction 
+		fromRecord: aDict
+		mapping: [ :builder |
+			builder
+				map: 'Date' fieldTo: #dateDescription;
+				map: 'Description' fieldTo: #importedNameDescription;
+				map: 'Notes' fieldTo: #memoDescription;
+				map: 'Transaction Number' fieldTo: #numberDescription;
+				map: 'Void Reason' fieldTo: #voidReasonDescription ].
 	
 	self addressBook ifNil: [ ^ self ].
 	

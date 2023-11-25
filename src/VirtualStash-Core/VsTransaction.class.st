@@ -170,22 +170,6 @@ VsTransaction >> date: anObject [
 ]
 
 { #category : #GnuCash }
-VsTransaction >> gnuCashCounterpartyDescription: aDescription [
-	<magritteDescription: #importedNameDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Description';
-		yourself
-]
-
-{ #category : #GnuCash }
-VsTransaction >> gnuCashDateDescription: aDescription [
-	<magritteDescription: #dateDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Date';
-		yourself
-]
-
-{ #category : #GnuCash }
 VsTransaction >> gnuCashID [
 	^ self maLazyPropertyUsing: self gnuCashIDDescription
 ]
@@ -203,30 +187,6 @@ VsTransaction >> gnuCashIDDescription [
 	^ MAStringDescription new
 		accessor: #gnuCashID;
 		propertyAt: #csvFieldName put: 'Transaction ID';
-		yourself
-]
-
-{ #category : #GnuCash }
-VsTransaction >> gnuCashMemoDescription: aDescription [
-	<magritteDescription: #memoDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Notes';
-		yourself
-]
-
-{ #category : #GnuCash }
-VsTransaction >> gnuCashNumberDescription: aDescription [
-	<magritteDescription: #numberDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Transaction Number';
-		yourself
-]
-
-{ #category : #GnuCash }
-VsTransaction >> gnuCashVoidReasonDescription: aDescription [
-	<magritteDescription: #voidReasonDescription>
-	^ aDescription
-		propertyAt: #csvFieldName put: 'Void Reason';
 		yourself
 ]
 
