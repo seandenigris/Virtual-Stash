@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 VsJournalLine class >> configureGtColumnedList: list [
-	self new magritteDescription do: [ :e |
+	self magritteTemplate magritteDescription do: [ :e |
 		list 
 			column: e label
 			text: [ :line | line fieldStringUsing: e ]
