@@ -53,6 +53,12 @@ VsOfxTransactionImporter >> domainObjectFromDictionary: aDictionary [
 ]
 
 { #category : #accessing }
+VsOfxTransactionImporter >> execute [
+
+	^ self convertToDomainObjects: self source transactionDictionaries
+]
+
+{ #category : #accessing }
 VsOfxTransactionImporter >> imbalanceAccount [
 	^ imbalanceAccount
 ]
