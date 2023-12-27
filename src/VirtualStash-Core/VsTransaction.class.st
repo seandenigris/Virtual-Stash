@@ -100,7 +100,8 @@ VsTransaction >> amount [
 
 { #category : #'magritte-accessing' }
 VsTransaction >> amountDescription [
-	"<magritteDescription>"
+	<magritteDescription>
+	
 	^ MAMoneyDescription vsNew
 		accessor: #amount;
 		priority: 500;
