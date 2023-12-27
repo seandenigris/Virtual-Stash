@@ -176,10 +176,10 @@ VsGeneralJournal >> todos [
 	todoStringSet := todos collect: #counterparty as: Set.
 	dashboard := todoStringSet
 		collect: [ :s | 
-			| effected |
-			effected := todos select: [ :t | t counterparty = s ].
+			| affected |
+			affected := todos select: [ :t | t counterparty = s ].
 			VsTransactionImportGroup new
-				transactions: effected;
+				transactions: affected;
 				yourself ].
 	^ dashboard asOrderedCollection sort: #size descending
 ]
