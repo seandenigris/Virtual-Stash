@@ -7,5 +7,5 @@ Class {
 { #category : #visiting }
 VsMAMoneyStringWriter >> visitMoneyDescription: aDescription [
 
-	self stream << $$ << self object amount abs rounded asStringWithCommas
+	self stream << $$ << self object amount abs "rounded" asStringWithCommas
 ]
