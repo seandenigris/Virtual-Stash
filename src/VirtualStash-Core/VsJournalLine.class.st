@@ -32,7 +32,7 @@ VsJournalLine >> amountDescription: aDescription [
 		yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : #'as yet unclassified' }
 VsJournalLine >> amountToString: aNumber [
 	| intString decimalString |
 	intString := aNumber asInteger asStringWithCommas.

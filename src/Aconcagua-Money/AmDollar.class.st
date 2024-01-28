@@ -55,11 +55,7 @@ AmDollar >> hash [
 { #category : #printing }
 AmDollar >> printMeasure: aMeasure on: aStream [
 
-	aStream 
-		nextPut: $$;
-		nextPutAll: aMeasure amount asStringWithCommas;
-		nextPut: $.;
-		nextPutAll: ((aMeasure amount abs fractionPart * 100) asInteger printPaddedWith: $0 to: 2);
-		space;
-		nextPutAll: self sign
+	AmMoneyStringWriter new
+		write: aMeasure
+		on: aStream
 ]

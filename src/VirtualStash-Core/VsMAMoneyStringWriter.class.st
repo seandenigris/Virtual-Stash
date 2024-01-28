@@ -1,11 +1,12 @@
 Class {
 	#name : #VsMAMoneyStringWriter,
 	#superclass : #MAStringWriter,
+	#traits : 'AmTMoneyStringWriter',
+	#classTraits : 'AmTMoneyStringWriter classTrait',
 	#category : #'VirtualStash-Core'
 }
 
 { #category : #visiting }
 VsMAMoneyStringWriter >> visitMoneyDescription: aDescription [
-
-	self stream << $$ << self object amount abs "rounded" asStringWithCommas
+	self write: self object on: self stream
 ]
