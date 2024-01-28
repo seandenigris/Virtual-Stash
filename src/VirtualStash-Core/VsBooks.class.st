@@ -366,7 +366,7 @@ VsBooks >> receiptsGtViewOn: aView [
 		title: 'Receipts' translated;
 		priority: 7;
 		object: [ self receiptFile ];
-		view: #gtViewItemsFor:;
+		view: #itemsGtViewFor:;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect File'
 			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
