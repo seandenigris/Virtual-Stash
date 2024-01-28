@@ -163,7 +163,7 @@ VsReceipt >> paymentMethodDescription [
 		label: 'Payment Method';
 		options: VsPaymentMethod all;
 		display: #name;
-		beRequired;
+		"beRequired;"
 		priority: 300;
 		propertyAt: #shortcut put: #p;
 		yourself
