@@ -57,11 +57,11 @@ VsDocument >> amount: anObject [
 { #category : #magritte }
 VsDocument >> amountDescription [
 	<magritteDescription>
-	^ MANumberDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #amount;
-		display: [ :e | '$' , e asString ];
 		priority: 200;
 		beRequired;
+		stringWriter: VsMAMoneyStringWriter;
 		propertyAt: #isHighlight put: true;
 		propertyAt: #shortcut put: #a;
 		propertyAt: #whitelist put: '$1234567890#.';
