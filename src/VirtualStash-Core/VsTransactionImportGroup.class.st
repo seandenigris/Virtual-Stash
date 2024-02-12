@@ -148,7 +148,7 @@ VsTransactionImportGroup >> input: anObject [
 
 { #category : #accessing }
 VsTransactionImportGroup >> magritteDescription [
-	| desc field acc |
+	| desc field |
 	self flag: 'do we need #descriptionContainer?'.
 	desc := self transactions first magritteDescription
 		blocClass: MACompositeElementBuilder;
