@@ -7,6 +7,8 @@ Class {
 { #category : #accessing }
 VsMAMoneyStringReader >> visitMoneyDescription: anObject [
 	| money |
-	money := AmDollar readFrom: self stream upToEnd trimmed.
+	money := [ AmDollar readFrom: self stream upToEnd trimmed ]
+		on: Error
+		do: [ :err | MAReadError signal: err messageText ].
 	self object: money
 ]
