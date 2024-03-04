@@ -31,6 +31,12 @@ VsReceipt class >> exampleCash [
 ]
 
 { #category : #accessing }
+VsReceipt >> amountsRecognized [
+	
+	^ super amountsRecognized sorted reverse
+]
+
+{ #category : #accessing }
 VsReceipt >> amountsRecognizedHocr [
 	^ self hocr words 
 		inject: Bag new 
