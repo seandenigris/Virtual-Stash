@@ -347,6 +347,32 @@ VsAccount >> rootFolder [
 	^ FileLocator virtualStashData / 'Accounts' / self name
 ]
 
+{ #category : #accessing }
+VsAccount >> statements [
+
+	^ self maLazyPropertyUsing: self statementsDescription
+]
+
+{ #category : #accessing }
+VsAccount >> statements: aCollection [
+
+	^ self
+		propertyAt: #statements
+		put: aCollection
+]
+
+{ #category : #accessing }
+VsAccount >> statementsDescription [
+	<magritteDescription>
+	
+	^ MAToManyRelationDescription new
+			accessor: #statements;
+			priority: 650;
+			default: IdentitySet new;
+			classes: VsStatement withAllSubclasses;
+			yourself
+]
+
 { #category : #utilities }
 VsAccount >> transactionsFromCSV_FileNamed: aString [
 	| csvFile |

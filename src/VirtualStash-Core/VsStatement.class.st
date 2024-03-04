@@ -1,6 +1,6 @@
 Class {
 	#name : #VsStatement,
-	#superclass : #RlPDF,
+	#superclass : #VsDocument,
 	#instVars : [
 		'closingDate'
 	],
