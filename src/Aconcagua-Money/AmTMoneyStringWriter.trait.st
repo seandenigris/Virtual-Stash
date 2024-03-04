@@ -19,14 +19,18 @@ AmTMoneyStringWriter >> shouldWriteFractionOf: aNumber [
 { #category : #accessing }
 AmTMoneyStringWriter >> write: aMeasure on: aStream [
 
-	| amount fractionString |
+	| amount fractionString integerPart |
 	amount := aMeasure amount.
 	
-	aStream << $$ << amount abs asStringWithCommas.
-	
-	(self shouldWriteFractionOf: amount) ifTrue: [ 
-		fractionString := (amount fractionPart * 100) asInteger printPaddedWith: $0 to: 2.
-		aStream << $. << fractionString ].
+	(self shouldWriteFractionOf: amount) 
+		ifTrue: [ 
+			integerPart := amount floor.
+			fractionString := '.', ((amount fractionPart * 100) asInteger printPaddedWith: $0 to: 2) ]
+		ifFalse: [
+			integerPart := amount rounded.
+			fractionString := '' ].
+			
+	aStream << $$ << integerPart abs asStringWithCommas << fractionString.
 		
 	self writesCommodity ifTrue: [
 		aStream
