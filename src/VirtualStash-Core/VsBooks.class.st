@@ -122,7 +122,7 @@ VsBooks >> billsGtViewOn: aView [
 		title: 'Bills' translated;
 		priority: 8;
 		object: [ self billFile ];
-		view: #gtViewItemsFor:;
+		view: #itemsGtViewFor:;
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect File'
 			action: [ :aButton :aTab | aButton phlow spawnObject: self billFile ]
