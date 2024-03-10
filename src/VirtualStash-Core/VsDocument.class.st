@@ -151,6 +151,12 @@ VsDocument >> cache: aSymbol guess: aBlock [
 ]
 
 { #category : #accessing }
+VsDocument >> contents [
+
+	^ self ocr
+]
+
+{ #category : #accessing }
 VsDocument >> counterpartiesGtSpotterFor: aSearch [
 	
 	^ aSearch list
@@ -163,7 +169,7 @@ VsDocument >> counterpartiesGtSpotterFor: aSearch [
 
 { #category : #'ocr-guessing' }
 VsDocument >> counterpartiesRecognized [
-	^ self addressBook contacts select: [ :c | self resource ocr includesSubstring: c fullName caseSensitive: false ]
+	^ self addressBook contacts select: [ :c | c isVendorFor: self ]
 ]
 
 { #category : #accessing }
@@ -218,24 +224,28 @@ VsDocument >> date: anObject [
 ]
 
 { #category : #magritte }
+VsDocument >> dateCompletions [
+	
+	| dateCollection |
+	dateCollection := self datesRecognized ifEmpty: [ { Date today } ].
+	^ dateCollection collect: #mmddyyyy
+]
+
+{ #category : #magritte }
 VsDocument >> dateDescription [
 	<magritteDescription>
 	
 	^ MADateDescription new
-			accessor: #date;
-			label: 'Date';
-			display: #mmddyyyy;
-			beRequired;
-			initialAnswer: [
-				self datesRecognized 
-					ifNotEmpty: [ :ds | ds atRandom ] 
-					ifEmpty: [ Date today ]];
-			priority: 100;
-			propertyAt: #isHighlight put: true;
-			propertyAt: #shortcut put:#d;
-			propertyAt: #completions put: [ :doc | 
-				(doc datesRecognized add: Date today; yourself) collect: #mmddyyyy ];
-			yourself
+		accessor: #date;
+		display: #mmddyyyy;
+		beRequired;
+		initialAnswer: [ self dateCompletions atRandom ];
+		priority: 100;
+		propertyAt: #isHighlight put: true;
+		propertyAt: #shortcut put:#d;
+		propertyAt: #completions 
+			put: [ :doc | doc dateCompletions ];
+		yourself
 ]
 
 { #category : #'ocr-guessing' }

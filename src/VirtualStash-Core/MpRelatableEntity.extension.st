@@ -1,13 +1,15 @@
 Extension { #name : #MpRelatableEntity }
 
 { #category : #'*VirtualStash-Core' }
-MpRelatableEntity class >> for: receipt [
+MpRelatableEntity >> isVendorFor: aDocument [
 
-	^ self all detect: [ :e | e isVendorFor: receipt ] ifNone: [ nil ]
-]
-
-{ #category : #'*VirtualStash-Core' }
-MpRelatableEntity >> isVendorFor: receipt [
-
-	^ (receipt includesSubstring: self name) or: [ self website ifNotNil: [ :url | receipt includesSubstring: url host ] ifNil: [ false ] ]
+	
+	| includesName |
+	includesName := (aDocument contents includesSubstring: self fullName  caseSensitive: false).
+	includesName ifTrue: [ ^ true ].
+	
+	self website ifNotNil: [ :url | 
+		^ aDocument contents includesSubstring: url host ].
+	
+	^ false
 ]

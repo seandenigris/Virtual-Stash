@@ -201,12 +201,6 @@ VsReceipt >> personalTransactionDescription [
 			yourself
 ]
 
-{ #category : #'as yet unclassified' }
-VsReceipt >> possibleVendors [
-
-	^ MpRelatableEntity for: self
-]
-
 { #category : #printing }
 VsReceipt >> printFieldsOn: aStream [
 
