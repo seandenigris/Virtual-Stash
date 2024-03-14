@@ -334,7 +334,7 @@ VsDocument >> ocr [
 { #category : #accessing }
 VsDocument >> printFieldsOn: aStream [
 
-	counterparty ifNotNil: [ aStream print: self counterparty name ].
+	counterparty ifNotNil: [ aStream nextPutAll: self counterparty fullName ].
 	amount ifNotNil: [ aStream space; print: self amount ].
 	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
 ]
