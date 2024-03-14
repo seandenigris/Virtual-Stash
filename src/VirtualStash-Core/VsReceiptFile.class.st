@@ -1,6 +1,3 @@
-"
-self uniqueInstance receipts: (VsReceipt fromImagesIn: VsReceipt folder)
-"
 Class {
 	#name : #VsReceiptFile,
 	#superclass : #VsBillFile,

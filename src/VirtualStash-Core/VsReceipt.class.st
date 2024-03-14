@@ -211,7 +211,7 @@ VsReceipt >> printFieldsOn: aStream [
 { #category : #printing }
 VsReceipt >> printOn: aStream [
 
-	counterparty ifNotNil: [ aStream nextPutAll: self vendor name ].
+	counterparty ifNotNil: [ aStream nextPutAll: self vendor fullName ].
 	amount ifNotNil: [ aStream space; print: self amount ].
 	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
 	paymentMethod ifNotNil: [ aStream nextPutAll: ' with '; print: self paymentMethod ].
