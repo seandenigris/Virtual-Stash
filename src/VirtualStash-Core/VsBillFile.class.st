@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #accessing }
+VsBillFile >> delete: aReceipt [ 
+
+	self items remove: aReceipt.
+	aReceipt resource delete.
+]
+
+{ #category : #accessing }
 VsBillFile >> itemBaseClass [
 	^ VsBill
 ]
@@ -66,6 +73,8 @@ VsBillFile >> itemsGtViewFor: aView [
 		title: self itemsTypeLabel translated;
 		priority: 10;
 		items: [ self items ];
+		contextItemLabel: 'Delete'
+			action: [ :aWidget :aReceipt | self delete: aReceipt ];
 		actionUpdateButton;
 		yourself
 ]
