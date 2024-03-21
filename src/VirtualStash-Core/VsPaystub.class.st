@@ -79,7 +79,7 @@ VsPaystub >> endDescription [
 			accessor: #end;
 			display: #mmddyyyy;
 			beRequired;
-			default: self endGuess;
+			default: self endGuess value;
 			shouldCacheDefault: true;
 			priority: 200;
 			propertyAt: #completions put: [ :doc | doc datesRecognized collect: #mmddyyyy ];
