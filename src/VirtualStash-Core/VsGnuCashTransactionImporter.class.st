@@ -68,7 +68,7 @@ VsGnuCashTransactionImporter >> initializeSplit: aSplit fromRecord: aDict [
 
 	aSplit accountSource: self books.
 	
-	self 
+	^ self 
 		initializeDomainObject: aSplit 
 		fromRecord: aDict
 		mapping: [ :builder |
@@ -86,15 +86,6 @@ VsGnuCashTransactionImporter >> initializeSplit: aSplit fromRecord: aDict [
 				map: 'Reconcile' 
 					fieldTo: #statusDescription
 					using: [ :s | VsReconciliationStatus fromGnuCashCode: s ] ].
-	
-	self addressBook ifNil: [ ^ self ].
-	
-	aSplit addressBook: self addressBook.
-
-	self addressBook 
-		entryNamed: aSplit importedName 
-		ifFound: [ :e | aSplit counterparty: e ]
-		ifNone: []
 ]
 
 { #category : #accessing }
@@ -119,7 +110,9 @@ VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: 
 	self addressBook 
 		entryNamed: aTransaction importedName 
 		ifFound: [ :e | aTransaction counterparty: e ]
-		ifNone: []
+		ifNone: [].
+		
+	^ aTransaction
 ]
 
 { #category : #accessing }
