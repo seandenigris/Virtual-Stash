@@ -1,6 +1,6 @@
 Extension { #name : #RlTiff }
 
 { #category : #'*VirtualStash-Core' }
-RlTiff >> vsImageFile [
+RlTiff >> vsImageResource [
 	^ self file
 ]

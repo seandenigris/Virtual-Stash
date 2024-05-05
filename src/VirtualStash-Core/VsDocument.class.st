@@ -268,8 +268,8 @@ VsDocument >> datesRecognized [
 
 { #category : #accessing }
 VsDocument >> form [
-	^ self imageFile
-		ifNotNil: [ :f | Form fromFileNamed: f fullName ]
+	^ self imageResource
+		ifNotNil: [ :res | res asForm ]
 		ifNil: [ Morph new imageForm ]
 ]
 
@@ -308,9 +308,9 @@ VsDocument >> hocr [
 ]
 
 { #category : #accessing }
-VsDocument >> imageFile [
+VsDocument >> imageResource [
 
-	^ self resource imageFile
+	^ self resource imageResource
 ]
 
 { #category : #accessing }
