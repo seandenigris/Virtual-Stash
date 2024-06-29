@@ -25,7 +25,7 @@ AmTMoneyStringWriter >> write: aMeasure on: aStream [
 	(self shouldWriteFractionOf: amount) 
 		ifTrue: [ 
 			integerPart := amount floor.
-			fractionString := '.', ((amount fractionPart * 100) asInteger printPaddedWith: $0 to: 2) ]
+			fractionString := '.', ((amount fractionPart * 100) asInteger abs printPaddedWith: $0 to: 2) ]
 		ifFalse: [
 			integerPart := amount rounded.
 			fractionString := '' ].
