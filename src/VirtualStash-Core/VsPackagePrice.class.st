@@ -16,6 +16,16 @@ VsPackagePrice class >> named: aString [
 		yourself
 ]
 
+{ #category : #'as yet unclassified' }
+VsPackagePrice >> * anInteger [ 
+	
+	| result |
+	result := self copy.
+	result children do: [ :e |
+		e quantity: e quantity * anInteger ].
+	^ result
+]
+
 { #category : #accessing }
 VsPackagePrice >> add: aVsItem [
 	^ self addItem: aVsItem
