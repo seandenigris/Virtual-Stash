@@ -49,6 +49,16 @@ VsPackagePrice >> children: anObject [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> copyToList [
+
+	| copy |
+	copy := self copy
+		name: self name , ' copy';
+		yourself.
+	^ self priceList add: copy
+]
+
+{ #category : #accessing }
 VsPackagePrice >> date [
 
 	self refreshPrices.
@@ -141,6 +151,16 @@ VsPackagePrice >> packageSearchNewFor: aSearch [
 		new: VsPackagePrice
 		for: aSearch 
 		priority: 100
+]
+
+{ #category : #accessing }
+VsPackagePrice >> postCopy [
+
+	| lineCopies |
+	super postCopy.
+	
+	lineCopies := self children collect: #copy.
+	self children: lineCopies.
 ]
 
 { #category : #accessing }
