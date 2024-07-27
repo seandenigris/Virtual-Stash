@@ -54,8 +54,8 @@ VsPackagePrice >> children [
 ]
 
 { #category : #accessing }
-VsPackagePrice >> children: anObject [
-	children := anObject
+VsPackagePrice >> children: aCollection [
+	children := aCollection
 ]
 
 { #category : #accessing }
