@@ -110,10 +110,9 @@ VsItemPrice >> unitPrice: anObject [
 VsItemPrice >> unitPriceDescription [
 	<magritteDescription>
 	
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #unitPrice;
 		priority: 400;
 		beRequired;
-		stringReader: VsMAMoneyStringReader;
 		yourself
 ]

@@ -126,11 +126,10 @@ VsPriceLine >> total [
 VsPriceLine >> totalDescription [
 	<magritteDescription>
 	
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #total;
 		priority: 500;
 		beReadOnly;
-		stringReader: VsMAMoneyStringReader;
 		yourself
 ]
 
@@ -150,9 +149,8 @@ VsPriceLine >> unitPrice: aMeasure [
 VsPriceLine >> unitPriceDescription [
 	<magritteDescription>
 	
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #unitPrice;
 		priority: 400;
-		stringReader: VsMAMoneyStringReader;
 		yourself
 ]

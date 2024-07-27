@@ -1,6 +1,8 @@
 Class {
 	#name : #VsPrice,
 	#superclass : #Object,
+	#traits : 'DbTDomainObject',
+	#classTraits : 'DbTDomainObject classTrait',
 	#category : #'VirtualStash-Core-Vendors'
 }
 
@@ -70,10 +72,8 @@ VsPrice >> total [
 VsPrice >> totalDescription [
 	<magritteDescription>
 	
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #total;
 		priority: 500;
-		beRequired;
-		stringReader: VsMAMoneyStringReader;
 		yourself
 ]
