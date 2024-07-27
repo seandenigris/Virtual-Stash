@@ -24,6 +24,7 @@ VsItemPrice class >> named: aString [
 { #category : #accessing }
 VsItemPrice >> = rhs [
 
+	rhs species = self species ifFalse: [ ^ false ].
 	self item = rhs item ifFalse: [ ^ false ].
 	self unitPrice = rhs unitPrice ifFalse: [ ^ false ].
 	self date = rhs date ifFalse: [ ^ false ].
