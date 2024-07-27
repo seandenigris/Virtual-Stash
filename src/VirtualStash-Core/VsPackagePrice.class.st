@@ -132,6 +132,18 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 ]
 
 { #category : #accessing }
+VsPackagePrice >> itemSearchFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		title: 'Items (existing)';
+		priority: 100;
+		items: [ self priceList rootPrices ];
+		filterBySubstring;
+		send: [ :item | self addItem: item ]
+]
+
+{ #category : #accessing }
 VsPackagePrice >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
