@@ -116,10 +116,12 @@ VsPriceLine >> quantityDescription [
 
 { #category : #accessing }
 VsPriceLine >> total [
-	self quantity ifNil: [ ^ nil ].
-	self price ifNil: [ ^ nil ].
+	"self quantity ifNil: [ ^ nil ].
+	self price ifNil: [ ^ nil ]."
 
-	^ self quantity * self unitPrice
+	^ [ self quantity * self unitPrice ]
+		on: Error 
+		do: [ nil ]
 ]
 
 { #category : #accessing }
