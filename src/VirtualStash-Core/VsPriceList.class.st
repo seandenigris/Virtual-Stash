@@ -43,7 +43,7 @@ VsPriceList >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
 	^ VsPrice 
-		search:self
+		search: self
 		new: VsItemPrice
 		for: aSearch 
 		priority: 200
@@ -54,7 +54,7 @@ VsPriceList >> packageSearchNewFor: aSearch [
 	<gtSearch>
 	
 	^ VsPrice 
-		search:self
+		search: self
 		new: VsPackagePrice
 		for: aSearch 
 		priority: 100

@@ -40,7 +40,8 @@ VsPackagePrice >> add: anInteger ofItem: aVsItemPrice [
 		quantity: anInteger;
 		yourself.
 		
-	^ self children add: line.
+	self children add: line.
+	self list add: aVsItemPrice
 ]
 
 { #category : #accessing }
@@ -172,7 +173,7 @@ VsPackagePrice >> packageSearchNewFor: aSearch [
 		search: self
 		new: VsPackagePrice
 		for: aSearch 
-		priority: 100
+		priority: 200
 ]
 
 { #category : #accessing }

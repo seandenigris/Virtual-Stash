@@ -18,7 +18,6 @@ VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 			input := aContext searchQuery trimBoth.
 			{ aClass named: input } asAsyncStream ];
 		send: [ :result | 
-			client list add: result.
 			client add: result ]
 ]
 
