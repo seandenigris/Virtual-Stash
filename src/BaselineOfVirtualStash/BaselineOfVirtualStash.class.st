@@ -60,7 +60,7 @@ BaselineOfVirtualStash >> baseline: spec [
 			baseline: 'PetitParser2' with: [
 				spec repository: 'github://seandenigris/PetitParser2' ];
 			baseline: 'XMLParser' with: [
-				spec repository: 'github://seandenigris/XML-XMLParser:v3.6.x/src' ].
+				spec repository: 'github://seandenigris/XML-XMLParser:v3.x' ].
 		spec 
 			package: 'VirtualStash-Core' with: [ 
 				spec requires: #('PetitParser2' 'XMLParser') ] ].
