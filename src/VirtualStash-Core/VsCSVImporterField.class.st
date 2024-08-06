@@ -22,12 +22,6 @@ VsCSVImporterField >> csvFieldName: anObject [
 ]
 
 { #category : #accessing }
-VsCSVImporterField >> descriptionName [
-
-	^ descriptionName
-]
-
-{ #category : #accessing }
 VsCSVImporterField >> descriptionName: anObject [
 
 	descriptionName := anObject
@@ -45,6 +39,12 @@ VsCSVImporterField >> group: anObject [
 	group := anObject
 ]
 
+{ #category : #accessing }
+VsCSVImporterField >> nameDescription [
+
+	^ descriptionName
+]
+
 { #category : #writing }
 VsCSVImporterField >> write: aString to: anObject [
 	
@@ -52,7 +52,7 @@ VsCSVImporterField >> write: aString to: anObject [
 	aString ifNil: [ ^ self ].
 		
 	elementDescription := anObject magritteDescription 
-		detect: [ :e | e name = self descriptionName ]
+		detect: [ :e | e name = self nameDescription ]
 		ifNone: [ 
 			self 
 				write: aString 
@@ -66,6 +66,6 @@ VsCSVImporterField >> write: aString to: anObject [
 { #category : #private }
 VsCSVImporterField >> write: aString toPropertyOf: anObject [
 	anObject 
-		propertyAt: self descriptionName 
+		propertyAt: self nameDescription 
 		put: aString
 ]
