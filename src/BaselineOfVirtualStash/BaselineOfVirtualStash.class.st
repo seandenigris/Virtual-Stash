@@ -28,46 +28,46 @@ BaselineOfVirtualStash >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec 
-			baseline: 'Aconcagua' with: [
+			baseline: #Aconcagua with: [
 				spec repository: 'github://seandenigris/aconcagua:denigris' ];
-			baseline: 'DynabookFoundation' with: [
+			baseline: #DynabookFoundation with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
-			baseline: 'Magritte' with: [ 
+			baseline: #Magritte with: [ 
 				spec 
 					repository: 'github://seandenigris/Magritte';
 					loads: #(#default #'Magritte-Money') ];
-			baseline: 'Mocketry' with: [
+			baseline: #Mocketry with: [
 				spec repository: 'github://seandenigris/Mocketry' ];
-			baseline: 'MyPeople' with: [ spec repository: 'github://seandenigris/My-People' ];
-			baseline: 'NeoCSV' with: [ 
+			baseline: #MyPeople with: [ spec repository: 'github://seandenigris/My-People' ];
+			baseline: #NeoCSV with: [ 
 				spec 
 					repository: 'github://seandenigris/NeoCSV';
 					loads: #('Neo-CSV-Magritte') ];
-			baseline: 'PharoEnhancements' with: [
+			baseline: #PharoEnhancements with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
-			baseline: 'ResourcesLive' with: [
+			baseline: #ResourcesLive with: [
 				spec repository: 'github://seandenigris/Resources-Live' ];
-			baseline: 'SimplePersistence' with: [ spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: 'Talents' with: [
+			baseline: #SimplePersistence with: [ spec repository: 'github://seandenigris/Simple-Persistence' ];
+			baseline: #Talents with: [
 				spec repository: 'github://tesonep/pharo-talents' ].
 		spec
-			package: 'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
-			package: 'VirtualStash-Core' with: [
-				spec requires: #('Aconcagua' 'Aconcagua-Money' 'DynabookFoundation' 'Magritte' 'Mocketry' 'MyPeople' 'NeoCSV' 'PharoEnhancements' 'ResourcesLive' 'SimplePersistence' 'Talents') ] ].
+			package: #'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
+			package: #'VirtualStash-Core' with: [
+				spec requires: #(Aconcagua #'Aconcagua-Money' DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents) ] ].
 				
 	spec for: #notGToolkit do: [
 		spec 
-			baseline: 'PetitParser2' with: [
+			baseline: #'PetitParser2' with: [
 				spec repository: 'github://seandenigris/PetitParser2' ];
-			baseline: 'XMLParser' with: [
+			baseline: #'XMLParser' with: [
 				spec repository: 'github://seandenigris/XML-XMLParser:v3.x' ].
 		spec 
-			package: 'VirtualStash-Core' with: [ 
-				spec requires: #('PetitParser2' 'XMLParser') ] ].
+			package: #'VirtualStash-Core' with: [ 
+				spec requires: #(#'PetitParser2' #'XMLParser') ] ].
 				
 	spec for: #GToolkit do: [
 		spec 
-			package: 'VirtualStash-GtHome';
+			package: #'VirtualStash-GtHome';
 			group: #default with: #(#'VirtualStash-Core') ]
 ]
 
