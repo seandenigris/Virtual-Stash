@@ -35,14 +35,32 @@ VsStatement >> closingDateDescription [
 		yourself
 ]
 
+{ #category : #'as yet unclassified' }
+VsStatement >> displayStringOn: aStream [
+
+	aStream
+		print: self year start year;
+		nextPut: $-;
+		print: self month monthIndex
+]
+
 { #category : #accessing }
 VsStatement >> month [
-	| tokens |
-	tokens := self file base splitOn: '-'.
-	^ Month year: tokens first asNumber month: tokens second asNumber
+	^ self closingDate month
+]
+
+{ #category : #'as yet unclassified' }
+VsStatement >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : #accessing }
 VsStatement >> wantsHOCR [
 	^ false
+]
+
+{ #category : #accessing }
+VsStatement >> year [
+	^ self closingDate asYear
 ]

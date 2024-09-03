@@ -96,21 +96,22 @@ VsCreditCardAccount >> rootFolder [
 
 { #category : #accessing }
 VsCreditCardAccount >> statements [
-	| files |
+	| files year monthOrDay parser |
+	year := (#digit asPParser min: 4 max: 4) flatten ==> #asNumber.
+monthOrDay := (#digit asPParser min: 2 max: 2) flatten ==> #asNumber.
+parser := year, $- asPParser optional, monthOrDay, $- asPParser optional, monthOrDay optional ==> [ :nodes | 
+	| day |
+	day := nodes fifth ifNil: [ 1 ].
+	Date year: nodes first month: nodes third day: day ].
+
 	files := self rootFolder / 'Statements' filesMatching: '*.pdf'.
 	^ files
 		collect: [ :e | 
 			| statement dateParts |
-			statement := VsStatement on: e.
-			"The filename convention is e.g. 2020-11-30... with day optional"
+			statement := VsStatement fromResourceable: e.
+			"The filename convention is e.g. 2020-11-30... with dashes and day optional"
 			dateParts := e base splitOn: $-.
-			dateParts size > 2
-				ifTrue: [ | closingDate |
-					closingDate := Date
-						year: dateParts first asNumber
-						month: dateParts second asNumber
-						day: dateParts third asNumber.
-					statement closingDate: closingDate ].
+			statement closingDate: (parser parse: e base).
 			statement ]
 		as: SortedCollection
 ]
