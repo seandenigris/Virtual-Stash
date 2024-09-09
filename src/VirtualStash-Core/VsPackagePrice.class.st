@@ -207,6 +207,10 @@ VsPackagePrice >> refreshPrices [
 { #category : #accessing }
 VsPackagePrice >> total [
 
+	self
+		propertyAt: #total
+		ifPresent: [ :total | ^ total ].
+
 	self refreshPrices.
 
 	^ self children
@@ -217,9 +221,9 @@ VsPackagePrice >> total [
 ]
 
 { #category : #accessing }
-VsPackagePrice >> totalDescription [
-	
-	^ super totalDescription
-		beReadOnly;
-		yourself
+VsPackagePrice >> total: money [
+
+	self
+		propertyAt: #total
+		putRemovingNil: money.
 ]
