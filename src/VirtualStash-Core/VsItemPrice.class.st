@@ -91,6 +91,14 @@ VsItemPrice >> name [
 ]
 
 { #category : #accessing }
+VsItemPrice >> name: aString [
+	
+	self item ifNil: [ self error: 'no item to rename!' ].
+	
+	self item name: aString
+]
+
+{ #category : #accessing }
 VsItemPrice >> total [
 	self unitPrice ifNil: [ ^ nil ].
 
