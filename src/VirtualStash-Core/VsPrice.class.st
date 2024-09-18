@@ -21,6 +21,14 @@ VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 			client add: result ]
 ]
 
+{ #category : #'as yet unclassified' }
+VsPrice >> compoundingFormula [
+	
+	^ CompoundingFormula new
+		presentValue: self total;
+		yourself
+]
+
 { #category : #accessing }
 VsPrice >> dateDescription [
 	<magritteDescription>
