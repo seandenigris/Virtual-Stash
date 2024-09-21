@@ -4,13 +4,13 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'Aconcagua-Money'
+	#category : #'Aconcagua-Money'
 }
 
 { #category : #accessing }
 AmCent class >> new [
 	^ super new
-		initializeNameFomOne: 'cent'
+		initializeNameForOne: 'cent'
 		nameForMany: 'cents'
 		sign: 'c USD'
 ]
