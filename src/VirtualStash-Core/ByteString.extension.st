@@ -5,11 +5,11 @@ ByteString >> pyAsTitleCase [
 	"See https://pypi.org/project/titlecase/"
 
 	^ PBApplication uniqueInstance newCommandStringFactory
-    addAllBindings: { 
-        #input -> self } asDictionary;
-    script: 'from titlecase import titlecase';
-    resultExpression: 'titlecase(input)';
-    sendAndWait.
+	    addAllBindings: { 
+	        #input -> self } asDictionary;
+	    script: 'from titlecase import titlecase';
+	    resultExpression: 'titlecase(input)';
+	    sendAndWait.
 ]
 
 { #category : #'*VirtualStash-Core' }
