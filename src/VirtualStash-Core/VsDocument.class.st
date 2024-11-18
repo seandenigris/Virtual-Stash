@@ -201,7 +201,7 @@ VsDocument >> counterpartyDescription [
 { #category : #accessing }
 VsDocument >> counterpartyGtSearchSource [
 	| result |
-	result := PeGtCompositeSearch new.
+	result := PeGtCollectedSearch new.
 	result children 
 		add: (PeGtDelegatedSearch to: self message: #counterpartiesGtSpotterFor:);
 		add: self addressBook.
