@@ -236,7 +236,7 @@ VsDocument >> date: anObject [
 VsDocument >> dateCompletions [
 	
 	| dateCollection |
-	dateCollection := self datesRecognized ifEmpty: [ { Date today } ].
+	dateCollection := self datesRecognized isEmptyOrNil ifTrue: [ { Date today } ].
 	^ dateCollection collect: #mmddyyyy
 ]
 
@@ -272,7 +272,7 @@ VsDocument >> dateGuess [
 
 { #category : #accessing }
 VsDocument >> datesRecognized [
-	^ self resource datesRecognized.
+	^ self resource ifNotNil: #datesRecognized.
 ]
 
 { #category : #accessing }
@@ -328,7 +328,9 @@ VsDocument >> includesSubstring: aString [
 { #category : #ocr }
 VsDocument >> ocr [
 
-	^ self resource ocr.
+	^ self resource 
+		ifNotNil: #ocr
+		ifNil: [ '' ].
 ]
 
 { #category : #accessing }
