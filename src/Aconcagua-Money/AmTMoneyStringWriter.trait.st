@@ -24,12 +24,14 @@ AmTMoneyStringWriter >> write: aMeasure on: aStream [
 	
 	(self shouldWriteFractionOf: amount) 
 		ifTrue: [ 
-			integerPart := amount floor.
-			fractionString := '.', ((amount fractionPart * 100) asInteger abs printPaddedWith: $0 to: 2) ]
+			integerPart := amount abs floor.
+			fractionString := '.', ((amount abs fractionPart * 100) asInteger abs printPaddedWith: $0 to: 2) ]
 		ifFalse: [
-			integerPart := amount rounded.
+			integerPart := amount abs rounded.
 			fractionString := '' ].
-			
+	
+	amount < 0 ifTrue: [ aStream << $- ].
+	
 	aStream << $$ << integerPart abs asStringWithCommas << fractionString.
 		
 	self writesCommodity ifTrue: [
