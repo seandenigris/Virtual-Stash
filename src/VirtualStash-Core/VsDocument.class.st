@@ -157,6 +157,15 @@ VsDocument >> contents [
 ]
 
 { #category : #accessing }
+VsDocument >> contentsGtViewFor: aView [
+    <gtView>
+    ^ aView pannable
+        title: 'Editor';
+        priority: 0.5;
+        stencil: [ self asEditorElement ]
+]
+
+{ #category : #accessing }
 VsDocument >> counterpartiesGtSpotterFor: aSearch [
 	
 	^ aSearch list
@@ -271,15 +280,6 @@ VsDocument >> form [
 	^ self imageResource
 		ifNotNil: [ :res | res asForm ]
 		ifNil: [ Morph new imageForm ]
-]
-
-{ #category : #accessing }
-VsDocument >> gtFigureFor: aView [
-    <gtView>
-    ^ aView pannable
-        title: 'Editor';
-        priority: 0.5;
-        stencil: [ self asEditorElement ]
 ]
 
 { #category : #accessing }
