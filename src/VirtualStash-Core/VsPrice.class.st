@@ -24,7 +24,7 @@ VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 { #category : #'as yet unclassified' }
 VsPrice >> compoundingFormula [
 	
-	^ CompoundingFormula new
+	^ AcCompoundingFormula new
 		presentValue: self total;
 		yourself
 ]
