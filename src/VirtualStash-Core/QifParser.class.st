@@ -18,7 +18,7 @@ Class {
 		'lineSeparator',
 		'checkNumberItem'
 	],
-	#category : 'VirtualStash-Core-QIF'
+	#category : #'VirtualStash-Core-QIF'
 }
 
 { #category : #rules }
@@ -29,11 +29,11 @@ QifParser >> accountItem [
 { #category : #'as yet unclassified' }
 QifParser >> accountItemWithCode: aCharacter [
 	| data accountName account category |
-	accountName := $] asParser negate plus flatten.
-	account := $[ asParser, accountName, $] asParser ==> #second.
-	category := ($[ asParser negate, lineSeparator negate plus) flatten. 
+	accountName := $] asPParser negate plus flatten.
+	account := $[ asPParser, accountName, $] asPParser ==> #second.
+	category := ($[ asPParser negate, lineSeparator negate plus) flatten. 
 	data := account / category.
-	^ aCharacter asParser, data, lineSeparator ==> #second.
+	^ aCharacter asPParser, data, lineSeparator ==> #second.
 ]
 
 { #category : #rules }
@@ -77,7 +77,7 @@ QifParser >> dateItem [
 { #category : #rules }
 QifParser >> detail [
 	| recordEnd |
-	recordEnd := $^ asParser, lineSeparator optional.
+	recordEnd := $^ asPParser, lineSeparator optional.
 	^ anyPart plus, recordEnd ==> #first
 ]
 
@@ -85,19 +85,19 @@ QifParser >> detail [
 QifParser >> detailItemCode: aCharacter do: aBlock [
 	| data |
 	data := lineSeparator negate star flatten ==> aBlock.
-	^ aCharacter asParser, data, lineSeparator ==> #second.
+	^ aCharacter asPParser, data, lineSeparator ==> #second.
 ]
 
 { #category : #rules }
 QifParser >> headerLine [
 	| accountType |
 	accountType := lineSeparator negate plus flatten.
-	^ '!Type:' asParser, accountType, lineSeparator ==> #second
+	^ '!Type:' asPParser, accountType, lineSeparator ==> #second
 ]
 
 { #category : #rules }
 QifParser >> lineSeparator [
-	^ #newline asParser, #newline asParser optional
+	^ #newline asPParser, #newline asPParser optional
 ]
 
 { #category : #rules }

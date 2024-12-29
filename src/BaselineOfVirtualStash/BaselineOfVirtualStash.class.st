@@ -65,6 +65,14 @@ BaselineOfVirtualStash >> baseline: spec [
 			package: #'VirtualStash-Core' with: [ 
 				spec requires: #(#'PetitParser2' #'XMLParser') ] ].
 				
+	spec for: #notGToolkit do: [
+		spec 
+			baseline: #'PetitParser2' with: [
+				spec repository: 'github://seandenigris/PetitParser2' ].
+		spec 
+			package: #'VirtualStash-Core' with: [ 
+				spec requires: #(#'PetitParser2') ] ].
+	
 	spec for: #GToolkit do: [
 		spec 
 			package: #'VirtualStash-GtHome';

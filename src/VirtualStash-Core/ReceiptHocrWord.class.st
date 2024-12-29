@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'receipt'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : #'VirtualStash-Core-Receipts'
 }
 
 { #category : #'instance creation' }
@@ -19,8 +19,8 @@ ReceiptHocrWord class >> on: aXMLElement for: aReceipt [
 ReceiptHocrWord >> beDate [
 
 	| separator number dateRule parseResult |
-	separator := $/ asParser.
-	number := #digit asParser star flatten.
+	separator := $/ asPParser.
+	number := #digit asPParser star flatten.
 	dateRule := (number, separator, number, separator, number) flatten.
 	parseResult := dateRule parse: self string.
 	self receipt date: parseResult asDate
@@ -38,9 +38,9 @@ ReceiptHocrWord >> bePaymentType [
 ReceiptHocrWord >> beTotalAmount [
 
 	| number dollars cents amountRule parseResult |
-	dollars := number := #digit asParser plus flatten.
-	cents := $. asParser, number.
-	amountRule := $$ asParser optional, (dollars, cents optional) flatten end ==> #second.
+	dollars := number := #digit asPParser plus flatten.
+	cents := $. asPParser, number.
+	amountRule := $$ asPParser optional, (dollars, cents optional) flatten end ==> #second.
 	parseResult := amountRule parse: self string.
 	self receipt amount: parseResult asNumber
 ]
