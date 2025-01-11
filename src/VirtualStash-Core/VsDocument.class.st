@@ -236,7 +236,7 @@ VsDocument >> date: anObject [
 VsDocument >> dateCompletions [
 	
 	| dateCollection |
-	dateCollection := self datesRecognized isEmptyOrNil ifTrue: [ { Date today } ].
+	dateCollection := self datesRecognized ifEmpty: [ { Date today } ].
 	^ dateCollection collect: #mmddyyyy
 ]
 
