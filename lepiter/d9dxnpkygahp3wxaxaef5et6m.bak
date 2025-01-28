@@ -42,7 +42,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-01-27T21:14:08.528038-05:00"
+									"dateAndTimeString" : "2025-01-27T21:13:56.736108-05:00"
 								}
 							},
 							"uid" : {
@@ -52,7 +52,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "I have business receipts. I put them in a file, and monthly I add them up by category. Each category line is entered into the business books. What is the purpose of this system? There is a tension between low and high level views on information. In the world of paper books, individual transactions like \"$3 for Scotch Tape\" would drown out the important threads. But now, with computers, that requirement is no longer valid because we can create as many views as we want on any slice of information. For example, what is an expense report but a view of a query on the books i.e. \"show me all the Officer Loan transactions from 4/1 to 4/31, summarized by expense account\""
+							"string" : "I have business receipts. I put them in a file, and monthly I add them up by category. Each category line is entered into the business books. What is the purpose of this system? There is a tension between low and high level views on information. In the world of paper books, individual transactions like \"$3 for Scotch Tape\" would drown out the important threads. But now, with computers, that requirement is no longer valid because we can create as many as we want on the piece of information. For example, what is an expense report but a view of a query on the books i.e. \"show me all the Officer Loan transactions from 4/1 to 4/31, summarized by expense account\""
 						}
 					]
 				},
