@@ -13,7 +13,7 @@ VsPaystub >> amountGuess [
 	^ self 
 		cache: #amount
 		guess: [ 
-			self hocr lines 
+			self resource hocr lines 
 				detect: [ :e | e words size = 3 and: [ e words first string = 'DIRECT' and: [ e words second string = 'DEP' ] ] ]
 				ifFound: [ :line | 
 					| trimmed |
@@ -50,7 +50,7 @@ VsPaystub >> datesRecognized [
 
 { #category : #accessing }
 VsPaystub >> datesRecognizedHocr [
-	^ self hocr words 
+	^ self resource hocr words 
 		inject: Bag new 
 		into: [ :col :word | 
 			| parseResult isNewDate |

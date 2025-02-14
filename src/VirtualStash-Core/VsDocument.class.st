@@ -78,7 +78,7 @@ VsDocument >> amountGuess [
 { #category : #accessing }
 VsDocument >> amountsRecognized [
 	| parseResult |
-	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self ocr.
+	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self contents.
 	^ parseResult isPetit2Success
 		ifTrue: [ parseResult asSet ]
 		ifFalse: [ #() ]
@@ -153,7 +153,9 @@ VsDocument >> cache: aSymbol guess: aBlock [
 { #category : #accessing }
 VsDocument >> contents [
 
-	^ self ocr
+	^ self resource 
+		ifNotNil: #contents
+		ifNil: [ '' ].
 ]
 
 { #category : #accessing }
@@ -285,10 +287,13 @@ VsDocument >> form [
 { #category : #accessing }
 VsDocument >> gtHocrFor: aView [
 	<gtView>
+	
+	(self resource respondsTo: #hocr) ifFalse: [ ^ aView empty ].
+	
 	^ aView forward
 		title: 'hOCR';
 		priority: 2;
-		object: [ self hocr ];
+		object: [ self resource hocr ];
 		view: #gtLinesFor:
 ]
 
@@ -299,12 +304,6 @@ VsDocument >> gtOCRFor: aView [
 		priority: 3;
 		title: 'OCR';
 		text: [ self ocr ]
-]
-
-{ #category : #ocr }
-VsDocument >> hocr [
-
-	^ self resource hocr
 ]
 
 { #category : #accessing }
@@ -322,15 +321,9 @@ VsDocument >> importFile: file [
 VsDocument >> includesSubstring: aString [ 
 	"Case-insensitive"
 
-	^ self hocr lines anySatisfy: [ :line | line string asLowercase includesSubstring: aString asLowercase ]
-]
-
-{ #category : #ocr }
-VsDocument >> ocr [
-
-	^ self resource 
-		ifNotNil: #ocr
-		ifNil: [ '' ].
+	^ self contents 
+		includesSubstring: aString 
+		caseSensitive: false
 ]
 
 { #category : #accessing }
