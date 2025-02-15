@@ -72,7 +72,7 @@ VsBillFile >> itemsGtViewFor: aView [
 		descriptionsSelect: [ :desc | desc propertyAt: #isHighlight ifAbsent: [ false ] ])
 		title: self itemsTypeLabel translated;
 		priority: 10;
-		items: [ self items ];
+		items: [ self items asSortedCollection: #date descending undefinedFirst ];
 		contextItemLabel: 'Delete'
 			action: [ :aWidget :aReceipt | self delete: aReceipt ];
 		actionUpdateButton;
