@@ -78,7 +78,10 @@ VsDocument >> amountGuess [
 { #category : #accessing }
 VsDocument >> amountsRecognized [
 	| parseResult |
-	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self contents.
+	
+	self resource ifNil: [ ^ #() ].
+	
+	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self resource asPlainText.
 	^ parseResult isPetit2Success
 		ifTrue: [ parseResult asSet ]
 		ifFalse: [ #() ]
@@ -274,7 +277,9 @@ VsDocument >> dateGuess [
 
 { #category : #accessing }
 VsDocument >> datesRecognized [
-	^ self resource ifNotNil: #datesRecognized.
+	^ self resource 
+		ifNotNil: #datesRecognized
+		ifNil: [ #() ].
 ]
 
 { #category : #accessing }

@@ -5,11 +5,11 @@ RlEmail >> datesRecognized [
 	| datesInBody |
 	
 	"Adapted from https://kursjan.github.io/petitparser2/scripting.html"
-	datesInBody := Date pp2Parser islandInSea star parse: self mailMessage bodyTextFormatted. "#bodyText may be e.g. base64 encoded"
+	datesInBody := Date pp2Parser islandInSea star parse: self mailMessage asPlainText.
 	
 	^ datesInBody asSet 
-			add: self timestamp asDate;
-			yourself
+		add: self timestamp asDate;
+		yourself
 ]
 
 { #category : #'*VirtualStash-Core' }
