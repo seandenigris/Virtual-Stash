@@ -163,11 +163,15 @@ VsDocument >> contents [
 
 { #category : #accessing }
 VsDocument >> contentsGtViewFor: aView [
-    <gtView>
-    ^ aView pannable
-        title: 'Editor';
-        priority: 0.5;
-        stencil: [ self asEditorElement ]
+	<gtView>
+	
+	self resource ifNil: [ ^ aView empty ].
+	
+	^ aView forward
+		title: 'Contents';
+		priority: 3;
+		object: [ self resource ];
+		view: #contentsGtViewFor:
 ]
 
 { #category : #accessing }
@@ -300,15 +304,6 @@ VsDocument >> gtHocrFor: aView [
 		priority: 2;
 		object: [ self resource hocr ];
 		view: #gtLinesFor:
-]
-
-{ #category : #accessing }
-VsDocument >> gtOCRFor: aView [
-	<gtView>
-	^ aView text
-		priority: 3;
-		title: 'OCR';
-		text: [ self ocr ]
 ]
 
 { #category : #accessing }
