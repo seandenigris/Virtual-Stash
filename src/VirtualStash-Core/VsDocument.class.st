@@ -72,19 +72,28 @@ VsDocument >> amountDescription [
 
 { #category : #accessing }
 VsDocument >> amountGuess [
-	^ self cache: #amount guess: [ self amountsRecognized max ]
+	^ self cache: #amount guess: [ 
+	
+		| totalLine |
+		totalLine := self resource asPlainText lines 
+			detect: [ :line |
+				| saysTotal hasMoney |
+				saysTotal := (line includesSubstring: 'total' caseSensitive: false) and: [ (line includesSubstring: 'subtotal' caseSensitive: false) not ].
+				hasMoney := VsMoneyParser new sea matches: line.
+				saysTotal & hasMoney ]
+			ifNone: [ nil ].
+	
+		totalLine
+			ifNil: [ self amountsRecognized max ]
+			ifNotNil: [ totalLine amountsRecognized ] ]
 ]
 
 { #category : #accessing }
 VsDocument >> amountsRecognized [
-	| parseResult |
 	
-	self resource ifNil: [ ^ #() ].
-	
-	parseResult := (PP2MoneyParser new sea ==> #second) plus parse: self resource asPlainText.
-	^ parseResult isPetit2Success
-		ifTrue: [ parseResult asSet ]
-		ifFalse: [ #() ]
+	^ self resource 
+		ifNotNil: [ :res | res asPlainText amountsRecognized ]
+		ifNil: [ ^ #() ].
 ]
 
 { #category : #accessing }
@@ -228,7 +237,10 @@ VsDocument >> counterpartyGtSearchSource [
 
 { #category : #'ocr-guessing' }
 VsDocument >> counterpartyGuess [
-	^ self addressBook contacts select: [ :c | self resource ocr includesSubstring: c fullName caseSensitive: false ]
+
+	self resource vsCounterpartyGuess ifNotNil: [ :cp | ^ cp ].
+	
+	^ self counterpartiesRecognized atRandom.
 ]
 
 { #category : #accessing }
@@ -273,7 +285,8 @@ VsDocument >> dateGuess [
 		cache: #date
 		guess: [
 			| candidates |
-			candidates := self datesRecognized.
+			candidates := self datesRecognized select: [ :d |
+				d <= Date today ].
 			candidates size = 0
 				ifFalse: [ candidates atRandom ]
 				ifTrue: [ nil ] ]

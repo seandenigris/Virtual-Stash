@@ -40,7 +40,7 @@ VsReceipt >> amountsRecognizedHocr [
 		inject: Bag new 
 		into: [ :col :word | 
 			| parseResult isNewAmt |
-			parseResult := PP2MoneyParser parse: word string onError: [ nil ].
+			parseResult := VsMoneyParser parse: word string onError: [ nil ].
 			isNewAmt := parseResult isNotNil and: [ col noneSatisfy: [ :e | e value = parseResult ] ].
 			isNewAmt ifTrue: [ col add: word -> parseResult ].
 			col ].
@@ -105,6 +105,14 @@ VsReceipt >> businessTransactionDescription [
 VsReceipt >> enterAsPersonal [
 
 	VsGeneralJournal uniqueInstance addEntryFromReceipt: self
+]
+
+{ #category : #'as yet unclassified' }
+VsReceipt >> guessAll [
+
+	self amount: self amountGuess.
+	self date: self dateGuess.
+	self counterparty: self counterpartyGuess
 ]
 
 { #category : #'ocr-guessing' }
