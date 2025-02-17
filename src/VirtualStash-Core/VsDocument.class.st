@@ -85,7 +85,7 @@ VsDocument >> amountGuess [
 	
 		totalLine
 			ifNil: [ self amountsRecognized max ]
-			ifNotNil: [ totalLine amountsRecognized ] ]
+			ifNotNil: [ totalLine amountsRecognized max ] ]
 ]
 
 { #category : #accessing }
