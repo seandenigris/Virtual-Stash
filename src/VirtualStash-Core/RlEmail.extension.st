@@ -24,6 +24,12 @@ RlEmail >> possibleCurrencyAmounts [
 ]
 
 { #category : #'*VirtualStash-Core' }
+RlEmail >> vsAnalysisInput [
+	
+	^ self mailMessage vsAnalysisInput
+]
+
+{ #category : #'*VirtualStash-Core' }
 RlEmail >> vsCounterpartyGuess [
 
 	^ self addressBook contacts 
