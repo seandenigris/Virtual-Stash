@@ -611,17 +611,6 @@ VsImportRule >> extraInfoParser [
 ]
 
 { #category : #accessing }
-VsImportRule >> gtPatchViewFor: aView [
-	<gtView>
-	self patch ifNil: [ ^ aView empty ].
-	^ aView forward
-		title: 'Patch';
-		priority: 25;
-		object: [ self patch ];
-		view: #gtElementViewFor:
-]
-
-{ #category : #accessing }
 VsImportRule >> hash [
 	^ self partyName hash bitXor: self partyAliases hash
 ]
@@ -691,6 +680,17 @@ VsImportRule >> patch [
 			patch := MAPatchMacro new.
 			self buildPatchOperations.
 			patch ].
+]
+
+{ #category : #accessing }
+VsImportRule >> patchGtViewFor: aView [
+	<gtView>
+	self patch ifNil: [ ^ aView empty ].
+	^ aView forward
+		title: 'Patch';
+		priority: 25;
+		object: [ self patch ];
+		view: #elementGtViewFor:
 ]
 
 { #category : #applying }
