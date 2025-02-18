@@ -5,7 +5,7 @@ MpRelatableEntity >> isVendorFor: aDocument [
 
 	
 	| includesName |
-	includesName := (aDocument contents includesSubstring: self fullName  caseSensitive: false).
+	includesName := (aDocument resource vsAnalysisInput includesSubstring: self fullName  caseSensitive: false).
 	includesName ifTrue: [ ^ true ].
 	
 	self website ifNotNil: [ :url | 

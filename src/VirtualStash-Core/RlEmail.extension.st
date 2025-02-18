@@ -5,7 +5,7 @@ RlEmail >> datesRecognized [
 	| datesInBody |
 	
 	"Adapted from https://kursjan.github.io/petitparser2/scripting.html"
-	datesInBody := Date pp2Parser islandInSea star parse: self asPlainText.
+	datesInBody := Date pp2Parser islandInSea star parse: self vsAnalysisInput.
 	
 	^ datesInBody asSet 
 		add: self timestamp asDate;

@@ -75,7 +75,7 @@ VsDocument >> amountGuess [
 	^ self cache: #amount guess: [ 
 	
 		| totalLine |
-		totalLine := self resource asPlainText lines 
+		totalLine := self resource vsAnalysisInput lines 
 			detect: [ :line |
 				| saysTotal hasMoney |
 				saysTotal := (line includesSubstring: 'total' caseSensitive: false) and: [ (line includesSubstring: 'subtotal' caseSensitive: false) not ].
@@ -92,7 +92,7 @@ VsDocument >> amountGuess [
 VsDocument >> amountsRecognized [
 	
 	^ self resource 
-		ifNotNil: [ :res | res asPlainText amountsRecognized ]
+		ifNotNil: [ :res | res vsAnalysisInput amountsRecognized ]
 		ifNil: [ ^ #() ].
 ]
 
