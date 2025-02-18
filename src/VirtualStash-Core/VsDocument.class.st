@@ -196,7 +196,13 @@ VsDocument >> counterpartiesGtSpotterFor: aSearch [
 
 { #category : #'ocr-guessing' }
 VsDocument >> counterpartiesRecognized [
-	^ self addressBook contacts select: [ :c | c isVendorFor: self ]
+
+	| plainText |
+	
+	"This caching statement resulted in an ~800x speedup in real world testing"
+	plainText := self resource vsAnalysisInput.
+	
+	^ self addressBook contacts select: [ :c | c vsIsMentionedIn: plainText ]
 ]
 
 { #category : #accessing }

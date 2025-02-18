@@ -13,3 +13,17 @@ MpRelatableEntity >> isVendorFor: aDocument [
 	
 	^ false
 ]
+
+{ #category : #'*VirtualStash-Core' }
+MpRelatableEntity >> vsIsMentionedIn: aString [
+
+	
+	| includesName |
+	includesName := aString includesSubstring: self fullName  caseSensitive: false.
+	includesName ifTrue: [ ^ true ].
+	
+	self website ifNotNil: [ :url | 
+		^ aString includesSubstring: url host ].
+	
+	^ false
+]
