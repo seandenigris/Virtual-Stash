@@ -74,14 +74,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-01-27T21:17:17.410679-05:00"
+						"dateAndTimeString" : "2025-02-17T21:13:23.520013-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "cap3hBzpDQCCEOSnB0XS9w=="
 				},
-				"code" : "emails := CwMacMail new selectedMessagesImport."
+				"code" : "emails := RlEmail allFromMailClientSelectionImport.\rself assert: emails size = 1.\remail := emails first."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -108,14 +108,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-01-27T21:18:45.609194-05:00"
+						"dateAndTimeString" : "2025-02-17T21:13:59.63819-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "8p6AhxzpDQCCvlUQB0XS9w=="
 				},
-				"code" : "emails collect: [ :eml |\r\tbill := VsBill fromResourceable: eml.\r\tVsBooks personal billFile items add: bill ]"
+				"code" : "bill := VsBill fromResourceable: email.\rVsBooks personal billFile items add: bill"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-17T21:14:06.275436-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-17T21:15:06.697341-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "hYiv7sLqDQC1Q2FQD7XRGw=="
+				},
+				"code" : "email subject "
 			},
 			{
 				"__type" : "textSnippet",
@@ -142,7 +176,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-01-27T21:22:27.460629-05:00"
+						"dateAndTimeString" : "2025-01-27T21:22:39.201336-05:00"
 					}
 				},
 				"uid" : {
@@ -152,7 +186,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Immediately I notice that bills seem to expect PDFs. I am g"
+				"string" : "Immediately I notice that bills seem to expect PDFs. I am getting an error message about emails DNU `ocr`"
 			}
 		]
 	},
