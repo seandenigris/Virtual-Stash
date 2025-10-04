@@ -50,7 +50,7 @@ VsItemPrice >> date: anObject [
 { #category : #accessing }
 VsItemPrice >> hash [
 
-	^ ((self item hash bitXor: self quantity hash) bitXor: self unitPrice hash) bitXor: self date hash
+	^ (self item hash bitXor: self unitPrice hash) bitXor: self date hash
 ]
 
 { #category : #accessing }
