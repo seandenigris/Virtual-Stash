@@ -1,12 +1,13 @@
 Class {
-	#name : #VsMAMoneyStringWriter,
-	#superclass : #MAStringWriter,
+	#name : 'VsMAMoneyStringWriter',
+	#superclass : 'MAStringWriter',
 	#traits : 'AmTMoneyStringWriter',
 	#classTraits : 'AmTMoneyStringWriter classTrait',
-	#category : #'VirtualStash-Core'
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 VsMAMoneyStringWriter >> visitMoneyDescription: aDescription [
 	self write: self object on: self stream
 ]

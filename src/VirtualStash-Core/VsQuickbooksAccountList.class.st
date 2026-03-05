@@ -1,16 +1,18 @@
 Class {
-	#name : #VsQuickbooksAccountList,
-	#superclass : #Object,
-	#category : 'VirtualStash-Core-QuickBooks'
+	#name : 'VsQuickbooksAccountList',
+	#superclass : 'Object',
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQuickbooksAccountList >> allAccounts [
 
 	^ VsQbAccountListIIF new accounts.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQuickbooksAccountList >> expenseAccounts [
 
 	| temp |

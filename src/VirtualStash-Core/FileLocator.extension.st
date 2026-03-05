@@ -1,6 +1,6 @@
-Extension { #name : #FileLocator }
+Extension { #name : 'FileLocator' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 FileLocator class >> virtualStashData [
 	^ self origin: #virtualStashData
 ]

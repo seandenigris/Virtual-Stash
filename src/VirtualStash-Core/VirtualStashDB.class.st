@@ -8,18 +8,20 @@ self restoreLastBackup.
 
 "
 Class {
-	#name : #VirtualStashDB,
-	#superclass : #SpFileDatabase,
-	#category : #'VirtualStash-Core-Persistence'
+	#name : 'VirtualStashDB',
+	#superclass : 'SpFileDatabase',
+	#category : 'VirtualStash-Core-Persistence',
+	#package : 'VirtualStash-Core',
+	#tag : 'Persistence'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VirtualStashDB class >> backupDirectoryParent [
 
 	^ FileLocator virtualStashData
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 VirtualStashDB class >> menuCommandOn: aBuilder [  
 	<worldMenu>
 	(aBuilder item: #'Virtual Stash')
@@ -32,7 +34,7 @@ VirtualStashDB class >> menuCommandOn: aBuilder [
 				action: [ VsReceiptBrowser open ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VirtualStashDB class >> schema [
 
 	^ { 

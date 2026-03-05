@@ -1,13 +1,15 @@
 Class {
-	#name : #GtHomeVirtualStashSection,
-	#superclass : #GtHomeSection,
+	#name : 'GtHomeVirtualStashSection',
+	#superclass : 'GtHomeSection',
 	#instVars : [
 		'cardsContainer'
 	],
-	#category : 'VirtualStash-Core-GToolkit'
+	#category : 'VirtualStash-Core-GToolkit',
+	#package : 'VirtualStash-Core',
+	#tag : 'GToolkit'
 }
 
-{ #category : #stencils }
+{ #category : 'stencils' }
 GtHomeVirtualStashSection >> addressBookButton [
 	^ GtToolButtonStencil new 
 		title: 'Address Book';
@@ -22,7 +24,7 @@ GtHomeVirtualStashSection >> addressBookButton [
 		description: 'Inspect default address book'.
 ]
 
-{ #category : #stencils }
+{ #category : 'stencils' }
 GtHomeVirtualStashSection >> booksButton [
 	^ GtToolButtonStencil new 
 		title: 'Books - Personal';
@@ -37,7 +39,7 @@ GtHomeVirtualStashSection >> booksButton [
 		description: 'Inspect personal books'.
 ]
 
-{ #category : #stencils }
+{ #category : 'stencils' }
 GtHomeVirtualStashSection >> bridgeButton [
 	^ GtToolButtonStencil new 
 		title: 'PBridge - Restart';
@@ -48,7 +50,7 @@ GtHomeVirtualStashSection >> bridgeButton [
 		description: 'Stop and then start PBApplication'.
 ]
 
-{ #category : #stencils }
+{ #category : 'stencils' }
 GtHomeVirtualStashSection >> coderButton [
 	^ GtToolButtonStencil new 
 		title: 'Coder';
@@ -56,7 +58,7 @@ GtHomeVirtualStashSection >> coderButton [
 		action: [ :card | self error: 'how to?' ].
 ]
 
-{ #category : #'api - instantiation' }
+{ #category : 'api - instantiation' }
 GtHomeVirtualStashSection >> create [
 	| sectionContainer |
 	sectionContainer := self newSectionContainer.
@@ -73,7 +75,7 @@ GtHomeVirtualStashSection >> create [
 	^ sectionContainer
 ]
 
-{ #category : #stencils }
+{ #category : 'stencils' }
 GtHomeVirtualStashSection >> dataButton [
 	^ GtToolButtonStencil new 
 		title: 'Data';

@@ -1,6 +1,6 @@
 Class {
-	#name : #VsPre2013Books,
-	#superclass : #Object,
+	#name : 'VsPre2013Books',
+	#superclass : 'Object',
 	#instVars : [
 		'reimbursibleExpenses',
 		'accountNames',
@@ -9,40 +9,42 @@ Class {
 	#classInstVars : [
 		'pre2013'
 	],
-	#category : 'VirtualStash-Core-Pre2013'
+	#category : 'VirtualStash-Core-Pre2013',
+	#package : 'VirtualStash-Core',
+	#tag : 'Pre2013'
 }
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPre2013Books class >> restoreFrom: anObject [
 
 	pre2013 := anObject.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPre2013Books class >> spData [
 
 	^ pre2013
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsPre2013Books class >> uniqueInstance [
 
 	^ pre2013 ifNil: [ pre2013 := self new ].
 ]
 
-{ #category : #'paying credit cards' }
+{ #category : 'paying credit cards' }
 VsPre2013Books >> accounts [
 
 	^ accountNames.
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> category: aString [
 
 	^ accountNames add: aString.
 ]
 
-{ #category : #expenses }
+{ #category : 'expenses' }
 VsPre2013Books >> expenseReportFor: month of: year [
 	"See expenseReportFor:of: for acceptable argument values"
 
@@ -53,25 +55,25 @@ VsPre2013Books >> expenseReportFor: month of: year [
 	^ VsExpenseReport on: monthlyExpenses.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsPre2013Books >> expenses [
 
 	^ reimbursibleExpenses.
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> expensesCollect: aBlock [
 
 	^ reimbursibleExpenses collect: aBlock.
 ]
 
-{ #category : #expenses }
+{ #category : 'expenses' }
 VsPre2013Books >> expensesDo: aBlock [
 
 	reimbursibleExpenses do: aBlock.
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> expensesDuring: aTimeSpan [
 
 	| unsorted |
@@ -79,7 +81,7 @@ VsPre2013Books >> expensesDuring: aTimeSpan [
 	^ unsorted sort: [ :a :b | a date < b date ].
 ]
 
-{ #category : #expenses }
+{ #category : 'expenses' }
 VsPre2013Books >> expensesFor: month of: year [
 	"The arguments can be numbers, numbers as strings. For the month, the name also.
 	E.g. VsBooks expensesFor: 1 | '1' | 'January' of: 2008 | '2008'"
@@ -90,29 +92,29 @@ VsPre2013Books >> expensesFor: month of: year [
 	^ reimbursibleExpenses select: [ :e | e date >= firstDayOfMonth and: [ e date <= lastDayOfMonth ] ].
 ]
 
-{ #category : #expenses }
+{ #category : 'expenses' }
 VsPre2013Books >> expensesFrom: startDate to: endDate [
 
 	^ reimbursibleExpenses select: [ :e | e date >= startDate and: [ e date <= endDate ]]
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> expensesSelect: aBlock [
 
 	^ reimbursibleExpenses select: aBlock.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPre2013Books >> generalJournal [
 	^ generalJournal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPre2013Books >> generalJournal: anObject [
 	generalJournal := anObject
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> initialize [
 
 	super initialize.
@@ -120,7 +122,7 @@ VsPre2013Books >> initialize [
 	accountNames := Set new.
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsPre2013Books >> on: aDate iPaid: amount for: descriptionString categorizeAs: categoryString [ 
 
 	reimbursibleExpenses add: (VsExpense
@@ -130,7 +132,7 @@ VsPre2013Books >> on: aDate iPaid: amount for: descriptionString categorizeAs: c
 		inCategory: (self category: categoryString)).
 ]
 
-{ #category : #'paying credit cards' }
+{ #category : 'paying credit cards' }
 VsPre2013Books >> on: aDate iPaidAmex: amountNumber [
 
 	reimbursibleExpenses add: (VsExpense

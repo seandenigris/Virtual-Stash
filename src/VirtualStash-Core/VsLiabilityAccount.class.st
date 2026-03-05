@@ -3,12 +3,14 @@ Liabilities is the group of things on which you owe money. Your liabilities coul
 
 "
 Class {
-	#name : #VsLiabilityAccount,
-	#superclass : #VsAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsLiabilityAccount',
+	#superclass : 'VsAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsLiabilityAccount >> normalBalance [
 	^ #credit
 ]

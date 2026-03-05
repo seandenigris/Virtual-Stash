@@ -1,6 +1,6 @@
 Class {
-	#name : #VsCounterpartyImportElement,
-	#superclass : #BrVerticalPane,
+	#name : 'VsCounterpartyImportElement',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'transactionGroup',
 		'editorInputElement',
@@ -10,10 +10,12 @@ Class {
 		'input',
 		'memoInputElement'
 	],
-	#category : #'VirtualStash-Core-GToolkit'
+	#category : 'VirtualStash-Core-GToolkit',
+	#package : 'VirtualStash-Core',
+	#tag : 'GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement class >> example [
 	<gtExample>
 	^ self new
@@ -21,7 +23,7 @@ VsCounterpartyImportElement class >> example [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> buildChangesPreview [
 	| result |
 	self flag: 'experimental; unused'.
@@ -37,7 +39,7 @@ VsCounterpartyImportElement >> buildChangesPreview [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> buildSaveButton [
 	^ BrButton new
 		beSmallSize;
@@ -68,12 +70,12 @@ VsCounterpartyImportElement >> buildSaveButton [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> counterparty [
 	^ self transactionGroup counterparty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> initialize [
 	| formElement toolbar saveButton wwwButton |
 	
@@ -151,7 +153,7 @@ VsCounterpartyImportElement >> initialize [
 			editorInputElement text: item first ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> inputElement: anElement named: aString in: formElement [
 	| labelElement text |
 	labelElement := BrLabel new text: aString, ':'; aptitude: BrGlamorousLabelAptitude.
@@ -165,12 +167,12 @@ VsCounterpartyImportElement >> inputElement: anElement named: aString in: formEl
 	^ anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> inputString [
 	^ self transactionGroup input counterpartyName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> matchList [
 	matchList := BrColumnedList new
 		hMatchParent;
@@ -210,12 +212,12 @@ VsCounterpartyImportElement >> matchList [
 	^ matchList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> paymentProcessor [
 	^ self transactionGroup input paymentProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> save [
 
 	| newName message party |
@@ -234,12 +236,12 @@ VsCounterpartyImportElement >> save [
 	party aliases add: self inputString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> transactionGroup [
 	^ transactionGroup
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCounterpartyImportElement >> transactionGroup: anObject [
 	
 	transactionGroup := anObject.

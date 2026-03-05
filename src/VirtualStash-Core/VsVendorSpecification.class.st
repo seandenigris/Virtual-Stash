@@ -1,10 +1,12 @@
 Class {
-	#name : #VsVendorSpecification,
-	#superclass : #TestCase,
-	#category : 'VirtualStash-Core-Receipts-Specification'
+	#name : 'VsVendorSpecification',
+	#superclass : 'TestCase',
+	#category : 'VirtualStash-Core-Receipts-Specification',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts-Specification'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 VsVendorSpecification >> testMatchName [
 	| vendor receipt |
 	receipt := VsReceiptDouble new

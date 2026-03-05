@@ -4,8 +4,8 @@ For discussion on how/why to set up, see {{gtClass:VsAccount|show=#gtCoderCommen
 
 "
 Class {
-	#name : #VsBooks,
-	#superclass : #Object,
+	#name : 'VsBooks',
+	#superclass : 'Object',
 	#instVars : [
 		'title',
 		'generalJournal',
@@ -22,28 +22,30 @@ Class {
 		'business',
 		'oldPersonal'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsBooks class >> all [
 	^ { self personal. self business }
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsBooks class >> business [
 
 	^ business ifNil: [ business := self new title: 'Business'; yourself ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks class >> ensurePaymentProcessorNamed: aString [
 	| p |
 	p := MpAddressBook default ensureOrganizationNamed: aString.
 	^ self paymentProcessors add: p.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsBooks class >> exampleHarryPotter [
 	<gtExample>
 	^ self
@@ -58,23 +60,23 @@ VsBooks class >> exampleHarryPotter [
 		then: [ :books | books generalJournal entries should haveSize: 2 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks class >> paymentProcessors [
 	^ PaymentProcessors ifNil: [ PaymentProcessors := Set new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks class >> paymentProcessors: anObject [
 	PaymentProcessors := anObject
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsBooks class >> personal [
 
 	^ personal ifNil: [ personal := self new title: 'Personal'; yourself ].
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsBooks class >> restoreFrom: aCollection [
 
 	personal := aCollection first.
@@ -83,18 +85,18 @@ VsBooks class >> restoreFrom: aCollection [
 	PaymentProcessors := aCollection fourth
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsBooks class >> spData [
 
 	^ { personal. business. oldPersonal. PaymentProcessors }
 ]
 
-{ #category : #'paying credit cards' }
+{ #category : 'paying credit cards' }
 VsBooks >> accounts [
 	^ self chartOfAccounts ifNotNil: [ :coa | coa accounts ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> accountsGtSearchFor: aStep [
 	<gtSearch>
 	^ (self chartOfAccounts accountsGtSearchFor: aStep)
@@ -102,19 +104,19 @@ VsBooks >> accountsGtSearchFor: aStep [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> billFile [
 
 	^ billFile ifNil: [ billFile := VsBillFile new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> billFile: anObject [
 
 	billFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> billsGtViewOn: aView [
 	<gtView>
 	
@@ -128,29 +130,29 @@ VsBooks >> billsGtViewOn: aView [
 			action: [ :aButton :aTab | aButton phlow spawnObject: self billFile ]
 ]
 
-{ #category : #'account-compatibility' }
+{ #category : 'account-compatibility' }
 VsBooks >> books [
 	"Baskstop to simplify account implementation"
 	^ self
 ]
 
-{ #category : #'account-compatibility' }
+{ #category : 'account-compatibility' }
 VsBooks >> chart [
 	"Polymorphic with account to find children; maybe combine this and #accounts into something that works for both? Maybe #chartOfAccounts"
 	^ self chartOfAccounts accounts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> chartOfAccounts [
 	^ self maLazyInstVarUsing: self chartOfAccountsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> chartOfAccounts: aCollection [
 	chartOfAccounts := aCollection
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsBooks >> chartOfAccountsDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -160,7 +162,7 @@ VsBooks >> chartOfAccountsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> chartOfAccountsGtViewOn: aView [
 	<gtView>
 	
@@ -172,29 +174,29 @@ VsBooks >> chartOfAccountsGtViewOn: aView [
 		inspectButtonFor: [ self chartOfAccounts ]
 ]
 
-{ #category : #serializing }
+{ #category : 'serializing' }
 VsBooks >> fuelOutAs: base [
 	"Stash obsolete data somewhere so we can start over"
 	FLSerializer serialize: self toFileNamed: (FileLocator virtualStashData / 'Fuelouts' / base, 'fuel') fullName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> fullName [
 	"To be polymorphic with Account. Other alternative is #accountFullName, which would be clearer in this context but redundant from account perspective"
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> generalJournal [
 	^ generalJournal ifNil: [ generalJournal := VsGeneralJournal new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> generalJournal: anObject [
 	generalJournal := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> generalJournalElementExample [
 	| ts tFields container rowTemplate cellTemplate blankTemplate headerCells anyT anyS sFields tCells sCells cell1Widths newWidth |
 	ts := self generalJournal transactions first: 5.
@@ -290,7 +292,7 @@ VsBooks >> generalJournalElementExample [
 	^ container
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> generalJournalGtViewOn: aView [
 	<gtView>
 	
@@ -302,7 +304,7 @@ VsBooks >> generalJournalGtViewOn: aView [
 		inspectButtonFor: [ self generalJournal ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> importAccountsFromGnuCashCSV: file [
 	| accnts |
 	self accounts isEmptyOrNil ifFalse: [ self error: 'this doesn''t handle books with existing accounts' ].
@@ -311,19 +313,19 @@ VsBooks >> importAccountsFromGnuCashCSV: file [
 	self chartOfAccounts accounts: accnts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> importDefaultAccountsFromGnuCash [
 	self importAccountsFromGnuCashCSV: '/Users/sean/Documents/Reference/Smalltalk/User Data/Virtual Stash/Accounts/gnu_cash_account_tree.csv' asFileReference.
 ]
 
-{ #category : #'personal expenses' }
+{ #category : 'personal expenses' }
 VsBooks >> initialize [
 
 	super initialize.
 	accounts := Set new.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsBooks >> printOn: aStream [
 	aStream
 		nextPutAll: self title;
@@ -332,7 +334,7 @@ VsBooks >> printOn: aStream [
 		nextPutAll: ' transactions'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsBooks >> printRegister: account [
 	| transactions balance |
 	transactions := self generalJournal transactions select: [ :trans | trans accounts includes: account ].
@@ -346,19 +348,19 @@ VsBooks >> printRegister: account [
 				separatedBy: [ str crlf ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> receiptFile [
 
 	^ receiptFile ifNil: [ receiptFile := VsReceiptFile new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> receiptFile: anObject [
 
 	receiptFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> receiptsGtViewOn: aView [
 	<gtView>
 	
@@ -372,19 +374,19 @@ VsBooks >> receiptsGtViewOn: aView [
 			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> taxDocuments [
 
 	^ taxDocuments ifNil: [ taxDocuments := SortedCollection sortUsing: #year descending undefinedFirst ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> taxDocuments: anObject [
 
 	taxDocuments := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> taxDocumentsGtViewOn: aView [
 	<gtView>
 	
@@ -395,17 +397,17 @@ VsBooks >> taxDocumentsGtViewOn: aView [
 		inspectButtonFor: [ self taxDocuments ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> title [
 	^ title ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> title: anObject [
 	title := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> transactionImporter [
 	"Example:
 		self transactionImporter
@@ -416,7 +418,7 @@ VsBooks >> transactionImporter [
 		targetCollection: self generalJournal transactions.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBooks >> transactionsGtSearchFor: aStep [
 	<gtSearch>
 	^ (self generalJournal transactionsGtSearchFor: aStep)

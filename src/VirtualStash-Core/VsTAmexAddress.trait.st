@@ -1,9 +1,11 @@
 Trait {
-	#name : #VsTAmexAddress,
-	#category : #'VirtualStash-Core-Importing-Amex'
+	#name : 'VsTAmexAddress',
+	#category : 'VirtualStash-Core-Importing-Amex',
+	#package : 'VirtualStash-Core',
+	#tag : 'Importing-Amex'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTAmexAddress >> amexCityAndState: aString [
 	| lines |
 	lines := aString lines.
@@ -12,7 +14,7 @@ VsTAmexAddress >> amexCityAndState: aString [
 		state: lines second.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTAmexAddress >> amexCityAndStateDescription [
 	<magritteDescription>
 	^ MAStringDescription new

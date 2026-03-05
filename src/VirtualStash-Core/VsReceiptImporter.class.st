@@ -1,25 +1,27 @@
 Class {
-	#name : #VsReceiptImporter,
-	#superclass : #Object,
+	#name : 'VsReceiptImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'receipt',
 		'patch'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> amount [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> apply [
 	^ self patch execute
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> buildPatchOperations [
 	self
 		patchSet: #amountDescription to: self amount;
@@ -27,31 +29,31 @@ VsReceiptImporter >> buildPatchOperations [
 		patchSet: #dateDescription to: self date.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> counterparty [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> date [
 
 	^ self receipt resource date translateToUTC
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> emailRecipients [
 
 	^ self receipt resource recipients
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> emailSender [
 
 	^ self receipt resource sender
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> patch [
 	^ patch 
 		ifNotNil: [ patch ]
@@ -61,7 +63,7 @@ VsReceiptImporter >> patch [
 			patch ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> patchGtViewFor: aView [
 	<gtView>
 	self patch ifNil: [ ^ aView empty ].
@@ -72,7 +74,7 @@ VsReceiptImporter >> patchGtViewFor: aView [
 		view: #elementGtViewFor:
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImporter >> patchSet: fieldSymbol to: anObject [
 
 	self patch 
@@ -81,12 +83,12 @@ VsReceiptImporter >> patchSet: fieldSymbol to: anObject [
 		to: anObject.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptImporter >> receipt [
 	^ receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptImporter >> receipt: anObject [
 	receipt := anObject
 ]

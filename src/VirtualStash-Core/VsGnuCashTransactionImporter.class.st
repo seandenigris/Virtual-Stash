@@ -4,39 +4,40 @@ GnuCash transaction export CSV files have rows which may either represent:
 - a split contained by the previous transaction (from a prior row)
 "
 Class {
-	#name : #VsGnuCashTransactionImporter,
-	#superclass : #MACSVTwoStageImporter,
+	#name : 'VsGnuCashTransactionImporter',
+	#superclass : 'MACSVTwoStageImporter',
 	#instVars : [
 		'addressBook',
 		'books',
 		'targetCollection'
 	],
-	#category : #'VirtualStash-Core'
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> addressBook [
 	"By default, leave counterparties as strings, don't convert to domain objects. This is because e.g. GnuCash doesn't have a strong counterparty concept, but a generic description, which could be any unstructured text and might lead to false matches"
 	^ addressBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> addressBook: anObject [
 
 	addressBook := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> books [
 	^ books
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> books: anObject [
 	books := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 	^ aCollectionOfDictionaries
 		inject: OrderedCollection new
@@ -55,7 +56,7 @@ VsGnuCashTransactionImporter >> convertToDomainObjects: aCollectionOfDictionarie
 			col ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> execute [
 	| transactions |
 	transactions := super execute.
@@ -63,7 +64,7 @@ VsGnuCashTransactionImporter >> execute [
 	^ transactions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> initializeSplit: aSplit fromRecord: aDict [
 
 	aSplit accountSource: self books.
@@ -88,7 +89,7 @@ VsGnuCashTransactionImporter >> initializeSplit: aSplit fromRecord: aDict [
 					using: [ :s | VsReconciliationStatus fromGnuCashCode: s ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: aDict [
 	
 	self 
@@ -115,13 +116,13 @@ VsGnuCashTransactionImporter >> initializeTransaction: aTransaction fromRecord: 
 	^ aTransaction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> targetCollection [
 
 	^ targetCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGnuCashTransactionImporter >> targetCollection: anObject [
 
 	targetCollection := anObject

@@ -1,31 +1,33 @@
 Class {
-	#name : #VsExpenseReport,
-	#superclass : #Object,
+	#name : 'VsExpenseReport',
+	#superclass : 'Object',
 	#instVars : [
 		'expenses'
 	],
-	#category : 'VirtualStash-Core-Pre2013'
+	#category : 'VirtualStash-Core-Pre2013',
+	#package : 'VirtualStash-Core',
+	#tag : 'Pre2013'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseReport class >> on: expenses [
 
 	^ self new setExpenses: expenses.
 ]
 
-{ #category : #text }
+{ #category : 'text' }
 VsExpenseReport >> accountTotalsColumnHeadings [
 
 	^ #('Account' 'Total').
 ]
 
-{ #category : #text }
+{ #category : 'text' }
 VsExpenseReport >> accountTotalsTitle [
 
 	^ 'Monthly Totals By Expense Account'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsExpenseReport >> accountsAndTotalsDo: aBlock [
 
 	| accountsWithActivity |
@@ -36,31 +38,31 @@ VsExpenseReport >> accountsAndTotalsDo: aBlock [
 		aBlock value: a value: total ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseReport >> expenses [
 
 	^ expenses.
 ]
 
-{ #category : #text }
+{ #category : 'text' }
 VsExpenseReport >> reportSubSubTitle [
 
 	^ 'Name: Sean DeNigris'.
 ]
 
-{ #category : #text }
+{ #category : 'text' }
 VsExpenseReport >> reportSubTitle [
 
 	^ 'Monthly Expense Report - January 2008'.
 ]
 
-{ #category : #text }
+{ #category : 'text' }
 VsExpenseReport >> reportTitle [
 
 	^ 'Clipper Adams, Inc.'.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseReport >> setExpenses: someExpenses [
 
 	expenses := someExpenses.

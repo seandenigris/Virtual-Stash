@@ -1,10 +1,12 @@
 Class {
-	#name : #VsAmazonReceiptImporter,
-	#superclass : #VsReceiptImporter,
-	#category : #'VirtualStash-Core-Receipts'
+	#name : 'VsAmazonReceiptImporter',
+	#superclass : 'VsReceiptImporter',
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsAmazonReceiptImporter >> amount [
 
 	| input totalLabelLineIdx totalLine |
@@ -15,13 +17,13 @@ VsAmazonReceiptImporter >> amount [
 	^ VsMoneyParser new parse: totalLine trimmed
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsAmazonReceiptImporter >> appliesTo: aVsReceipt [ 
 	
 	^ (aVsReceipt resource isKindOf: RlEmail) and: [ aVsReceipt resource senderEmail addressString = 'auto-confirm@amazon.com' ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsAmazonReceiptImporter >> counterparty [
 
 	^ self emailSender

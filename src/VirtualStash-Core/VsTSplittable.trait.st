@@ -1,9 +1,11 @@
 Trait {
-	#name : #VsTSplittable,
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#name : 'VsTSplittable',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTSplittable >> accountDescription [
 	<magritteDescription>
 
@@ -15,7 +17,7 @@ VsTSplittable >> accountDescription [
 			yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTSplittable >> creditAmountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription vsNew
@@ -26,7 +28,7 @@ VsTSplittable >> creditAmountDescription [
 			yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTSplittable >> debitAmountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription vsNew
@@ -37,7 +39,7 @@ VsTSplittable >> debitAmountDescription [
 		yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTSplittable >> statusDescription [
 	<magritteDescription>
 

@@ -1,41 +1,43 @@
 Class {
-	#name : #VsItem,
-	#superclass : #Object,
+	#name : 'VsItem',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItem >> displayStringOn: aStream [
 
 	self name ifNotNil: [ :n | aStream << n ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItem >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItem >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsItem >> price [
 	
 	^ VsPriceList uniqueInstance priceFor: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItem >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItem >> unknownPrice [
 
 	^ VsUnknownPrice new

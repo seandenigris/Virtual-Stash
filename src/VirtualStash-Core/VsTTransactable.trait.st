@@ -1,9 +1,11 @@
 Trait {
-	#name : #VsTTransactable,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsTTransactable',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTTransactable >> counterpartyDescription [
 	
 	<magritteDescription>
@@ -15,7 +17,7 @@ VsTTransactable >> counterpartyDescription [
 			yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTTransactable >> dateDescription [
 	<magritteDescription>
 
@@ -27,7 +29,7 @@ VsTTransactable >> dateDescription [
 			yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTTransactable >> numberDescription [
 	"Also called a 'reference number' e.g. in Quickbooks, or `reference` but we stick with the simplest term that conveys the meaning (also ==reference== could be confusing since we're heavily using Magritte"
 	<magritteDescription>

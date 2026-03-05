@@ -1,16 +1,18 @@
 Class {
-	#name : #VsQbIncomeAccountType,
-	#superclass : #VsQbAccountType,
-	#category : 'VirtualStash-Core-QuickBooks'
+	#name : 'VsQbIncomeAccountType',
+	#superclass : 'VsQbAccountType',
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbIncomeAccountType class >> description [
 	
 	^ 'Income'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbIncomeAccountType class >> iifDescription [
 
 	^ 'INC'.

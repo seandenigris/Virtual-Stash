@@ -1,14 +1,16 @@
 Class {
-	#name : #VsAccountBalance,
-	#superclass : #Object,
+	#name : 'VsAccountBalance',
+	#superclass : 'Object',
 	#instVars : [
 		'account',
 		'balance'
 	],
-	#category : 'VirtualStash-Core-Pre2013'
+	#category : 'VirtualStash-Core-Pre2013',
+	#package : 'VirtualStash-Core',
+	#tag : 'Pre2013'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsAccountBalance class >> of: accnt is: aNumber [
 
 	^ self new
@@ -17,25 +19,25 @@ VsAccountBalance class >> of: accnt is: aNumber [
 			yourself.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsAccountBalance >> account: accnt [
 
 	account := accnt.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsAccountBalance >> accountName [
 
 	^ account.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsAccountBalance >> balance [
 
 	^ balance.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsAccountBalance >> balance: aNumber [
 
 	balance := aNumber.

@@ -1,13 +1,15 @@
 Class {
-	#name : #QbAccountsTest,
-	#superclass : #TestCase,
+	#name : 'QbAccountsTest',
+	#superclass : 'TestCase',
 	#classInstVars : [
 		'accounts'
 	],
-	#category : 'VirtualStash-Core-Tests'
+	#category : 'VirtualStash-Core-Tests',
+	#package : 'VirtualStash-Core',
+	#tag : 'Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QbAccountsTest >> test1 [
 
 	| accounts |

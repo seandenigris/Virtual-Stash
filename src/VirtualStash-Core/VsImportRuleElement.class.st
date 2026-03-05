@@ -1,14 +1,15 @@
 Class {
-	#name : #VsImportRuleElement,
-	#superclass : #BlElement,
+	#name : 'VsImportRuleElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'target',
 		'rule'
 	],
-	#category : 'VirtualStash-Core'
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> initialize [
 	super initialize.
 	self
@@ -24,17 +25,17 @@ VsImportRuleElement >> initialize [
 				label: 'Apply') as: #button
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> rule [
 	^ rule
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> rule: anObject [
 	rule := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> rule: aRule targetingGroup: group [
 	| newLabel newTarget newButtonLabel |
 	self rule: aRule.
@@ -47,12 +48,12 @@ VsImportRuleElement >> rule: aRule targetingGroup: group [
 	(self childNamed: #button) label: newButtonLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRuleElement >> target: anObject [
 	target := anObject
 ]

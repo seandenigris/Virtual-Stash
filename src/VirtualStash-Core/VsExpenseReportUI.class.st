@@ -2,8 +2,8 @@
 self open.
 "
 Class {
-	#name : #VsExpenseReportUI,
-	#superclass : #SpPresenter,
+	#name : 'VsExpenseReportUI',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'addButton',
 		'list',
@@ -16,16 +16,18 @@ Class {
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : #'VirtualStash-Core-UI'
+	#category : 'VirtualStash-Core-UI',
+	#package : 'VirtualStash-Core',
+	#tag : 'UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseReportUI class >> open [
 
 	^ self new openWithSpec.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI class >> spec [
 	<spec: #default>
 
@@ -38,37 +40,37 @@ VsExpenseReportUI class >> spec [
 			yourself.
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 VsExpenseReportUI class >> title [
 
 	^ 'Expenses for '.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> addButton [
 
 	^ addButton.
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 VsExpenseReportUI >> addExpense [
 
 	VsExpenseEditor enterExpenseInto: VsPre2013Books uniqueInstance.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseReportUI >> expenses [
 
 	^ VsPre2013Books uniqueInstance expenses.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseReportUI >> expensesDuring: aMonth [ 
 
 	^ VsPre2013Books uniqueInstance expensesDuring: aMonth.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializeAddButton [
 
 	addButton
@@ -76,7 +78,7 @@ VsExpenseReportUI >> initializeAddButton [
 		action: [ self addExpense ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializeDateChooser [
 
 	
@@ -101,7 +103,7 @@ VsExpenseReportUI >> initializeDateChooser [
 		setSelectedIndex: yearItems size.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializeList [
 
 	| expensesThisMonth |
@@ -116,7 +118,7 @@ VsExpenseReportUI >> initializeList [
 				e amount printShowingDecimalPlaces: 2 } ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializePresenter [
 
 	month whenSelectedItemChanged: [ :e |
@@ -125,7 +127,7 @@ VsExpenseReportUI >> initializePresenter [
 		self showExpensesFor: newMonth ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializeSummary [
 
 	summary
@@ -136,7 +138,7 @@ VsExpenseReportUI >> initializeSummary [
 				e balance printShowingDecimalPlaces: 2 } ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseReportUI >> initializeWidgets [
 
 	self instantiateModels: #(
@@ -155,27 +157,27 @@ VsExpenseReportUI >> initializeWidgets [
 		initializeAddButton.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> list [
 	^ list
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> month [
 	^ month
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> nextMonthButton [
 	^ nextMonthButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> previousMonthButton [
 	^ previousMonthButton
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseReportUI >> showExpensesFor: aMonth [
 
 	| monthlyExpenses accounts balances balance total totalBalance closingDate |
@@ -195,12 +197,12 @@ VsExpenseReportUI >> showExpensesFor: aMonth [
 	list items: monthlyExpenses.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> summary [
 	^ summary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseReportUI >> year [
 	^ year
 ]

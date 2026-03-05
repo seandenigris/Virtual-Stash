@@ -2,16 +2,18 @@
 I represent a collection of transactions whose counterparty is the same string (actually a VsImportName). This string is considered to be my ""input"", for which I lookup rules to convert to a real counterparty.
 "
 Class {
-	#name : #VsTransactionImportGroup,
-	#superclass : #Object,
+	#name : 'VsTransactionImportGroup',
+	#superclass : 'Object',
 	#instVars : [
 		'transactions',
 		'input'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsTransactionImportGroup class >> example [
 
 	| ta partyInput |
@@ -26,23 +28,23 @@ VsTransactionImportGroup class >> example [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> accounts [
 	^ (self transactions flatCollect: [ :e | e splits collect: #account ]) asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> addressBook [
 
 	^ MpAddressBook uniqueInstance
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 VsTransactionImportGroup >> applyRule: aRule [
 	self transactions do: [ :t | t applyRule: aRule copy ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> beOrgTitleCased [
 	| rule |
 	rule := VsImportRule
@@ -54,31 +56,31 @@ VsTransactionImportGroup >> beOrgTitleCased [
 			apply ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> bePerson [
 	| person |
 	person := self addressBook ensurePersonNamed: self input suggestion.
 	self transactions do: [ :t | t counterparty: person ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> counterparty [
 	^ self transactions first counterparty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> counterparty: party [
 	self transactions do: [ :t | t counterparty: party ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> counterpartyImportElement [
 	^ VsCounterpartyImportElement new
 		transactionGroup: self;
 		yourself.
 ]
 
-{ #category : #'acessing-magritte' }
+{ #category : 'acessing-magritte' }
 VsTransactionImportGroup >> descriptionContainer [
 	"Return the default description container."
 	<magritteContainer>
@@ -87,7 +89,7 @@ VsTransactionImportGroup >> descriptionContainer [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> generalJournalGtViewOn: aView [
 	<gtView>
 	| result |
@@ -101,7 +103,7 @@ VsTransactionImportGroup >> generalJournalGtViewOn: aView [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> gtViewPartyImportOn: aView [
 	<gtView>
 	^ aView explicit
@@ -110,7 +112,7 @@ VsTransactionImportGroup >> gtViewPartyImportOn: aView [
 		stencil: [ self counterpartyImportElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> gtViewRulesOn: aView [
 	"Adapted from GtRefactoringsElement"
 
@@ -136,17 +138,17 @@ VsTransactionImportGroup >> gtViewRulesOn: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> input [
 	^ input
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> input: anObject [
 	input := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> magritteDescription [
 	| desc field |
 	self flag: 'do we need #descriptionContainer?'.
@@ -158,27 +160,27 @@ VsTransactionImportGroup >> magritteDescription [
 	^ desc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> memo [
 	^ self transactions first memo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> paymentProcessor: anMpOrganization [
 	self transactions do: [ :t | t processor: anMpOrganization ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> paymentProcessorInput [
 	^ self input paymentProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> printOn: aStream [
 	aStream nextPutAll: self todoString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> rankedMatches [
 
 	| choices reply |
@@ -200,7 +202,7 @@ VsTransactionImportGroup >> rankedMatches [
     3. https://itnext.io/string-similarity-the-basic-know-your-algorithms-guide-3de3d7346227"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> searchWWW [
 	| url |
 	url := 'http://www.google.com/search' asUrl
@@ -208,22 +210,22 @@ VsTransactionImportGroup >> searchWWW [
 	LibC system: 'open "', url asString, '"'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> size [
 	^ self transactions size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> todoString [
 	^ self size asString, ' ', self transactions atRandom importedName string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> transactions [
 	^ transactions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionImportGroup >> transactions: aCollection [
 	transactions := aCollection.
 	input := self counterparty.

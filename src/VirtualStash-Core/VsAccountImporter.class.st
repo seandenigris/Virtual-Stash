@@ -1,10 +1,11 @@
 Class {
-	#name : #VsAccountImporter,
-	#superclass : #MACSVTwoStageImporter,
-	#category : 'VirtualStash-Core'
+	#name : 'VsAccountImporter',
+	#superclass : 'MACSVTwoStageImporter',
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 	| result |
 	result := aCollectionOfDictionaries collect: [ :e | 
@@ -18,7 +19,7 @@ VsAccountImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountImporter >> fixParentsOf: aCollection [
 	aCollection do: [ :e |
 		e parent ifNotNil: [
@@ -27,7 +28,7 @@ VsAccountImporter >> fixParentsOf: aCollection [
 			e parent: parent ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountImporter >> newAccountForRecord: aDictionary [
 	| cls |
 	cls := self recordClass allSubclasses detect: [ :scls | scls gnuCashType = (aDictionary at: #type) ].

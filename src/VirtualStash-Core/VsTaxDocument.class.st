@@ -1,13 +1,15 @@
 Class {
-	#name : #VsTaxDocument,
-	#superclass : #VsDocument,
+	#name : 'VsTaxDocument',
+	#superclass : 'VsDocument',
 	#instVars : [
 		'year'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTaxDocument >> printOn: aStream [
 
 	super printOn: aStream.
@@ -17,24 +19,24 @@ VsTaxDocument >> printOn: aStream [
 		print: year
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTaxDocument >> wantsHOCR [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTaxDocument >> year [
 
 	^ year
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTaxDocument >> year: anObject [
 
 	year := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTaxDocument >> yearDescription [
 	<magritteDescription>
 	^ MANumberDescription new

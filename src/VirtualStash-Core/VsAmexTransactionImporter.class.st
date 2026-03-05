@@ -1,37 +1,39 @@
 Class {
-	#name : #VsAmexTransactionImporter,
-	#superclass : #MACSVTwoStageImporter,
+	#name : 'VsAmexTransactionImporter',
+	#superclass : 'MACSVTwoStageImporter',
 	#instVars : [
 		'addressBook',
 		'books',
 		'targetCollection'
 	],
-	#category : #'VirtualStash-Core-Importing-Amex'
+	#category : 'VirtualStash-Core-Importing-Amex',
+	#package : 'VirtualStash-Core',
+	#tag : 'Importing-Amex'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> addressBook [
 	"By default, leave counterparties as strings, don't convert to domain objects. This is because e.g. GnuCash doesn't have a strong counterparty concept, but a generic description, which could be any unstructured text and might lead to false matches"
 	^ addressBook
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> addressBook: anObject [
 
 	addressBook := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> books [
 	^ books
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> books: anObject [
 	books := anObject
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 VsAmexTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 
 	^ aCollectionOfDictionaries collect: [ :rowDict | 
@@ -48,7 +50,7 @@ VsAmexTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 		newTransaction ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 VsAmexTransactionImporter >> execute [
 	| transactions |
 	transactions := super execute.
@@ -56,7 +58,7 @@ VsAmexTransactionImporter >> execute [
 	^ transactions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> fieldMap [
 	| fieldData |
 	fieldData := {
@@ -78,7 +80,7 @@ VsAmexTransactionImporter >> fieldMap [
 			yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsAmexTransactionImporter >> initializeAddressOf: aTransaction fromRecord: aDictionary [
 
 	| address usaAliases country |
@@ -98,7 +100,7 @@ VsAmexTransactionImporter >> initializeAddressOf: aTransaction fromRecord: aDict
 	aTransaction propertyAt: #amexAddress put: address
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDictionary [
 	
 	^ self 
@@ -108,7 +110,7 @@ VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDicti
 	 	ignoringUnmapped: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDictionary group: aSymbol ignoringUnmapped: ignoreUnmappedBoolean [
 	
 	aDictionary keysAndValuesDo: [ :k :stringValue |
@@ -131,7 +133,7 @@ VsAmexTransactionImporter >> initializeDomainObject: anObject fromRecord: aDicti
 	"Implementation note: Used to be a class-side utility method, but we needed an instance-side version because some objects may need configuration during instance creation"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> splitInitializedFromRecord: aDictionary [
 
 	| result |
@@ -144,19 +146,19 @@ VsAmexTransactionImporter >> splitInitializedFromRecord: aDictionary [
 			ignoringUnmapped: true.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> targetCollection [
 
 	^ targetCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> targetCollection: anObject [
 
 	targetCollection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAmexTransactionImporter >> transactionInitializedFromRecord: aDict [
 
 	| result |

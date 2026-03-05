@@ -1,6 +1,6 @@
-Extension { #name : #MpRelatableEntity }
+Extension { #name : 'MpRelatableEntity' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MpRelatableEntity >> isVendorFor: aDocument [
 
 	
@@ -14,7 +14,7 @@ MpRelatableEntity >> isVendorFor: aDocument [
 	^ false
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MpRelatableEntity >> vsIsMentionedIn: aString [
 
 	

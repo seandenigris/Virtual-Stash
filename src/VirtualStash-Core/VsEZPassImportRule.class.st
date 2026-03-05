@@ -1,10 +1,12 @@
 Class {
-	#name : #VsEZPassImportRule,
-	#superclass : #VsExplicitCounterpartyImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsEZPassImportRule',
+	#superclass : 'VsExplicitCounterpartyImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsEZPassImportRule class >> example [
 	<gtExample>
 	self
@@ -13,7 +15,7 @@ VsEZPassImportRule class >> example [
 		then: [ :r :t | self assert: t counterparty name equals: 'E-ZPass' ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsEZPassImportRule class >> exampleMemo [
 	<gtExample>
 	self
@@ -23,7 +25,7 @@ VsEZPassImportRule class >> exampleMemo [
 		andMemoAppendedWith: 'NEW JERSEY'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsEZPassImportRule class >> exampleNYS [
 	<gtExample>
 	self
@@ -33,19 +35,19 @@ VsEZPassImportRule class >> exampleNYS [
 		andMemoAppendedWith: 'NYS THRUWAY'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsEZPassImportRule class >> isAbstract [
 	self flag: 'Ugly hack. Since this belongs to a specific organization, exclude it from enumeration'.
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsEZPassImportRule >> initialize [
 	super initialize.
 	partyName := 'E-ZPass' "For testing, because there is no hook"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsEZPassImportRule >> parser [
 	^ ('NEW JERSEY' asPParser / 'NYS THRUWAY' asPParser) trimBlanks optional, super parser ==> [ :n | { nil. nil. nil. nil. n first } ]
 ]

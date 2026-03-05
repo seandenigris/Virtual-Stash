@@ -29,8 +29,8 @@ There could be a rule about that. For either the payee would be the card issuer.
 
 "
 Class {
-	#name : #VsImportRule,
-	#superclass : #Object,
+	#name : 'VsImportRule',
+	#superclass : 'Object',
 	#instVars : [
 		'transaction',
 		'partyName',
@@ -43,15 +43,17 @@ Class {
 		'counterpartyInput',
 		'patch'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> all [
 	^ self generic, ((VsImportRule allSubclasses reject: #isAbstract) collect: #new) "We refer to the class explicitly so that this works the same from the subclasses"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> allFor: aTransaction [
 	^ self all 
 		select: [ :e | e appliesTo: aTransaction ]
@@ -61,27 +63,27 @@ VsImportRule class >> allFor: aTransaction [
 				yourself ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsImportRule class >> appliesTo: aVsTransaction [
 	^ self new appliesTo: aVsTransaction
 ]
 
-{ #category : #'examples-support' }
+{ #category : 'examples-support' }
 VsImportRule class >> assert: transaction hasVendorNamed: aString [
 	self assert: transaction counterparty name equals: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> displayName [
 	^ (self name allButFirst: 'Vs' size) allButLast: 'ImportRule' size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> elementClass [
 	^ VsImportRuleElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleAcme [
 	<gtExample>
 	self
@@ -90,7 +92,7 @@ VsImportRule class >> exampleAcme [
 		andMemoAppendedWith: '#1234'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAdobe [
 	<gtExample>
 	self
@@ -99,25 +101,25 @@ VsImportRule class >> exampleAdobe [
 		andMemoAppendedWith: 'Creative Cloud'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleAirbnb [
 	<gtExample>
 	self givenInput: 'AIRBNB' thenPartyNamed: 'Airbnb'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleAirbnbAsteriskMemo [
 	<gtExample>
 	self givenInput: 'AIRBNB * AB34FG78JK' thenPartyNamed: 'Airbnb' andMemoAppendedWith: 'AB34FG78JK'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleAirbnbMemo [
 	<gtExample>
 	self givenInput: 'AIRBNB  AB34FG78JK' thenPartyNamed: 'Airbnb' andMemoAppendedWith: 'AB34FG78JK'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonAMZN [
 	<gtExample>
 	self
@@ -126,7 +128,7 @@ VsImportRule class >> exampleAmazonAMZN [
 		andMemoAppendedWith: 'Digital*12CD56GH9'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonDotCom [
 	<gtExample>
 	self
@@ -135,7 +137,7 @@ VsImportRule class >> exampleAmazonDotCom [
 		andMemoAppendedWith: '12CD56GH9'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonMagazine [
 	<gtExample>
 	self
@@ -144,7 +146,7 @@ VsImportRule class >> exampleAmazonMagazine [
 		andMemoAppendedWith: 'Magzne'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonMusic [
 	<gtExample>
 	self
@@ -153,7 +155,7 @@ VsImportRule class >> exampleAmazonMusic [
 		andMemoAppendedWith: 'Music*12CD56GH9'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonPrime [
 	<gtExample>
 	self
@@ -162,7 +164,7 @@ VsImportRule class >> exampleAmazonPrime [
 		andMemoAppendedWith: 'Prime'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleAmazonVideo [
 	<gtExample>
 	self
@@ -171,13 +173,13 @@ VsImportRule class >> exampleAmazonVideo [
 		andMemoAppendedWith: 'Video'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleAmericasTestKitchen [
 	<gtExample>
 	self givenInput: 'BCP*AMERICASTESTKITCHE' thenPartyNamed: 'America''s Test Kitchen'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleBP [
 	<gtExample>
 	self
@@ -187,7 +189,7 @@ VsImportRule class >> exampleBP [
 		andMemoAppendedWith: '#1234567BRONX BP'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleCostco [
 	<gtExample>
 	self
@@ -197,7 +199,7 @@ VsImportRule class >> exampleCostco [
 		andMemoAppendedWith: 'WHSE #1234'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleCostcoDotCom [
 	<gtExample>
 	self
@@ -207,7 +209,7 @@ VsImportRule class >> exampleCostcoDotCom [
 		andMemoAppendedWith: 'COM'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleDunkin [
 	<gtExample>
 	self
@@ -217,7 +219,7 @@ VsImportRule class >> exampleDunkin [
 		andMemoAppendedWith: '#123456 A23'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleDunkinDonuts [
 	<gtExample>
 	self
@@ -228,7 +230,7 @@ VsImportRule class >> exampleDunkinDonuts [
 			self assert: t memo equals: '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleDunkinMobile [
 	<gtExample>
 	self
@@ -238,7 +240,7 @@ VsImportRule class >> exampleDunkinMobile [
 		andMemoAppendedWith: 'MOBILE'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleHomeDepot [
 	<gtExample>
 	self
@@ -248,7 +250,7 @@ VsImportRule class >> exampleHomeDepot [
 		andMemoAppendedWith: '1234'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleSunoco [
 	<gtExample>
 	self
@@ -258,7 +260,7 @@ VsImportRule class >> exampleSunoco [
 		andMemoAppendedWith: '1234567890'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleTJMaxx [
 	<gtExample>
 	self
@@ -268,7 +270,7 @@ VsImportRule class >> exampleTJMaxx [
 		andMemoAppendedWith: '#1234'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleTarget [
 	<gtExample>
 	self
@@ -278,7 +280,7 @@ VsImportRule class >> exampleTarget [
 		andMemoAppendedWith: '12345678'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleTargetDotCom [
 	<gtExample>
 	self
@@ -288,7 +290,7 @@ VsImportRule class >> exampleTargetDotCom [
 		andMemoAppendedWith: '.COM *'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleTossibleDigits [
 	<gtExample>
 	self
@@ -296,7 +298,7 @@ VsImportRule class >> exampleTossibleDigits [
 		thenPartyNamed: 'Tossable Digits'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleTossibleDigitsExtraGibberish [
 	<gtExample>
 	self
@@ -307,7 +309,7 @@ VsImportRule class >> exampleTossibleDigitsExtraGibberish [
 			self assert: t memo isEmpty ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleTraderJoes [
 	<gtExample>
 	self
@@ -317,7 +319,7 @@ VsImportRule class >> exampleTraderJoes [
 		andMemoAppendedWith: '#123 ABC'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> exampleUSPS [
 	<gtExample>
 	self
@@ -327,7 +329,7 @@ VsImportRule class >> exampleUSPS [
 		andMemoAppendedWith: 'PO 1234567890'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleUber [
 	<gtExample>
 	self
@@ -337,7 +339,7 @@ VsImportRule class >> exampleUber [
 		andMemoAppendedWith: '.Com'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleWWJW [
 	<gtExample>
 	self
@@ -347,7 +349,7 @@ VsImportRule class >> exampleWWJW [
 		andMemoAppendedWith: 'PAYMENT 1234'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleWestchesterMall [
 	<gtExample>
 	self
@@ -357,7 +359,7 @@ VsImportRule class >> exampleWestchesterMall [
 		andMemoAppendedWith: 'PARK'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleWholeFoods [
 	<gtExample>
 	self
@@ -367,7 +369,7 @@ VsImportRule class >> exampleWholeFoods [
 		andMemoAppendedWith: 'ABC#12345'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleZara [
 	<gtExample>
 	self
@@ -377,7 +379,7 @@ VsImportRule class >> exampleZara [
 		andMemoAppendedWith: 'USA 1234'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsImportRule class >> exampleZaraDotCom [
 	<gtExample>
 	self
@@ -387,14 +389,14 @@ VsImportRule class >> exampleZaraDotCom [
 		andMemoAppendedWith: 'COM.USA'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> for: aTransaction [
 	^ (self allFor: aTransaction)
 		ifNotEmpty: [ :rules | rules first ]
 		ifEmpty: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> generic [
 
 	^ MpAddressBook uniqueInstance organizations asEntityCollection collect: #vsCounterpartyRule
@@ -402,7 +404,7 @@ VsImportRule class >> generic [
 	"Implementation note: these used to be generated from literal pairs so that they were automatically persisted with the code. In the future, if released publicly, this might be a valid strategy to seed the rules with well-known vendors, or perhaps the address book should be so-seeded. Anyway, the current commit before the new system is be4b83be"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> genericPartiesEnsureNamed: aString aliases: aCollection [
 	| rule rules sourceCode |
 	rules := self generic asSortedCollection: #partyName ascending.
@@ -430,7 +432,7 @@ VsImportRule class >> genericPartiesEnsureNamed: aString aliases: aCollection [
 	
 ]
 
-{ #category : #'examples-support' }
+{ #category : 'examples-support' }
 VsImportRule class >> given: counterpartyString appliedTo: transactionBlock then: assertionBlock [
 	self
 		given: [ | t |
@@ -451,7 +453,7 @@ VsImportRule class >> given: counterpartyString appliedTo: transactionBlock then
 		then: assertionBlock
 ]
 
-{ #category : #'examples-support' }
+{ #category : 'examples-support' }
 VsImportRule class >> given: counterpartyString appliedTo: transactionBlock then: assertionBlock andMemoAppendedWith: addedMemo [
 	| originalMemo |
 	self
@@ -470,7 +472,7 @@ VsImportRule class >> given: counterpartyString appliedTo: transactionBlock then
 			self assert: (t memo endsWith: addedMemo) ]
 ]
 
-{ #category : #'examples-support' }
+{ #category : 'examples-support' }
 VsImportRule class >> givenInput: inputString thenPartyNamed: partyNameString [
 	self
 		given: inputString
@@ -478,7 +480,7 @@ VsImportRule class >> givenInput: inputString thenPartyNamed: partyNameString [
 		then: [ :r :t | self assert: t counterparty name equals: partyNameString ]
 ]
 
-{ #category : #'examples-support' }
+{ #category : 'examples-support' }
 VsImportRule class >> givenInput: inputString thenPartyNamed: partyNameString andMemoAppendedWith: memoString [
 	self
 		given: inputString
@@ -487,7 +489,7 @@ VsImportRule class >> givenInput: inputString thenPartyNamed: partyNameString an
 		andMemoAppendedWith: memoString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> gtViewGenericsOn: aView [
 	<gtClassView>
 	| orgColor |
@@ -525,7 +527,7 @@ VsImportRule class >> gtViewGenericsOn: aView [
 				ifNone: [ nil ])} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> gtViewHierarchyExamplesFor: aView [
     <gtClassView>
     | examples |
@@ -535,51 +537,51 @@ VsImportRule class >> gtViewHierarchyExamplesFor: aView [
         priority: 17
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule class >> partyAliases [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> = rhs [
 	^ self class = rhs class and: [ self partyName = rhs partyName and: [ self partyAliases = rhs partyAliases ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> accountNamed: fullNameString [
 
 	^ self transaction accountSource accounts detect: [ :e | e fullName = fullNameString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> addressBook [
 	"Hook for testing so we don't pollute the default AddressBook"
 	^ addressBook ifNil: [ MpAddressBook uniqueInstance ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> addressBook: aBook [
 	addressBook := aBook
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsImportRule >> appliesTo: aVsTransaction [
 	^ self parser matches: aVsTransaction importedName string
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsImportRule >> apply [
 	^ self patch execute
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 VsImportRule >> buildPatchOperations [
 	
 	self patchSet: #counterpartyDescription to: self party.
 	self patchMemoAppend: self memo
 ]
 
-{ #category : #'accessing-convenience' }
+{ #category : 'accessing-convenience' }
 VsImportRule >> credit [
 	| result |
 	result := self transaction splits select: #isCredit.
@@ -587,7 +589,7 @@ VsImportRule >> credit [
 	^ result first
 ]
 
-{ #category : #'accessing-convenience' }
+{ #category : 'accessing-convenience' }
 VsImportRule >> debit [
 	| result |
 	result := self transaction splits select: #isDebit.
@@ -595,84 +597,84 @@ VsImportRule >> debit [
 	^ result first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> displayName [
 	^ self class displayName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> elementClass [
 	^ MAPatchMacroElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsImportRule >> extraInfoParser [
 	^ #any asPParser star flatten trimBlanks optional ==> [ :n | n ifNotNil: [ :s | s withBlanksCondensed trimBoth ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> hash [
 	^ self partyName hash bitXor: self partyAliases hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsImportRule >> input [
 	^ self transaction importedName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> memo [
 	^ memo ifNil: [ memo := self parsingResult last ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> memo: aString [
 	memo := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> parser [
 	^ self primaryParser, self separatorParser, self extraInfoParser end
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsImportRule >> parsingResult [
 	^ parsingResult ifNil: [ parsingResult := self parser parse: self input string ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> party [
 	^ party ifNil: [ self addressBook ensureOrganizationNamed: self partyName ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> party: anMpRelatableEntity [
 	party := anMpRelatableEntity.
 	self partyName: party fullName.
 	self partyAliases: party aliases
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> partyAliases [
 	^ partyAliases ifNil: [ self class partyAliases ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> partyAliases: aCollection [
 	partyAliases := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> partyName [
 	^ partyName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> partyName: anObject [
 	partyName := anObject
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 VsImportRule >> patch [
 	^ patch 
 		ifNotNil: [ patch ]
@@ -682,7 +684,7 @@ VsImportRule >> patch [
 			patch ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> patchGtViewFor: aView [
 	<gtView>
 	self patch ifNil: [ ^ aView empty ].
@@ -693,7 +695,7 @@ VsImportRule >> patchGtViewFor: aView [
 		view: #elementGtViewFor:
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 VsImportRule >> patchMemoAppend: aString [
 	| newMemo |
 	aString isEmptyOrNil ifTrue: [ ^ self ].
@@ -701,7 +703,7 @@ VsImportRule >> patchMemoAppend: aString [
 	self patchSet: #memoDescription to: newMemo
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 VsImportRule >> patchSet: fieldSymbol to: anObject [
 	self patch 
 		addOperationFor: self transaction 
@@ -709,17 +711,17 @@ VsImportRule >> patchSet: fieldSymbol to: anObject [
 		to: anObject.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> paymentProcessor [
 	^ paymentProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> primaryParser [
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsImportRule >> primaryParserFromOptions: aCollectionOfStrings [
 
 	^ aCollectionOfStrings 
@@ -727,28 +729,28 @@ VsImportRule >> primaryParserFromOptions: aCollectionOfStrings [
 		into: [ :result :str | result / str asPParser ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> printOn: aStream [
 	aStream nextPutAll: (self className allButFirst: 'Vs' size) normalizeCamelCase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> separatorParser [
 	^ ($* asPParser / $- asPParser / #space asPParser) star
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> transaction [
 	^ self maLazyInstVarUsing: self transactionDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> transaction: anObject [
 	transaction := anObject.
 	counterpartyInput := transaction importedName
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsImportRule >> transactionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -756,7 +758,7 @@ VsImportRule >> transactionDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportRule >> user [
 	^ self addressBook vsUsers first
 ]

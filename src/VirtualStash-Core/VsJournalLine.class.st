@@ -1,15 +1,17 @@
 Class {
-	#name : #VsJournalLine,
-	#superclass : #Object,
+	#name : 'VsJournalLine',
+	#superclass : 'Object',
 	#traits : 'VsTTransactable - {#counterpartyDescription} + VsTSplittable',
 	#classTraits : 'VsTTransactable classTrait + VsTSplittable classTrait',
 	#instVars : [
 		'model'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsJournalLine class >> configureGtColumnedList: list [
 	self magritteTemplate magritteDescription do: [ :e |
 		list 
@@ -18,12 +20,12 @@ VsJournalLine class >> configureGtColumnedList: list [
 			weight: e vsColumnWeight ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsJournalLine >> accountSource [
 	^ self model ifNotNil: [ :m | m accountSource ]
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> amountDescription: aDescription [
 	<magritteDescription: #creditAmountDescription>
 	<magritteDescription: #debitAmountDescription>
@@ -32,7 +34,7 @@ VsJournalLine >> amountDescription: aDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsJournalLine >> amountToString: aNumber [
 	| intString decimalString |
 	intString := aNumber asInteger asStringWithCommas.
@@ -44,37 +46,37 @@ VsJournalLine >> amountToString: aNumber [
 		ifFalse: [ intString , '.' , decimalString ]
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> columnThreeDescription [
 	<magritteDescription>
 	^ self model journalColumnThreeDescription
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> doesNotUnderstand: aMessage [
 	^ (self model isNotNil and: [ self model respondsTo: aMessage selector ]) 
 		ifTrue: [ aMessage sendTo: self model ]
 		ifFalse: [ super doesNotUnderstand: aMessage ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsJournalLine >> fieldStringUsing: aDescription [
 	^ (self model magritteDescription includes: aDescription)
 		ifTrue: [ aDescription readToString: self model ]
 		ifFalse: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsJournalLine >> model [
 	^ model ifNil: [ VsSplit new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsJournalLine >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> numberDescription [
 	"Also called a 'reference number' e.g. in Quickbooks, but we stick with the simplest term that conveys the meaning"
 	<magritteDescription>
@@ -85,7 +87,7 @@ VsJournalLine >> numberDescription [
 		yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> statusDescription [
 	<magritteDescription>
 
@@ -100,7 +102,7 @@ VsJournalLine >> statusDescription [
 			yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsJournalLine >> undefinedValue [
 	^ nil
 ]

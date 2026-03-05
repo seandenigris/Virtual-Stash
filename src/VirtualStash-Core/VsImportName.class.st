@@ -18,17 +18,19 @@ Historical note: My display string used to print my suggestion if available, but
 
 "
 Class {
-	#name : #VsImportName,
-	#superclass : #Object,
+	#name : 'VsImportName',
+	#superclass : 'Object',
 	#instVars : [
 		'string',
 		'suggestion',
 		'transaction'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName class >> exampleProcessor [
 	| result |
 	result := self new
@@ -38,20 +40,20 @@ VsImportName class >> exampleProcessor [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName class >> fromString: aString [
 	^ self new
 		string: aString;
 		yourself.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 VsImportName >> = rhs [
 	^ self species = rhs species and: [ self string = rhs string ]
 	"Implementation note: added species check for Magritte patching #isNoOp check against real domain object"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> counterpartyName [
 	| nameTokens |
 	nameTokens := self string findTokens: '*'.
@@ -60,12 +62,12 @@ VsImportName >> counterpartyName [
 		ifNotNil: [ :p | nameTokens second trimBoth ].
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 VsImportName >> hash [
 	^ self string hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> paymentProcessor [
 	^ self
 		ruleIfFound: [ :r | r paymentProcessor ]
@@ -77,41 +79,41 @@ VsImportName >> paymentProcessor [
 			ifNone: [ nil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> printOn: aStream [
 	aStream nextPutAll: self string; nextPutAll: ' (imported)'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> ruleIfFound: foundBlock ifNone: noneBlock [
 	^ (VsImportRule for: self transaction)
 		ifNotNil: [ :r | foundBlock cull: r ]
 		ifNil: noneBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> string [
 	^ string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> string: anObject [
 	string := anObject.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> suggestion [
 	^ self 
 		ruleIfFound: [ :r | r partyName ]
 		ifNone: [ self counterpartyName pyAsTitleCase ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> transaction [
 	^ transaction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsImportName >> transaction: anObject [
 	transaction := anObject
 ]

@@ -1,16 +1,18 @@
 Class {
-	#name : #VsItemPrice,
-	#superclass : #VsPrice,
+	#name : 'VsItemPrice',
+	#superclass : 'VsPrice',
 	#instVars : [
 		'item',
 		'unitPrice',
 		'date',
 		'isPrivate'
 	],
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice class >> named: aString [
 
 	| item |
@@ -21,7 +23,7 @@ VsItemPrice class >> named: aString [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> = rhs [
 
 	rhs species = self species ifFalse: [ ^ false ].
@@ -32,49 +34,49 @@ VsItemPrice >> = rhs [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> bePrivate [
 	^ self isPrivate: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> date [
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> date: anObject [
 	date := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> hash [
 
 	^ (self item hash bitXor: self unitPrice hash) bitXor: self date hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> isPrivate [
 	^ isPrivate ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> isPrivate: aBoolean [
 	"aBoolean - should be true if the priced item is not generally useful or interesting, except as a component of a particular package. For example, a fee that only applies to one particular product"
 	isPrivate := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> item [
 	^ item
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> item: anObject [
 	item := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> itemDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -85,12 +87,12 @@ VsItemPrice >> itemDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> name [
 	^ self item ifNotNil: #name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> name: aString [
 	
 	self item ifNil: [ self error: 'no item to rename!' ].
@@ -98,24 +100,24 @@ VsItemPrice >> name: aString [
 	self item name: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> total [
 	self unitPrice ifNil: [ ^ nil ].
 
 	^ self unitPrice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> unitPrice [
 	^ unitPrice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> unitPrice: anObject [
 	unitPrice := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsItemPrice >> unitPriceDescription [
 	<magritteDescription>
 	

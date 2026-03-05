@@ -1,6 +1,6 @@
-Extension { #name : #MpMunicipality }
+Extension { #name : 'MpMunicipality' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MpMunicipality >> vsCounterpartyRuleClass [
 	^ VsMunicipalityImportRule
 ]

@@ -10,8 +10,8 @@ We start with CSV format, since we already have  a parser for that. The tricky b
 
 "
 Class {
-	#name : #VsTransaction,
-	#superclass : #Object,
+	#name : 'VsTransaction',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject + VsTTransactable',
 	#classTraits : 'DbTDomainObject classTrait + VsTTransactable classTrait',
 	#instVars : [
@@ -26,22 +26,24 @@ Class {
 		'counterparty',
 		'processor'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsTransaction class >> example [
 	^ self new
 		counterparty: MpOrganization examplePhillyZoo;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsTransaction class >> isAbstract [
 	^ false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsTransaction class >> memo: aString append: anotherString [
 
 	^ String streamContents: [ :s |
@@ -50,23 +52,23 @@ VsTransaction class >> memo: aString append: anotherString [
 		s nextPutAll: anotherString ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> accountSource [
 	"One reason we have to store this is that new snippets need to know it, and we pass it to them"
 	^ accountSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> accountSource: anObject [
 	accountSource := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> accounts [
 	^ self splits collect: #account
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> accountsDescription [
 	"Used by e.g. ==#printRegister:== to select relevant transactions"
 	^ MAMultipleOptionDescription new
@@ -76,19 +78,19 @@ VsTransaction >> accountsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> addressBook [
 
 	^ addressBook ifNil: [ MpAddressBook uniqueInstance ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> addressBook: anObject [
 
 	addressBook := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> amount [
 	| credits debits creditTotal debitTotal |
 	credits := self splits select: #isCredit.
@@ -98,7 +100,7 @@ VsTransaction >> amount [
 	^ { creditTotal. debitTotal } detectMax: #abs
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> amountDescription [
 	<magritteDescription>
 	
@@ -109,26 +111,26 @@ VsTransaction >> amountDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> applyRule: aVsCounterpartyRule [
 	aVsCounterpartyRule
 		transaction: self;
 		apply.
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> commodity [
 	^ self maLazyPropertyUsing: self commodityDescription
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> commodity: aString [
 	self
 		propertyAt: self commodityDescription accessor readSelector
 		put: aString
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> commodityDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -138,17 +140,17 @@ VsTransaction >> commodityDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> counterparty [
 	^ counterparty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> counterparty: anObject [
 	counterparty := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> counterpartyDescription [
 	
 	<magritteDescription>
@@ -161,29 +163,29 @@ VsTransaction >> counterpartyDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> date [
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> date: anObject [
 	date := anObject
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> gnuCashID [
 	^ self maLazyPropertyUsing: self gnuCashIDDescription
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> gnuCashID: aString [
 	self
 		propertyAt: self gnuCashIDDescription accessor readSelector
 		put: aString
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> gnuCashIDDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -191,7 +193,7 @@ VsTransaction >> gnuCashIDDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> gtViewJournalOn: aView [
 	<gtView>
 	| result |
@@ -205,7 +207,7 @@ VsTransaction >> gtViewJournalOn: aView [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> gtViewRulesOn: aView [
 
 	<gtView>
@@ -217,17 +219,17 @@ VsTransaction >> gtViewRulesOn: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> importedName [
 	^ self maLazyPropertyUsing: (self importedNameDescription)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> importedName: aString [
 	self propertyAt: #importedName put: aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> importedNameDescription [
 	<magritteDescription>
 	
@@ -236,17 +238,17 @@ VsTransaction >> importedNameDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> isValid [
 	^ self date isNotNil
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> journalColumnThreeDescription [
 	^ self counterpartyDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> journalLines [
 	^ OrderedCollection new
 		add: self;
@@ -257,22 +259,22 @@ VsTransaction >> journalLines [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> memo [
 	^ self maLazyInstVarUsing: self memoDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> memo: anObject [
 	memo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> memoAppend: aString [
 	memo := self class memo: memo append: aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> memoDescription [
 	"The term 'memo' seems to be the industry standard. a.k.a. 'notes' (also a good name) and 'description', which we ruled out to avoid confusion because GnuCash uses it as a poor-man's 'payee' field"
 	<magritteDescription>
@@ -283,34 +285,34 @@ VsTransaction >> memoDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> number [
 	^ self maLazyInstVarUsing: self numberDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> number: aNumber [
 	number := aNumber
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsTransaction >> printOn: aStream [
 	{ self dateDescription. self amountDescription. self counterpartyDescription. self memoDescription } 
 		do: [ :d | aStream maPrint: d for:  self ]
 		separatedBy: [ aStream space ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> processor [
 	^ processor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> processor: anObject [
 	processor := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> processorDescription [
 	
 	<magritteDescription>
@@ -321,17 +323,17 @@ VsTransaction >> processorDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> receipt [
 	^ receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> receipt: anObject [
 	receipt := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> receiptDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -341,22 +343,22 @@ VsTransaction >> receiptDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> registerString [
 	^ (self maToString: self dateDescription), '	', (self maToString: self counterpartyDescription), '	', (self maToString: self accountsDescription), '	', (self maToString: self amountDescription)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> splits [
 	^ self maLazyInstVarUsing: self splitsDescription.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> splits: anObject [
 	splits := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransaction >> splitsDescription [
 	<magritteDescription>
 	"On naming... Also seems to be called ==entries== in some accounting software. We chose ==splits== because it is more specific and therefor intention revealing e.g. can't be confused with journal entries, which is somewhat related, but different"
@@ -372,7 +374,7 @@ VsTransaction >> splitsDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransaction >> uncategorizedAmount [
 
 	| categorizedAmount |
@@ -380,17 +382,17 @@ VsTransaction >> uncategorizedAmount [
 	^ self amount - categorizedAmount
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> voidReason [
 	^ self maLazyInstVarUsing: self voidReasonDescription
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> voidReason: aString [
 	voidReason := aString
 ]
 
-{ #category : #GnuCash }
+{ #category : 'GnuCash' }
 VsTransaction >> voidReasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new

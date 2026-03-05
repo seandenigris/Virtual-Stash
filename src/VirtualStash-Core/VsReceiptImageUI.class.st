@@ -1,14 +1,16 @@
 Class {
-	#name : #VsReceiptImageUI,
-	#superclass : #ImageMorph,
+	#name : 'VsReceiptImageUI',
+	#superclass : 'ImageMorph',
 	#instVars : [
 		'receipt',
 		'selection'
 	],
-	#category : #'VirtualStash-Core-Receipts-UI'
+	#category : 'VirtualStash-Core-Receipts-UI',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts-UI'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptImageUI class >> on: aVSReceipt [
 
 	^ self new
@@ -16,7 +18,7 @@ VsReceiptImageUI class >> on: aVSReceipt [
 		yourself.
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 VsReceiptImageUI >> handleMouseMove: anEvent [
 	"Purpose: We want to handle events with no buttons pressed, but by default Morphic only fires #mouseMove: if a mouse a button is down"
 
@@ -26,13 +28,13 @@ VsReceiptImageUI >> handleMouseMove: anEvent [
 	^ self mouseMove: anEvent
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 VsReceiptImageUI >> handlesMouseDown: anEvent [
 
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsReceiptImageUI >> highlightWord: aHocrWord [
 
 	| newMorph |
@@ -42,19 +44,19 @@ VsReceiptImageUI >> highlightWord: aHocrWord [
 	self addMorph: newMorph.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsReceiptImageUI >> isHighlightingWordAt: aPoint [ 
 
 	^ self submorphs anySatisfy: [ :e | e bounds containsPoint: aPoint ]
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 VsReceiptImageUI >> mouseDown: evt [
 
 	evt yellowButtonPressed ifTrue: [ self showContextMenu ]
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 VsReceiptImageUI >> mouseMove: anEvent [
 
 	| hoveredWord |
@@ -65,12 +67,12 @@ VsReceiptImageUI >> mouseMove: anEvent [
 	self highlightWord: hoveredWord.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptImageUI >> receipt [
 	^ receipt
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsReceiptImageUI >> receipt: aVsReceipt [ 
 
 	receipt := aVsReceipt.
@@ -78,7 +80,7 @@ VsReceiptImageUI >> receipt: aVsReceipt [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsReceiptImageUI >> showContextMenu [
 
 	| menu possibleVendor |

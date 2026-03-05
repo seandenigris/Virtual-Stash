@@ -1,25 +1,27 @@
 Class {
-	#name : #VsPaymentMethod,
-	#superclass : #Object,
+	#name : 'VsPaymentMethod',
+	#superclass : 'Object',
 	#classInstVars : [
 		'wallet'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaymentMethod class >> all [
 
 	^ wallet ifNil: [ wallet := OrderedCollection new ]
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPaymentMethod class >> restoreFrom: anObject [
 
 	wallet := anObject.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPaymentMethod class >> spData [
 
 	^ wallet

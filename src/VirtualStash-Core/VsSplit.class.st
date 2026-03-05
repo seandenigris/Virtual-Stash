@@ -5,8 +5,8 @@ In GnuCash, each split can have their own unique ID. We'll wait until the need a
 
 "
 Class {
-	#name : #VsSplit,
-	#superclass : #Object,
+	#name : 'VsSplit',
+	#superclass : 'Object',
 	#traits : 'VsTSplittable',
 	#classTraits : 'VsTSplittable classTrait',
 	#instVars : [
@@ -19,40 +19,42 @@ Class {
 		'reconcileDate',
 		'status'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> account [
 	^ self maLazyInstVarUsing: self accountDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> account: anObject [
 	account := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> accountSource [
 	^ accountSource ifNil: [ VsBooks new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> accountSource: anObject [
 	accountSource := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> amount [
 	^ self maLazyInstVarUsing: self amountDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> amount: anObject [
 	amount := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsSplit >> amountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription new
@@ -64,7 +66,7 @@ VsSplit >> amountDescription [
 			yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsSplit >> amountToString: aNumber [
 	| intString decimalString |
 	intString := '$', aNumber asInteger asStringWithCommas.
@@ -76,7 +78,7 @@ VsSplit >> amountToString: aNumber [
 		ifFalse: [ intString , '.' , decimalString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> creditAmount [
 	^ self isCredit 
 		ifTrue: [ 
@@ -85,39 +87,39 @@ VsSplit >> creditAmount [
 		ifFalse: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> debitAmount [
 	^ self isDebit 
 		ifTrue: [ self amount ]
 		ifFalse: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> isCredit [
 	^ self amount negative
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> isDebit [
 	^ self amount amount strictlyPositive
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsSplit >> journalColumnThreeDescription [
 	^ self memoDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> memo [
 	^ self maLazyInstVarUsing: self memoDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> memo: anObject [
 	memo := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsSplit >> memoDescription [
 	<magritteDescription>
 
@@ -128,17 +130,17 @@ VsSplit >> memoDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> number [
 	^ self maLazyInstVarUsing: self numberDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> number: aString [
 	number := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsSplit >> numberDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -146,17 +148,17 @@ VsSplit >> numberDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> price [
 	^ self maLazyInstVarUsing: self priceDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> price: aNumber [
 	price := aNumber
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsSplit >> priceDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -165,7 +167,7 @@ VsSplit >> priceDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsSplit >> printOn: aStream [
 	amount ifNotNil: [ aStream print: amount ].
 	account ifNotNil: [ 
@@ -180,17 +182,17 @@ VsSplit >> printOn: aStream [
 				nextPut: $) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> reconcileDate [
 	^ self maLazyInstVarUsing: self reconcileDateDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> reconcileDate: aDate [
 	reconcileDate := aDate
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsSplit >> reconcileDateDescription [
 	<magritteDescription>
 	^ MADateDescription new
@@ -198,12 +200,12 @@ VsSplit >> reconcileDateDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> status [
 	^ self maLazyInstVarUsing: self statusDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsSplit >> status: anObject [
 	status := anObject
 ]

@@ -1,35 +1,37 @@
 Class {
-	#name : #VsOfxTransactionImporter,
-	#superclass : #MACSVTwoStageImporter,
+	#name : 'VsOfxTransactionImporter',
+	#superclass : 'MACSVTwoStageImporter',
 	#instVars : [
 		'account',
 		'imbalanceAccount',
 		'books'
 	],
-	#category : #'VirtualStash-Core-OFX'
+	#category : 'VirtualStash-Core-OFX',
+	#package : 'VirtualStash-Core',
+	#tag : 'OFX'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> account [
 	^ account
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> account: anObject [
 	account := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> books [
 	^ books
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> books: anObject [
 	books := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> domainObjectFromDictionary: aDictionary [
 	| transaction split imbalanceSplit |
 	
@@ -52,23 +54,23 @@ VsOfxTransactionImporter >> domainObjectFromDictionary: aDictionary [
 	^ transaction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> execute [
 
 	^ self convertToDomainObjects: self source transactionDictionaries
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> imbalanceAccount [
 	^ imbalanceAccount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> imbalanceAccount: anObject [
 	imbalanceAccount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> initializeDomainObject: anObject fromRecord: aDictionary mapping: mapBlock descriptionDo: descriptionBlock [
 	"
 	anObject - domain object to be initialized
@@ -106,7 +108,7 @@ VsOfxTransactionImporter >> initializeDomainObject: anObject fromRecord: aDictio
 	^ anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> initializeSplitWithAccount: anAccount usingReader: aReader fromDictionary: aDictionary [
 	| split |
 	split := VsSplit new
@@ -124,7 +126,7 @@ VsOfxTransactionImporter >> initializeSplitWithAccount: anAccount usingReader: a
 				using: aReader ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> initializeTransactionFromDictionary: aDictionary [
 
 	| transaction |
@@ -148,7 +150,7 @@ VsOfxTransactionImporter >> initializeTransactionFromDictionary: aDictionary [
 				map: 'CHECKNUM' fieldTo: #numberDescription ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxTransactionImporter >> mappedFields [
 
 	^ #(TRNAMT DTPOSTED NAME MEMO CHECKNUM)

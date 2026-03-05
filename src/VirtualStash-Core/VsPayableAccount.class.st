@@ -3,7 +3,9 @@ I am an asset account per <https://www.investopedia.com/ask/answers/030515/how-a
 
 "
 Class {
-	#name : #VsPayableAccount,
-	#superclass : #VsLiabilityAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsPayableAccount',
+	#superclass : 'VsLiabilityAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }

@@ -1,6 +1,6 @@
-Extension { #name : #RlHTML }
+Extension { #name : 'RlHTML' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlHTML >> vsAnalysisInput [
 	"Return 'just the plain text the user would see if rendered'"
 

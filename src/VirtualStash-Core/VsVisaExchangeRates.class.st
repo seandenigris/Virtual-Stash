@@ -1,6 +1,6 @@
 Class {
-	#name : #VsVisaExchangeRates,
-	#superclass : #Object,
+	#name : 'VsVisaExchangeRates',
+	#superclass : 'Object',
 	#instVars : [
 		'sourceCurrency',
 		'targetCurrency',
@@ -8,10 +8,12 @@ Class {
 		'json',
 		'feePercentage'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates class >> exampleUSDtoEUR [
 	<gtExample>
 	^ self
@@ -22,7 +24,7 @@ VsVisaExchangeRates class >> exampleUSDtoEUR [
 			calc ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates class >> from: source to: target on: aDate [
 	^ self new
 		sourceCurrency: source;
@@ -31,7 +33,7 @@ VsVisaExchangeRates class >> from: source to: target on: aDate [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates class >> nowUSDtoEUR [
 	| converter |
 	converter := self
@@ -42,19 +44,19 @@ VsVisaExchangeRates class >> nowUSDtoEUR [
 	^ converter oneUnitSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> date [
 
 	^ date ifNil: [ Date today ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> date: anObject [
 
 	date := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> dateForUrl [
 
 	^ String streamContents: [ :str | 
@@ -68,63 +70,63 @@ VsVisaExchangeRates >> dateForUrl [
 	"Implementation note: 400 error when dates not padded"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> exchangeRate [
 
 	^ self oneUnitSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> feePercentage [
 	^ feePercentage ifNil: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> feePercentage: anObject [
 	feePercentage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> json [
 
 	^ json ifNil: [ json := STONJSON fromString: self url retrieveContents ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> oneUnitSource [
 	^ (self json at: 'convertedAmount') asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> oneUnitTarget [
 	^ (self json at: 'reverseAmount') asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> sourceCurrency [
 
 	^ sourceCurrency
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> sourceCurrency: anObject [
 
 	sourceCurrency := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> targetCurrency [
 
 	^ targetCurrency
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> targetCurrency: anObject [
 
 	targetCurrency := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsVisaExchangeRates >> url [
 	^ 'https://bd.visa.com/cmsapi/fx/rates' asUrl
 		queryAt: #amount put: 1;

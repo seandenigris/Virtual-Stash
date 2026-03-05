@@ -1,10 +1,12 @@
 Class {
-	#name : #VsOnlinePaymentImportRule,
-	#superclass : #VsImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsOnlinePaymentImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsOnlinePaymentImportRule class >> example [
 	<gtExample>
 	
@@ -15,14 +17,14 @@ VsOnlinePaymentImportRule class >> example [
 		andMemoAppendedWith: '1234567890 To ABC'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOnlinePaymentImportRule >> buildPatchOperations [
 	self
 		patchMemoAppend: self memo;
 		patchSet: #counterpartyDescription to: nil 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOnlinePaymentImportRule >> primaryParser [
 	^ 'Online Payment' asPParser
 ]

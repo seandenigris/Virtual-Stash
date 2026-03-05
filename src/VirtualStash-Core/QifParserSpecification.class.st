@@ -1,10 +1,12 @@
 Class {
-	#name : #QifParserSpecification,
-	#superclass : #TestCase,
-	#category : 'VirtualStash-Core-QIF'
+	#name : 'QifParserSpecification',
+	#superclass : 'TestCase',
+	#category : 'VirtualStash-Core-QIF',
+	#package : 'VirtualStash-Core',
+	#tag : 'QIF'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 QifParserSpecification >> rule: selector parse: aString shouldEqual: anObject [
 	| parser result |
 	parser := QifParser new perform: selector.
@@ -12,7 +14,7 @@ QifParserSpecification >> rule: selector parse: aString shouldEqual: anObject [
 	result should equal: anObject
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testAcceptance [
 	| parser result input |
 	input := '!Type:CCard
@@ -39,7 +41,7 @@ $-74.96
 	result := parser parse: input
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testAccount [
 	self
 		rule: #accountItem
@@ -51,7 +53,7 @@ QifParserSpecification >> testAccount [
 		shouldEqual: 'Travel-Vacation:Lodging'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testAmount [
 	self
 		rule: #amountItem
@@ -60,7 +62,7 @@ QifParserSpecification >> testAmount [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testClearedStatus [
 	self rule: #clearedStatusItem parse: 'C' shouldEqual: 'nc'.
 	self rule: #clearedStatusItem parse: 'C*' shouldEqual: 'c'.
@@ -69,7 +71,7 @@ QifParserSpecification >> testClearedStatus [
 	self rule: #clearedStatusItem parse: 'CR' shouldEqual: 'r'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testDate [
 	self
 		rule: #dateItem
@@ -77,7 +79,7 @@ QifParserSpecification >> testDate [
 		shouldEqual: '1/30/2004' asDate
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testDetail [
 	| parser result input |
 	input := 'D9/7''2005
@@ -93,7 +95,7 @@ L[Landscaping Reimbursible Expense]
 	result isPetitFailure should beFalse
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 QifParserSpecification >> testDetail: aString [
 	| parser result |
 
@@ -102,7 +104,7 @@ QifParserSpecification >> testDetail: aString [
 	result isPetitFailure should beFalse
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testDetailEmptySplit [
 	"We will not support empty account names"
 	<expectedFailure>
@@ -122,7 +124,7 @@ $0.00
 	self testDetail: input
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testMemo [
 	self
 		rule: #memoItem
@@ -130,7 +132,7 @@ QifParserSpecification >> testMemo [
 		shouldEqual: 'PAY AT PUMP2339483498349'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testMultiSplit [
 	self
 		rule: #splits
@@ -146,7 +148,7 @@ $-29.00'
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testPayee [
 	self
 		rule: #payeeItem
@@ -154,7 +156,7 @@ QifParserSpecification >> testPayee [
 		shouldEqual: 'American Express'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testSplit [
 	self
 		rule: #split
@@ -165,7 +167,7 @@ $-3.38'
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testSplitAccount [
 	self
 		rule: #splitAccountItem
@@ -177,7 +179,7 @@ QifParserSpecification >> testSplitAccount [
 		shouldEqual: 'Travel-Vacation:Lodging'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testSplitAmount [
 	self
 		rule: #splitAmountItem
@@ -186,7 +188,7 @@ QifParserSpecification >> testSplitAmount [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 QifParserSpecification >> testSplitMemo [
 	self
 		rule: #splitMemoItem

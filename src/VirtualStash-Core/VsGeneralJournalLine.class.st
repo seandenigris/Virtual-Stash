@@ -1,46 +1,48 @@
 Class {
-	#name : #VsGeneralJournalLine,
-	#superclass : #Object,
+	#name : 'VsGeneralJournalLine',
+	#superclass : 'Object',
 	#instVars : [
 		'account',
 		'debit',
 		'credit',
 		'memo'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> account [
 	^ account
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> account: anObject [
 	account := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> credit [
 	^ credit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> credit: anObject [
 	credit := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> debit [
 	^ debit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> debit: anObject [
 	debit := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsGeneralJournalLine >> descriptionAccount [
 	<magritteDescription>
 	^ MAOptionDescription new
@@ -52,12 +54,12 @@ VsGeneralJournalLine >> descriptionAccount [
         yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> memo [
 	^ memo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalLine >> memo: anObject [
 	memo := anObject
 ]

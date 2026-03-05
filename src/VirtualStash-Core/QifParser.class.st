@@ -1,6 +1,6 @@
 Class {
-	#name : #QifParser,
-	#superclass : #PP2CompositeNode,
+	#name : 'QifParser',
+	#superclass : 'PP2CompositeNode',
 	#instVars : [
 		'headerLine',
 		'dateItem',
@@ -18,15 +18,17 @@ Class {
 		'lineSeparator',
 		'checkNumberItem'
 	],
-	#category : #'VirtualStash-Core-QIF'
+	#category : 'VirtualStash-Core-QIF',
+	#package : 'VirtualStash-Core',
+	#tag : 'QIF'
 }
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> accountItem [
 	^ self accountItemWithCode: $L
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QifParser >> accountItemWithCode: aCharacter [
 	| data accountName account category |
 	accountName := $] asPParser negate plus flatten.
@@ -36,29 +38,29 @@ QifParser >> accountItemWithCode: aCharacter [
 	^ aCharacter asPParser, data, lineSeparator ==> #second.
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> amountItem [
 	^ self amountItemWithCode: $T
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QifParser >> amountItemWithCode: aCharacter [
 	^ self detailItemCode: aCharacter do: [ :e | | withoutCommas |
 		withoutCommas := e copyWithout: $,.
 		withoutCommas asNumber ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> anyPart [
 	^ dateItem / clearedStatusItem / memoItem / amountItem / payeeItem / checkNumberItem / accountItem / split plus
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> checkNumberItem [
 	^ self detailItemCode: $N do: [ :e | e ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> clearedStatusItem [
 	^ self detailItemCode: $C do: [ :e |
 		e = ''
@@ -69,78 +71,78 @@ QifParser >> clearedStatusItem [
 					ifTrue: [ 'r' ] ] ] ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> dateItem [
 	^ self detailItemCode: $D do: [ :e | e asDate ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> detail [
 	| recordEnd |
 	recordEnd := $^ asPParser, lineSeparator optional.
 	^ anyPart plus, recordEnd ==> #first
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QifParser >> detailItemCode: aCharacter do: aBlock [
 	| data |
 	data := lineSeparator negate star flatten ==> aBlock.
 	^ aCharacter asPParser, data, lineSeparator ==> #second.
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> headerLine [
 	| accountType |
 	accountType := lineSeparator negate plus flatten.
 	^ '!Type:' asPParser, accountType, lineSeparator ==> #second
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> lineSeparator [
 	^ #newline asPParser, #newline asPParser optional
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> memoItem [
 	^ self memoItemWithCode: $M
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QifParser >> memoItemWithCode: aCharacter [
 	^ self detailItemCode: aCharacter do: [ :e | e ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> payeeItem [
 	^ self detailItemCode: $P do: [ :e | e ].
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> split [
 	^ splitAccountItem, splitMemoItem optional, splitAmountItem
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> splitAccountItem [
 	^ self accountItemWithCode: $S
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> splitAmountItem [
 	^ self amountItemWithCode: $$
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> splitMemoItem [
 	^ self memoItemWithCode: $E
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 QifParser >> splits [
 	^ split star
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 QifParser >> start [
 	^ headerLine, detail star end
 ]

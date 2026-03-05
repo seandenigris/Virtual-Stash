@@ -1,10 +1,12 @@
 Class {
-	#name : #VsDepositImportRule,
-	#superclass : #VsImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsDepositImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDepositImportRule class >> example [
 	<gtExample>
 	
@@ -14,12 +16,12 @@ VsDepositImportRule class >> example [
 		then: [ :r :t | self assert: t counterparty isNil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDepositImportRule >> buildPatchOperations [
 	self flag: 'This will have to be done manually. No way to tell from generic deposit name'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDepositImportRule >> primaryParser [
 	^ 'REMOTE ONLINE DEPOSIT #' asPParser
 ]

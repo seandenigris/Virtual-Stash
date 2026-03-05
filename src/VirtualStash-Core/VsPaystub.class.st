@@ -1,13 +1,15 @@
 Class {
-	#name : #VsPaystub,
-	#superclass : #VsReceipt,
+	#name : 'VsPaystub',
+	#superclass : 'VsReceipt',
 	#instVars : [
 		'end'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> amountGuess [
 
 	^ self 
@@ -22,7 +24,7 @@ VsPaystub >> amountGuess [
 				ifNone: [ nil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> counterpartyDescription [
 	
 	^ (super counterpartyDescription)
@@ -30,7 +32,7 @@ VsPaystub >> counterpartyDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> dateGuess [
 
 	^ self 
@@ -43,12 +45,12 @@ VsPaystub >> dateGuess [
 				ifTrue: [ nil ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> datesRecognized [
 	^ self datesRecognizedHocr collect: #value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> datesRecognizedHocr [
 	^ self resource hocr words 
 		inject: Bag new 
@@ -60,19 +62,19 @@ VsPaystub >> datesRecognizedHocr [
 			col ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> end [
 
 	^ end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> end: anObject [
 
 	end := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> endDescription [
 	<magritteDescription>
 	^ MADateDescription new
@@ -86,7 +88,7 @@ VsPaystub >> endDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaystub >> endGuess [
 
 	^ self 

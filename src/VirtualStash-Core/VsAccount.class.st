@@ -14,8 +14,8 @@ The solution is to have multiple hierarchies representing the relevant dimension
 
 "
 Class {
-	#name : #VsAccount,
-	#superclass : #Object,
+	#name : 'VsAccount',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
 	#instVars : [
@@ -28,24 +28,26 @@ Class {
 		'books',
 		'issuer'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount class >> gnuCashType [
 	| prefixSize |
 	prefixSize := 2.
 	^ (self name allButFirst: prefixSize) asUppercase allButLast: 'Account' size
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 VsAccount class >> importAllFromGnuCash: csvFile [
 	^ (self maCSVImporter: VsAccountImporter)
 		source: csvFile;
 		execute.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsAccount class >> named: aString [ 
 
 	^ self new
@@ -53,7 +55,7 @@ VsAccount class >> named: aString [
 			yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> addChildNamed: aString [
 	| child |
 	child := (self class named: aString)
@@ -62,27 +64,27 @@ VsAccount >> addChildNamed: aString [
 	^ self books chartOfAccounts add: child
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> books [
 	^ books
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> books: anObject [
 	books := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> chart [
 	^ self books chart
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> children [
 	^ self chart select: [ :e | e parent = self ]
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> childrenDescription [
 	<magritteDescription>
 	<gtInspectorPresentationOrder: 10>
@@ -92,7 +94,7 @@ VsAccount >> childrenDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> displayStringOn: aStream [
 	aStream nextPutAll: self name.
 	self pathString ifNotEmpty: [ :str |
@@ -102,14 +104,14 @@ VsAccount >> displayStringOn: aStream [
 			nextPut: $) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> fullName [
 	^ self pathString 
 		ifEmpty: [ self name ]
 		ifNotEmpty: [ :p | p, ':', self name ]
 ]
 
-{ #category : #'GT Views' }
+{ #category : 'GT Views' }
 VsAccount >> generalJournalGtViewOn: aView [
 	<gtView>
 	
@@ -130,7 +132,7 @@ VsAccount >> generalJournalGtViewOn: aView [
 		view: #entriesGtViewOn:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> gnuCashAccountFullName [
 	"The reason this selector is so complex (e.g. vs. #fullName) is that we need something unique to implement on ByteString while assembling the account tree from CSV"
 	| path |
@@ -138,7 +140,7 @@ VsAccount >> gnuCashAccountFullName [
 	^ path, self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> gtViewGraphFor: aView [
 	<gtView>
 	^ aView mondrian
@@ -163,24 +165,24 @@ VsAccount >> gtViewGraphFor: aView [
 			m ]
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 VsAccount >> isCredit: aNumber [
 	^ self normalBalance = #credit
 		ifTrue: [ aNumber > 0 ]
 		ifFalse: [ aNumber < 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> isPlaceholder [
 	^ self maLazyInstVarUsing: self isPlaceholderDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> isPlaceholder: aBoolean [
 	isPlaceholder := aBoolean
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> isPlaceholderDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -193,17 +195,17 @@ VsAccount >> isPlaceholderDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> issuer [
 	^ self maLazyInstVarUsing: self issuerDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> issuer: anObject [
 	issuer := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> issuerDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -213,17 +215,17 @@ VsAccount >> issuerDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> name: aString [
 	name := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -232,7 +234,7 @@ VsAccount >> nameDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> normalBalance [
 	"Defined as 'Which side makes the balance go up - credit or debit?' Summarized *from Wikipedia>https://en.wikipedia.org/wiki/Normal_balance*.
 
@@ -249,17 +251,17 @@ Normal balance of common account types:
 	^ #credit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> notes [
 	^ self maLazyInstVarUsing: self notesDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> notes: aString [
 	notes := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> notesDescription [
 	<magritteDescription>
 	^ MAMemoDescription new
@@ -268,17 +270,17 @@ VsAccount >> notesDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> number [
 	^ self maLazyInstVarUsing: self numberDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> number: aNumber [
 	number := aNumber
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> numberDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -286,17 +288,17 @@ VsAccount >> numberDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> openingBalance [
 	^ openingBalance ifNil: [ openingBalance := self openingBalanceDescription default ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> openingBalance: anObject [
 	openingBalance := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> openingBalanceDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -306,17 +308,17 @@ VsAccount >> openingBalanceDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> parent [
 	^ self maLazyInstVarUsing: self parentDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> parent: anObject [
 	parent := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsAccount >> parentDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -330,30 +332,30 @@ VsAccount >> parentDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> pathString [
 	^ parent ifNotNil: [ :p | p fullName ] ifNil: [ '' ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsAccount >> printOn: aStream [
 	aStream
 		nextPutAll: self name;
 		nextPutAll: ' Account'
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 VsAccount >> rootFolder [
 	^ FileLocator virtualStashData / 'Accounts' / self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> statements [
 
 	^ self maLazyPropertyUsing: self statementsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> statements: aCollection [
 
 	^ self
@@ -361,7 +363,7 @@ VsAccount >> statements: aCollection [
 		put: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> statementsDescription [
 	<magritteDescription>
 	
@@ -373,14 +375,14 @@ VsAccount >> statementsDescription [
 			yourself
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 VsAccount >> transactionsFromCSV_FileNamed: aString [
 	| csvFile |
 	csvFile := self rootFolder / 'Exports' / aString.
 	^ (self class maCSVImporter: VsGnuCashTransactionImporter) importFile: csvFile.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccount >> withAllChildren [
 
 	^ OrderedCollection streamContents: [ :str |

@@ -1,37 +1,39 @@
 Class {
-	#name : #VsBillFile,
-	#superclass : #Object,
+	#name : 'VsBillFile',
+	#superclass : 'Object',
 	#instVars : [
 		'items'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> delete: aReceipt [ 
 
 	self items remove: aReceipt.
 	aReceipt resource delete.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemBaseClass [
 	^ VsBill
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> items [
 
 	^ self maLazyInstVarUsing: self itemsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> items: anObject [
 
 	items := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> items: aBlock searchTitled: aString priority: aNumber for: aSearch [
 	
 	self flag: 'waiting for streaming Spotter to support #matchSubstrings'.
@@ -42,7 +44,7 @@ VsBillFile >> items: aBlock searchTitled: aString priority: aNumber for: aSearch
 		filterBySubstring
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemsDescription [
 	<magritteDescription>
 
@@ -64,7 +66,7 @@ VsBillFile >> itemsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemsGtViewFor: aView [
 	<gtView>
 	^ (aView
@@ -79,7 +81,7 @@ VsBillFile >> itemsGtViewFor: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemsSearchFor: aSearch [
 	<gtSearch>
 	
@@ -90,7 +92,7 @@ VsBillFile >> itemsSearchFor: aSearch [
 		for: aSearch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemsSearchNewFor: aSearch [
 	<gtSearch>
 	
@@ -107,13 +109,13 @@ VsBillFile >> itemsSearchNewFor: aSearch [
 		gtSpotterOn: aSearch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> itemsTypeLabel [
 
 	^ 'Bills'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsBillFile >> resourceLibrary [
 	^ RlResourceLibrary uniqueInstance
 ]

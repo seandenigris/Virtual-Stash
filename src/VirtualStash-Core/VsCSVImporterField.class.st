@@ -1,51 +1,52 @@
 Class {
-	#name : #VsCSVImporterField,
-	#superclass : #Object,
+	#name : 'VsCSVImporterField',
+	#superclass : 'Object',
 	#instVars : [
 		'csvFieldName',
 		'group',
 		'descriptionName'
 	],
-	#category : #'VirtualStash-Core'
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> csvFieldName [
 
 	^ csvFieldName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> csvFieldName: anObject [
 
 	csvFieldName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> descriptionName: anObject [
 
 	descriptionName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> group [
 
 	^ group
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> group: anObject [
 
 	group := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCSVImporterField >> nameDescription [
 
 	^ descriptionName
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 VsCSVImporterField >> write: aString to: anObject [
 	
 	| elementDescription value |
@@ -63,7 +64,7 @@ VsCSVImporterField >> write: aString to: anObject [
 	elementDescription write: value to: anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsCSVImporterField >> write: aString toPropertyOf: anObject [
 	anObject 
 		propertyAt: self nameDescription 

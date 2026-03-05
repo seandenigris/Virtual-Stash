@@ -1,6 +1,6 @@
 Class {
-	#name : #VsFieldSetterElement,
-	#superclass : #BrHorizontalPane,
+	#name : 'VsFieldSetterElement',
+	#superclass : 'BrHorizontalPane',
 	#instVars : [
 		'checkbox',
 		'label',
@@ -8,16 +8,18 @@ Class {
 		'setter',
 		'target'
 	],
-	#category : 'VirtualStash-Core-GToolkit'
+	#category : 'VirtualStash-Core-GToolkit',
+	#package : 'VirtualStash-Core',
+	#tag : 'GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement class >> example [
 	<gtExample>
 	^ self target: 1 setter: #tim: value: 3
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement class >> target: anObject setter: aSymbol value: anotherObject [
 	^ self basicNew
 		target: anObject;
@@ -27,17 +29,17 @@ VsFieldSetterElement class >> target: anObject setter: aSymbol value: anotherObj
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> argument [
 	^ argument
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> argument: anObject [
 	argument := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> initialize [
 	super initialize.
 	
@@ -60,22 +62,22 @@ VsFieldSetterElement >> initialize [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> setter [
 	^ setter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> setter: anObject [
 	setter := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsFieldSetterElement >> target: anObject [
 	target := anObject
 ]

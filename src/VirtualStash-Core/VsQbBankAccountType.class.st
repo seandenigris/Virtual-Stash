@@ -1,16 +1,18 @@
 Class {
-	#name : #VsQbBankAccountType,
-	#superclass : #VsQbAccountType,
-	#category : 'VirtualStash-Core-QuickBooks'
+	#name : 'VsQbBankAccountType',
+	#superclass : 'VsQbAccountType',
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbBankAccountType class >> description [
 
 	^ 'Bank'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbBankAccountType class >> iifDescription [
 
 	^ 'BANK'.

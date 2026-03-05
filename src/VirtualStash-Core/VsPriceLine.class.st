@@ -1,14 +1,16 @@
 Class {
-	#name : #VsPriceLine,
-	#superclass : #Object,
+	#name : 'VsPriceLine',
+	#superclass : 'Object',
 	#instVars : [
 		'price',
 		'quantity'
 	],
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> = rhs [
 
 	self price = rhs price ifFalse: [ ^ false ].
@@ -17,13 +19,13 @@ VsPriceLine >> = rhs [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> date [
 
 	^ self price date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> dateDescription [
 	<magritteDescription>
 	
@@ -34,7 +36,7 @@ VsPriceLine >> dateDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> descriptionDescription [
 	<magritteDescription>
 	
@@ -46,7 +48,7 @@ VsPriceLine >> descriptionDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> displayStringOn: aStream [
 
 	self quantity ifNotNil: [ :qty | 
@@ -59,23 +61,23 @@ VsPriceLine >> displayStringOn: aStream [
 		display: self total
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> hash [
 
 	^ self price hash bitXor: self quantity hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> price [
 	^ price ifNil: [ price := VsItemPrice new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> price: anObject [
 	price := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> priceDescription [
 	<magritteDescription>
 	
@@ -88,23 +90,23 @@ VsPriceLine >> priceDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> quantity [
 	^ quantity ifNil: [ 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> quantity: anObject [
 	quantity := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> quantityDescription [
 	<magritteDescription>
 	
@@ -114,7 +116,7 @@ VsPriceLine >> quantityDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> total [
 	"self quantity ifNil: [ ^ nil ].
 	self price ifNil: [ ^ nil ]."
@@ -124,7 +126,7 @@ VsPriceLine >> total [
 		do: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> totalDescription [
 	<magritteDescription>
 	
@@ -135,19 +137,19 @@ VsPriceLine >> totalDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> unitPrice [
 
 	^ self price total
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> unitPrice: aMeasure [
 
 	^ self price unitPrice: aMeasure
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceLine >> unitPriceDescription [
 	<magritteDescription>
 	

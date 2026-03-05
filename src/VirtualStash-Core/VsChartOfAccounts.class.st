@@ -1,24 +1,26 @@
 Class {
-	#name : #VsChartOfAccounts,
-	#superclass : #Object,
+	#name : 'VsChartOfAccounts',
+	#superclass : 'Object',
 	#instVars : [
 		'accounts',
 		'books'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> accounts [
 	^ self maLazyInstVarUsing: self accountsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> accounts: aCollection [
 	accounts := aCollection
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsChartOfAccounts >> accountsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -27,7 +29,7 @@ VsChartOfAccounts >> accountsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> accountsGtSearchFor: aSearch [
 	<gtSearch>
 	^ aSearch list
@@ -38,24 +40,24 @@ VsChartOfAccounts >> accountsGtSearchFor: aSearch [
 		matchSubstrings
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> add: aVsAccount [
 	aVsAccount books: self books.
 	^ self accounts add: aVsAccount
 	"Implementation note: I should be responsible for adding accounts, but to properly initialize them during that process, I must know my books"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> books [
 	^ books
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> books: aVsBooks [
 	books := aVsBooks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> gtViewAllAccountsOn: aView [
 	<gtView>
 	^ aView columnedList
@@ -70,7 +72,7 @@ VsChartOfAccounts >> gtViewAllAccountsOn: aView [
 		actionUpdateButton.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsChartOfAccounts >> gtViewGraphFor: aView [
 	<gtView>
 	^ aView mondrian

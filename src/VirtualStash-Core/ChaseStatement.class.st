@@ -1,10 +1,12 @@
 Class {
-	#name : #ChaseStatement,
-	#superclass : #Object,
-	#category : 'VirtualStash-Core-Statements'
+	#name : 'ChaseStatement',
+	#superclass : 'Object',
+	#category : 'VirtualStash-Core-Statements',
+	#package : 'VirtualStash-Core',
+	#tag : 'Statements'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ChaseStatement class >> exampleImportYear [
 	| folder newStatements sortedStatements |
 	folder := VirtualStashDB backupDirectoryParent / 'Chase Statements' / 'Business Visa'.
@@ -17,7 +19,7 @@ ChaseStatement class >> exampleImportYear [
 			e renameTo: '2013-' , monthIndex , '.pdf' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ChaseStatement class >> renameFilesIn: folder starting: aDate [
 	"
 	aDate - any date during the first statement"

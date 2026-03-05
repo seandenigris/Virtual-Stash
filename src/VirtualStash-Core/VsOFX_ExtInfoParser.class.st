@@ -1,14 +1,16 @@
 Class {
-	#name : #'VsOFX_ExtInfoParser',
-	#superclass : #PP2CompositeNode,
+	#name : 'VsOFX_ExtInfoParser',
+	#superclass : 'PP2CompositeNode',
 	#instVars : [
 		'memo',
 		'header'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsOFX_ExtInfoParser class >> example [
 	<gtExample>
 	self
@@ -17,22 +19,22 @@ VsOFX_ExtInfoParser class >> example [
 		then: [ :result | self assert: result equals: 'JOHN SMITH-12345-987654321   800-123-4567' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX_ExtInfoParser class >> header [
 	^ 'OFX ext. info: '
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX_ExtInfoParser >> header [
 	^ self class header asPParser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX_ExtInfoParser >> memo [
 	^ '|Memo:' asPParser, $| asPParser negate plus flatten ==> #second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX_ExtInfoParser >> start [
 	^ header, '|Trans type:Generic ' asPParser, ('debit' asPParser / 'credit' asPParser), memo optional end ==> #last
 ]

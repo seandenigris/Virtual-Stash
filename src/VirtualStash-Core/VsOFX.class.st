@@ -1,15 +1,16 @@
 Class {
-	#name : #VsOFX,
-	#superclass : #RlResource,
-	#category : #'VirtualStash-Core'
+	#name : 'VsOFX',
+	#superclass : 'RlResource',
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX class >> fileExtensions [
 	^ #('ofx' 'qfx' 'qbo')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX >> asXML [
 
 	| xmlString |
@@ -33,13 +34,13 @@ ET.tostring(root).decode()';
 	^ XMLDOMParser parse: xmlString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX >> fieldNames [
 
 	^ (self transactionTags asSet flatCollect: [ :e | e elements collect: #name ]) asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX >> transactionDictionaries [
 
 	^ self transactionTags collect: [ :tag |
@@ -51,7 +52,7 @@ VsOFX >> transactionDictionaries [
 					yourself ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOFX >> transactionTags [ 
 
 	^ (self asXML // #STMTTRN) asOrderedCollection.

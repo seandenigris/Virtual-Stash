@@ -1,6 +1,6 @@
-Extension { #name : #RlJPEG }
+Extension { #name : 'RlJPEG' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlJPEG >> vsImageResource [
 	^ self file
 ]

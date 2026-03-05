@@ -1,33 +1,35 @@
 Class {
-	#name : #VsStatement,
-	#superclass : #VsDocument,
+	#name : 'VsStatement',
+	#superclass : 'VsDocument',
 	#instVars : [
 		'closingDate'
 	],
-	#category : #'VirtualStash-Core-Statements'
+	#category : 'VirtualStash-Core-Statements',
+	#package : 'VirtualStash-Core',
+	#tag : 'Statements'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsStatement class >> isClassFor: aFile [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> <= rhs [ 
 	^ self month <= rhs month
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> closingDate [
 	^ self maLazyInstVarUsing: self closingDateDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> closingDate: aDate [
 	closingDate := aDate
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsStatement >> closingDateDescription [
 	<magritteDescription>
 	^ MADateDescription new
@@ -35,7 +37,7 @@ VsStatement >> closingDateDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsStatement >> displayStringOn: aStream [
 
 	aStream
@@ -44,23 +46,23 @@ VsStatement >> displayStringOn: aStream [
 		print: self month monthIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> month [
 	^ self closingDate month
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsStatement >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> wantsHOCR [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsStatement >> year [
 	^ self closingDate asYear
 ]

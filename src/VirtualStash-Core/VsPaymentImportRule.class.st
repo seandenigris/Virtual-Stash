@@ -1,10 +1,12 @@
 Class {
-	#name : #VsPaymentImportRule,
-	#superclass : #VsImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsPaymentImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsPaymentImportRule class >> example [
 	"<gtExample>"
 	
@@ -15,13 +17,13 @@ VsPaymentImportRule class >> example [
 		andMemoAppendedWith: '1234567890 To ABC'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPaymentImportRule >> buildPatchOperations [
 	self patchSet: #processorDescription to: self credit account issuer.
 	self error: 'to fully process this, we need access to *all* transactions so we can find the one on the other side'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsPaymentImportRule >> primaryParser [
 
 	^ self primaryParserFromOptions: #(

@@ -1,14 +1,16 @@
 Class {
-	#name : #VsOfxDatetimeParser,
-	#superclass : #PP2CompositeNode,
+	#name : 'VsOfxDatetimeParser',
+	#superclass : 'PP2CompositeNode',
 	#instVars : [
 		'year',
 		'twoDigitNumber'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsOfxDatetimeParser class >> example [
 	<gtExample>
 	self
@@ -17,7 +19,7 @@ VsOfxDatetimeParser class >> example [
 		then: [ :result | self assert: result equals: '2023-06-21T12:34:56.789-00:00' asDateAndTime ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxDatetimeParser >> start [
 	| date time |
 	date := (year , twoDigitNumber , twoDigitNumber)
@@ -36,12 +38,12 @@ VsOfxDatetimeParser >> start [
 		==> [ :nodes | (DateAndTime date: nodes first time: nodes second) translateToUTC ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxDatetimeParser >> twoDigitNumber [
 	^ (#digit asPParser times: 2) flatten ==> #asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsOfxDatetimeParser >> year [
 	^ (#digit asPParser times: 4) flatten ==> #asNumber
 ]

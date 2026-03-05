@@ -1,10 +1,12 @@
 Class {
-	#name : #VsReceiptElement,
-	#superclass : #RlHOCRElement,
-	#category : #'VirtualStash-Core-GToolkit'
+	#name : 'VsReceiptElement',
+	#superclass : 'RlHOCRElement',
+	#category : 'VirtualStash-Core-GToolkit',
+	#package : 'VirtualStash-Core',
+	#tag : 'GToolkit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptElement >> client: aReceipt [
 	| shortcutDescriptions |
 	super client: aReceipt.

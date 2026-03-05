@@ -1,6 +1,6 @@
-Extension { #name : #ByteString }
+Extension { #name : 'ByteString' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 ByteString >> pyAsTitleCase [
 	"See https://pypi.org/project/titlecase/"
 
@@ -12,7 +12,7 @@ ByteString >> pyAsTitleCase [
 	    sendAndWait.
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 ByteString >> pyAsTitleCaseExample [
 	<gtExample>
 	| result |
@@ -22,7 +22,7 @@ ByteString >> pyAsTitleCaseExample [
 	
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 ByteString >> vsAsUSD [
 	^ self dollars
 ]

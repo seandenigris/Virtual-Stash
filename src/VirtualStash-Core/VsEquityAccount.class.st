@@ -3,7 +3,9 @@ Equity is the same as ""net worth."" It represents what is left over after you s
 
 "
 Class {
-	#name : #VsEquityAccount,
-	#superclass : #VsAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsEquityAccount',
+	#superclass : 'VsAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }

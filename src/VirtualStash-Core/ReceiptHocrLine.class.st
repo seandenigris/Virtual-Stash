@@ -1,13 +1,15 @@
 Class {
-	#name : #ReceiptHocrLine,
-	#superclass : #HocrLine,
+	#name : 'ReceiptHocrLine',
+	#superclass : 'HocrLine',
 	#instVars : [
 		'receipt'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ReceiptHocrLine class >> on: aXMLElement for: aReceipt [
 
 	^ (self on: aXMLElement)
@@ -15,18 +17,18 @@ ReceiptHocrLine class >> on: aXMLElement for: aReceipt [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ReceiptHocrLine >> newWordFrom: anXmlElement [
 
 	^ ReceiptHocrWord on: anXmlElement for: self receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocrLine >> receipt [
 	^ receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocrLine >> receipt: anObject [
 	receipt := anObject
 ]

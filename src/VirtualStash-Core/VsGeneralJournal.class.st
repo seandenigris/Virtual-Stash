@@ -6,8 +6,8 @@ self addTransaction: ()
 
 "
 Class {
-	#name : #VsGeneralJournal,
-	#superclass : #Object,
+	#name : 'VsGeneralJournal',
+	#superclass : 'Object',
 	#instVars : [
 		'entries'
 	],
@@ -15,55 +15,57 @@ Class {
 		'business',
 		'personal'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal class >> business [
 	^ business ifNil: [ business := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal class >> business: anObject [
 	business := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal class >> personal [
 	^ personal ifNil: [ personal := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal class >> personal: anObject [
 	personal := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsGeneralJournal class >> restoreFrom: aCollection [
 
 	business := aCollection first.
 	personal := aCollection second
 ]
 
-{ #category : #'adding/removing' }
+{ #category : 'adding/removing' }
 VsGeneralJournal >> add: entry [
 
 	^ self entries add: entry
 ]
 
-{ #category : #'adding/removing' }
+{ #category : 'adding/removing' }
 VsGeneralJournal >> addAll: transactionCollection [
 
 	^ self entries addAll: transactionCollection
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsGeneralJournal >> asMorph [
 
 	^ self asMagritteMorph addButtons; morph
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsGeneralJournal >> descriptionEntries [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -75,13 +77,13 @@ VsGeneralJournal >> descriptionEntries [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> entries [
 
 	^ entries ifNil: [ entries := SortedCollection sortUsing: #date descending undefinedFirst ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> entriesGtViewOn: aView [
 	<gtView>
 	| result |
@@ -95,7 +97,7 @@ VsGeneralJournal >> entriesGtViewOn: aView [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> gtViewImportEditorOn: aView [
 	<gtView>
 	| result |
@@ -120,7 +122,7 @@ VsGeneralJournal >> gtViewImportEditorOn: aView [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> gtViewTodosOn: aView [
 	<gtView>
 	| result itemStencil contextMenuContents actions |
@@ -168,7 +170,7 @@ VsGeneralJournal >> gtViewTodosOn: aView [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> todos [
 	| todos todoStringSet dashboard |
 	todos := entries select: [ :e | e counterparty isKindOf: VsImportName ].
@@ -183,12 +185,12 @@ VsGeneralJournal >> todos [
 	^ dashboard asOrderedCollection sort: #size descending
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsGeneralJournal >> transactions [
 	^ self entries
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> transactionsGtSearchFor: aSearch [
 	<gtSearch>
 	^ aSearch list
@@ -199,7 +201,7 @@ VsGeneralJournal >> transactionsGtSearchFor: aSearch [
 		matchSubstrings
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournal >> transactionsSortedByStringCounterparty [
 	^ (self transactions select: [ :e | e counterparty isString ] thenCollect: #counterparty) asSet asSortedCollection
 ]

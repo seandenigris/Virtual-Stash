@@ -1,10 +1,11 @@
 Class {
-	#name : #VsColumnedListRowElementStencilBuilder,
-	#superclass : #BrGlamorousColumnedListSelectableRowElementStencilBuilder,
-	#category : #'VirtualStash-Core'
+	#name : 'VsColumnedListRowElementStencilBuilder',
+	#superclass : 'BrGlamorousColumnedListSelectableRowElementStencilBuilder',
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsColumnedListRowElementStencilBuilder >> buildDefault [
 
 	| bar row selectedStyler editorStencil labelStencil deselectedStyler |

@@ -1,13 +1,15 @@
 Class {
-	#name : #ReceiptHocr,
-	#superclass : #Hocr,
+	#name : 'ReceiptHocr',
+	#superclass : 'Hocr',
 	#instVars : [
 		'receipt'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ReceiptHocr class >> on: aString for: aReceipt [
 
 	^ (self on: aString)
@@ -15,18 +17,18 @@ ReceiptHocr class >> on: aString for: aReceipt [
 		yourself
 ]
 
-{ #category : #'line construction' }
+{ #category : 'line construction' }
 ReceiptHocr >> newLineFrom: anXmlElement [
 
 	^ ReceiptHocrLine on: anXmlElement for: self receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocr >> receipt [
 	^ receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocr >> receipt: anObject [
 	receipt := anObject
 ]

@@ -1,13 +1,15 @@
 Class {
-	#name : #ReceiptHocrWord,
-	#superclass : #HocrWord,
+	#name : 'ReceiptHocrWord',
+	#superclass : 'HocrWord',
 	#instVars : [
 		'receipt'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ReceiptHocrWord class >> on: aXMLElement for: aReceipt [
 
 	^ (self on: aXMLElement)
@@ -15,7 +17,7 @@ ReceiptHocrWord class >> on: aXMLElement for: aReceipt [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ReceiptHocrWord >> beDate [
 
 	| separator number dateRule parseResult |
@@ -26,7 +28,7 @@ ReceiptHocrWord >> beDate [
 	self receipt date: parseResult asDate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ReceiptHocrWord >> bePaymentType [
 
 	| paymentType |
@@ -34,7 +36,7 @@ ReceiptHocrWord >> bePaymentType [
 	self receipt paymentMethod: paymentType
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ReceiptHocrWord >> beTotalAmount [
 
 	| number dollars cents amountRule parseResult |
@@ -45,18 +47,18 @@ ReceiptHocrWord >> beTotalAmount [
 	self receipt amount: parseResult asNumber
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ReceiptHocrWord >> isValidPaymentType [
 
 	^ VsPaymentMethod all anySatisfy: [ :e | e isPaymentTypeFor: self string ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocrWord >> receipt [
 	^ receipt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ReceiptHocrWord >> receipt: anObject [
 	receipt := anObject
 ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #PersonalExpenseTests,
-	#superclass : #TestCase,
-	#category : 'VirtualStash-Core-Tests'
+	#name : 'PersonalExpenseTests',
+	#superclass : 'TestCase',
+	#category : 'VirtualStash-Core-Tests',
+	#package : 'VirtualStash-Core',
+	#tag : 'Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 PersonalExpenseTests >> testRecordingPersonalExpenses [
 
 	| books |

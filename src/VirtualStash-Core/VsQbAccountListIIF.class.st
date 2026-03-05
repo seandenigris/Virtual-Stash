@@ -1,15 +1,17 @@
 Class {
-	#name : #VsQbAccountListIIF,
-	#superclass : #Object,
+	#name : 'VsQbAccountListIIF',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'type',
 		'balance'
 	],
-	#category : 'VirtualStash-Core-QuickBooks'
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQbAccountListIIF class >> on: aFileReference [
 
 	^ self
@@ -17,7 +19,7 @@ VsQbAccountListIIF class >> on: aFileReference [
 			yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQbAccountListIIF >> accounts [
 
 		| reader |

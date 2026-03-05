@@ -1,14 +1,16 @@
 Class {
-	#name : #VsGeneralJournalEntry,
-	#superclass : #Object,
+	#name : 'VsGeneralJournalEntry',
+	#superclass : 'Object',
 	#instVars : [
 		'date',
 		'lines'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsGeneralJournalEntry >> descriptionEntries [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -21,7 +23,7 @@ VsGeneralJournalEntry >> descriptionEntries [
         yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsGeneralJournalEntry >> lines [
 	^ lines ifNil: [ lines := OrderedCollection new ]
 ]

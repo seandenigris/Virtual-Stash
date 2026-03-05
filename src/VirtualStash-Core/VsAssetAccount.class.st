@@ -11,12 +11,14 @@ For personal finances a person can follow the business groupings or not, as they
 
 "
 Class {
-	#name : #VsAssetAccount,
-	#superclass : #VsAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsAssetAccount',
+	#superclass : 'VsAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAssetAccount >> normalBalance [
 	^ #debit
 ]

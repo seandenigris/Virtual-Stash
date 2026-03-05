@@ -1,24 +1,26 @@
 Class {
-	#name : #VsCreditCardAccount,
-	#superclass : #VsLiabilityAccount,
+	#name : 'VsCreditCardAccount',
+	#superclass : 'VsLiabilityAccount',
 	#instVars : [
 		'benefits',
 		'foreignTransactionFee'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount class >> gnuCashType [
 	^ 'CREDIT'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> benefits [
 	^ benefits ifNil: [ benefits := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> convertAmexOldStyleFilenames [
 	self statements
 		select: [ :e | e file base beginsWith: 'Sta' ]
@@ -31,17 +33,17 @@ VsCreditCardAccount >> convertAmexOldStyleFilenames [
 			e moveFileTo: e parent / newBase , 'pdf' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> foreignTransactionFee [
 	^ foreignTransactionFee
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> foreignTransactionFee: aNumber [
 	foreignTransactionFee := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> gtElementFor: aView [
 	<gtView>
 	| textElement text |
@@ -66,19 +68,19 @@ VsCreditCardAccount >> gtElementFor: aView [
 				yourself ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsCreditCardAccount >> isPaymentTypeFor: aString [ 
 
 	^ aString endsWith: self lastFour asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> lastFour [
 
 	^ self number asString last: 4
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsCreditCardAccount >> printOn: aStream [
 
 	aStream nextPutAll: name.
@@ -89,12 +91,12 @@ VsCreditCardAccount >> printOn: aStream [
 			nextPut: $) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> rootFolder [
 	^ FileLocator virtualStashData / 'Accounts' / self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCardAccount >> statements [
 	| files year monthOrDay parser |
 	year := (#digit asPParser min: 4 max: 4) flatten ==> #asNumber.

@@ -1,27 +1,29 @@
 Class {
-	#name : #VsAccountBenefit,
-	#superclass : #Object,
+	#name : 'VsAccountBenefit',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
 	#instVars : [
 		'name'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountBenefit >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountBenefit >> name: anObject [
 
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsAccountBenefit >> printOn: aStream [
 
 	aStream

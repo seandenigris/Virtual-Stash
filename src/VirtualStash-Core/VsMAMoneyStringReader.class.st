@@ -1,10 +1,11 @@
 Class {
-	#name : #VsMAMoneyStringReader,
-	#superclass : #MAStringReader,
-	#category : #'VirtualStash-Core'
+	#name : 'VsMAMoneyStringReader',
+	#superclass : 'MAStringReader',
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMAMoneyStringReader >> visitMoneyDescription: anObject [
 	| money |
 	money := [ AmDollar readFrom: self stream upToEnd trimmed ]

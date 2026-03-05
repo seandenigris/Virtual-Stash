@@ -1,13 +1,14 @@
 Class {
-	#name : #VsMoneyParser,
-	#superclass : #PP2CompositeNode,
+	#name : 'VsMoneyParser',
+	#superclass : 'PP2CompositeNode',
 	#instVars : [
 		'upToTwoDigits'
 	],
-	#category : #'VirtualStash-Core'
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser class >> exampleCents [
 	<gtExample>
 	^ self
@@ -16,7 +17,7 @@ VsMoneyParser class >> exampleCents [
 		then: [ :result | result should equal: '0.13' dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser class >> exampleHundreds [
 	<gtExample>
 	^ self
@@ -25,7 +26,7 @@ VsMoneyParser class >> exampleHundreds [
 		then: [ :result | result should equal: '123.45' dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser class >> exampleNoCents [
 	<gtExample>
 	^ self
@@ -34,7 +35,7 @@ VsMoneyParser class >> exampleNoCents [
 		then: [ :result | result should equal: '13' dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser class >> exampleNoCommas [
 	<gtExample>
 	^ self
@@ -43,7 +44,7 @@ VsMoneyParser class >> exampleNoCommas [
 		then: [ :result | result should equal: '1234.56' dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser class >> exampleWithCommas [
 	<gtExample>
 	^ self
@@ -52,7 +53,7 @@ VsMoneyParser class >> exampleWithCommas [
 		then: [ :result | result should equal: '1234.56' dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser >> start [
 	| dollars cents upToThreeDigits comma sign |
 	"making the dollar sign optional resulted in too many false hits"
@@ -67,17 +68,17 @@ VsMoneyParser >> start [
 		resultString dollars ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser >> twoDigits [
 	^ #digit asPParser plus min: 2; max: 2; flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser >> upToDigits: anInteger [
 	^ #digit asPParser plus min: 1; max: anInteger; flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMoneyParser >> upToTwoDigits [
 	^ self upToDigits: 2
 ]

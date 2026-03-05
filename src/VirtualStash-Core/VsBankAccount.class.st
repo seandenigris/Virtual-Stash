@@ -3,12 +3,14 @@ This account is used to track your cash balance that you keep in institutions su
 
 "
 Class {
-	#name : #VsBankAccount,
-	#superclass : #VsAssetAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsBankAccount',
+	#superclass : 'VsAssetAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsBankAccount >> isPaymentTypeFor: aString [ 
 
 	^ aString asLowercase = 'cash'

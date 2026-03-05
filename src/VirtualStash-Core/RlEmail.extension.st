@@ -1,6 +1,6 @@
-Extension { #name : #RlEmail }
+Extension { #name : 'RlEmail' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlEmail >> datesRecognized [
 	| datesInBody |
 	
@@ -12,7 +12,7 @@ RlEmail >> datesRecognized [
 		yourself
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlEmail >> possibleCurrencyAmounts [
 	| matches |
 	
@@ -23,13 +23,13 @@ RlEmail >> possibleCurrencyAmounts [
 	^ matches asSet
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlEmail >> vsAnalysisInput [
 	
 	^ self mailMessage vsAnalysisInput
 ]
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 RlEmail >> vsCounterpartyGuess [
 
 	^ self addressBook contacts 

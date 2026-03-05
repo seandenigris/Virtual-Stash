@@ -1,12 +1,14 @@
 Class {
-	#name : #VsPrice,
-	#superclass : #Object,
+	#name : 'VsPrice',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #utility }
+{ #category : 'utility' }
 VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 	
 	^ aSearch explicit
@@ -21,7 +23,7 @@ VsPrice class >> search: client new: aClass for: aSearch priority: aNumber [
 			client add: result ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsPrice >> compoundingFormula [
 	
 	^ AcCompoundingFormula new
@@ -29,7 +31,7 @@ VsPrice >> compoundingFormula [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> dateDescription [
 	<magritteDescription>
 	
@@ -40,7 +42,7 @@ VsPrice >> dateDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> displayStringOn: aStream [
 
 	self name ifNotNil: [ :n | aStream << n ].
@@ -49,13 +51,13 @@ VsPrice >> displayStringOn: aStream [
 		display: self total
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> list [
 
 	^ VsPriceList uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -63,19 +65,19 @@ VsPrice >> nameDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> total [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPrice >> totalDescription [
 	<magritteDescription>
 	

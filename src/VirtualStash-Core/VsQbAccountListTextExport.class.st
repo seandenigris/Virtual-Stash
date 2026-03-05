@@ -1,16 +1,18 @@
 Class {
-	#name : #VsQbAccountListTextExport,
-	#superclass : #Object,
+	#name : 'VsQbAccountListTextExport',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'type',
 		'balance',
 		'file'
 	],
-	#category : 'VirtualStash-Core-QuickBooks'
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQbAccountListTextExport class >> on: aFileReference [
 
 	^ self
@@ -18,7 +20,7 @@ VsQbAccountListTextExport class >> on: aFileReference [
 			yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQbAccountListTextExport >> accounts [
 
 	| reader |
@@ -34,7 +36,7 @@ VsQbAccountListTextExport >> accounts [
 		 ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsQbAccountListTextExport >> initialize [
 
 	super initialize.

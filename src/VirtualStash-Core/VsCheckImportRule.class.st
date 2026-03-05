@@ -1,10 +1,12 @@
 Class {
-	#name : #VsCheckImportRule,
-	#superclass : #VsImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsCheckImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsCheckImportRule class >> example [
 	<gtExample>
 	
@@ -15,7 +17,7 @@ VsCheckImportRule class >> example [
 		andMemoAppendedWith: 'Check'
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 VsCheckImportRule >> buildPatchOperations [
 	self
 		patchSet: #numberDescription to: self memo;
@@ -23,7 +25,7 @@ VsCheckImportRule >> buildPatchOperations [
 		patchMemoAppend: 'Check'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCheckImportRule >> primaryParser [
 	^ 'CHECK' asPParser
 ]

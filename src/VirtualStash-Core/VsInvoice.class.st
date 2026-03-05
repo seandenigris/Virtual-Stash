@@ -1,6 +1,6 @@
 Class {
-	#name : #VsInvoice,
-	#superclass : #Object,
+	#name : 'VsInvoice',
+	#superclass : 'Object',
 	#instVars : [
 		'id',
 		'date',
@@ -10,45 +10,47 @@ Class {
 	#classVars : [
 		'DB'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice class >> DB [
 	^ DB ifNil: [ DB := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice class >> DB: anObject [
 	DB := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> date [
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> date: anObject [
 	date := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> vendor [
 	^ vendor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInvoice >> vendor: anObject [
 	vendor := anObject
 ]

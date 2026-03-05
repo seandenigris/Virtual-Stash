@@ -1,16 +1,17 @@
 Class {
-	#name : #VsTransactionGtListView,
-	#superclass : #GtPhlowColumnedListView,
-	#category : #'VirtualStash-Core'
+	#name : 'VsTransactionGtListView',
+	#superclass : 'GtPhlowColumnedListView',
+	#category : 'VirtualStash-Core',
+	#package : 'VirtualStash-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionGtListView >> cellSpacing [
 
 	^ 5
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionGtListView >> newDecoratedItemStencil [
 	| anItemElementStencil |
 	anItemElementStencil := VsColumnedListRowElementStencilBuilder

@@ -1,14 +1,16 @@
 Class {
-	#name : #VsPackagePrice,
-	#superclass : #VsPrice,
+	#name : 'VsPackagePrice',
+	#superclass : 'VsPrice',
 	#instVars : [
 		'name',
 		'children'
 	],
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice class >> named: aString [
 
 	^ self new
@@ -16,7 +18,7 @@ VsPackagePrice class >> named: aString [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsPackagePrice >> * anInteger [ 
 	
 	| result |
@@ -26,12 +28,12 @@ VsPackagePrice >> * anInteger [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> add: aVsItem [
 	^ self addItem: aVsItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> add: anInteger ofItem: aVsItemPrice [
 
 	| line |
@@ -44,22 +46,22 @@ VsPackagePrice >> add: anInteger ofItem: aVsItemPrice [
 	self list add: aVsItemPrice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> addItem: aVsItem [
 	^ self add: 1 ofItem: aVsItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> children [
 	^ children ifNil: [ children := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> children: aCollection [
 	children := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> copyToList [
 
 	| copy |
@@ -69,7 +71,7 @@ VsPackagePrice >> copyToList [
 	^ self priceList add: copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> date [
 
 	self refreshPrices.
@@ -79,7 +81,7 @@ VsPackagePrice >> date [
 		ifEmpty: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> dateDescription [
 	
 	^ super dateDescription
@@ -87,19 +89,19 @@ VsPackagePrice >> dateDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> isPrivate [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> item [
 	"Item Price compatibility"
 
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> itemPricesDescription [
 	<magritteDescription>
 	
@@ -115,7 +117,7 @@ VsPackagePrice >> itemPricesDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> itemPricesGtViewFor: aView [
 	<gtView>
 	
@@ -132,7 +134,7 @@ VsPackagePrice >> itemPricesGtViewFor: aView [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> itemSearchFor: aSearch [
 	<gtSearch>
 	
@@ -144,7 +146,7 @@ VsPackagePrice >> itemSearchFor: aSearch [
 		send: [ :item | self addItem: item ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
@@ -155,17 +157,17 @@ VsPackagePrice >> itemSearchNewFor: aSearch [
 		priority: 200
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> packageSearchNewFor: aSearch [
 	<gtSearch>
 	
@@ -176,7 +178,7 @@ VsPackagePrice >> packageSearchNewFor: aSearch [
 		priority: 200
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> postCopy [
 
 	| lineCopies |
@@ -186,13 +188,13 @@ VsPackagePrice >> postCopy [
 	self children: lineCopies.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> priceList [
 
 	^ VsPriceList uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> refreshPrices [
 
 	self children
@@ -204,7 +206,7 @@ VsPackagePrice >> refreshPrices [
 				self itemPrices replaceAll: px with: latestPrice ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> total [
 
 	self
@@ -220,7 +222,7 @@ VsPackagePrice >> total [
 			sum + price total ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPackagePrice >> total: money [
 
 	self

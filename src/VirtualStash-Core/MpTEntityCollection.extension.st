@@ -1,6 +1,6 @@
-Extension { #name : #MpTEntityCollection }
+Extension { #name : 'MpTEntityCollection' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MpTEntityCollection >> vsUsers [
 	| result |
 	result := self people select: [ :e | e vsIsUser ].

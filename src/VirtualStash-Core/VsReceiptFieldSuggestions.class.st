@@ -1,14 +1,16 @@
 Class {
-	#name : #VsReceiptFieldSuggestions,
-	#superclass : #Object,
+	#name : 'VsReceiptFieldSuggestions',
+	#superclass : 'Object',
 	#instVars : [
 		'suggestions',
 		'bestGuess'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsReceiptFieldSuggestions class >> on: anOrderedCollection [
 
 	^ self new
@@ -16,13 +18,13 @@ VsReceiptFieldSuggestions class >> on: anOrderedCollection [
 		yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptFieldSuggestions >> bestGuess: guess [
 
 	bestGuess := guess.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptFieldSuggestions >> suggestions: anOrderedCollection [ 
 
 	suggestions := anOrderedCollection.

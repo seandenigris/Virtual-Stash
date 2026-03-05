@@ -1,6 +1,6 @@
-Extension { #name : #MADateDescription }
+Extension { #name : 'MADateDescription' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MADateDescription >> vsColumnWeight [
 	^ 0.1
 ]

@@ -2,8 +2,8 @@
 I am an example of naivety and NIH syndrome. I am a hand-rolled attempt to determine whether a counterparty is a variant (e.g. misspelled). I will probably go away as we are currently exploring leveraging Python for this task.
 "
 Class {
-	#name : #VsTransactionFixer,
-	#superclass : #Object,
+	#name : 'VsTransactionFixer',
+	#superclass : 'Object',
 	#instVars : [
 		'transaction',
 		'input',
@@ -12,31 +12,33 @@ Class {
 		'suffix',
 		'alias'
 	],
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer class >> isDeprecated [
 	^ true.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> addressBook [
 
 	^ MpAddressBook uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> alias [
 	^ self maLazyInstVarUsing: self aliasDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> alias: aString [
 	alias := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransactionFixer >> aliasDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -46,7 +48,7 @@ VsTransactionFixer >> aliasDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> apply [
 	| party |
 	party := self addressBook ensureOrganizationNamed: self counterparty.
@@ -56,7 +58,7 @@ VsTransactionFixer >> apply [
 		memoAppend: self suffix.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> applyAliasTo: party [
 	self alias isEmptyOrNil ifTrue: [ ^ self ].
 	(party aliases includes: self alias) ifTrue: [ ^ self ].
@@ -64,17 +66,17 @@ VsTransactionFixer >> applyAliasTo: party [
 	party aliases add: self alias
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> counterparty [
 	^ counterparty ifNil: [ counterparty := (self parser parse: self input) first ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> counterparty: aString [
 	counterparty := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransactionFixer >> counterpartyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -82,12 +84,12 @@ VsTransactionFixer >> counterpartyDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> input [
 	^ self transaction counterparty
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransactionFixer >> inputDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -95,12 +97,12 @@ VsTransactionFixer >> inputDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> parser [
 	^ self partyParser, self separatorParser, #any asPParser star flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> partyParser [
 	| prefixWord result |
 	prefixWord := self separatorParser negate star flatten.
@@ -110,22 +112,22 @@ VsTransactionFixer >> partyParser [
 	^ result flatten
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> prefix [
 	^ (self parser parse: self input) first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> prefixWordCount [
 	^ self maLazyInstVarUsing: self prefixWordCountDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> prefixWordCount: aNumber [
 	prefixWordCount := aNumber
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransactionFixer >> prefixWordCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -134,28 +136,28 @@ VsTransactionFixer >> prefixWordCountDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> result [
 	^ { self counterparty. self alias. self suffix }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> separatorParser [
 	^ ' ' inject: $* asPParser into: [ :p :e | 
 		p / e asPParser ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> suffix [
 	^ (self parser parse: self input) last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> suffix: aString [
 	suffix := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 VsTransactionFixer >> suffixDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -163,12 +165,12 @@ VsTransactionFixer >> suffixDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> transaction [
 	^ transaction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsTransactionFixer >> transaction: anObject [
 	transaction := anObject
 ]

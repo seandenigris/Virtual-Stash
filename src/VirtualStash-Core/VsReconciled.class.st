@@ -1,10 +1,12 @@
 Class {
-	#name : #VsReconciled,
-	#superclass : #VsReconciliationStatus,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsReconciled',
+	#superclass : 'VsReconciliationStatus',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReconciled class >> gnuCashCode [
 	^ 'y'
 ]

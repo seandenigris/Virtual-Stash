@@ -1,10 +1,12 @@
 Class {
-	#name : #VsQbAccountType,
-	#superclass : #Object,
-	#category : 'VirtualStash-Core-QuickBooks'
+	#name : 'VsQbAccountType',
+	#superclass : 'Object',
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsQbAccountType class >> on: aString [ 
 
 	^ self subclasses detect: [ :e | e description = aString ] ifNone: [
@@ -20,7 +22,7 @@ VsQbAccountType class >> on: aString [
 	^ ''', aString, '''.' classified: 'accessing' ].
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsQbAccountType class >> onIIF: aString [ 
 
 	^ self subclasses detect: [ :e | e iifDescription = aString ] ifNone: [

@@ -1,6 +1,6 @@
-Extension { #name : #MailMessage }
+Extension { #name : 'MailMessage' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MailMessage >> vsAnalysisInput [
 	
 	^ self bodyRlHtml 

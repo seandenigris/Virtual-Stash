@@ -1,6 +1,6 @@
-Extension { #name : #MAMoneyDescription }
+Extension { #name : 'MAMoneyDescription' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MAMoneyDescription class >> vsNew [
 
 	^ self new

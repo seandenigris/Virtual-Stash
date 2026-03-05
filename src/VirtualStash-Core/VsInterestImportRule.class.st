@@ -1,10 +1,12 @@
 Class {
-	#name : #VsInterestImportRule,
-	#superclass : #VsImportRule,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsInterestImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsInterestImportRule >> buildPatchOperations [
 	| expenseAccount |
 	expenseAccount := self accountNamed: 'Expenses:Interest'.
@@ -14,7 +16,7 @@ VsInterestImportRule >> buildPatchOperations [
 	super buildPatchOperations
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsInterestImportRule >> primaryParser [
 
 	^ self primaryParserFromOptions: #(

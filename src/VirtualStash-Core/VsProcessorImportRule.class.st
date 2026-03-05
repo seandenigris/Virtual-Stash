@@ -1,15 +1,17 @@
 Class {
-	#name : #VsProcessorImportRule,
-	#superclass : #VsImportRule,
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#name : 'VsProcessorImportRule',
+	#superclass : 'VsImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsProcessorImportRule class >> isAbstract [
 	^ self = VsProcessorImportRule
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsProcessorImportRule >> buildPatchOperations [
 	self
 		patchSet: #processorDescription to: self paymentProcessor;
@@ -17,7 +19,7 @@ VsProcessorImportRule >> buildPatchOperations [
 		patchMemoAppend: self memo.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsProcessorImportRule >> ensureProcessorNamed: aString [
 
 	paymentProcessor := self addressBook ensureOrganizationNamed: 'Venmo'.

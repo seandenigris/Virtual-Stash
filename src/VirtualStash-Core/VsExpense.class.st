@@ -1,16 +1,18 @@
 Class {
-	#name : #VsExpense,
-	#superclass : #Object,
+	#name : 'VsExpense',
+	#superclass : 'Object',
 	#instVars : [
 		'date',
 		'description',
 		'category',
 		'amount'
 	],
-	#category : 'VirtualStash-Core-Pre2013'
+	#category : 'VirtualStash-Core-Pre2013',
+	#package : 'VirtualStash-Core',
+	#tag : 'Pre2013'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpense class >> on: aDate for: descriptionString inCategory: categoryString [ 
 
 	^ self new
@@ -19,7 +21,7 @@ VsExpense class >> on: aDate for: descriptionString inCategory: categoryString [
 		category: categoryString.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpense class >> paid: amount on: aDate for: descriptionString inCategory: categoryString [ 
 
 	^ self new
@@ -29,49 +31,49 @@ VsExpense class >> paid: amount on: aDate for: descriptionString inCategory: cat
 		category: categoryString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpense >> account [
 
 	^ category.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> account: aString [
 
 	^ category := aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> amount [
 
 	^ amount.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> category [
 
 	^ category.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpense >> date [
 
 	^ date.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> description [
 
 	^ description.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> printOn: aStream [
 
 	aStream nextPutAll: '[', date asString, '] ', amount asString, ' for ', description, ' (', category, ')'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpense >> setAmount: amountNumber date: aDate description: descriptionString category: categoryString [
 
 	amount := amountNumber.

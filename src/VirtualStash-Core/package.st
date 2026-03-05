@@ -1,1 +1,1 @@
-Package { #name : #'VirtualStash-Core' }
+Package { #name : 'VirtualStash-Core' }

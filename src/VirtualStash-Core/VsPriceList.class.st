@@ -1,44 +1,46 @@
 Class {
-	#name : #VsPriceList,
-	#superclass : #Object,
+	#name : 'VsPriceList',
+	#superclass : 'Object',
 	#instVars : [
 		'prices'
 	],
 	#classInstVars : [
 		'UniqueInstance'
 	],
-	#category : #'VirtualStash-Core-Vendors'
+	#category : 'VirtualStash-Core-Vendors',
+	#package : 'VirtualStash-Core',
+	#tag : 'Vendors'
 }
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPriceList class >> restoreFrom: anObject [
 
 	UniqueInstance := anObject.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 VsPriceList class >> spData [
 
 	^ UniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList class >> uniqueInstance [
 	^ UniqueInstance ifNil: [ UniqueInstance := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList class >> uniqueInstance: anObject [
 	UniqueInstance := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsPriceList >> add: aVsItemPrice [ 
 	
 	^ self prices add: aVsItemPrice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> itemSearchNewFor: aSearch [
 	<gtSearch>
 	
@@ -49,7 +51,7 @@ VsPriceList >> itemSearchNewFor: aSearch [
 		priority: 200
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> packageSearchNewFor: aSearch [
 	<gtSearch>
 	
@@ -60,7 +62,7 @@ VsPriceList >> packageSearchNewFor: aSearch [
 		priority: 100
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> priceFor: aVsItem [ 
 	
 	| itemPrices |
@@ -70,17 +72,17 @@ VsPriceList >> priceFor: aVsItem [
 		ifEmpty: [ aVsItem unknownPrice ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> prices [
 	^ prices ifNil: [ prices := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> prices: anObject [
 	prices := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> pricesGtSearchOn: aSearch [
 	<gtSearch>
 	
@@ -92,7 +94,7 @@ VsPriceList >> pricesGtSearchOn: aSearch [
 		matchSubstrings
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> pricesGtViewOn: aView [
 	<gtView>
 	
@@ -110,7 +112,7 @@ VsPriceList >> pricesGtViewOn: aView [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsPriceList >> rootPrices [
 
 	^ self prices reject: #isPrivate

@@ -1,17 +1,19 @@
 Class {
-	#name : #VsEventbriteImportRule,
-	#superclass : #VsProcessorImportRule,
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#name : 'VsEventbriteImportRule',
+	#superclass : 'VsProcessorImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #'initialization-release' }
+{ #category : 'initialization-release' }
 VsEventbriteImportRule >> initialize [
 	super initialize.
 	paymentProcessor := self ensureProcessorNamed: 'Eventbrite'.
 	memo := '' "so I don't try to pull one from the parse result (which signals an error)"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsEventbriteImportRule >> primaryParser [
 	^ 'Eventbrite' asPParser
 ]

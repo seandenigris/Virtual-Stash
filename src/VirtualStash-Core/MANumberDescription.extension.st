@@ -1,6 +1,6 @@
-Extension { #name : #MANumberDescription }
+Extension { #name : 'MANumberDescription' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 MANumberDescription >> vsColumnWeight [
 	^ 0.1
 ]

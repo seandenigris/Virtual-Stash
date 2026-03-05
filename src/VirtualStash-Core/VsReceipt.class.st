@@ -14,27 +14,29 @@ A common scenario is that you have a bunch of files that you want to turn into r
 
 "
 Class {
-	#name : #VsReceipt,
-	#superclass : #VsDocument,
+	#name : 'VsReceipt',
+	#superclass : 'VsDocument',
 	#instVars : [
 		'paymentMethod'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt class >> exampleCash [
 	<gtExample>
 	^ self fromResourceable: FileLocator virtualStashData / 'Examples' / 'Receipt_20151230_0004.pdf'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> amountsRecognized [
 	
 	^ super amountsRecognized sorted reverse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> amountsRecognizedHocr [
 	^ self hocr words 
 		inject: Bag new 
@@ -46,18 +48,18 @@ VsReceipt >> amountsRecognizedHocr [
 			col ].
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 VsReceipt >> asMorph [
 
 	^ VsReceiptImageUI on: self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceipt >> beCash [
 	self shouldBeImplemented.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceipt >> beNonReceipt [
 	self error: 'no longer one file. one per book'.
 	self flag: 'This is obviously not a good solution, but I have no idea how VS will integrate with other systems, so hack this in to get non-receipts out of the way for now'.
@@ -65,7 +67,7 @@ VsReceipt >> beNonReceipt [
 	VsReceiptFile uniqueInstance nonReceipts add: self.
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> beNonReceiptDescription [
 	<magritteActionDescription>
 	^ MAActionDescription new
@@ -75,21 +77,21 @@ VsReceipt >> beNonReceiptDescription [
 		yourself
 ]
 
-{ #category : #transactions }
+{ #category : 'transactions' }
 VsReceipt >> businessTransaction [
 	^ VsBooks business generalJournal transactions
 			detect: [ :e | e receipt == self ]
 			ifNone: [ nil ]
 ]
 
-{ #category : #transactions }
+{ #category : 'transactions' }
 VsReceipt >> businessTransaction: transaction [
 	transaction ifNil: [ ^ self ].
 	transaction receipt: self.
 	VsBooks business generalJournal add: transaction
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> businessTransactionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -101,13 +103,13 @@ VsReceipt >> businessTransactionDescription [
 			yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceipt >> enterAsPersonal [
 
 	VsGeneralJournal uniqueInstance addEntryFromReceipt: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceipt >> guessAll [
 
 	self amount: self amountGuess.
@@ -115,13 +117,13 @@ VsReceipt >> guessAll [
 	self counterparty: self counterpartyGuess
 ]
 
-{ #category : #'ocr-guessing' }
+{ #category : 'ocr-guessing' }
 VsReceipt >> guessPaymentType [
 
 	^ VsPaymentMethod all detect: [ :card | self hocr words anySatisfy: [ :token | token string matchesRegex: '.*x+', card lastFour asString ] ].
 ]
 
-{ #category : #'ocr-guessing' }
+{ #category : 'ocr-guessing' }
 VsReceipt >> guessTotal [
 
 	| possibilities bestGuess suggestions rankedGuesses optionalDollarSign oneOrMoreDigits moneyRegex |
@@ -141,7 +143,7 @@ VsReceipt >> guessTotal [
 		yourself.
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> initializeTransaction: transaction in: books [
 
 	| entry |
@@ -157,17 +159,17 @@ VsReceipt >> initializeTransaction: transaction in: books [
 	transaction entries add: entry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> paymentMethod [
 	^ paymentMethod
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> paymentMethod: anObject [
 	paymentMethod := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> paymentMethodDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -181,21 +183,21 @@ VsReceipt >> paymentMethodDescription [
 		yourself
 ]
 
-{ #category : #transactions }
+{ #category : 'transactions' }
 VsReceipt >> personalTransaction [
 	^ VsBooks personal generalJournal transactions
 			detect: [ :e | e receipt == self ]
 			ifNone: [ nil ]
 ]
 
-{ #category : #transactions }
+{ #category : 'transactions' }
 VsReceipt >> personalTransaction: transaction [
 	transaction ifNil: [ ^ self ].
 	transaction receipt: self.
 	VsBooks personal generalJournal add: transaction
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> personalTransactionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -207,14 +209,14 @@ VsReceipt >> personalTransactionDescription [
 			yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsReceipt >> printFieldsOn: aStream [
 
 	super printFieldsOn: aStream.
 	paymentMethod ifNotNil: [ aStream nextPutAll: ' with '; print: self paymentMethod ].
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsReceipt >> printOn: aStream [
 
 	counterparty ifNotNil: [ aStream nextPutAll: self vendor fullName ].
@@ -226,12 +228,12 @@ VsReceipt >> printOn: aStream [
 	aStream nextPut: $).
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 VsReceipt >> submit [
 	self shouldBeImplemented.
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsReceipt >> submitDescription [
 	<magritteActionDescription>
 	^ MAActionDescription new
@@ -241,12 +243,12 @@ VsReceipt >> submitDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> vendor [
 	^ counterparty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceipt >> vendor: anObject [
 	counterparty := anObject
 ]

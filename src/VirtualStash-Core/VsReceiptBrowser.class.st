@@ -2,8 +2,8 @@
 self open
 "
 Class {
-	#name : #VsReceiptBrowser,
-	#superclass : #SpPresenter,
+	#name : 'VsReceiptBrowser',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'list',
 		'image',
@@ -11,16 +11,18 @@ Class {
 		'detail',
 		'receiptModel'
 	],
-	#category : #'VirtualStash-Core-Receipts-UI'
+	#category : 'VirtualStash-Core-Receipts-UI',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts-UI'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptBrowser class >> open [
 
 	^ self new openWithSpec.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsReceiptBrowser class >> spec [
 	<spec: #default>
 
@@ -30,19 +32,19 @@ VsReceiptBrowser class >> spec [
 			yourself.
 ]
 
-{ #category : #protocol }
+{ #category : 'protocol' }
 VsReceiptBrowser >> initialExtent [
 
 	^ 400@210.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsReceiptBrowser >> initializePresenter [
 
 	list whenSelectedItemChanged: [ :receipt | receipt ifNotNil: [ receiptModel receipt: receipt ] ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsReceiptBrowser >> initializeWidgets [
 
 	list := self instantiate: ListModel.
@@ -51,19 +53,19 @@ VsReceiptBrowser >> initializeWidgets [
 	receiptModel := self instantiate: VsReceiptUI.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptBrowser >> list [
 
 	^ list.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptBrowser >> receiptModel [
 
 	^ receiptModel.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsReceiptBrowser >> receipts [
 	self error: 'no longer one file; now one per book'.
 	^ VsReceiptFile uniqueInstance receipts.

@@ -1,16 +1,18 @@
 Class {
-	#name : #VsQbOtherCurrentLiabilityAccountType,
-	#superclass : #VsQbAccountType,
-	#category : 'VirtualStash-Core-QuickBooks'
+	#name : 'VsQbOtherCurrentLiabilityAccountType',
+	#superclass : 'VsQbAccountType',
+	#category : 'VirtualStash-Core-QuickBooks',
+	#package : 'VirtualStash-Core',
+	#tag : 'QuickBooks'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbOtherCurrentLiabilityAccountType class >> description [
 	
 	^ 'Other Current Liability'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsQbOtherCurrentLiabilityAccountType class >> iifDescription [
 
 	^ 'OCLIAB'.

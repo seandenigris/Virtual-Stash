@@ -3,12 +3,14 @@ Use this account to track the money you have on hand, in your wallet, in your pi
 
 "
 Class {
-	#name : #VsCashAccount,
-	#superclass : #VsAssetAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsCashAccount',
+	#superclass : 'VsAssetAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsCashAccount >> isPaymentTypeFor: aString [ 
 
 	^ aString asLowercase = 'cash'

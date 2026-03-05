@@ -1,16 +1,18 @@
 Class {
-	#name : #VsCash,
-	#superclass : #VsPaymentMethod,
-	#category : 'VirtualStash-Core-Receipts'
+	#name : 'VsCash',
+	#superclass : 'VsPaymentMethod',
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsCash >> isPaymentTypeFor: aString [ 
 
 	^ aString asLowercase = 'cash'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsCash >> printOn: aStream [
 
 	aStream nextPutAll: 'Cash'.

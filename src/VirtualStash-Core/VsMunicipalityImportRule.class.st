@@ -1,16 +1,18 @@
 Class {
-	#name : #VsMunicipalityImportRule,
-	#superclass : #VsExplicitCounterpartyImportRule,
-	#category : #'VirtualStash-Core-Bookkeeping'
+	#name : 'VsMunicipalityImportRule',
+	#superclass : 'VsExplicitCounterpartyImportRule',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleNewRochelle [
 	<gtExample>
 	self givenInput: 'New Rochelle' thenPartyNamed: 'City of New Rochelle'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleNewRochelleLocalBusinessDontApply [
 	<gtExample>
 	self
@@ -18,19 +20,19 @@ VsMunicipalityImportRule class >> exampleNewRochelleLocalBusinessDontApply [
 		thenDontMatchMunicipalityNamed: 'City of New Rochelle'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleNewRochelleMemo [
 	<gtExample>
 	self givenInput: 'CITY OF NEW ROCH AB34E' thenPartyNamed: 'City of New Rochelle' andMemoAppendedWith: 'AB34E'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleWhitePlains [
 	<gtExample>
 	self givenInput: 'White Plains' thenPartyNamed: 'City of White Plains'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleWhitePlainsLocalBusinessDontApply [
 	<gtExample>
 	self
@@ -38,19 +40,19 @@ VsMunicipalityImportRule class >> exampleWhitePlainsLocalBusinessDontApply [
 		thenDontMatchMunicipalityNamed: 'City of White Plains'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleWhitePlainsParking [
 	<gtExample>
 	self givenInput: 'WHITE PLAINS PARKING-P' thenPartyNamed: 'City of White Plains' andMemoAppendedWith: 'PARKING-P'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> exampleWhitePlainsParking2 [
 	<gtExample>
 	self givenInput: 'WHITE PLAINS PARK DPT' thenPartyNamed: 'City of White Plains' andMemoAppendedWith: 'PARK DPT'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 VsMunicipalityImportRule class >> given: inputString thenDontMatchMunicipalityNamed: municipalityName [
 	[ 
 		self
@@ -60,12 +62,12 @@ VsMunicipalityImportRule class >> given: inputString thenDontMatchMunicipalityNa
 	] on: Error do: [ "will end up here if no rule for input; not relevant to this test" ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsMunicipalityImportRule class >> isAbstract [
 	^ self = VsMunicipalityImportRule
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMunicipalityImportRule >> appliesTo: aVsTransaction [
 	| input commonNameParser commonNamePlusParser parseResult |
 	input := aVsTransaction counterparty asString.
@@ -79,14 +81,14 @@ VsMunicipalityImportRule >> appliesTo: aVsTransaction [
 		ifFalse: [ super appliesTo: aVsTransaction ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMunicipalityImportRule >> commonName [
 	^ self party 
 		propertyAt: #vsCommonName
 		ifAbsent: [ self party name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsMunicipalityImportRule >> suffixes [
 	^ self party propertyAt: #vsCounterpartySuffixes
 ]

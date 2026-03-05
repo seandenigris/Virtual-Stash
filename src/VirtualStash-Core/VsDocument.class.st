@@ -1,6 +1,6 @@
 Class {
-	#name : #VsDocument,
-	#superclass : #Object,
+	#name : 'VsDocument',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
 	#instVars : [
@@ -9,10 +9,12 @@ Class {
 		'resource',
 		'amount'
 	],
-	#category : #'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsDocument class >> fromFiles: files [
 
 	^ files collect: [ :e | 
@@ -21,7 +23,7 @@ VsDocument class >> fromFiles: files [
 				yourself ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsDocument class >> fromImagesIn: directory [
 
 	| images |
@@ -29,7 +31,7 @@ VsDocument class >> fromImagesIn: directory [
 	^ self fromFiles: images
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsDocument class >> fromResourceable: aResourceable [
 
 	^ self new
@@ -38,23 +40,23 @@ VsDocument class >> fromResourceable: aResourceable [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> addressBook [
 
 	^ MpAddressBook uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> amount [
 	^ amount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> amount: anObject [
 	amount := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsDocument >> amountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription vsNew
@@ -70,7 +72,7 @@ VsDocument >> amountDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> amountGuess [
 	^ self cache: #amount guess: [ 
 	
@@ -88,7 +90,7 @@ VsDocument >> amountGuess [
 			ifNotNil: [ totalLine amountsRecognized max ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> amountsRecognized [
 	
 	^ self resource 
@@ -96,7 +98,7 @@ VsDocument >> amountsRecognized [
 		ifNil: [ ^ #() ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> asEditorElement [
 	| container figure maForm aResizer |
 	container := BrHorizontalPane new
@@ -143,14 +145,14 @@ VsDocument >> asEditorElement [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> asElement [
 	^ RlHOCRElement new
 		client: self;
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> cache: aSymbol guess: aBlock [
 
 	| key |
@@ -162,7 +164,7 @@ VsDocument >> cache: aSymbol guess: aBlock [
 	^ self propertyAt: key putRemovingNil: aBlock value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> contents [
 
 	^ self resource 
@@ -170,7 +172,7 @@ VsDocument >> contents [
 		ifNil: [ '' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> contentsGtViewFor: aView [
 	<gtView>
 	
@@ -183,7 +185,7 @@ VsDocument >> contentsGtViewFor: aView [
 		view: #contentsGtViewFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> counterpartiesGtSpotterFor: aSearch [
 	
 	^ aSearch list
@@ -194,7 +196,7 @@ VsDocument >> counterpartiesGtSpotterFor: aSearch [
 		itemName:[ :aContact | aContact fullName ] 
 ]
 
-{ #category : #'ocr-guessing' }
+{ #category : 'ocr-guessing' }
 VsDocument >> counterpartiesRecognized [
 
 	| plainText |
@@ -205,19 +207,19 @@ VsDocument >> counterpartiesRecognized [
 	^ self addressBook contacts select: [ :c | c vsIsMentionedIn: plainText ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> counterparty [
 
 	^ counterparty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> counterparty: anObject [
 
 	counterparty := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsDocument >> counterpartyDescription [	
 	<magritteDescription>
 	
@@ -231,7 +233,7 @@ VsDocument >> counterpartyDescription [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> counterpartyGtSearchSource [
 	| result |
 	result := PeGtCollectedSearch new.
@@ -241,7 +243,7 @@ VsDocument >> counterpartyGtSearchSource [
 	^ result
 ]
 
-{ #category : #'ocr-guessing' }
+{ #category : 'ocr-guessing' }
 VsDocument >> counterpartyGuess [
 
 	self resource vsCounterpartyGuess ifNotNil: [ :cp | ^ cp ].
@@ -249,17 +251,17 @@ VsDocument >> counterpartyGuess [
 	^ self counterpartiesRecognized atRandom.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> date [
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> date: anObject [
 	date := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsDocument >> dateCompletions [
 	
 	| dateCollection |
@@ -267,7 +269,7 @@ VsDocument >> dateCompletions [
 	^ dateCollection collect: #mmddyyyy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 VsDocument >> dateDescription [
 	<magritteDescription>
 	
@@ -284,7 +286,7 @@ VsDocument >> dateDescription [
 		yourself
 ]
 
-{ #category : #'ocr-guessing' }
+{ #category : 'ocr-guessing' }
 VsDocument >> dateGuess [
 
 	^ self
@@ -298,21 +300,21 @@ VsDocument >> dateGuess [
 				ifTrue: [ nil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> datesRecognized [
 	^ self resource 
 		ifNotNil: #datesRecognized
 		ifNil: [ #() ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> form [
 	^ self imageResource
 		ifNotNil: [ :res | res asForm ]
 		ifNil: [ Morph new imageForm ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> gtHocrFor: aView [
 	<gtView>
 	
@@ -325,18 +327,18 @@ VsDocument >> gtHocrFor: aView [
 		view: #gtLinesFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> imageResource [
 
 	^ self resource imageResource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> importFile: file [
 	self resource: file asRlResource import
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsDocument >> includesSubstring: aString [ 
 	"Case-insensitive"
 
@@ -345,7 +347,7 @@ VsDocument >> includesSubstring: aString [
 		caseSensitive: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> printFieldsOn: aStream [
 
 	counterparty ifNotNil: [ aStream nextPutAll: self counterparty fullName ].
@@ -353,7 +355,7 @@ VsDocument >> printFieldsOn: aStream [
 	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> printOn: aStream [
 
 	self printFieldsOn: aStream.
@@ -363,28 +365,28 @@ VsDocument >> printOn: aStream [
 	aStream nextPut: $).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> resource [
 	^ resource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> resource: anObject [
 	resource := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsDocument >> rotate [
 	self resource rotate
 ]
 
-{ #category : #ocr }
+{ #category : 'ocr' }
 VsDocument >> tesseractInputFile [
 
 	^ self resource tesseractInputFile
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsDocument >> wantsHOCR [
 	^ false
 ]

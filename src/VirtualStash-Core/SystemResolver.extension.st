@@ -1,6 +1,6 @@
-Extension { #name : #SystemResolver }
+Extension { #name : 'SystemResolver' }
 
-{ #category : #'*VirtualStash-Core' }
+{ #category : '*VirtualStash-Core' }
 SystemResolver >> virtualStashData [ 
 	<origin>
 	^ (FileLocator dynabookData / 'Virtual Stash') resolve

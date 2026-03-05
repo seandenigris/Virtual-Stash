@@ -7,7 +7,9 @@ I am an asset account per <https://www.investopedia.com/terms/a/accountsreceivab
 
 "
 Class {
-	#name : #VsReceivableAccount,
-	#superclass : #VsAssetAccount,
-	#category : 'VirtualStash-Core-Bookkeeping'
+	#name : 'VsReceivableAccount',
+	#superclass : 'VsAssetAccount',
+	#category : 'VirtualStash-Core-Bookkeeping',
+	#package : 'VirtualStash-Core',
+	#tag : 'Bookkeeping'
 }

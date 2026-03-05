@@ -2,8 +2,8 @@
 self open.
 "
 Class {
-	#name : #VsExpenseEditor,
-	#superclass : #SpPresenter,
+	#name : 'VsExpenseEditor',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'books',
 		'dateLabel',
@@ -16,10 +16,12 @@ Class {
 		'amount',
 		'model'
 	],
-	#category : #'VirtualStash-Core-UI'
+	#category : 'VirtualStash-Core-UI',
+	#package : 'VirtualStash-Core',
+	#tag : 'UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseEditor class >> captureExpense [
 
 	| instance |
@@ -28,7 +30,7 @@ VsExpenseEditor class >> captureExpense [
 	^ instance model.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseEditor class >> enterExpenseInto: aVsBooks [ 
 
 	^ self new
@@ -36,13 +38,13 @@ VsExpenseEditor class >> enterExpenseInto: aVsBooks [
 		 	openDialogWithSpec.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseEditor class >> open [
 
 	^ self new openDialogWithSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor class >> spec [
 	<spec: #default>
 
@@ -55,23 +57,23 @@ VsExpenseEditor class >> spec [
 			yourself.
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 VsExpenseEditor class >> title [
 
 	^ 'Enter expense...'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> account [
 	^ account
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> accountLabel [
 	^ accountLabel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseEditor >> accountNameCompletion [
 
 	| applicants |
@@ -83,12 +85,12 @@ VsExpenseEditor >> accountNameCompletion [
 				currText isEmpty or: [ currApplicant asUppercase includesSubstring: currText asString asUppercase ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> amount [
 	^ amount
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseEditor >> amountCompletion [
 
 	^ EntryCompletion new
@@ -101,33 +103,33 @@ VsExpenseEditor >> amountCompletion [
 				currApplicant asUppercase includesSubstring: currText asString asUppercase ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> amountLabel [
 	^ amountLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> books: aVsBooks [
 
 	books := aVsBooks.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> date [
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> dateLabel [
 	^ dateLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> description [
 	^ description
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsExpenseEditor >> descriptionCompletion [
 
 	| applicants |
@@ -139,24 +141,24 @@ VsExpenseEditor >> descriptionCompletion [
 				currApplicant asUppercase includesSubstring: currText asString asUppercase ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseEditor >> descriptionLabel [
 	^ descriptionLabel
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsExpenseEditor >> initialExtent [
 
 	^ 400@210.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseEditor >> initializeDialogWindow: aWindow [
 
 	aWindow okAction: [ self ok ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseEditor >> initializeWidgets [
 
 	self instantiateModels: #(
@@ -203,7 +205,7 @@ VsExpenseEditor >> initializeWidgets [
 		add: amount.
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 VsExpenseEditor >> ok [
 
 	date dateModel accept.

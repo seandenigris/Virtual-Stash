@@ -1,14 +1,16 @@
 Class {
-	#name : #VsCreditCard,
-	#superclass : #VsPaymentMethod,
+	#name : 'VsCreditCard',
+	#superclass : 'VsPaymentMethod',
 	#instVars : [
 		'name',
 		'lastFour'
 	],
-	#category : 'VirtualStash-Core-Receipts'
+	#category : 'VirtualStash-Core-Receipts',
+	#package : 'VirtualStash-Core',
+	#tag : 'Receipts'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 VsCreditCard class >> named: aString [ 
 
 	^ self new
@@ -16,37 +18,37 @@ VsCreditCard class >> named: aString [
 			yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCard >> ending: anInteger [ 
 
 	lastFour := anInteger.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 VsCreditCard >> isPaymentTypeFor: aString [ 
 
 	^ aString endsWith: self lastFour asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCard >> lastFour [
 
 	^ lastFour
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsCreditCard >> name [
 
 	^ name.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 VsCreditCard >> name: aString [ 
 
 	name := aString.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 VsCreditCard >> printOn: aStream [
 
 	aStream

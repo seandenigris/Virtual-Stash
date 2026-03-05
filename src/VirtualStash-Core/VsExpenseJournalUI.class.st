@@ -2,22 +2,24 @@
 self open.
 "
 Class {
-	#name : #VsExpenseJournalUI,
-	#superclass : #SpPresenter,
+	#name : 'VsExpenseJournalUI',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'addButton',
 		'list'
 	],
-	#category : #'VirtualStash-Core-UI'
+	#category : 'VirtualStash-Core-UI',
+	#package : 'VirtualStash-Core',
+	#tag : 'UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 VsExpenseJournalUI class >> open [
 
 	^ self new openWithSpec.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseJournalUI class >> spec [
 	<spec: #default>
 
@@ -28,25 +30,25 @@ VsExpenseJournalUI class >> spec [
 			yourself.
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 VsExpenseJournalUI class >> title [
 
 	^ 'Expenses for '.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseJournalUI >> addButton [
 
 	^ addButton.
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 VsExpenseJournalUI >> addExpense [
 
 	VsExpenseEditor enterExpenseInto: VsPre2013Books uniqueInstance.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 VsExpenseJournalUI >> initializeWidgets [
 
 	self instantiateModels: #(
@@ -67,7 +69,7 @@ VsExpenseJournalUI >> initializeWidgets [
 		action: [ self addExpense ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 VsExpenseJournalUI >> list [
 	^ list
 ]
