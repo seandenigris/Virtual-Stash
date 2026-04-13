@@ -1,8 +1,9 @@
 Class {
 	#name : 'VsOFX',
 	#superclass : 'RlResource',
-	#category : 'VirtualStash-Core',
-	#package : 'VirtualStash-Core'
+	#category : 'VirtualStash-Core-OFX',
+	#package : 'VirtualStash-Core',
+	#tag : 'OFX'
 }
 
 { #category : 'accessing' }
@@ -56,4 +57,15 @@ VsOFX >> transactionDictionaries [
 VsOFX >> transactionTags [ 
 
 	^ (self asXML // #STMTTRN) asOrderedCollection.
+]
+
+{ #category : 'as yet unclassified' }
+VsOFX >> transactionsForAccount: anAccount in: aBooks imbalanceTo: imbalanceAccount [
+
+	^ VsOfxTransactionImporter new
+		account: anAccount;
+		books: aBooks;
+		imbalanceAccount: imbalanceAccount;
+		source: self;
+		execute
 ]
