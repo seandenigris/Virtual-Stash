@@ -27,6 +27,14 @@ Class {
 	#tag : 'Bookkeeping'
 }
 
+{ #category : 'accessing' }
+VsBooks class >> accountsAll [
+	"Created for DBSoup to have a single access point for all accounts"
+
+	^ self all flatCollect: [ :aBook |
+		aBook chartOfAccounts accounts ]
+]
+
 { #category : 'persistence' }
 VsBooks class >> all [
 	^ { self personal. self business }
