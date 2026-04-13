@@ -5,9 +5,9 @@ Class {
 		'memo',
 		'header'
 	],
-	#category : 'VirtualStash-Core-Bookkeeping',
+	#category : 'VirtualStash-Core-OFX',
 	#package : 'VirtualStash-Core',
-	#tag : 'Bookkeeping'
+	#tag : 'OFX'
 }
 
 { #category : 'examples' }

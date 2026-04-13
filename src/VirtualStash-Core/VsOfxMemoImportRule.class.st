@@ -1,9 +1,9 @@
 Class {
 	#name : 'VsOfxMemoImportRule',
 	#superclass : 'VsImportRule',
-	#category : 'VirtualStash-Core-Bookkeeping',
+	#category : 'VirtualStash-Core-OFX',
 	#package : 'VirtualStash-Core',
-	#tag : 'Bookkeeping'
+	#tag : 'OFX'
 }
 
 { #category : 'testing' }
