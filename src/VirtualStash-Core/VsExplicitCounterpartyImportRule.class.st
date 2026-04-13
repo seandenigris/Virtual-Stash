@@ -39,13 +39,6 @@ VsExplicitCounterpartyImportRule >> displayName [
 ]
 
 { #category : 'private' }
-VsExplicitCounterpartyImportRule >> parser [
-	| separator |
-	separator := ($* asPParser / $- asPParser / #space asPParser) star.
-	^ self paymentProcessorParser optional, separator, self partyParser, separator, self extraInfoParser end
-]
-
-{ #category : 'private' }
 VsExplicitCounterpartyImportRule >> partyParser [
 	^ self party vsNameParser
 ]
@@ -68,6 +61,12 @@ VsExplicitCounterpartyImportRule >> paymentProcessorParser [
 	^ processors allButFirst 
 		inject: processors first vsNameParser ==> [ :n | processors first ]
 		into: [ :result :pp | result / (pp vsNameParser ==> [ :n | pp ]) ]
+]
+
+{ #category : 'private' }
+VsExplicitCounterpartyImportRule >> primaryParser [
+	
+	^ self paymentProcessorParser optional, self separatorParser, self partyParser
 ]
 
 { #category : 'accessing' }
