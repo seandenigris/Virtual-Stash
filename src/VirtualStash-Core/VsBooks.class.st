@@ -318,13 +318,6 @@ VsBooks >> importDefaultAccountsFromGnuCash [
 	self importAccountsFromGnuCashCSV: '/Users/sean/Documents/Reference/Smalltalk/User Data/Virtual Stash/Accounts/gnu_cash_account_tree.csv' asFileReference.
 ]
 
-{ #category : 'personal expenses' }
-VsBooks >> initialize [
-
-	super initialize.
-	accounts := Set new.
-]
-
 { #category : 'printing' }
 VsBooks >> printOn: aStream [
 	aStream
