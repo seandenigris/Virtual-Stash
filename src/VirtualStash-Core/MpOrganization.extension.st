@@ -27,7 +27,7 @@ MpOrganization >> vsNameParser [
 	| names |
 	"We sort by size descending to ensure the longest match, preventing partial matches"
 	names := (self aliases copyWith: self fullName) asSortedCollection: #size descending.
-	^ names allButFirst 
-		inject: names first asPParser caseInsensitive 
+	^ names 
+		inject: #failure asPParser
 		into: [ :result :alias | result / alias asPParser caseInsensitive ]
 ]
