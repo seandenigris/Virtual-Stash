@@ -19,7 +19,7 @@ MpOrganization >> vsCounterpartyRuleClass [
 
 { #category : '*VirtualStash-Core' }
 MpOrganization >> vsCounterpartyRuleClass: aClass [
-	self propertyAt: #vsCounterpartyRuleClass put: aClass
+	self propertyAt: #vsCounterpartyRuleClass putRemovingNil: aClass
 ]
 
 { #category : '*VirtualStash-Core' }
