@@ -41,7 +41,8 @@ Class {
 		'paymentProcessor',
 		'memo',
 		'counterpartyInput',
-		'patch'
+		'patch',
+		'parser'
 	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
@@ -609,7 +610,7 @@ VsImportRule >> elementClass [
 
 { #category : 'private' }
 VsImportRule >> extraInfoParser [
-	^ #any asPParser star flatten trimBlanks optional ==> [ :n | n ifNotNil: [ :s | s withBlanksCondensed trimBoth ] ]
+	^ #any asPParser plus flatten trimBlanks ==> [ :n | n ifNotNil: [ :s | s withBlanksCondensed trimBoth ] ]
 ]
 
 { #category : 'accessing' }
@@ -736,7 +737,7 @@ VsImportRule >> printOn: aStream [
 
 { #category : 'accessing' }
 VsImportRule >> separatorParser [
-	^ ($* asPParser / $- asPParser / #space asPParser) star
+	^ ($* asPParser / $- asPParser), Character space asPParser star
 ]
 
 { #category : 'accessing' }

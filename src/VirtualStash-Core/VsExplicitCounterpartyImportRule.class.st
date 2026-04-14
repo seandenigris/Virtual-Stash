@@ -64,7 +64,7 @@ VsExplicitCounterpartyImportRule >> paymentProcessorParser [
 { #category : 'private' }
 VsExplicitCounterpartyImportRule >> primaryParser [
 	
-	^ self paymentProcessorParser optional, self separatorParser, self partyParser
+	^ (self paymentProcessorParser, self separatorParser ==> #first) optional, self partyParser
 ]
 
 { #category : 'accessing' }
