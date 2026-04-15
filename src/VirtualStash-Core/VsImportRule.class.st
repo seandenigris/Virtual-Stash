@@ -475,8 +475,12 @@ VsImportRule class >> given: counterpartyString appliedTo: transactionBlock then
 			t memo: originalMemo ]
 		then: [ :r :t |
 			assertionBlock cull: r cull: t.
-			self assert: (t memo beginsWith: originalMemo).
-			self assert: (t memo endsWith: addedMemo) ]
+			self 
+				assert: (t memo beginsWith: originalMemo)
+				description: 'memo doesn''t begin with', originalMemo.
+			self 
+				assert: (t memo endsWith: addedMemo)
+				description: 'memo should end with ', addedMemo ]
 ]
 
 { #category : 'examples-support' }
