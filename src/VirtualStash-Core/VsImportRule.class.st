@@ -321,6 +321,12 @@ VsImportRule class >> exampleTraderJoes [
 ]
 
 { #category : 'accessing' }
+VsImportRule class >> exampleTrello [
+	<gtExample>
+	self givenInput: 'TRELLO.COM* ATLASSIAN' thenPartyNamed: 'Atlassian' andMemoAppendedWith: 'TRELLO.COM'
+]
+
+{ #category : 'accessing' }
 VsImportRule class >> exampleUSPS [
 	<gtExample>
 	self

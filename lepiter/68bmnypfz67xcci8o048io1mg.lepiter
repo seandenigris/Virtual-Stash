@@ -154,7 +154,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-11-24T22:27:22.766443-05:00"
+									"dateAndTimeString" : "2026-03-28T20:15:15.401224-04:00"
 								}
 							},
 							"uid" : {
@@ -164,7 +164,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "These can be converted to XML like so:"
+							"string" : "There is a {{gtClass:VsOFX}} resource and an OFX importer:"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -191,14 +191,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-11-24T22:27:38.550025-05:00"
+									"dateAndTimeString" : "2026-03-28T20:14:28.346472-04:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Oys+YFPHDQCMck11Bopwjg=="
 							},
-							"code" : "ofxFile asRlResource asXML "
+							"code" : "VsOfxTransactionImporter"
 						}
 					]
 				},
@@ -221,7 +221,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-11-24T22:26:32.809797-05:00"
+						"dateAndTimeString" : "2026-03-27T13:11:03.332744-04:00"
 					}
 				},
 				"uid" : {
@@ -231,7 +231,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "OFX (and veriants below) - seems to have the most information, like Transaction ID, which helps to match up previously imported transactions to new ones."
+				"string" : "OFX (and variants below) - seems to have the most information, like Transaction ID, which helps to match up previously imported transactions to new ones."
 			},
 			{
 				"__type" : "textSnippet",
