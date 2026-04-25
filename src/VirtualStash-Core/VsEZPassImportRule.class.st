@@ -49,5 +49,5 @@ VsEZPassImportRule >> initialize [
 
 { #category : 'accessing' }
 VsEZPassImportRule >> parser [
-	^ ('NEW JERSEY' asPParser / 'NYS THRUWAY' asPParser) trimBlanks optional, super parser ==> [ :n | { nil. nil. nil. nil. n first } ]
+	^ ('NEW JERSEY' asPParser / 'NYS THRUWAY' asPParser) trimBlanks optional, self primaryParser, self separatorParser, self extraInfoParser end ==> [ :n | { nil. nil. nil. nil. n first } ]
 ]

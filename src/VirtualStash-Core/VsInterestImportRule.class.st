@@ -16,6 +16,11 @@ VsInterestImportRule >> buildPatchOperations [
 	super buildPatchOperations
 ]
 
+{ #category : 'as yet unclassified' }
+VsInterestImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]
+
 { #category : 'testing' }
 VsInterestImportRule >> primaryParser [
 

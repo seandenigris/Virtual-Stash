@@ -192,7 +192,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-06-09T17:56:14.888112-04:00"
+									"dateAndTimeString" : "2026-04-16T14:01:08.964722-04:00"
 								}
 							},
 							"uid" : {
@@ -202,7 +202,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "I make a business transaction. I have a business receipt. The receipt inherently provides much of the details of the transaction - date, amount, payment method. There are other parts which I must manually declare (but which may be partially automated) - purpose of the transaction (e.g. expense account), a note(s). Assuming that I have all these details and the inclination to enter them, I could have a custom UI that enables me to enter the details for the entire transaction right in the receipt i.e. in one step; or maybe \"submit receipt\", which creates a blank transaction with the receipt attached?\r"
+							"string" : "I make a business transaction. I have a business receipt. The receipt inherently provides much of the details of the transaction - date, amount, payment method. There are other parts which I must manually declare (but which may be partially automated) - purpose of the transaction (e.g. expense account), a note(s). Assuming that I have all these details and the inclination to enter them, I could have a custom UI that enables me to enter the details for the entire transaction right in the receipt i.e. in one step; or maybe \"submit receipt\", which creates a blank transaction with the receipt attached?\r\nTransactions have counterparties that are actual entities in my address book, not strings."
 						}
 					]
 				},

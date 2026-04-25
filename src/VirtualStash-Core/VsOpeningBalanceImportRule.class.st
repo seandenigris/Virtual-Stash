@@ -13,6 +13,11 @@ VsOpeningBalanceImportRule >> buildPatchOperations [
 	super buildPatchOperations
 ]
 
+{ #category : 'as yet unclassified' }
+VsOpeningBalanceImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]
+
 { #category : 'testing' }
 VsOpeningBalanceImportRule >> primaryParser [
 	^ 'Opening Balance' asPParser

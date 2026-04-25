@@ -24,6 +24,11 @@ VsOnlinePaymentImportRule >> buildPatchOperations [
 		patchSet: #counterpartyDescription to: nil 
 ]
 
+{ #category : 'as yet unclassified' }
+VsOnlinePaymentImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]
+
 { #category : 'accessing' }
 VsOnlinePaymentImportRule >> primaryParser [
 	^ 'Online Payment' asPParser

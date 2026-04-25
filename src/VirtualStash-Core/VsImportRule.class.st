@@ -645,7 +645,7 @@ VsImportRule >> memo: aString [
 
 { #category : 'accessing' }
 VsImportRule >> parser [
-	^ self primaryParser, self separatorParser, self extraInfoParser end
+	^ parser ifNil: [ parser := VsPartyNameParser new ].
 ]
 
 { #category : 'private' }
@@ -662,7 +662,9 @@ VsImportRule >> party [
 VsImportRule >> party: anMpRelatableEntity [
 	party := anMpRelatableEntity.
 	self partyName: party fullName.
-	self partyAliases: party aliases
+	self partyAliases: party aliases.
+	self class == VsEZPassImportRule ifFalse: [ 
+	self parser party: self party ]
 ]
 
 { #category : 'accessing' }

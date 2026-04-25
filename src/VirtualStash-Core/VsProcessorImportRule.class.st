@@ -25,3 +25,8 @@ VsProcessorImportRule >> ensureProcessorNamed: aString [
 	paymentProcessor := self addressBook ensureOrganizationNamed: 'Venmo'.
 	^ VsBooks paymentProcessors add: paymentProcessor
 ]
+
+{ #category : 'as yet unclassified' }
+VsProcessorImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]

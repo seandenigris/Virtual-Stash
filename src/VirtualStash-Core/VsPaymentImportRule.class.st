@@ -23,6 +23,11 @@ VsPaymentImportRule >> buildPatchOperations [
 	self error: 'to fully process this, we need access to *all* transactions so we can find the one on the other side'
 ]
 
+{ #category : 'as yet unclassified' }
+VsPaymentImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]
+
 { #category : 'testing' }
 VsPaymentImportRule >> primaryParser [
 

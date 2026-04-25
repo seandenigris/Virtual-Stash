@@ -22,6 +22,11 @@ VsWithdrawalImportRule >> buildPatchOperations [
 	self patch addOperationFor: self debit set: self debit accountDescription to: self user vsCashAccount.
 ]
 
+{ #category : 'as yet unclassified' }
+VsWithdrawalImportRule >> parser [
+	^ self primaryParser, self separatorParser, self extraInfoParser end
+]
+
 { #category : 'testing' }
 VsWithdrawalImportRule >> primaryParser [
 	^ self primaryParserFromOptions: #(

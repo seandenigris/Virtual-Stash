@@ -17,6 +17,12 @@ VsCheckImportRule class >> example [
 		andMemoAppendedWith: 'Check'
 ]
 
+{ #category : 'examples' }
+VsCheckImportRule class >> isAbstract [
+
+	^ true
+]
+
 { #category : 'applying' }
 VsCheckImportRule >> buildPatchOperations [
 	self

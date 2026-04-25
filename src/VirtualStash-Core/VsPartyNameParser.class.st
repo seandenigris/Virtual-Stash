@@ -8,7 +8,9 @@ Class {
 		'primaryParser',
 		'extraInfoParser',
 		'parser',
-		'party'
+		'party',
+		'paymentProcessorFirstParser',
+		'partyFirstParser'
 	],
 	#category : 'VirtualStash-Core',
 	#package : 'VirtualStash-Core'
@@ -30,7 +32,7 @@ VsPartyNameParser >> extraInfoParser [
 { #category : 'grammar' }
 VsPartyNameParser >> parser [
 
-  ^ primaryParser , ( separatorParser optional , extraInfoParser ==> #second ) optional end
+  ^ (paymentProcessorFirstParser / partyFirstParser) end
 ]
 
 { #category : 'accessing' }
@@ -47,6 +49,12 @@ VsPartyNameParser >> party: anMpRelatableEntity [
 ]
 
 { #category : 'grammar' }
+VsPartyNameParser >> partyFirstParser [
+
+  ^ partyParser, extraInfoParser, separatorParser, extraInfoParser
+]
+
+{ #category : 'grammar' }
 VsPartyNameParser >> partyParser [
 
   ^ PP2DelegateNode new
@@ -55,6 +63,12 @@ VsPartyNameParser >> partyParser [
   - `PP2DelegateNode on: [ self party vsNameParser ]`, but it won't accept a block`
   - `PP2PluggableNode new
   	block: [ :context | self party vsNameParser parseWithContext: context ]` but returned a context, not a result (might need to explicitly return result from context in the block"
+]
+
+{ #category : 'grammar' }
+VsPartyNameParser >> paymentProcessorFirstParser [
+
+  ^ paymentProcessorParser , separatorParser ==> #first , partyParser
 ]
 
 { #category : 'grammar' }
