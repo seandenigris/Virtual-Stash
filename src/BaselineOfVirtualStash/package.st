@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfVirtualStash }
+Package { #name : 'BaselineOfVirtualStash' }

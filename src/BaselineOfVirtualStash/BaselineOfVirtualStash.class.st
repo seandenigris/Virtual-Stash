@@ -7,29 +7,32 @@ Requires the following CLI utilities to be installed:
 If these binaries are not reachable via PATH, see {{gtClass:SuGenericUnixCommand}} for configuration information.
 "
 Class {
-	#name : #BaselineOfVirtualStash,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfVirtualStash
+	#name : 'BaselineOfVirtualStash',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfVirtualStash',
+	#package : 'BaselineOfVirtualStash'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfVirtualStash class >> dataFolder [
 	^ FileLocator dynabookData / 'Virtual Stash'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BaselineOfVirtualStash class >> isDynabook [
 	^ true
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfVirtualStash >> baseline: spec [
 	<baseline>
 
 	spec for: #'common' do: [
 		spec 
 			baseline: #Aconcagua with: [
-				spec repository: 'github://seandenigris/aconcagua:denigris' ];
+				spec 
+					repository: 'github://seandenigris/aconcagua:denigris';
+					loads: #('Development' 'Aconcagua-Deprecated-V10') ];
 			baseline: #DynabookFoundation with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: #Magritte with: [ 
@@ -79,14 +82,14 @@ BaselineOfVirtualStash >> baseline: spec [
 			group: #default with: #(#'VirtualStash-Core') ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfVirtualStash >> customProjectAttributes [
 	^ self isGTImage
 			ifFalse: [ #(notGToolkit) ]
 			ifTrue: [ #(GToolkit) ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BaselineOfVirtualStash >> isGTImage [
 	
 	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'Lepiter-' ].
