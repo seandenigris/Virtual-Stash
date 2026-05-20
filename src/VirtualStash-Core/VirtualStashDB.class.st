@@ -44,5 +44,6 @@ VirtualStashDB class >> schema [
 			VsPaymentMethod.
 			VsPre2013Books.
 			VsPriceList.
+			VsUnits.
 		}.
 ]

@@ -1,12 +1,12 @@
-Extension { #name : #ByteString }
+Extension { #name : 'ByteString' }
 
-{ #category : #'*Aconcagua-Money' }
+{ #category : '*Aconcagua-Money' }
 ByteString >> cent [
 
 	^ self cents
 ]
 
-{ #category : #'*Aconcagua-Money' }
+{ #category : '*Aconcagua-Money' }
 ByteString >> cents [
 
 	| amt |
@@ -14,16 +14,8 @@ ByteString >> cents [
 	^ Measure amount: amt unit: AmCent new
 ]
 
-{ #category : #'*Aconcagua-Money' }
+{ #category : '*Aconcagua-Money' }
 ByteString >> dollar [
 
 	^ self dollars
-]
-
-{ #category : #'*Aconcagua-Money' }
-ByteString >> dollars [
-
-	| amt |
-	amt := ScaledDecimal readFrom: (self copyWithout: $,).
-	^ Measure amount: amt unit: AmDollar new
 ]

@@ -32,7 +32,7 @@ BaselineOfVirtualStash >> baseline: spec [
 			baseline: #Aconcagua with: [
 				spec 
 					repository: 'github://seandenigris/aconcagua:denigris';
-					loads: #('Development' 'Aconcagua-Deprecated-V10') ];
+					loads: #('Development') ];
 			baseline: #DynabookFoundation with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: #Magritte with: [ 

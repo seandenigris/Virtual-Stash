@@ -1,1 +1,1 @@
-Package { #name : #'Aconcagua-Money' }
+Package { #name : 'Aconcagua-Money' }

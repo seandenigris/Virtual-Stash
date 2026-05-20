@@ -1,6 +1,16 @@
 Extension { #name : 'ByteString' }
 
 { #category : '*VirtualStash-Core' }
+ByteString >> dollars [
+
+  | amt |
+  amt := ScaledDecimal readFrom: ( self copyWithout: $, ).
+  ^ VsUnits
+  	quantity: amt
+  	of: #dollar
+]
+
+{ #category : '*VirtualStash-Core' }
 ByteString >> pyAsTitleCase [
 	"See https://pypi.org/project/titlecase/"
 

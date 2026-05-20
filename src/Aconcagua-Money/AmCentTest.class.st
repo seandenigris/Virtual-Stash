@@ -1,27 +1,29 @@
 Class {
-	#name : #AmCentTest,
-	#superclass : #TestCase,
-	#category : 'Aconcagua-Money-Tests'
+	#name : 'AmCentTest',
+	#superclass : 'TestCase',
+	#category : 'Aconcagua-Money-Tests',
+	#package : 'Aconcagua-Money',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmCentTest >> testConverting [
 	self
 		assert: self testCreatingMultipleFromNumber convertToBaseUnit
 		equals: 0.10 dollars
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmCentTest >> testCreatingMultipleFromNumber [
 	^ 10 cents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmCentTest >> testCreatingOneFromNumber [
 	^ 1 cent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmCentTest >> testPrinting [
 	self
 		assert: self testCreatingOneFromNumber printString

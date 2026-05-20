@@ -1,13 +1,14 @@
 Trait {
-	#name : #AmTMoneyStringWriter,
+	#name : 'AmTMoneyStringWriter',
 	#instVars : [
 		'writesFraction',
 		'writesCommodity'
 	],
-	#category : #'Aconcagua-Money'
+	#category : 'Aconcagua-Money',
+	#package : 'Aconcagua-Money'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 AmTMoneyStringWriter >> shouldWriteFractionOf: aNumber [
 
 	self writesAllFractions ifTrue: [ ^ true ].
@@ -16,7 +17,7 @@ AmTMoneyStringWriter >> shouldWriteFractionOf: aNumber [
 	^ aNumber fractionPart ~= 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> write: aMeasure on: aStream [
 
 	| amount fractionString integerPart |
@@ -40,46 +41,46 @@ AmTMoneyStringWriter >> write: aMeasure on: aStream [
 			nextPutAll: aMeasure unit sign ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writeAllFractions [
 	writesFraction := 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writeNoFractions [
 	writesFraction := -1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writeOn: aStream [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writeSmartFractions [
 	writesFraction := 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writesAllFractions [
 	^ writesFraction = 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writesCommodity [
 	^ writesCommodity ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writesCommodity: anObject [
 	writesCommodity := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writesNoFractions [
 	^ writesFraction = -1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmTMoneyStringWriter >> writesSmartFractions [
 	^ writesFraction = 0 or: [ writesFraction isNil ]
 ]

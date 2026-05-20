@@ -7,9 +7,10 @@ Printing money is more complicated than it may seem at first. While the computat
 It should be mentioned that these difficulties are not theoretical, but were learned the hard way as printing approaches proliferated in real world applications that used this project.
 "
 Class {
-	#name : #AmMoneyStringWriter,
-	#superclass : #Object,
+	#name : 'AmMoneyStringWriter',
+	#superclass : 'Object',
 	#traits : 'AmTMoneyStringWriter',
 	#classTraits : 'AmTMoneyStringWriter classTrait',
-	#category : #'Aconcagua-Money'
+	#category : 'Aconcagua-Money',
+	#package : 'Aconcagua-Money'
 }

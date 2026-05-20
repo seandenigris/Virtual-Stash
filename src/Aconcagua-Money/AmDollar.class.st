@@ -1,13 +1,14 @@
 Class {
-	#name : #AmDollar,
-	#superclass : #ProportionalDerivedUnit,
+	#name : 'AmDollar',
+	#superclass : 'ProportionalDerivedUnit',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Aconcagua-Money'
+	#category : 'Aconcagua-Money',
+	#package : 'Aconcagua-Money'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollar class >> fromString: aString [
 	| parser amountString safeAmountString |
 	parser := self parser.
@@ -17,17 +18,17 @@ AmDollar class >> fromString: aString [
 	^ safeAmountString dollars.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollar class >> new [
 	^ super new
-		initializeBaseUnit: AmCent new
-		conversionFactor: 100
-		nameForOne: 'dollar'
-		nameForMany: 'dollars'
+		baseUnit: AmCent new;
+		conversionFactor: 100;
+		nameForOne: 'dollar';
+		nameForMany: 'dollars';
 		sign: 'USD'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollar class >> parser [
 	^ RxMatcher forString: '\(?\$?(-?(\d|,)+(.\d+)?\)?)( USD)?'.
 	"| symbol amount |
@@ -36,23 +37,23 @@ AmDollar class >> parser [
 	^ (symbol, amount flatten) ==> [ :n | n second asNumber dollars ]"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollar class >> readFrom: aStream [
 
 	^ self fromString: aStream contents
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AmDollar >> = rhs [
 	^ self class = rhs class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AmDollar >> hash [
 	^ self class hash
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AmDollar >> printMeasure: aMeasure on: aStream [
 
 	AmMoneyStringWriter new

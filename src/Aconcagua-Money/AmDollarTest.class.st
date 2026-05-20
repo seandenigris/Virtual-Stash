@@ -1,31 +1,33 @@
 Class {
-	#name : #AmDollarTest,
-	#superclass : #TestCase,
-	#category : 'Aconcagua-Money-Tests'
+	#name : 'AmDollarTest',
+	#superclass : 'TestCase',
+	#category : 'Aconcagua-Money-Tests',
+	#package : 'Aconcagua-Money',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarCreatingFractionalFromNumber [
 	^ 1.15 dollars
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarCreatingFromNumber [
 	^ 1 dollar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarCreatingFromString [
 	AmDollar fromString: '$1.00'.
 	self should: [ AmDollar fromString: '$1.0a' ] raise: Error
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarCreatingMultipleFromNumber [
 	^ 10 dollars
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarParsing [
 	#('$1' '$1.0' '$1.00')
 		do: [ :in | self assert: (AmDollar parser matches: in) ].
@@ -33,7 +35,7 @@ AmDollarTest >> testDollarParsing [
 		do: [ :in | self deny: (AmDollar parser matches: in) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmDollarTest >> testDollarPrinting [
 	self
 		assert: self testDollarCreatingFromNumber printString

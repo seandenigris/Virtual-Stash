@@ -1,31 +1,32 @@
 Class {
-	#name : #AmCent,
-	#superclass : #BaseUnit,
+	#name : 'AmCent',
+	#superclass : 'BaseUnit',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Aconcagua-Money'
+	#category : 'Aconcagua-Money',
+	#package : 'Aconcagua-Money'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AmCent class >> new [
 	^ super new
-		initializeNameForOne: 'cent'
-		nameForMany: 'cents'
+		nameForOne: 'cent';
+		nameForMany: 'cents';
 		sign: 'c USD'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AmCent >> = rhs [
 	^ self class = rhs class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AmCent >> hash [
 	^ self class hash
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 AmCent >> print: aMeasure on: aStream [ 
 
 	aMeasure amount printOn: aStream.

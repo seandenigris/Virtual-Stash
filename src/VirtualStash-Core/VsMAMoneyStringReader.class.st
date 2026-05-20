@@ -5,10 +5,28 @@ Class {
 	#package : 'VirtualStash-Core'
 }
 
-{ #category : 'accessing' }
+{ #category : 'private' }
+VsMAMoneyStringReader >> moneyFromString: aString [
+
+	| parser amountString safeAmountString |
+	parser := self parser.
+	(parser matches: aString) ifFalse: [ self error ].
+	amountString := (parser subexpression: 2).
+	safeAmountString := amountString copyWithout: $,.
+	^ VsUnits
+		quantity: safeAmountString 
+		of: #dollars.
+]
+
+{ #category : 'private' }
+VsMAMoneyStringReader >> parser [
+	^ RxMatcher forString: '\(?\$?(-?(\d|,)+(.\d+)?\)?)( USD)?'.
+]
+
+{ #category : 'visiting-description' }
 VsMAMoneyStringReader >> visitMoneyDescription: anObject [
 	| money |
-	money := [ AmDollar readFrom: self stream upToEnd trimmed ]
+	money := [ self moneyFromString: self stream upToEnd trimmed ]
 		on: Error
 		do: [ :err | MAReadError signal: err messageText ].
 	self object: money
