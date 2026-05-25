@@ -1,9 +1,9 @@
 Class {
 	#name : 'AmCentTest',
 	#superclass : 'TestCase',
-	#category : 'Aconcagua-Money-Tests',
-	#package : 'Aconcagua-Money',
-	#tag : 'Tests'
+	#category : 'VirtualStash-Core-Support',
+	#package : 'VirtualStash-Core',
+	#tag : 'Support'
 }
 
 { #category : 'accessing' }

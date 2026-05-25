@@ -8,6 +8,22 @@ ByteString >> dollars [
   ^ VsUnits
   	quantity: amt
   	of: #dollar
+  	
+  "Previoius attempt:
+  parser := RxMatcher forString: '\(?\$?(-?(\d|,)+(.\d+)?\)?)( USD)?'.
+  And before that:
+	| symbol amount |
+	symbol := $$ asPParser.
+	amount := #digit asPParser plus, ($. asPParser, #digit asPParser, #digit asPParser) optional.
+	^ (symbol, amount flatten) ==> [ :n | n second asNumber dollars ]
+	And related:
+	fromString: aString
+	| parser amountString safeAmountString |
+	parser := self parser.
+	(parser matches: aString) ifFalse: [ self error ].
+	amountString := (parser subexpression: 2).
+	safeAmountString := amountString copyWithout: $,.
+	^ safeAmountString dollars."
 ]
 
 { #category : '*VirtualStash-Core' }

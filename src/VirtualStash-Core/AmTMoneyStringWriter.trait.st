@@ -4,8 +4,9 @@ Trait {
 		'writesFraction',
 		'writesCommodity'
 	],
-	#category : 'Aconcagua-Money',
-	#package : 'Aconcagua-Money'
+	#category : 'VirtualStash-Core-Support',
+	#package : 'VirtualStash-Core',
+	#tag : 'Support'
 }
 
 { #category : 'visiting' }
@@ -18,10 +19,10 @@ AmTMoneyStringWriter >> shouldWriteFractionOf: aNumber [
 ]
 
 { #category : 'accessing' }
-AmTMoneyStringWriter >> write: aMeasure on: aStream [
+AmTMoneyStringWriter >> write: aQuantity on: aStream [
 
 	| amount fractionString integerPart |
-	amount := aMeasure amount.
+	amount := aQuantity numericalValue.
 	
 	(self shouldWriteFractionOf: amount) 
 		ifTrue: [ 
@@ -38,7 +39,7 @@ AmTMoneyStringWriter >> write: aMeasure on: aStream [
 	self writesCommodity ifTrue: [
 		aStream
 			space;
-			nextPutAll: aMeasure unit sign ]
+			nextPutAll: aQuantity unit sign ]
 ]
 
 { #category : 'accessing' }
@@ -49,10 +50,6 @@ AmTMoneyStringWriter >> writeAllFractions [
 { #category : 'accessing' }
 AmTMoneyStringWriter >> writeNoFractions [
 	writesFraction := -1
-]
-
-{ #category : 'accessing' }
-AmTMoneyStringWriter >> writeOn: aStream [
 ]
 
 { #category : 'accessing' }

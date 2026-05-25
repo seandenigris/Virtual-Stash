@@ -11,6 +11,7 @@ Class {
 	#superclass : 'Object',
 	#traits : 'AmTMoneyStringWriter',
 	#classTraits : 'AmTMoneyStringWriter classTrait',
-	#category : 'Aconcagua-Money',
-	#package : 'Aconcagua-Money'
+	#category : 'VirtualStash-Core-Support',
+	#package : 'VirtualStash-Core',
+	#tag : 'Support'
 }
