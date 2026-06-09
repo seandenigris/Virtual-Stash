@@ -14,8 +14,8 @@ VsMAMoneyStringReader >> moneyFromString: aString [
 	amountString := (parser subexpression: 2).
 	safeAmountString := amountString copyWithout: $,.
 	^ VsUnits
-		quantity: safeAmountString 
-		of: #dollars.
+		quantity: (ScaledDecimal readFrom: safeAmountString, 's2') 
+		of: #dollar.
 ]
 
 { #category : 'private' }
