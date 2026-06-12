@@ -54,9 +54,8 @@ BaselineOfVirtualStash >> baseline: spec [
 			baseline: #Talents with: [
 				spec repository: 'github://tesonep/pharo-talents' ].
 		spec
-			package: #'Aconcagua-Money'; "Just temporary until it stabilizes and we can merge back into Aconcagua"
 			package: #'VirtualStash-Core' with: [
-				spec requires: #(Aconcagua #'Aconcagua-Money' DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents) ] ].
+				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents) ] ].
 				
 	spec for: #notGToolkit do: [
 		spec 
