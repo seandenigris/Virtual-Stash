@@ -41,6 +41,39 @@ VsChartOfAccounts >> accountsGtSearchFor: aSearch [
 ]
 
 { #category : 'accessing' }
+VsChartOfAccounts >> accountsGtSearchNewFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch explicit
+		title: 'New expense account';
+		priority: 5;
+		itemName: [ :result | '+ ' , result printString ];
+		search: [ :context | 
+			| input |
+			input := context searchQuery trimmed.
+			VsAccount subclasses collect: [ :cls |
+				cls named: input ] ];
+		send: [ :result | self add: result ]
+]
+
+{ #category : 'accessing' }
+VsChartOfAccounts >> accountsRoot [
+	^ self accounts select: [ :act | act parent isNil ]
+]
+
+{ #category : 'views' }
+VsChartOfAccounts >> accountsRootGtViewFor: aView [
+  <gtView>
+  
+  ^ aView tree
+      title: 'Tree';
+      priority: 3;
+      items: [ self accountsRoot ];
+      children: #children;
+      actionUpdateButton
+]
+
+{ #category : 'accessing' }
 VsChartOfAccounts >> add: aVsAccount [
 	aVsAccount books: self books.
 	^ self accounts add: aVsAccount
