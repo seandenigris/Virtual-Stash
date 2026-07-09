@@ -56,15 +56,6 @@ VsAccount class >> named: aString [
 ]
 
 { #category : 'accessing' }
-VsAccount >> addChildNamed: aString [
-	| child |
-	child := (self class named: aString)
-		parent: self;
-		yourself.
-	^ self books chartOfAccounts add: child
-]
-
-{ #category : 'accessing' }
 VsAccount >> books [
 	^ books
 ]
@@ -79,19 +70,47 @@ VsAccount >> chart [
 	^ self books chart
 ]
 
-{ #category : 'accessing' }
+{ #category : 'private' }
 VsAccount >> children [
 	^ self chart select: [ :e | e parent = self ]
+]
+
+{ #category : 'private' }
+VsAccount >> children: aCollection [
+	"Virtual collection setter for magritte"
+
+	| currentChildren childrenRemoving childrenAdding |
+	currentChildren := self children.
+	childrenRemoving := currentChildren difference: aCollection.
+	childrenAdding := aCollection difference: currentChildren.
+
+	childrenRemoving do: [ :act | act parent: nil ].
+	childrenAdding do: [ :act | self childrenAdd: act ].
+]
+
+{ #category : 'accessing' }
+VsAccount >> childrenAdd: anAccount [
+
+	anAccount parent: self.
+	^ self books chartOfAccounts add: anAccount
+]
+
+{ #category : 'accessing' }
+VsAccount >> childrenAddNamed: aString [
+	
+	self childrenAdd: (self class named: aString)
 ]
 
 { #category : 'magritte-accessing' }
 VsAccount >> childrenDescription [
 	<magritteDescription>
-	<gtInspectorPresentationOrder: 10>
+
 	^ MAToManyRelationDescription new
-			accessor: #children;
-			label: 'Children';
-			yourself
+		accessor: #children;
+		label: 'Children';
+		gtSearchSource: self books chartOfAccounts;
+		classes: VsAccount allSubclasses;
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -339,9 +358,8 @@ VsAccount >> pathString [
 
 { #category : 'printing' }
 VsAccount >> printOn: aStream [
-	aStream
-		nextPutAll: self name;
-		nextPutAll: ' Account'
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : 'utilities' }
