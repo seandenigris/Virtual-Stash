@@ -210,14 +210,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-04-14T14:06:42.407453-04:00"
+						"dateAndTimeString" : "2026-04-14T14:07:03.118638-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "KjJ884HlTm2HVZLveuTEIg=="
 				},
-				"code" : "party vsCounterpartyRule parser parse:"
+				"code" : "party vsCounterpartyRule parser parse: input"
 			}
 		]
 	},

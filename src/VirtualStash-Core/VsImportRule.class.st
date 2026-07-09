@@ -700,7 +700,10 @@ VsImportRule >> patch [
 { #category : 'accessing' }
 VsImportRule >> patchGtViewFor: aView [
 	<gtView>
+	
+	self transaction ifNil: [ ^ aView empty ].
 	self patch ifNil: [ ^ aView empty ].
+	
 	^ aView forward
 		title: 'Patch';
 		priority: 25;
