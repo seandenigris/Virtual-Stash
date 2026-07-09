@@ -25,7 +25,7 @@ VsChartOfAccounts >> accountsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
 		accessor: #accounts;
-		default: OrderedCollection new;
+		default: CTOrderedSet new;
 		yourself
 ]
 
