@@ -34,6 +34,15 @@ VsGeneralJournal >> asMorph [
 	^ self asMagritteMorph addButtons; morph
 ]
 
+{ #category : 'commands' }
+VsGeneralJournal >> batchEditCommand [
+
+	^ VsTransactionBatchEdit new
+		journal: self;
+		accountOld: self books chartOfAccounts imbalanceAccount;
+		yourself
+]
+
 { #category : 'as yet unclassified' }
 VsGeneralJournal >> books [
 

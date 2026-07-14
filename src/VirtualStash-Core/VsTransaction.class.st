@@ -118,6 +118,12 @@ VsTransaction >> applyRule: aVsCounterpartyRule [
 		apply.
 ]
 
+{ #category : 'as yet unclassified' }
+VsTransaction >> books [
+
+	^ self accountSource
+]
+
 { #category : 'GnuCash' }
 VsTransaction >> commodity [
 	^ self maLazyPropertyUsing: self commodityDescription
