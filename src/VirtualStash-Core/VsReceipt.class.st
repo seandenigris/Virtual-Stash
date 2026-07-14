@@ -223,6 +223,9 @@ VsReceipt >> printOn: aStream [
 	amount ifNotNil: [ aStream space; print: self amount ].
 	date ifNotNil: [ aStream nextPutAll: ' on '; nextPutAll: self date mmddyyyy ].
 	paymentMethod ifNotNil: [ aStream nextPutAll: ' with '; print: self paymentMethod ].
+	
+	aStream position = 0 ifTrue: [ self resource printOn: aStream ].
+	
 	aStream nextPutAll: ' ('.
 	super printOn: aStream.
 	aStream nextPut: $).
