@@ -152,15 +152,15 @@ VsTransaction >> counterparty: anObject [
 
 { #category : 'magritte-accessing' }
 VsTransaction >> counterpartyDescription [
-	
 	<magritteDescription>
+	
 	^ MAToOneRelationDescription new
-			accessor: #counterparty;
-			gtSearchSource: (MessageSend receiver: self selector: #addressBook);
-			priority: 300;
-			classes: MpRelatableEntity allSubclasses;
-			comment: 'Often called the ==payee== in accounting software, but this is misleading. The payee of a refund is the user, but is that really what we want to know? No! GnuCash gives up altogether and puts a free-form ==description== field where the ==payee== usually goes. Counterparty is the most precise term, meaning the entity on the other side of the transaction.';
-			yourself
+		accessor: #counterparty;
+		gtSearchSource: (MessageSend receiver: self selector: #addressBook);
+		priority: 300;
+		classes: MpRelatableEntity allSubclasses;
+		comment: 'Often called the ==payee== in accounting software, but this is misleading. The payee of a refund is the user, but is that really what we want to know? No! GnuCash gives up altogether and puts a free-form ==description== field where the ==payee== usually goes. Counterparty is the most precise term, meaning the entity on the other side of the transaction.';
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -293,6 +293,22 @@ VsTransaction >> number [
 { #category : 'accessing' }
 VsTransaction >> number: aNumber [
 	number := aNumber
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> ppProjects [
+
+	^ self
+		propertyAt: #ppProjects
+		ifAbsentPut: [ OrderedCollection new ]
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> ppProjects: aCollection [
+
+	^ self
+		propertyAt: #ppProjects
+		putRemovingNil: aCollection
 ]
 
 { #category : 'printing' }
