@@ -344,6 +344,19 @@ VsTransaction >> receiptDescription [
 ]
 
 { #category : 'accessing' }
+VsTransaction >> receiptImportEmail [
+
+  | emls newReceipt |
+  emls := RlEmail allFromMailClientSelectionImport.
+  self assert: emls size = 1.
+  newReceipt :=  VsReceipt new
+          resource: emls first;
+          yourself.
+  self receipt: newReceipt.
+  ^ newReceipt
+]
+
+{ #category : 'accessing' }
 VsTransaction >> registerString [
 	^ (self maToString: self dateDescription), '	', (self maToString: self counterpartyDescription), '	', (self maToString: self accountsDescription), '	', (self maToString: self amountDescription)
 ]
