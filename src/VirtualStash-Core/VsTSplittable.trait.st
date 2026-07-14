@@ -9,12 +9,13 @@ Trait {
 VsTSplittable >> accountDescription [
 	<magritteDescription>
 
-	^ MASingleOptionDescription new
-			accessor: #account;
-			label: 'Account';
-			options: self accountSource accounts;
-			priority: 400;
-			yourself
+	^ MAToOneRelationDescription new
+		accessor: #account;
+		label: 'Account';
+		gtSearchSource: self accountSource;
+		classes: VsAccount allSubclasses;
+		priority: 400;
+		yourself
 ]
 
 { #category : 'magritte-accessing' }
