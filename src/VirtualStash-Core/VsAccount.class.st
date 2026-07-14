@@ -155,7 +155,9 @@ VsAccount >> generalJournalGtViewOn: aView [
 		title: 'General Journal' translated;
 		priority: 5;
 		object: journalBlock;
-		view: #entriesGtViewOn:
+		view: #entriesGtViewOn:;
+		inspectButtonFor: journalBlock;
+		actionUpdateButton
 ]
 
 { #category : 'accessing' }
