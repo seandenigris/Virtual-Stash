@@ -3,7 +3,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'accounts',
-		'books'
+		'books',
+		'imbalanceAccount'
 	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
@@ -128,4 +129,16 @@ VsChartOfAccounts >> gtViewGraphFor: aView [
 			m edges connectFrom: #parent.
 			m layout horizontalTree.
 			m ]
+]
+
+{ #category : 'accessing' }
+VsChartOfAccounts >> imbalanceAccount [
+
+  ^ imbalanceAccount
+]
+
+{ #category : 'accessing' }
+VsChartOfAccounts >> imbalanceAccount: anObject [
+
+  imbalanceAccount := anObject
 ]
