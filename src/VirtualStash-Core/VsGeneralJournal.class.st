@@ -16,33 +16,6 @@ Class {
 	#tag : 'Bookkeeping'
 }
 
-{ #category : 'accessing' }
-VsGeneralJournal class >> business [
-	^ business ifNil: [ business := self new ]
-]
-
-{ #category : 'accessing' }
-VsGeneralJournal class >> business: anObject [
-	business := anObject
-]
-
-{ #category : 'accessing' }
-VsGeneralJournal class >> personal [
-	^ personal ifNil: [ personal := self new ]
-]
-
-{ #category : 'accessing' }
-VsGeneralJournal class >> personal: anObject [
-	personal := anObject
-]
-
-{ #category : 'as yet unclassified' }
-VsGeneralJournal class >> restoreFrom: aCollection [
-
-	business := aCollection first.
-	personal := aCollection second
-]
-
 { #category : 'adding/removing' }
 VsGeneralJournal >> add: entry [
 
