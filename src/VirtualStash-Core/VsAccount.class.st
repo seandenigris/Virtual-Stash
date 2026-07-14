@@ -113,6 +113,13 @@ VsAccount >> childrenDescription [
 		yourself
 ]
 
+{ #category : 'as yet unclassified' }
+VsAccount >> delete [
+
+	self books chartOfAccounts accounts remove: self.
+	self parent: nil.
+]
+
 { #category : 'accessing' }
 VsAccount >> displayStringOn: aStream [
 	aStream nextPutAll: self name.
