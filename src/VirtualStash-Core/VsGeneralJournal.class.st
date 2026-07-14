@@ -11,10 +11,6 @@ Class {
 	#instVars : [
 		'entries'
 	],
-	#classInstVars : [
-		'business',
-		'personal'
-	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
 	#tag : 'Bookkeeping'
@@ -65,6 +61,14 @@ VsGeneralJournal >> asMorph [
 	^ self asMagritteMorph addButtons; morph
 ]
 
+{ #category : 'as yet unclassified' }
+VsGeneralJournal >> books [
+
+	^ self entries 
+		ifNotEmpty: [ :aCol | aCol first books ]
+		ifEmpty: [ nil ]
+]
+
 { #category : 'magritte' }
 VsGeneralJournal >> descriptionEntries [
 	<magritteDescription>
@@ -77,10 +81,25 @@ VsGeneralJournal >> descriptionEntries [
 			yourself
 ]
 
+{ #category : 'as yet unclassified' }
+VsGeneralJournal >> displayStringOn: aStream [
+
+	aStream
+		nextPutAll: '[';
+		print: self entries size;
+		nextPutAll: ' transactions]'
+]
+
 { #category : 'accessing' }
 VsGeneralJournal >> entries [
 
 	^ entries ifNil: [ entries := SortedCollection sortUsing: #date descending undefinedFirst ]
+]
+
+{ #category : 'private' }
+VsGeneralJournal >> entries: aCollection [
+
+	entries := aCollection
 ]
 
 { #category : 'accessing' }
@@ -168,6 +187,18 @@ VsGeneralJournal >> gtViewTodosOn: aView [
 			elem userData at: #todo put: item ];
 		actionUpdateButton;
 		yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsGeneralJournal >> iterator [
+
+	^ self entries iterator
+]
+
+{ #category : 'as yet unclassified' }
+VsGeneralJournal >> printOn: aStream [
+
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : 'accessing' }
