@@ -52,10 +52,12 @@ BaselineOfVirtualStash >> baseline: spec [
 				spec repository: 'github://seandenigris/Resources-Live' ];
 			baseline: #SimplePersistence with: [ spec repository: 'github://seandenigris/Simple-Persistence' ];
 			baseline: #Talents with: [
-				spec repository: 'github://tesonep/pharo-talents' ].
+				spec repository: 'github://tesonep/pharo-talents' ];
+				baseline: #'TheProjectProject' with: [
+				spec repository: 'github://seandenigris/The-Project-Project' ].
 		spec
 			package: #'VirtualStash-Core' with: [
-				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents) ] ].
+				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents TheProjectProject) ] ].
 				
 	spec for: #notGToolkit do: [
 		spec 
