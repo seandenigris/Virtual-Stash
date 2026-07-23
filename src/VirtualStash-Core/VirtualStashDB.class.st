@@ -40,6 +40,7 @@ VirtualStashDB class >> schema [
 	^ { 
 			MyPeopleDB.
 			ResourcesLiveDB.
+			VsAgreementFile.
 			VsBooks.
 			VsPaymentMethod.
 			VsPre2013Books.
