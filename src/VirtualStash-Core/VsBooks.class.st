@@ -192,6 +192,7 @@ VsBooks >> chartOfAccountsDescription [
 	^ MAToOneRelationDescription new
 		accessor: #chartOfAccounts;
 		default: (VsChartOfAccounts new books: self; yourself);
+		classes: VsChartOfAccounts withAllSubclasses;
 		shouldCacheDefault: true;
 		yourself
 ]
