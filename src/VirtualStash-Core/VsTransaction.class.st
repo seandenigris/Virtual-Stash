@@ -90,6 +90,21 @@ VsTransaction >> addressBook: anObject [
 	addressBook := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+VsTransaction >> agreement: aVsAgreement [ 
+	
+	self splits do: [ :aSplit |
+		aSplit agreement: aVsAgreement ].
+		
+	self counterparty: aVsAgreement provider
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> agreements [
+	
+	^ self splits collect: #agreement as: Set
+]
+
 { #category : 'accessing' }
 VsTransaction >> amount [
 	| credits debits creditTotal debitTotal |
@@ -302,19 +317,15 @@ VsTransaction >> number: aNumber [
 ]
 
 { #category : 'as yet unclassified' }
-VsTransaction >> ppProjects [
+VsTransaction >> ppValues [
 
-	^ self
-		propertyAt: #ppProjects
-		ifAbsentPut: [ OrderedCollection new ]
+	^ self splits flatCollect: #ppValues
 ]
 
 { #category : 'as yet unclassified' }
-VsTransaction >> ppProjects: aCollection [
+VsTransaction >> ppValues: aCollection [
 
-	^ self
-		propertyAt: #ppProjects
-		putRemovingNil: aCollection
+	^ self splits do: [ :s | s ppValues: aCollection ]
 ]
 
 { #category : 'printing' }
@@ -407,6 +418,18 @@ VsTransaction >> splitsDescription [
 					amount: self uncategorizedAmount ];
 			priority: 400;
 			yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> subject: anObject [
+
+	self splits do: [ :s | s subject: anObject ]
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> subjects [
+
+	^ self splits collect: #subject
 ]
 
 { #category : 'accessing' }
