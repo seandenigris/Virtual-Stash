@@ -43,6 +43,19 @@ VsAgreementFile >> agreements: anObject [
 ]
 
 { #category : 'views' }
+VsAgreementFile >> agreementsGtSearchFor: aSearch [
+  <gtSearch>
+  
+  ^ aSearch list
+		title: 'Agreements';
+		priority: 30;
+		items: [ self agreements ];
+		"itemName: #path;
+		sendCategory: [ :aCategory :aStep :thisSearch | aCategory items contents asWebLinkGroup ];"
+		filterBySubstring
+]
+
+{ #category : 'views' }
 VsAgreementFile >> agreementsGtViewFor: aView [
   <gtView>
   
@@ -52,4 +65,25 @@ VsAgreementFile >> agreementsGtViewFor: aView [
       title: 'Agreements';
       items: [ self agreements ];
       actionUpdateButton
+]
+
+{ #category : 'as yet unclassified' }
+VsAgreementFile >> transactions [
+
+  ^ VsBooks personal generalJournal iterator
+    | [ :t | t agreements anySatisfy: [ :anAgreement | self agreements includes: anAgreement ] ] selectIt
+    > VsGeneralJournal
+]
+
+{ #category : 'GT Views' }
+VsAgreementFile >> transactionsGtViewFor: aView [
+  <gtView>
+  
+  self transactions entries ifEmpty: [ ^ aView empty ].
+  
+  ^ aView forward
+      title: 'Transactions';
+      object: [ self transactions ];
+      view: #entriesGtViewOn:;
+      inspectButtonFor: [ self transactions ]
 ]
