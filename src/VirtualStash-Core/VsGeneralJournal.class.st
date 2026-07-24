@@ -93,6 +93,7 @@ VsGeneralJournal >> entriesGtViewOn: aView [
 		priority: 5;
 		items: [ self transactions flatCollect: [ :t | t journalLines ] ];
 		send: #model;
+		actionUpdateButton;
 		yourself.
 	VsJournalLine configureGtColumnedList: result.
 	^ result
