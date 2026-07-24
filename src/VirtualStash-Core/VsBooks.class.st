@@ -12,15 +12,12 @@ Class {
 		'chartOfAccounts',
 		'taxDocuments',
 		'receiptFile',
-		'billFile'
+		'billFile',
+		'reportingEntity'
 	],
 	#classVars : [
+		'Db',
 		'PaymentProcessors'
-	],
-	#classInstVars : [
-		'personal',
-		'business',
-		'oldPersonal'
 	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
@@ -31,19 +28,20 @@ Class {
 VsBooks class >> accountsAll [
 	"Created for DBSoup to have a single access point for all accounts"
 
-	^ self all flatCollect: [ :aBook |
+	^ self db flatCollect: [ :aBook |
 		aBook chartOfAccounts accounts ]
 ]
 
-{ #category : 'persistence' }
-VsBooks class >> all [
-	^ { self personal. self business }
+{ #category : 'accessing' }
+VsBooks class >> db [
+
+  ^ Db ifNil: [ Db := OrderedCollection new ]
 ]
 
-{ #category : 'instance creation' }
-VsBooks class >> business [
+{ #category : 'accessing' }
+VsBooks class >> db: anObject [
 
-	^ business ifNil: [ business := self new title: 'Business'; yourself ].
+  Db := anObject
 ]
 
 { #category : 'accessing' }
@@ -81,22 +79,44 @@ VsBooks class >> paymentProcessors: anObject [
 { #category : 'instance creation' }
 VsBooks class >> personal [
 
-	^ personal ifNil: [ personal := self new title: 'Personal'; yourself ].
+	^ self db isEmptyOrNil
+		ifFalse: [ self db first ]
+		ifTrue: [ 
+			| newBooks |
+			newBooks := self new 
+				title: 'Personal'; 
+				yourself.
+			self db add: newBooks ].
+]
+
+{ #category : 'accessing' }
+VsBooks class >> reportingEntities [
+
+	^ self db collect: #reportingEntity
+]
+
+{ #category : 'accessing' }
+VsBooks class >> reportingEntitiesGtSearchOn: aSearch [
+	<gtSearch>
+
+	^ aSearch list
+		title: 'Reporting Entities';
+		priority: 30;
+		items: [ self reportingEntities ];
+		filterBySubstring
 ]
 
 { #category : 'persistence' }
 VsBooks class >> restoreFrom: aCollection [
 
-	personal := aCollection first.
-	business := aCollection second.
-	oldPersonal := aCollection third.
-	PaymentProcessors := aCollection fourth
+	Db := aCollection first.
+	PaymentProcessors := aCollection second
 ]
 
 { #category : 'persistence' }
 VsBooks class >> spData [
 
-	^ { personal. business. oldPersonal. PaymentProcessors }
+	^ { Db. PaymentProcessors }
 ]
 
 { #category : 'paying credit cards' }
@@ -110,6 +130,12 @@ VsBooks >> accountsGtSearchFor: aStep [
 	^ (self chartOfAccounts accountsGtSearchFor: aStep)
 		priority: 20;
 		yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsBooks >> addressBook [
+
+	^ MpAddressBook uniqueInstance
 ]
 
 { #category : 'accessing' }
@@ -180,6 +206,15 @@ VsBooks >> chartOfAccountsGtViewOn: aView [
 		object: [ self chartOfAccounts ];
 		view: #gtViewGraphFor:;
 		inspectButtonFor: [ self chartOfAccounts ]
+]
+
+{ #category : 'printing' }
+VsBooks >> displayStringOn: aStream [
+	aStream
+		display: self reportingEntity;
+		nextPutAll: '''s books - ';
+		print: self generalJournal entries size;
+		nextPutAll: ' transactions'
 ]
 
 { #category : 'serializing' }
@@ -328,11 +363,8 @@ VsBooks >> importDefaultAccountsFromGnuCash [
 
 { #category : 'printing' }
 VsBooks >> printOn: aStream [
-	aStream
-		nextPutAll: self title;
-		nextPutAll: ' books - ';
-		print: self generalJournal entries size;
-		nextPutAll: ' transactions'
+	
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : 'as yet unclassified' }
@@ -373,6 +405,29 @@ VsBooks >> receiptsGtViewOn: aView [
 		actionButtonIcon: BrGlamorousVectorIcons inspect
 			tooltip: 'Inspect File'
 			action: [ :aButton :aTab | aButton phlow spawnObject: self receiptFile ]
+]
+
+{ #category : 'accessing' }
+VsBooks >> reportingEntity [
+
+  ^ reportingEntity
+]
+
+{ #category : 'accessing' }
+VsBooks >> reportingEntity: anObject [
+
+  reportingEntity := anObject
+]
+
+{ #category : 'accessing' }
+VsBooks >> reportingEntityDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #reportingEntity;
+		gtSearchSource: #addressBook;
+		classes: MpRelatableEntity allSubclasses;
+		yourself
 ]
 
 { #category : 'accessing' }
