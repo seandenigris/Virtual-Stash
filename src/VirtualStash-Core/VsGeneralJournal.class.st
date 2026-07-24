@@ -200,6 +200,12 @@ VsGeneralJournal >> todos [
 ]
 
 { #category : 'as yet unclassified' }
+VsGeneralJournal >> total [
+
+	^ self transactions sum: #amount
+]
+
+{ #category : 'as yet unclassified' }
 VsGeneralJournal >> transactions [
 	^ self entries
 ]
