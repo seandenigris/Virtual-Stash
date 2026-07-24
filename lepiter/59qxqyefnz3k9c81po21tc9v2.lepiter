@@ -319,6 +319,43 @@
 											"__type" : "textStyle"
 										},
 										"string" : "Might just become:\nAsset\nLiability\nEquity\nIncome\nExpense (need to distinguish between Goods, Services, Insurance?)\n\nOptionally might include:\nTaxes and Government Charges\nGifts and Transfers\nInterest and Financing Costs\nDepreciation and Amortization"
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2026-07-22T21:53:25.090857-04:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2026-07-22T21:55:54.159813-04:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "5ew3lLBmQMOIvN7DlLuJ5w=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "If Atlassian instead billed a material annual amount in advance, the accounting might become:\nAt payment:\n    Debit:  Prepaid Access **TODO: this was not on original list**\n    Credit: Amex\n\nEach month:\n    Debit:  Expense\n    Credit: Prepaid Access\n    \n# Obligation versus payment\nThere is another useful distinction:\nAgreement\n    creates recurring obligations\n\nJuly obligation\n    $17.50 due July 15\n    covers July 1–31\n\nInvoice\n    requests settlement of that obligation\n\nCredit-card transaction\n    pays it\nFor an initial implementation, this may be excessive. The split can simply link directly to the subscription.\nBut an explicit obligation object becomes valuable when:\na payment is missed;\nseveral periods are billed together;\na refund occurs;\nthe charge differs from the expected amount;\na free trial postpones billing;\nthe agreement is canceled mid-period;\nseveral seats appear as invoice line items."
 									}
 								]
 							},
