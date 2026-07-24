@@ -53,6 +53,12 @@ VsImportName >> = rhs [
 	"Implementation note: added species check for Magritte patching #isNoOp check against real domain object"
 ]
 
+{ #category : 'as yet unclassified' }
+VsImportName >> beginsWith: rhs [
+
+	^ self string beginsWith: rhs
+]
+
 { #category : 'accessing' }
 VsImportName >> counterpartyName [
 	| nameTokens |
