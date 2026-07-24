@@ -12,6 +12,18 @@ Class {
 	#tag : 'Agreements'
 }
 
+{ #category : 'persistence' }
+VsAgreementFile class >> restoreFrom: anObject [
+	
+	UniqueInstance := anObject
+]
+
+{ #category : 'persistence' }
+VsAgreementFile class >> spData [
+	
+	^ UniqueInstance
+]
+
 { #category : 'accessing' }
 VsAgreementFile class >> uniqueInstance [
 
