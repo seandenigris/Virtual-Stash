@@ -7,8 +7,8 @@ In GnuCash, each split can have their own unique ID. We'll wait until the need a
 Class {
 	#name : 'VsSplit',
 	#superclass : 'Object',
-	#traits : 'VsTSplittable',
-	#classTraits : 'VsTSplittable classTrait',
+	#traits : 'VsTSplittable + MATPropertyOwner',
+	#classTraits : 'VsTSplittable classTrait + MATPropertyOwner classTrait',
 	#instVars : [
 		'account',
 		'accountSource',
@@ -44,6 +44,42 @@ VsSplit >> accountSource: anObject [
 	accountSource := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+VsSplit >> agreement [
+
+	^ self
+		propertyAt: #agreement
+		ifAbsent: [ nil ]
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> agreement: anAgreement [
+
+	self
+		propertyAt: #agreement
+		putRemovingNil: anAgreement
+]
+
+{ #category : 'magritte-accessing' }
+VsSplit >> agreementDescription [
+	<magritteDescription>
+
+	^ MAToOneRelationDescription new
+		accessor: #agreement;
+		priority: 300;
+		gtSearchSource: [ :anObject | anObject agreementSource ];
+		classes: VsAgreement withAllSubclasses;
+		comment:
+			'The agreement whose obligation or financial consequence this split represents.'
+		yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> agreementSource [
+
+	^ VsAgreementFile uniqueInstance
+]
+
 { #category : 'accessing' }
 VsSplit >> amount [
 	^ self maLazyInstVarUsing: self amountDescription
@@ -58,12 +94,11 @@ VsSplit >> amount: anObject [
 VsSplit >> amountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription new
-			accessor: #amount;
-			label: 'Amount';
-			"display: [ :e | '$' , e asString ];"
-			priority: 200;
-			beRequired;
-			yourself
+		accessor: #amount;
+		"display: [ :e | '$' , e asString ];"
+		priority: 200;
+		beRequired;
+		yourself
 ]
 
 { #category : 'private' }
@@ -124,10 +159,9 @@ VsSplit >> memoDescription [
 	<magritteDescription>
 
 	^ MAMemoDescription new
-			accessor: #memo;
-			label: 'Memo';
-			priority: 300;
-			yourself
+		accessor: #memo;
+		priority: 300;
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -146,6 +180,22 @@ VsSplit >> numberDescription [
 	^ MAStringDescription new
 		accessor: #number;
 		yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> ppValues [
+
+	^ self
+		propertyAt: #ppValues
+		ifAbsentPut: [ OrderedCollection new ]
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> ppValues: aCollection [
+
+	^ self
+		propertyAt: #ppValues
+		putRemovingNil: aCollection
 ]
 
 { #category : 'accessing' }
@@ -200,6 +250,12 @@ VsSplit >> reconcileDateDescription [
 		yourself
 ]
 
+{ #category : 'magritte-accessing' }
+VsSplit >> softwareCatalog [
+
+	^ CwSoftwareCatalog uniqueInstance
+]
+
 { #category : 'accessing' }
 VsSplit >> status [
 	^ self maLazyInstVarUsing: self statusDescription
@@ -208,4 +264,40 @@ VsSplit >> status [
 { #category : 'accessing' }
 VsSplit >> status: anObject [
 	status := anObject
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> subject [
+
+	self agreement ifNotNil: [ :a | ^ a subject ].
+
+	^ self
+		propertyAt: #subject
+		ifAbsent: [ nil ]
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> subject: anObject [
+
+	self
+		propertyAt: #subject
+		putRemovingNil: anObject
+]
+
+{ #category : 'magritte-accessing' }
+VsSplit >> subjectDescription [
+	<magritteDescription>
+	
+	| gtSearchSource |
+	self flag: 'just to get started. Maybe a general DBSoup source?'.
+	gtSearchSource := PeGtCollectedSearch new.
+	gtSearchSource children 
+		add: self softwareCatalog.
+
+	^ MAToOneRelationDescription new
+		accessor: #subject;
+		priority: 300;
+		gtSearchSource: gtSearchSource;
+		classes: CwSoftware withAllSubclasses;
+		yourself
 ]

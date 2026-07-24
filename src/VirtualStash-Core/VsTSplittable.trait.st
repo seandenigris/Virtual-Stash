@@ -11,8 +11,7 @@ VsTSplittable >> accountDescription [
 
 	^ MAToOneRelationDescription new
 		accessor: #account;
-		label: 'Account';
-		gtSearchSource: self accountSource;
+		gtSearchSource: [ :anObject | anObject accountSource ];
 		classes: VsAccount allSubclasses;
 		priority: 400;
 		yourself
@@ -22,11 +21,11 @@ VsTSplittable >> accountDescription [
 VsTSplittable >> creditAmountDescription [
 	<magritteDescription>
 	^ MAMoneyDescription vsNew
-			accessor: #creditAmount;
-			label: 'Credit';
-			priority: 700;
-			beRequired;
-			yourself
+		accessor: #creditAmount;
+		label: 'Credit';
+		priority: 700;
+		beRequired;
+		yourself
 ]
 
 { #category : 'magritte-accessing' }
@@ -45,11 +44,10 @@ VsTSplittable >> statusDescription [
 	<magritteDescription>
 
 	^ MASingleOptionDescription new
-			accessor: #status;
-			label: 'Status';
-			options: VsReconciliationStatus all;
-			default: VsUnreconciled new;
-			priority: 500;
-			display: #gnuCashCode;
-			yourself
+		accessor: #status;
+		options: VsReconciliationStatus all;
+		default: VsUnreconciled new;
+		priority: 500;
+		display: #gnuCashCode;
+		yourself
 ]
