@@ -202,3 +202,23 @@ VsAgreement >> taxEntitiesDescription [
   	classes: MpRelatableEntity allSubclasses;
   	yourself
 ]
+
+{ #category : 'accessing' }
+VsAgreement >> transactions [
+
+  ^ VsBooks personal generalJournal iterator | [ :tnx | tnx agreements includes: self ] selectIt
+    > VsGeneralJournal
+]
+
+{ #category : 'views' }
+VsAgreement >> transactionsGtViewFor: aView [
+  <gtView>
+  
+  self transactions entries ifEmpty: [ ^ aView empty ].
+  
+  ^ aView forward
+      title: 'Transactions';
+      object: [ self transactions ];
+      view: #entriesGtViewOn:;
+      inspectButtonFor: [ self transactions ]
+]
