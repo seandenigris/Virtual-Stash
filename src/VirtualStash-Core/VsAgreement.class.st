@@ -174,3 +174,31 @@ VsAgreement >> subjectDescription [
 		comment: 'The first-class Dynabook object that the agreement concerns, such as a software product, property, work, or service.';
 		yourself
 ]
+
+{ #category : 'accessing' }
+VsAgreement >> taxEntities [
+
+  ^ self
+  	propertyAt: #taxEntities
+  	ifAbsent: [ nil ]
+]
+
+{ #category : 'accessing' }
+VsAgreement >> taxEntities: aCollection [
+
+  ^ self
+  	propertyAt: #taxEntities
+  	putRemovingNil: aCollection
+]
+
+{ #category : 'accessing' }
+VsAgreement >> taxEntitiesDescription [
+	<magritteDescription>
+
+  ^ MAToManyRelationDescription new
+  	accessor: #taxEntities;
+  	gtSearchDelegateTo: [ VsBooks ] message: #reportingEntitiesGtSearchOn:;
+  	default: OrderedCollection new;
+  	classes: MpRelatableEntity allSubclasses;
+  	yourself
+]
