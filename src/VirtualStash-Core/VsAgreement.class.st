@@ -20,7 +20,8 @@ Class {
 		'subject',
 		'billingInterval',
 		'price',
-		'effectiveStart'
+		'effectiveStart',
+		'ppValues'
 	],
 	#category : 'VirtualStash-Core-Agreements',
 	#package : 'VirtualStash-Core',
@@ -62,13 +63,20 @@ VsAgreement >> billingIntervalDescription [
 { #category : 'accessing' }
 VsAgreement >> displayStringOn: aStream [
 
-	self subject
-		ifNotNil: [ :anObject | aStream display: anObject ]
-		ifNil: [ aStream nextPutAll: 'Agreement' ].
-	self provider ifNotNil: [ :anObject |
-		aStream
-			nextPutAll: ' — ';
-			display: anObject ]
+  self displaySubjectOn: aStream.
+  self provider ifNotNil: [ :anObject |
+      aStream
+        nextPutAll: ' — ';
+        display: anObject
+    ]
+]
+
+{ #category : 'accessing' }
+VsAgreement >> displaySubjectOn: aStream [
+
+  self subject
+    ifNotNil: [ :anObject | aStream display: anObject ]
+    ifNil: [ aStream nextPutAll: 'Agreement' ]
 ]
 
 { #category : 'accessing' }
