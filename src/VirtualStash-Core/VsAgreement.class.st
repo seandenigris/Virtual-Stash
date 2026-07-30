@@ -258,3 +258,9 @@ VsAgreement >> transactionsGtViewFor: aView [
       view: #entriesGtViewOn:;
       inspectButtonFor: [ self transactions ]
 ]
+
+{ #category : 'as yet unclassified' }
+VsAgreement >> transactionsPush [
+
+	self transactions entries do: [ :t | t agreement: self ]
+]

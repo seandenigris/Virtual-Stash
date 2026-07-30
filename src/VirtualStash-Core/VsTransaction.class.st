@@ -96,7 +96,9 @@ VsTransaction >> agreement: aVsAgreement [
 	self splits do: [ :aSplit |
 		aSplit agreement: aVsAgreement ].
 		
-	self counterparty: aVsAgreement provider
+	self counterparty: aVsAgreement provider.
+	
+	self ppValues: (self ppValues addAll: aVsAgreement ppValues)
 ]
 
 { #category : 'as yet unclassified' }
