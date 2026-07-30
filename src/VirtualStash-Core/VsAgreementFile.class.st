@@ -39,7 +39,7 @@ VsAgreementFile class >> uniqueInstance: anObject [
 { #category : 'as yet unclassified' }
 VsAgreementFile >> add: aVsAgreement [ 
 
-	self agreements add: aVsAgreement
+	^ self agreements add: aVsAgreement
 ]
 
 { #category : 'accessing' }
