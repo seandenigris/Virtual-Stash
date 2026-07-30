@@ -1,14 +1,13 @@
 "
 I represent an agreement whose financial consequences may be recorded in VirtualStash.
 
-My provider is the party supplying the subject of the agreement. My subject is the
-first-class Dynabook object the agreement concerns—for example, the Trello object
-from CwSoftwareCatalog. My price applies once per billingInterval beginning on
-effectiveStart.
+My provider is the party supplying the subject of the agreement. My subject is the first-class Dynabook object the agreement concerns - for example, a software product, service, event, property, or provisional PpValue used until a richer domain object emerges.
 
-I deliberately model the currently effective terms directly. Once amendments or
-historical terms are needed, those terms should become effective-dated objects rather
-than mutating me in a way that rewrites history.
+My ppValues identify the values and projects that the agreement currently supports or counts toward. They describe why the agreement is maintained, rather than what it provides. Splits arising under me do not yet implicitly inherit these relationships; the temporal and historical semantics of such inheritance are intentionally deferred until a concrete mutation scenario requires them.
+
+My price applies once per billingInterval beginning on effectiveStart. These fields describe the agreement’s currently effective terms rather than the amount or date of any particular transaction.
+
+I deliberately model current terms directly. Once amendments or historical terms are needed, those terms should become effective-dated objects rather than mutating me in a way that unintentionally rewrites history.
 "
 Class {
 	#name : 'VsAgreement',
@@ -18,10 +17,10 @@ Class {
 	#instVars : [
 		'provider',
 		'subject',
+		'ppValues',
 		'billingInterval',
 		'price',
-		'effectiveStart',
-		'ppValues'
+		'effectiveStart'
 	],
 	#category : 'VirtualStash-Core-Agreements',
 	#package : 'VirtualStash-Core',
@@ -99,6 +98,35 @@ VsAgreement >> effectiveStartDescription [
 		accessor: #effectiveStart;
 		priority: 500;
 		beRequired;
+		yourself
+]
+
+{ #category : 'accessing' }
+VsAgreement >> ppValues [
+
+	^ self maLazyInstVarUsing: self ppValuesDescription
+]
+
+{ #category : 'accessing' }
+VsAgreement >> ppValues: aCollection [
+
+	ppValues := aCollection
+		ifNotNil: [ :values | values asIdentitySet ]
+]
+
+{ #category : 'magritte-accessing' }
+VsAgreement >> ppValuesDescription [
+	<magritteDescription>
+
+	^ MAToManyRelationDescription new
+		accessor: #ppValues;
+		label: 'Counts toward';
+		gtSearchSource: #projectList;
+		default: IdentitySet new;
+		classes: PpValue withAllSubclasses;
+		priority: 250;
+		comment:
+			'The values and projects that this agreement currently supports. Splits do not implicitly inherit these relationships.';
 		yourself
 ]
 
