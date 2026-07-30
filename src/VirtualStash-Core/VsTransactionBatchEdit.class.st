@@ -7,7 +7,9 @@ Class {
 		'accountOld',
 		'projects',
 		'journal',
-		'agreement'
+		'agreement',
+		'beneficiary',
+		'subject'
 	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
@@ -84,6 +86,30 @@ VsTransactionBatchEdit >> agreementDescription [
 		gtSearchSource: (MessageSend
 			receiver: self splitsFirst
 			selector: #agreementSource);
+		yourself
+]
+
+{ #category : 'accessing' }
+VsTransactionBatchEdit >> beneficiary [
+
+  ^ beneficiary
+]
+
+{ #category : 'accessing' }
+VsTransactionBatchEdit >> beneficiary: anObject [
+
+  beneficiary := anObject
+]
+
+{ #category : 'as yet unclassified' }
+VsTransactionBatchEdit >> beneficiaryDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #beneficiary;
+		gtSearchSource: [ MpAddressBook uniqueInstance ];
+		priority: 300;
+		classes: MpRelatableEntity allSubclasses;
 		yourself
 ]
 
@@ -232,6 +258,25 @@ VsTransactionBatchEdit >> splitsFirst [
 	^ self journal entries first splits first
 ]
 
+{ #category : 'accessing' }
+VsTransactionBatchEdit >> subject [
+
+  ^ subject
+]
+
+{ #category : 'accessing' }
+VsTransactionBatchEdit >> subject: anObject [
+
+  subject := anObject
+]
+
+{ #category : 'as yet unclassified' }
+VsTransactionBatchEdit >> subjectDescription [
+	<magritteDescription>
+	
+	^ self splitsFirst subjectDescription
+]
+
 { #category : 'as yet unclassified' }
 VsTransactionBatchEdit >> updateTransaction: aTransaction [ 
 	
@@ -242,7 +287,11 @@ VsTransactionBatchEdit >> updateTransaction: aTransaction [
 	
 	self agreement ifNotNil: [ aTransaction agreement: self agreement ].
 	
+	self beneficiary ifNotNil: [ :mpEntity | aTransaction beneficiary: mpEntity ].
+	
 	self counterparty ifNotNil: [ aTransaction counterparty: self counterparty ].
 	
 	self projects ifNotEmpty: [ aTransaction ppValues: self projects ].
+	
+	self subject ifNotNil: [ aTransaction subject: self subject ].
 ]

@@ -65,7 +65,7 @@ VsTransaction >> accountSource: anObject [
 
 { #category : 'accessing' }
 VsTransaction >> accounts [
-	^ self splits collect: #account
+	^ self splitsCollectUniqueNotNil: #account
 ]
 
 { #category : 'magritte-accessing' }
@@ -102,7 +102,7 @@ VsTransaction >> agreement: aVsAgreement [
 { #category : 'as yet unclassified' }
 VsTransaction >> agreements [
 	
-	^ self splits collect: #agreement as: Set
+	^ self splitsCollectUniqueNotNil: #agreement
 ]
 
 { #category : 'accessing' }
@@ -131,6 +131,18 @@ VsTransaction >> applyRule: aVsCounterpartyRule [
 	aVsCounterpartyRule
 		transaction: self;
 		apply.
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> beneficiaries [
+
+	^ self splitsCollectUniqueNotNil: #beneficiary
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> beneficiary: anObject [
+
+	self splits do: [ :s | s beneficiary: anObject ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -404,6 +416,14 @@ VsTransaction >> splits: anObject [
 	splits := anObject
 ]
 
+{ #category : 'as yet unclassified' }
+VsTransaction >> splitsCollectUniqueNotNil: aBlock [
+
+	^ self splits asSet
+		collect: aBlock
+		thenReject: #isNil
+]
+
 { #category : 'magritte-accessing' }
 VsTransaction >> splitsDescription [
 	<magritteDescription>
@@ -429,7 +449,7 @@ VsTransaction >> subject: anObject [
 { #category : 'as yet unclassified' }
 VsTransaction >> subjects [
 
-	^ self splits collect: #subject
+	^ self splitsCollectUniqueNotNil: #subject
 ]
 
 { #category : 'accessing' }

@@ -45,6 +45,12 @@ VsSplit >> accountSource: anObject [
 ]
 
 { #category : 'as yet unclassified' }
+VsSplit >> addressBook [
+	
+	^ MpAddressBook uniqueInstance
+]
+
+{ #category : 'as yet unclassified' }
 VsSplit >> agreement [
 
 	^ self
@@ -111,6 +117,34 @@ VsSplit >> amountToString: aNumber [
 	^ aNumber = 0
 		ifTrue: [ '' ]
 		ifFalse: [ intString , '.' , decimalString ]
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> beneficiary [
+
+	^ self
+		propertyAt: #beneficiary
+		ifAbsent: [ nil ]
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> beneficiary: anMpEntity [
+
+	^ self
+		propertyAt: #beneficiary
+		putRemovingNil: anMpEntity
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> beneficiaryDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #beneficiary;
+		gtSearchSource: (MessageSend receiver: self selector: #addressBook);
+		priority: 300;
+		classes: MpRelatableEntity allSubclasses;
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -232,6 +266,12 @@ VsSplit >> printOn: aStream [
 				nextPut: $) ]
 ]
 
+{ #category : 'magritte-accessing' }
+VsSplit >> projectList [
+
+	^ PpProjectList uniqueInstance
+]
+
 { #category : 'accessing' }
 VsSplit >> reconcileDate [
 	^ self maLazyInstVarUsing: self reconcileDateDescription
@@ -288,16 +328,22 @@ VsSplit >> subject: anObject [
 VsSplit >> subjectDescription [
 	<magritteDescription>
 	
-	| gtSearchSource |
+	| gtSearchSource classes |
 	self flag: 'just to get started. Maybe a general DBSoup source?'.
 	gtSearchSource := PeGtCollectedSearch new.
 	gtSearchSource children 
-		add: self softwareCatalog.
+		add: self softwareCatalog;
+		add: self projectList.
+		
+	classes := OrderedCollection new
+		addAll: PpValue withAllSubclasses;
+		addAll: CwSoftware withAllSubclasses;
+		yourself.
 
 	^ MAToOneRelationDescription new
 		accessor: #subject;
 		priority: 300;
-		gtSearchSource: gtSearchSource;
-		classes: CwSoftware withAllSubclasses;
+		gtSearchSource: [ gtSearchSource ];
+		classes: classes;
 		yourself
 ]
