@@ -198,7 +198,7 @@ VsTransactionBatchEdit >> maExecutingFormFor: aView [
 	^ aView explicit
 		title: 'Magritte';
 		priority: 25;
-		stencil: [ self magritteFormExecuting ]
+		stencil: [ self magritteFormExecuting asScrollableElement ]
 ]
 
 { #category : 'as yet unclassified' }
