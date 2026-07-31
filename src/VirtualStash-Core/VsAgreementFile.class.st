@@ -69,14 +69,39 @@ VsAgreementFile >> agreementsGtSearchFor: aSearch [
 
 { #category : 'views' }
 VsAgreementFile >> agreementsGtViewFor: aView [
-  <gtView>
-  
-  agreements ifNil: [ ^ aView empty ].
-  
-  ^ (aView maColumnedListOf: VsAgreement)
-      title: 'Agreements';
-      items: [ self agreements ];
-      actionUpdateButton
+	<gtView>
+
+	| result agreementDescriptions currentTermDescriptions |
+	agreements ifNil: [ ^ aView empty ].
+
+	result := aView columnedList
+		title: 'Agreements';
+		items: [ self agreements ];
+		actionUpdateButton.
+
+	agreementDescriptions :=
+		VsAgreement magritteTemplate magritteDescription
+			reject: [ :description |
+				#(terms) includes: description accessor selector ].
+
+	currentTermDescriptions :=
+		VsAgreementTerm magritteTemplate magritteDescription
+			collect: [ :description |
+				description copy
+					label: description label;
+					accessor: {
+						#termsCurrent.
+						description accessor };
+					beReadOnly;
+					yourself ].
+
+	agreementDescriptions do: [ :description |
+		description gtAddColumnTo: result ].
+
+	currentTermDescriptions do: [ :description |
+		description gtAddColumnTo: result ].
+
+	^ result
 ]
 
 { #category : 'as yet unclassified' }

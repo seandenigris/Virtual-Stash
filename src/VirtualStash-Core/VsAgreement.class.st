@@ -1,13 +1,15 @@
 "
-I represent an agreement whose financial consequences may be recorded in VirtualStash.
+I represent a durable agreement whose financial consequences may be recorded in VirtualStash.
 
-My provider is the party supplying the subject of the agreement. My subject is the first-class Dynabook object the agreement concerns - for example, a software product, service, event, property, or provisional PpValue used until a richer domain object emerges.
+My provider is the party supplying my subject. My subject is the first-class Dynabook object the agreement concerns—for example, a software product, service, event, property, or provisional PpValue used until a richer domain object emerges.
 
-My ppValues identify the values and projects that the agreement currently supports or counts toward. They describe why the agreement is maintained, rather than what it provides. Splits arising under me do not yet implicitly inherit these relationships; the temporal and historical semantics of such inheritance are intentionally deferred until a concrete mutation scenario requires them.
+My ppValues identify the values and projects that I currently support or count toward. They describe why I am maintained rather than what I provide. Splits arising under me do not yet implicitly inherit these relationships.
 
-My price applies once per billingInterval beginning on effectiveStart. These fields describe the agreement’s currently effective terms rather than the amount or date of any particular transaction.
+My terms are effective-dated states of the continuing agreement. They record commercial facts that may change over time without replacing my durable identity. A term's price is a vendor-stated money-per-time quantity, while its billingInterval records how often payment is requested. Use #termsOn: to resolve the term effective on a particular date and #termsCurrent for the term effective today.
 
-I deliberately model current terms directly. Once amendments or historical terms are needed, those terms should become effective-dated objects rather than mutating me in a way that unintentionally rewrites history.
+Terms begin on their inclusive start date and cease before their exclusive end date. A nil end means that a term remains effective indefinitely. Overlapping terms are ambiguous and cause #termsOn: to signal an error.
+
+The legacy price, billingInterval, and effectiveStart slots remain temporarily so existing instances can be migrated safely with #termsMigrateLegacy. Remove those slots and their obsolete protocol after migration has been completed and verified.
 "
 Class {
 	#name : 'VsAgreement',
@@ -20,7 +22,8 @@ Class {
 		'ppValues',
 		'billingInterval',
 		'price',
-		'effectiveStart'
+		'effectiveStart',
+		'terms'
 	],
 	#category : 'VirtualStash-Core-Agreements',
 	#package : 'VirtualStash-Core',
@@ -43,20 +46,6 @@ VsAgreement >> billingInterval [
 VsAgreement >> billingInterval: aQuantity [
 
 	billingInterval := aQuantity
-]
-
-{ #category : 'magritte-accessing' }
-VsAgreement >> billingIntervalDescription [
-	<magritteDescription>
-
-	^ MAToOneRelationDescription new
-		accessor: #billingInterval;
-		label: 'Billing interval';
-		classes: { Quantity };
-		priority: 300;
-		beRequired;
-		comment: 'The period covered by each price, such as one month or one year.';
-		yourself
 ]
 
 { #category : 'accessing' }
@@ -88,17 +77,6 @@ VsAgreement >> effectiveStart [
 VsAgreement >> effectiveStart: aDate [
 
 	effectiveStart := aDate
-]
-
-{ #category : 'magritte-accessing' }
-VsAgreement >> effectiveStartDescription [
-	<magritteDescription>
-
-	^ MADateDescription new
-		accessor: #effectiveStart;
-		priority: 500;
-		beRequired;
-		yourself
 ]
 
 { #category : 'accessing' }
@@ -140,18 +118,6 @@ VsAgreement >> price [
 VsAgreement >> price: aMoney [
 
 	price := aMoney
-]
-
-{ #category : 'magritte-accessing' }
-VsAgreement >> priceDescription [
-	<magritteDescription>
-
-	^ MAMoneyDescription vsNew
-		accessor: #price;
-		priority: 400;
-		beRequired;
-		comment: 'The amount charged for one billing interval.';
-		yourself
 ]
 
 { #category : 'printing' }
@@ -237,6 +203,85 @@ VsAgreement >> taxEntitiesDescription [
   	default: OrderedCollection new;
   	classes: MpRelatableEntity allSubclasses;
   	yourself
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> terms [
+	"Answer my effective-dated commercial terms."
+
+	^ self maLazyInstVarUsing: self termsDescription
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> terms: aCollection [
+	"Replace my effective-dated commercial terms with aCollection."
+
+	terms := aCollection
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> termsAdd: anAgreementTerm [
+	"Add anAgreementTerm to my terms and answer it."
+
+	^ self terms add: anAgreementTerm.
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> termsCurrent [
+	"Answer the term effective today, or nil when none is effective."
+
+	^ self termsOn: Date today
+]
+
+{ #category : 'magritte-accessing' }
+VsAgreement >> termsDescription [
+	<magritteDescription>
+	"Describe my effective-dated commercial terms."
+
+	^ MAToManyRelationDescription new
+		accessor: #terms;
+		default: OrderedCollection new;
+		classes: { VsAgreementTerm };
+		priority: 300;
+		comment: 'The effective-dated commercial terms of this continuing agreement.';
+		yourself
+]
+
+{ #category : 'views' }
+VsAgreement >> termsGtViewFor: aView [
+	<gtView>
+	"Show my terms in start-date order."
+
+	terms ifNil: [ ^ aView empty ].
+	self terms ifEmpty: [ ^ aView empty ].
+
+	^ (aView maColumnedListOf: VsAgreementTerm)
+		title: 'Terms';
+		priority: 20;
+		items: [ self termsSorted ];
+		actionUpdateButton
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> termsOn: aDate [
+	"Answer the sole term effective on aDate.
+
+	Answer nil when no term is effective. Signal an error when overlapping
+	terms make the answer ambiguous."
+
+	| matchingTerms |
+	matchingTerms := self terms select: [ :each | each includesDate: aDate ].
+	matchingTerms ifEmpty: [ ^ nil ].
+	matchingTerms size = 1 ifTrue: [ ^ matchingTerms anyOne ].
+
+	self error: 'Agreement terms overlap on ', aDate printString
+]
+
+{ #category : 'accessing - terms' }
+VsAgreement >> termsSorted [
+	"Answer my terms in ascending start-date order."
+
+	^ self terms asSortedCollection: #start ascending
 ]
 
 { #category : 'accessing' }
