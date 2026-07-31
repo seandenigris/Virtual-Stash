@@ -11,8 +11,9 @@ VsTSplittable >> accountDescription [
 
 	^ MAToOneRelationDescription new
 		accessor: #account;
-		gtSearchSource: [ :anObject | anObject accountSource ];
+		beRequired;
 		classes: VsAccount allSubclasses;
+		gtSearchSource: [ :anObject | anObject accountSource ];
 		priority: 400;
 		yourself
 ]
