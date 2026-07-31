@@ -106,8 +106,9 @@ VsAgreementTerm >> includesDate: aDate [
 
 	self start ifNil: [ ^ false ].
 
-	^ self start <= aDate and: [
-		self end isNil or: [ aDate < self end ] ]
+	self start > aDate ifFalse: [ ^ false ].
+	
+	^ self end isNil or: [ aDate < self end ]
 ]
 
 { #category : 'accessing - payment' }
