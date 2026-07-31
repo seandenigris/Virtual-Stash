@@ -4,6 +4,8 @@ Extension { #name : 'PpValue' }
 PpValue >> vsJournal [
 
 	^ VsBooks personal generalJournal iterator
-		| [ :t | t ppValues includes: self ] selectIt
+		| [ :t | 
+			(t subjects includes: self) 
+				or: [ t ppValues includes: self ] ] selectIt
 		> VsGeneralJournal
 ]
