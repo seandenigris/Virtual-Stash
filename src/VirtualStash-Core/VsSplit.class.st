@@ -99,11 +99,13 @@ VsSplit >> amount: anObject [
 { #category : 'magritte-accessing' }
 VsSplit >> amountDescription [
 	<magritteDescription>
-	^ MAMoneyDescription new
+	
+	^ MAMoneyDescription vsNew
 		accessor: #amount;
+		comment: 'The signed monetary Quantity posted by this split.';
+		beRequired;
 		"display: [ :e | '$' , e asString ];"
 		priority: 200;
-		beRequired;
 		yourself
 ]
 
