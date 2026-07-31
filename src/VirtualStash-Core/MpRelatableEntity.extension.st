@@ -27,3 +27,11 @@ MpRelatableEntity >> vsIsMentionedIn: aString [
 	
 	^ false
 ]
+
+{ #category : '*VirtualStash-Core' }
+MpRelatableEntity >> vsJournal [
+
+	^ VsBooks personal generalJournal iterator
+		| [ :t | t counterparty = self ] selectIt
+		> VsGeneralJournal
+]
