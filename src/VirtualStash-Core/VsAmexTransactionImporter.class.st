@@ -35,19 +35,18 @@ VsAmexTransactionImporter >> books: anObject [
 
 { #category : 'API' }
 VsAmexTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
+	^ aCollectionOfDictionaries collect: [ :rowDictionary |
+		| transaction split |
+		transaction := self transactionInitializedFromRecord: rowDictionary.
+		split := self splitInitializedFromRecord: rowDictionary.
 
-	^ aCollectionOfDictionaries collect: [ :rowDict | 
-		| newTransaction split |
-		newTransaction := self transactionInitializedFromRecord: rowDict.
-		split := self splitInitializedFromRecord: rowDict.
-		
 		"We pass the transaction here (we didn't for split) because the address may or may not be added to the transaction as part of processing the fields"
 		self
-			initializeAddressOf: newTransaction 
-			fromRecord: rowDict.
-			
-		newTransaction splits add: split.
-		newTransaction ]
+			initializeAddressOf: transaction
+			fromRecord: rowDictionary.
+
+		transaction splitAdd: split.
+		transaction ]
 ]
 
 { #category : 'executing' }

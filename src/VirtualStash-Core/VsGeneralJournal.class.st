@@ -1,9 +1,5 @@
 "
-I am a *Journal* (accounting lingo italicized). My *entries* represent financial *transactions*.
-
-self asMagritteMorph addButtons; openInWindow.
-self addTransaction: ()
-
+I am a Journal. My entries represent financial transactions.
 "
 Class {
 	#name : 'VsGeneralJournal',
@@ -182,6 +178,16 @@ VsGeneralJournal >> iterator [
 VsGeneralJournal >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
+]
+
+{ #category : 'migration' }
+VsGeneralJournal >> splitsBacklinksMigrate [
+	"Populate the split-to-transaction backlinks for all my entries.
+
+	This migration is intentionally explicit and is not run during load."
+
+	self entries do: #splitsBacklinksMigrate.
+	^ self
 ]
 
 { #category : 'accessing' }

@@ -1,8 +1,11 @@
 "
-I correspond to an accounting *journal entry*. I represent the details of one relevant part of a {{gtClass:VsTransaction}} e.g. *account* and *amount*. I am named following GnuCash terminology, which is perhaps a bit more colloquial.
-# Numbering
-In GnuCash, each split can have their own unique ID. We'll wait until the need arises to possibly implement this.
+I correspond to an accounting journal entry. I represent one amount-bearing
+part of a VsTransaction.
 
+My transaction backlink records my sole owner. The owning transaction is
+responsible for maintaining both ends through #splitAdd: and #splitRemove:.
+My #transaction: setter prevents direct transfer from one non-nil owner to
+another; remove me from my current transaction first.
 "
 Class {
 	#name : 'VsSplit',
@@ -17,7 +20,8 @@ Class {
 		'number',
 		'price',
 		'reconcileDate',
-		'status'
+		'status',
+		'transaction'
 	],
 	#category : 'VirtualStash-Core-Bookkeeping',
 	#package : 'VirtualStash-Core',
@@ -298,6 +302,30 @@ VsSplit >> softwareCatalog [
 	^ CwSoftwareCatalog uniqueInstance
 ]
 
+{ #category : 'commands' }
+VsSplit >> splitAddCommand [
+	"Answer a command prepared to take money from me into a new sibling
+	split."
+
+	self transaction ifNil: [
+		self error: 'The split does not belong to a transaction' ].
+
+	^ VsSplitAdd from: self
+]
+
+{ #category : 'gt-views' }
+VsSplit >> splitAddGtViewFor: aView [
+	<gtView>
+
+	self transaction ifNil: [ ^ aView empty ].
+
+	^ aView forward
+		title: 'Add split';
+		priority: 80;
+		object: [ self splitAddCommand ];
+		view: #maExecutingFormFor:
+]
+
 { #category : 'accessing' }
 VsSplit >> status [
 	^ self maLazyInstVarUsing: self statusDescription
@@ -347,5 +375,42 @@ VsSplit >> subjectDescription [
 		priority: 300;
 		gtSearchSource: [ gtSearchSource ];
 		classes: classes;
+		yourself
+]
+
+{ #category : 'accessing - ownership' }
+VsSplit >> transaction [
+	"Answer my owning transaction, or nil when I am not installed."
+
+	^ transaction
+]
+
+{ #category : 'accessing - ownership' }
+VsSplit >> transaction: aTransaction [
+	"Set my owning transaction.
+
+	Relationship-changing code should normally send #splitAdd: or
+	#splitRemove: to a transaction. Prevent direct transfer between two
+	non-nil owners because it would leave one side inconsistent."
+
+	transaction ifNotNil: [ :currentOwner |
+		(aTransaction isNotNil and: [
+			currentOwner ~~ aTransaction ]) ifTrue: [
+				self error:
+					'Remove the split from its current transaction before reassigning it' ] ].
+
+	transaction := aTransaction
+]
+
+{ #category : 'magritte-accessing' }
+VsSplit >> transactionDescription [
+	<magritteDescription>
+
+	^ MAToOneRelationDescription new
+		accessor: #transaction;
+		classes: { VsTransaction };
+		priority: 50;
+		beReadOnly;
+		comment: 'The transaction that owns this split.';
 		yourself
 ]

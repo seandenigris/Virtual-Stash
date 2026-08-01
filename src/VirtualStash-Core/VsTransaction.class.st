@@ -1,13 +1,15 @@
 "
-I represent a financial transaction, like a credit card purchase. I have at least two {{gtClass:VsSplit|label=splits}}, possibly more.
-# Numbering
-I can have a unique ID and philosophically my {{gtClass:VsSplit|label=splits}} can have their own individual IDs.
-# Optional Fields
-GnuCash's sqlite DB stores these in a separate *slots* table, presumably to save space. At this point, it seems like premature optimization, so we do TSTTCPW, which is to treat them as just another field.
-- Memo: commonly used for relatively few transactions
-# Importing from GnuCash
-We start with CSV format, since we already have  a parser for that. The tricky bit is that each row consists of transaction fields followed by split fields. The first row is completely filled out and represents the transaction along with its first split. This is followed by one or more rows with just the split filled out, which are additional splits for that previous transaction.
+I represent a financial transaction, like a credit card purchase. I have at
+least two VsSplits, possibly more.
 
+I own my splits. New code should mutate that relationship only through
+#splitAdd: and #splitRemove:. #splitsPrivate exposes the actual contained
+collection for queries and framework integration; its name is intended to
+warn callers not to mutate it directly. #splits remains temporarily as a
+compatibility alias while existing senders are migrated.
+
+My agreements include agreements allocated to amount-bearing splits and
+agreements known to participate whose amounts are not yet fully allocated.
 "
 Class {
 	#name : 'VsTransaction',
@@ -36,6 +38,20 @@ VsTransaction class >> example [
 	^ self new
 		counterparty: MpOrganization examplePhillyZoo;
 		yourself
+]
+
+{ #category : 'examples' }
+VsTransaction class >> exampleSplitOwnership [
+	<gtExample>
+
+	| transaction |
+	transaction := VsBooks exampleHarryPotter generalJournal entries first.
+	transaction splitsBacklinksMigrate.
+
+	(transaction splitsPrivate allSatisfy: [ :split |
+		split transaction == transaction ]) should beTrue.
+
+	^ transaction
 ]
 
 { #category : 'testing' }
@@ -101,10 +117,80 @@ VsTransaction >> agreement: aVsAgreement [
 	self ppValues: (self ppValues addAll: aVsAgreement ppValues)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing - agreements' }
 VsTransaction >> agreements [
+	"Answer every agreement affecting me."
+
+	^ IdentitySet new
+		addAll: self agreementsAllocated;
+		addAll: self agreementsUnallocated;
+		yourself
+]
+
+{ #category : 'accessing - agreements' }
+VsTransaction >> agreementsAllocated [
+	"Answer the agreements linked to at least one of my splits."
+
+	^ self splitsPrivate
+		inject: IdentitySet new
+		into: [ :result :split |
+			split agreement ifNotNil: [ :anAgreement |
+				result add: anAgreement ].
+			result ]
+]
+
+{ #category : 'accessing - agreements' }
+VsTransaction >> agreementsUnallocated [
+	"Answer agreements affecting me whose full amounts have not yet been allocated to splits.
+
+	An agreement may also appear in #agreementsAllocated while it remains only partially allocated."
+
+	^ self
+		propertyAt: #agreementsUnallocated
+		ifAbsentPut: [ IdentitySet new ]
+]
+
+{ #category : 'accessing - agreements' }
+VsTransaction >> agreementsUnallocated: aCollection [
+	"Replace the agreements awaiting allocation."
 	
-	^ self splitsCollectUniqueNotNil: #agreement
+	| sanitizedCollection |
+	sanitizedCollection := aCollection ifNotNil: [ :agreements |
+		agreements asIdentitySet ].
+
+	^ self
+		propertyAt: #agreementsUnallocated
+		putRemovingNil: sanitizedCollection
+]
+
+{ #category : 'accessing - agreements' }
+VsTransaction >> agreementsUnallocatedAdd: anAgreement [
+	"Record that anAgreement affecting me, but which is not yet fully allocated to splits."
+
+	^ self agreementsUnallocated add: anAgreement
+]
+
+{ #category : 'magritte-accessing' }
+VsTransaction >> agreementsUnallocatedDescription [
+	<magritteDescription>
+
+	^ MAToManyRelationDescription new
+		accessor: #agreementsUnallocated;
+		label: 'Unallocated agreements';
+		default: IdentitySet new;
+		classes: VsAgreement withAllSubclasses;
+		gtSearchSource: [ VsAgreementFile uniqueInstance ];
+		priority: 425;
+		comment:
+			'Agreements affecting this transaction whose full amounts have not yet been allocated to splits.';
+		yourself
+]
+
+{ #category : 'accessing - agreements' }
+VsTransaction >> agreementsUnallocatedRemove: anAgreement [
+	"Record that anAgreement no longer awaits allocation."
+
+	^ self agreementsUnallocated remove: anAgreement
 ]
 
 { #category : 'accessing' }
@@ -320,6 +406,28 @@ VsTransaction >> memoDescription [
 		yourself
 ]
 
+{ #category : 'testing' }
+VsTransaction >> needsAgreementAllocation [
+	"Answer whether at least one participating agreement awaits full
+	allocation to splits."
+
+	^ self agreementsUnallocated isNotEmpty
+]
+
+{ #category : 'magritte-accessing' }
+VsTransaction >> needsAgreementAllocationDescription [
+	<magritteDescription>
+
+	^ MABooleanDescription new
+		accessor: #needsAgreementAllocation;
+		label: 'Needs agreement allocation';
+		priority: 426;
+		beReadOnly;
+		comment:
+			'Whether one or more participating agreements still need to be fully allocated to splits.';
+		yourself
+]
+
 { #category : 'accessing' }
 VsTransaction >> number [
 	^ self maLazyInstVarUsing: self numberDescription
@@ -408,14 +516,85 @@ VsTransaction >> registerString [
 	^ (self maToString: self dateDescription), '	', (self maToString: self counterpartyDescription), '	', (self maToString: self accountsDescription), '	', (self maToString: self amountDescription)
 ]
 
-{ #category : 'accessing' }
-VsTransaction >> splits [
-	^ self maLazyInstVarUsing: self splitsDescription.
+{ #category : 'adding/removing - splits' }
+VsTransaction >> splitAdd: aSplit [
+	"Add aSplit as my child and establish the backlink.
+
+	A split already owned by another transaction must first be removed from that transaction."
+
+	aSplit ifNil: [ self error: 'A split is required' ].
+
+	aSplit transaction ifNotNil: [ :owner |
+		owner == self ifFalse: [
+			self error: 'The split already belongs to another transaction' ] ].
+
+	(self splitsPrivate identityIncludes: aSplit) ifTrue: [ ^ aSplit ].
+
+	aSplit
+		transaction: self;
+		accountSource: self accountSource.
+
+	^ self splitsPrivate add: aSplit
 ]
 
-{ #category : 'accessing' }
-VsTransaction >> splits: anObject [
-	splits := anObject
+{ #category : 'commands' }
+VsTransaction >> splitAddCommand [
+	"Answer a command prepared to add a split to me."
+
+	^ VsSplitAdd to: self
+]
+
+{ #category : 'adding/removing - splits' }
+VsTransaction >> splitRemove: aSplit [
+	"Remove aSplit from me and clear its backlink.
+
+	Answer aSplit"
+
+	| removed |
+	removed := self splitsPrivate remove: aSplit.
+
+	aSplit transaction == self ifTrue: [
+		aSplit transaction: nil ].
+
+	^ removed
+]
+
+{ #category : 'compatibility - splits' }
+VsTransaction >> splits [
+	"Compatibility alias.
+
+	New code should query #splitsPrivate and mutate only through #splitAdd:
+	and #splitRemove:. This method remains temporarily while existing
+	senders are migrated."
+
+	^ self splitsPrivate
+]
+
+{ #category : 'compatibility - splits' }
+VsTransaction >> splits: aCollection [
+	"Compatibility alias for #splitsPrivate:."
+
+	^ self splitsPrivate: aCollection
+]
+
+{ #category : 'migration' }
+VsTransaction >> splitsBacklinksMigrate [
+	"Populate backlinks for my existing splits.
+
+	This migration is intentionally explicit and is not run during load.
+	Signal an error rather than silently stealing a split that already
+	belongs to another transaction."
+
+	self splitsPrivate do: [ :split |
+		split transaction
+			ifNil: [ split transaction: self ]
+			ifNotNil: [ :owner |
+				owner == self ifFalse: [
+					self error:
+						'A split is already linked to another transaction' ] ].
+		split accountSource: self accountSource ].
+
+	^ self
 ]
 
 { #category : 'as yet unclassified' }
@@ -429,17 +608,64 @@ VsTransaction >> splitsCollectUniqueNotNil: aBlock [
 { #category : 'magritte-accessing' }
 VsTransaction >> splitsDescription [
 	<magritteDescription>
-	"On naming... Also seems to be called ==entries== in some accounting software. We chose ==splits== because it is more specific and therefor intention revealing e.g. can't be confused with journal entries, which is somewhat related, but different"
+	"Describe my owned splits.
+
+	The accessor is deliberately #splitsPrivate. Relationship-changing
+	code should still prefer #splitAdd: and #splitRemove:."
+
 	^ MAToManyRelationDescription new
-			accessor: #splits;
-			default: OrderedCollection new;
-			classes: { VsSplit };
-			initializer: [ :inst | 
-				inst
-					accountSource: self accountSource;
-					amount: self uncategorizedAmount ];
-			priority: 400;
-			yourself
+		accessor: #splitsPrivate;
+		default: OrderedCollection new;
+		classes: { VsSplit };
+		initializer: [ :newSplit |
+			newSplit
+				accountSource: self accountSource;
+				amount: self uncategorizedAmount ];
+		priority: 400;
+		yourself
+]
+
+{ #category : 'accessing - private' }
+VsTransaction >> splitsPrivate [
+	"Answer my actual mutable split collection.
+
+	Do not add to or remove from this collection directly. Use #splitAdd:
+	and #splitRemove: so the split-to-transaction backlink remains valid."
+
+	^ splits ifNil: [ splits := OrderedCollection new ]
+]
+
+{ #category : 'accessing - private' }
+VsTransaction >> splitsPrivate: aCollection [
+	"Replace my split collection while preserving ownership invariants.
+
+	This setter exists for framework and materialization integration.
+	Ordinary mutation should use #splitAdd: and #splitRemove:."
+
+	| newSplits oldSplits |
+	newSplits := aCollection
+		ifNil: [ OrderedCollection new ]
+		ifNotNil: [ :collection | collection asOrderedCollection ].
+
+	newSplits asIdentitySet size = newSplits size ifFalse: [
+		self error: 'A transaction cannot contain the same split twice' ].
+
+	newSplits do: [ :split |
+		split transaction ifNotNil: [ :owner |
+			owner == self ifFalse: [
+				self error:
+					'A replacement split belongs to another transaction' ] ] ].
+
+	oldSplits := splits ifNil: [ #() ].
+	oldSplits do: [ :split |
+		(newSplits identityIncludes: split) ifFalse: [
+			split transaction == self ifTrue: [
+				split transaction: nil ] ] ].
+
+	splits := OrderedCollection new.
+	newSplits do: [ :split | self splitAdd: split ].
+
+	^ splits
 ]
 
 { #category : 'as yet unclassified' }

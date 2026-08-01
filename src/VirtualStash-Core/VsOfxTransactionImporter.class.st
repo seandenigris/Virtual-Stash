@@ -34,23 +34,22 @@ VsOfxTransactionImporter >> books: anObject [
 { #category : 'accessing' }
 VsOfxTransactionImporter >> domainObjectFromDictionary: aDictionary [
 	| transaction split imbalanceSplit |
-	
 	transaction := self initializeTransactionFromDictionary: aDictionary.
-	
-	split := self 
-		initializeSplitWithAccount: self account 
-		usingReader: #dollars 
+
+	split := self
+		initializeSplitWithAccount: self account
+		usingReader: #dollars
 		fromDictionary: aDictionary.
-		
-	imbalanceSplit := self 
-		initializeSplitWithAccount: self imbalanceAccount 
-		usingReader: [ :str | str dollars negated ]
+
+	imbalanceSplit := self
+		initializeSplitWithAccount: self imbalanceAccount
+		usingReader: [ :string | string dollars negated ]
 		fromDictionary: aDictionary.
-		
-	transaction splits 
-		add: split;
-		add: imbalanceSplit.
-	
+
+	transaction
+		splitAdd: split;
+		splitAdd: imbalanceSplit.
+
 	^ transaction
 ]
 

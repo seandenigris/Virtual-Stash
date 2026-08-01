@@ -1,7 +1,6 @@
 "
-GnuCash transaction export CSV files have rows which may either represent:
-- a transaction and a split contained by it
-- a split contained by the previous transaction (from a prior row)
+GnuCash transaction export CSV files have rows which may represent a
+transaction plus split or an additional split for the previous transaction.
 "
 Class {
 	#name : 'VsGnuCashTransactionImporter',
@@ -41,19 +40,22 @@ VsGnuCashTransactionImporter >> books: anObject [
 VsGnuCashTransactionImporter >> convertToDomainObjects: aCollectionOfDictionaries [
 	^ aCollectionOfDictionaries
 		inject: OrderedCollection new
-		into: [ :col :rowDict | 
+		into: [ :transactions :rowDictionary |
 			| newTransaction split recordedTransaction |
-				
-			newTransaction := self initializeTransaction: VsTransaction new fromRecord: rowDict.
-			
-			split := self initializeSplit: VsSplit new fromRecord: rowDict.
-			
+			newTransaction := self
+				initializeTransaction: VsTransaction new
+				fromRecord: rowDictionary.
+
+			split := self
+				initializeSplit: VsSplit new
+				fromRecord: rowDictionary.
+
 			recordedTransaction := newTransaction isValid
-				ifTrue: [ col add: newTransaction ]
-				ifFalse: [ col last ].
-				
-			recordedTransaction splits add: split.
-			col ]
+				ifTrue: [ transactions add: newTransaction ]
+				ifFalse: [ transactions last ].
+
+			recordedTransaction splitAdd: split.
+			transactions ]
 ]
 
 { #category : 'accessing' }
