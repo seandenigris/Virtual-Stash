@@ -431,6 +431,7 @@ VsTransactionBatchEdit >> splitMatchingAccountOldIn: aTransaction [
 
 	^ aTransaction splitsPrivate
 		detect: [ :split | split account = self accountOld ]
+		ifNone: [ nil ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -471,6 +472,8 @@ VsTransactionBatchEdit >> updateTransaction: aTransaction [
 	self splitChangesRequested ifFalse: [ ^ aTransaction ].
 
 	split := self splitMatchingAccountOldIn: aTransaction.
+	
+	split ifNil: [ ^ aTransaction ].
 
 	self accountNew ifNotNil: [ :anAccount |
 		split account: anAccount ].
