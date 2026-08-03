@@ -195,12 +195,13 @@ VsTransaction >> agreementsUnallocatedRemove: anAgreement [
 
 { #category : 'accessing' }
 VsTransaction >> amount [
-	| credits debits creditTotal debitTotal |
-	credits := self splits select: #isCredit.
-	debits := self splits select: #isDebit.
-	creditTotal := credits inject: 0 dollars into: [ :sum :e | sum + e amount ].
-	debitTotal := debits inject: 0 dollars into: [ :sum :e | sum + e amount ].
-	^ { creditTotal. debitTotal } detectMax: #abs
+
+  | credits debits creditTotal debitTotal |
+  credits := self splitsPrivate select: #isCredit.
+  debits := self splitsPrivate select: #isDebit.
+  creditTotal := credits inject: 0 dollars into: [ :sum :e | sum + e amount ].
+  debitTotal := debits inject: 0 dollars into: [ :sum :e | sum + e amount ].
+  ^ { creditTotal . debitTotal } detectMax: #abs
 ]
 
 { #category : 'magritte-accessing' }
@@ -237,6 +238,12 @@ VsTransaction >> beneficiary: anObject [
 VsTransaction >> books [
 
 	^ self accountSource
+]
+
+{ #category : 'as yet unclassified' }
+VsTransaction >> collectFrom: aCollection uniqueNotNil: aBlock [
+
+  ^ aCollection asSet collect: aBlock thenReject: #isNil
 ]
 
 { #category : 'GnuCash' }
@@ -371,13 +378,15 @@ VsTransaction >> journalColumnThreeDescription [
 
 { #category : 'accessing' }
 VsTransaction >> journalLines [
-	^ OrderedCollection new
-		add: self;
-		addAll: self splits;
-		collect: [ :e |
-			VsJournalLine new 
-				model: e;
-				yourself ]
+
+  ^ OrderedCollection new
+      add: self;
+      addAll: self splitsPrivate;
+      collect: [ :e |
+          VsJournalLine new
+            model: e;
+            yourself
+        ]
 ]
 
 { #category : 'accessing' }
@@ -441,7 +450,7 @@ VsTransaction >> number: aNumber [
 { #category : 'as yet unclassified' }
 VsTransaction >> ppValues [
 
-	^ self splits flatCollect: #ppValues
+  ^ self splitsPrivate flatCollect: #ppValues
 ]
 
 { #category : 'as yet unclassified' }
@@ -566,6 +575,10 @@ VsTransaction >> splits [
 	New code should query #splitsPrivate and mutate only through #splitAdd:
 	and #splitRemove:. This method remains temporarily while existing
 	senders are migrated."
+	
+	self
+		deprecated: 'Use #splitsPrivate instead'
+		transformWith: '`@receiver splits' -> '`@receiver splitsPrivate'.
 
 	^ self splitsPrivate
 ]
@@ -573,6 +586,10 @@ VsTransaction >> splits [
 { #category : 'compatibility - splits' }
 VsTransaction >> splits: aCollection [
 	"Compatibility alias for #splitsPrivate:."
+	
+	self
+		deprecated: 'Use #splitsPrivate: instead'
+		transformWith: '`@receiver splits:' -> '`@receiver splitsPrivate:'.
 
 	^ self splitsPrivate: aCollection
 ]
@@ -600,9 +617,7 @@ VsTransaction >> splitsBacklinksMigrate [
 { #category : 'as yet unclassified' }
 VsTransaction >> splitsCollectUniqueNotNil: aBlock [
 
-	^ self splits asSet
-		collect: aBlock
-		thenReject: #isNil
+  ^ self splitsPrivate asSet collect: aBlock thenReject: #isNil
 ]
 
 { #category : 'magritte-accessing' }
@@ -643,6 +658,7 @@ VsTransaction >> splitsPrivate: aCollection [
 	Ordinary mutation should use #splitAdd: and #splitRemove:."
 
 	| newSplits oldSplits |
+		
 	newSplits := aCollection
 		ifNil: [ OrderedCollection new ]
 		ifNotNil: [ :collection | collection asOrderedCollection ].
@@ -677,7 +693,11 @@ VsTransaction >> subject: anObject [
 { #category : 'as yet unclassified' }
 VsTransaction >> subjects [
 
-	^ self splitsCollectUniqueNotNil: #subject
+	| unallocatedSubjects splitSubjects |
+	unallocatedSubjects := self collectFrom: self agreementsUnallocated uniqueNotNil: #subject.
+	splitSubjects := self collectFrom: self splitsPrivate uniqueNotNil: #subject.
+	
+	^ unallocatedSubjects, splitSubjects
 ]
 
 { #category : 'accessing' }
