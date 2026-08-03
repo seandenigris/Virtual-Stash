@@ -28,57 +28,63 @@ BaselineOfVirtualStash >> baseline: spec [
 	<baseline>
 
 	spec for: #'common' do: [
-		spec 
+		spec
 			baseline: #Aconcagua with: [
-				spec 
+				spec
 					repository: 'github://seandenigris/aconcagua:denigris';
 					loads: #('Development') ];
 			baseline: #DynabookFoundation with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
-			baseline: #Magritte with: [ 
-				spec 
+			baseline: #Magritte with: [
+				spec
 					repository: 'github://seandenigris/Magritte';
 					loads: #(#default #'Magritte-Money') ];
 			baseline: #Mocketry with: [
 				spec repository: 'github://seandenigris/Mocketry' ];
-			baseline: #MyPeople with: [ spec repository: 'github://seandenigris/My-People' ];
-			baseline: #NeoCSV with: [ 
-				spec 
+			baseline: #MyPeople with: [
+				spec repository: 'github://seandenigris/My-People' ];
+			baseline: #NeoCSV with: [
+				spec
 					repository: 'github://seandenigris/NeoCSV';
 					loads: #('Neo-CSV-Magritte') ];
 			baseline: #PharoEnhancements with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: #ResourcesLive with: [
 				spec repository: 'github://seandenigris/Resources-Live' ];
-			baseline: #SimplePersistence with: [ spec repository: 'github://seandenigris/Simple-Persistence' ];
+			baseline: #SimplePersistence with: [
+				spec repository: 'github://seandenigris/Simple-Persistence' ];
+			baseline: #StateSpecs with: [
+				spec repository:
+					'github://seandenigris/StateSpecs:2012cf51494a30a831c0372813f7cc1238830cef' ];
 			baseline: #Talents with: [
 				spec repository: 'github://tesonep/pharo-talents' ];
-				baseline: #'TheProjectProject' with: [
+			baseline: #'TheProjectProject' with: [
 				spec repository: 'github://seandenigris/The-Project-Project' ].
+
 		spec
 			package: #'VirtualStash-Core' with: [
-				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence Talents TheProjectProject) ] ].
-				
+				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence StateSpecs Talents TheProjectProject) ] ].
+
 	spec for: #notGToolkit do: [
-		spec 
+		spec
 			baseline: #'PetitParser2' with: [
 				spec repository: 'github://seandenigris/PetitParser2' ];
 			baseline: #'XMLParser' with: [
 				spec repository: 'github://seandenigris/XML-XMLParser:v3.x' ].
-		spec 
-			package: #'VirtualStash-Core' with: [ 
+		spec
+			package: #'VirtualStash-Core' with: [
 				spec requires: #(#'PetitParser2' #'XMLParser') ] ].
-				
+
 	spec for: #notGToolkit do: [
-		spec 
+		spec
 			baseline: #'PetitParser2' with: [
 				spec repository: 'github://seandenigris/PetitParser2' ].
-		spec 
-			package: #'VirtualStash-Core' with: [ 
+		spec
+			package: #'VirtualStash-Core' with: [
 				spec requires: #(#'PetitParser2') ] ].
-	
+
 	spec for: #GToolkit do: [
-		spec 
+		spec
 			package: #'VirtualStash-GtHome';
 			group: #default with: #(#'VirtualStash-Core') ]
 ]
