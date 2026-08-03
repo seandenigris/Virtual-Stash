@@ -16,8 +16,8 @@ The solution is to have multiple hierarchies representing the relevant dimension
 Class {
 	#name : 'VsAccount',
 	#superclass : 'Object',
-	#traits : 'DbTDomainObject',
-	#classTraits : 'DbTDomainObject classTrait',
+	#traits : 'DbTDomainObject + PpTProjectProperty',
+	#classTraits : 'DbTDomainObject classTrait + PpTProjectProperty classTrait',
 	#instVars : [
 		'isPlaceholder',
 		'openingBalance',
@@ -221,6 +221,12 @@ VsAccount >> isPlaceholderDescription [
 		csvFieldName: 'placeholder';
 		csvReader: [ :str | str = 'T' ];
 		yourself
+]
+
+{ #category : 'accessing' }
+VsAccount >> isPpValuedObject [
+
+	^ true
 ]
 
 { #category : 'accessing' }
