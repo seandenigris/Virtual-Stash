@@ -106,7 +106,7 @@ VsAgreementTerm >> includesDate: aDate [
 
 	self start ifNil: [ ^ false ].
 
-	self start > aDate ifFalse: [ ^ false ].
+	self start > aDate ifTrue: [ ^ false ].
 	
 	^ self end isNil or: [ aDate < self end ]
 ]
