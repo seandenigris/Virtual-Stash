@@ -15,7 +15,7 @@ VsOFX class >> fileExtensions [
 VsOFX >> asXML [
 
 	| xmlString |
-	xmlString := PBApplication uniqueInstance newCommandSourceFactory
+	xmlString := PBApplication start newCommandSourceFactory
 		sourceWithResult: '# Convert QFX v. 1 (SGML) to XML
 # as suggested by https://stackoverflow.com/questions/12505419/parse-sgml-with-open-arbitrary-tags-in-python-3
 
