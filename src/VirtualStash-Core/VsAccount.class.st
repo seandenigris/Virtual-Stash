@@ -16,8 +16,8 @@ The solution is to have multiple hierarchies representing the relevant dimension
 Class {
 	#name : 'VsAccount',
 	#superclass : 'Object',
-	#traits : 'DbTDomainObject + PpTProjectProperty',
-	#classTraits : 'DbTDomainObject classTrait + PpTProjectProperty classTrait',
+	#traits : 'DbTDomainObject + DbTProjectProperty',
+	#classTraits : 'DbTDomainObject classTrait + DbTProjectProperty classTrait',
 	#instVars : [
 		'isPlaceholder',
 		'openingBalance',
