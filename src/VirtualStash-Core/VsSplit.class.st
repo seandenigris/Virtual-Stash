@@ -67,7 +67,13 @@ VsSplit >> agreement: anAgreement [
 
 	self
 		propertyAt: #agreement
-		putRemovingNil: anAgreement
+		putRemovingNil: anAgreement.
+		
+	anAgreement ifNil: [ ^ self ].
+	
+	self transaction ifNotNil: [ :t | t counterparty: anAgreement provider ].
+	
+	self ppValues: (self ppValues addAll: anAgreement ppValues)
 ]
 
 { #category : 'magritte-accessing' }

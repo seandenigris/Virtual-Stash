@@ -480,6 +480,7 @@ VsTransactionBatchEdit >> updateTransaction: aTransaction [
 
 	self agreement ifNotNil: [ :anAgreement |
 		split agreement: anAgreement.
+		aTransaction counterparty: anAgreement provider.
 		self agreementIsSatisfied ifTrue: [
 			aTransaction agreementsUnallocatedRemove: anAgreement ] ].
 
