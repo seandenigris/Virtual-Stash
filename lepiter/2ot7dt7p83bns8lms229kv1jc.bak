@@ -1,0 +1,261 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "88114548-d4af-450e-b0cb-f6d500816c2d"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "What If Your Books Remembered Why?"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.707438-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.707438-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fMgdf0n1RU6yoec2nJgkdQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Most bookkeeping can tell us where money went.\n\nIt forgets why we cared."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.7083-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.7083-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4Mo1glTfTleg3VVb0wkcbQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A martial arts membership may support Fitness, Education, Recreation, Community, and time with family.\n\nA chart of accounts asks us to choose one, then quietly treats that choice as truth."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.708892-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:03:11.654054-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "LaOGiEHUSbG9b1m3KZ2yNg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Virtual Stash starts with a different promise:\n\t\n\tKeep the rigor of the ledger. Let the rest of life stay alive."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.709303-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:05:14.30287-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "g24/2XlsTYqGZ7QGFeOPmg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Financial facts should live beside the {{gtClass:MpPerson|label=people}}, {{gtClass:PpProject|label=projects}}, {{gtClass:VsAgreement|label=agreements}}, {{gtClass:PpLocation|label=places}}, possessions, and {{gtClass:PpValue|label=purposes}} that give them meaning."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.709587-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.709587-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "bIskrwHPT42D78pUf5ydvQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "That is the Dynabook dream applied to money: not an electronic form, but a world of objects we can question, reshape, and learn from."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.709869-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:05:52.588164-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "EcyBpFQZSvm/aivrcDwEig=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Next Essential: [[The Account Tree Is Not the Territory]]"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.703044-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.703044-04:00"
+		}
+	}
+}

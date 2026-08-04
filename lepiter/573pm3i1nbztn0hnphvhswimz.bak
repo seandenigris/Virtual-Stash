@@ -1,0 +1,1009 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "5bd6b363-a5f7-4b49-9e15-c1957eedc957"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Scenario Field Guide"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.733673-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.733673-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+vP5C41kTV+H/tsaXH18Mw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This page is the working memory of the design.\n\nIt records the smallest useful model for recurring situations. It is not a master taxonomy. It should grow from lived examples."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.734211-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:22:05.154392-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ZqRLtJ6NRPqet5CLatckVQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Laundry detergent\n\n**Subject:** Household Supplies.\n\nUse a particular product or {{gtClass:PpInventoryItem|label=inventory object}} only when that identity is worth keeping."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.733819-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.733819-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "lPV4dWCqQGizISO/z+lx7w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Household"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.735026-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:22:22.504787-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "hXDEmPY2SHKWi30uVDqYeA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Martial arts membership\n\n**Subject:** The gym, membership, or agreement.\n\n**Counts toward:** Fitness and Education where both genuinely apply.\n\n**Other context:** Beneficiary, guided classes, and included facilities remain in their natural domains."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.734363-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.734363-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8hKwulu7QEe1Ux3ijCOV0Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Health and development"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.735684-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:24:02.195945-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "s6OnmYXjS5etelnkoMaI0w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Vehicle registration\n\n**Subject:** Vehicle Administration.\n\n**Counts toward:** The specific {{gtClass:PpVehicle|label=vehicle}} as a {{gtClass:PpValue|label=valued object}}.\n\nRegistration, inspection, title, plate, and DMV costs can share this subject unless and until you decide more distinction is valuable enough to incur the additional complexity cost."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.7362-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:24:46.049234-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "FHBs4ZG7QHqvbNidOG5L5w=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### State vehicle inspection\n\n**Subject:** Vehicle Administration.\n\n**Counts toward:** The specific {{gtClass:PpVehicle|label=vehicle}} as a {{gtClass:PpValue|label=valued object}}.\n\nPreserve the operational distinction through the {{gtClass:PpEvent|label=event}}, counterparty, memo, or other natural context."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.736793-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:24:50.613256-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "QV34UGAeQSeDgFtHQVZgwg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Parking during a trip\n\n**Subject:** Parking, or the particular parking {{gtClass:PpEvent|label=event}} or facility when useful.\n\n**Counts toward:** Travel.\n\n**Other context:** Link the specific Trip rather than reducing it to a tag."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.735163-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.735163-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "WPlOdNhxRuuhgfySOqnqEA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Vehicles and travel"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "P3mCv4dDRgaOV9B5rbYqgQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Dining out\n\n**Subject:** Dining Out when no richer meal or venue object matters."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.737697-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:26:16.443322-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "tfWUeNUNSwGP1Pv7FExxrA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Ballet tickets\n\n**Subject:** Event Admission, or the specific performance {{gtClass:PpEvent|label=event}} when it deserves an identity.\n\n**Other context:** Beneficiaries and any related {{gtClass:PpProject|label=projects}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.738156-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:26:45.14766-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qBtkiElfRFC7We/w9+cRjA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Birthday party\n\n**Subject:** The party {{gtClass:PpProject|label=project}} or {{gtClass:PpEvent|label=event}}.\n\n**Other context:** Beneficiaries, {{gtClass:VsAgreement|label=agreements}}, deposits, and balance payments all point back to the same undertaking."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.736932-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.736932-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "iqA1yunvQcKuTMjQTpc85A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Food and experiences"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.738743-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:27:55.430489-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "J1Dv5ZmVQqK9squ7XSo2oA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Child's toy\n\n**Subject:** Toys, or the particular {{gtClass:PpInventoryItem|label=inventory object}} when e.g. location and history matters.\n\n**Other context:** The beneficiary {{gtClass:MpPerson|label=child}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.739199-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.739199-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qRk6gWAGRWKkryRuWbLW7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Clothing\n\n**Subject:** Clothing, or the particular garment when it deserves an identity.\n\n**Other context:** Beneficiary and inventory status."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.739796-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:28:28.685286-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "s7TloHfsTyq0ktrFk52ujA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Lawn equipment\n\n**Subject:** The particular tool or piece of equipment.\n\n**Counts toward:** Yard Care when that is the purpose.\n\n**Other context:** Link {{gtClass:PpProject|label=projects}} when the purchase serves one."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.738295-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.738295-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YWF+YHUJRuaFRNPCCSl64A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## People and possessions"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.740459-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:31:32.089528-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "d/AZEuXoTBusq8Zzj79PKA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### YouTube or Netflix\n\n**Subject:** The {{gtClass:CwSoftware|label=software}} object\n\n**Counts toward:** Streaming Video, which may itself count toward Entertainment\n\n**Other context:** any subscription {{gtClass:VsAgreement|label=agreement}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.74084-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:31:37.227121-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "7F7JmSa0RBadLusp0akxzQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Cloud storage\n\n**Subject:** The {{gtClass:CwSoftware|label=software}} object\n\n**Counts toward:** Distinguish Cloud Storage vs File Sharing only when it reflects the established distinction. Do not create both merely because both sound plausible.\n\n**Other context:** any subscription {{gtClass:VsAgreement|label=agreement}}."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.739934-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.739934-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "0H4RYUMmRSWYhNGOBaBeXQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Digital services"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.741483-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:33:51.698351-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Nb5B+I0sQySTTkVDIk8c1A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Insurance\n\n**Subject:** {{gtClass:PpValue|label=Insurance}} as a value; split into Vehicle vs. Personal Liability if that matters to you\n\nThe {{gtClass:VsAgreement|label=agreement}} points to the covered vehicle, property, or umbrella concern.\n\n**Counts toward:** Insurance Protection.\n\n**Other context:** The insurance {{gtClass:VsAgreement|label=agreement}}."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.741826-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:32:37.098836-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "cviWp5pLRX6av/cRsVEyVA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Unknown purchase\n\nDo not invent a `To Review` value.\n\nRecord the available evidence and mark the transaction `Needs Review` or `Needs Itemization`. Replace the provisional entry with real splits when the facts are known."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.74098-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:29:36.350793-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kP7vDNxYTaajXGPjhiUjgQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Protection and review "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.742283-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T10:38:46.89677-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "fXDopGFCSyq3TiQqiB/rvQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "1. Does a real domain object already exist?\n2. What particular thing is the subject?\n3. Would an established `PpValue` serve as the generic subject?\n4. What does the subject count toward?\n5. Who benefits?\n6. Is a Dynabook object type like a {{gtClass:CwSoftware|label=software product}}, {{gtClass:PpVehicle|label=vehicle}}, {{gtClass:VsAgreement|label=agreement}}, {{gtClass:PpEvent|label=event}}, {{gtClass:PpInventory|label=inventory}}, {{gtClass:PpProject|label=project}}, or {{gtClass:MpPerson|label=person}}  involved?\n7. Must any relationship be effective-dated or allocated?\n8. Did search reveal an overlapping `PpValue` before we created another?"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.741968-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.741968-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "HMrG1E7QSKSDsxjFHrXxQg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Before creating anything new"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.744097-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.744097-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GKPsils8RPCDyj4+FeVa8w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The goal is not perfect classification.\n\nThe goal is a financial life that becomes more explorable without becoming less alive."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.732576-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.732576-04:00"
+		}
+	}
+}

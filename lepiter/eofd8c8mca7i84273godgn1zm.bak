@@ -1,0 +1,299 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "d24d31bd-caaa-4be4-9895-b1bcdf1af0f7"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Bookkeeping in a Live World of Objects"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722106-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:12:14.904963-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "RU3avd6KTSKTwj7yPtjtPg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Virtual Stash is not merely multidimensional accounting.\n\n**We release bookkeeping objects into the rest of the Dynabook.**"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722395-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722395-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AGAAtVP3TKuI6rmcK6GVDQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A person is not a tag.\n\nA project is not a category.\n\nAn insurance policy is not memo text."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722612-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:14:51.762112-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "HkYIpseWT+SjT/WZyG0uzA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtClass:CwSoftware|label=Software}}, {{gtClass:PpVehicle|label=vehicles}}, {{gtClass:VsAgreement|label=agreements}}, {{gtClass:PpEvent|label=events}}, {{gtClass:PpInventory|label=inventory}}, places, and {{gtClass:MpPerson|label=people}} remain real objects with their own behavior and history.\n\n{{gtClass:MpPerson|label=people}}, {{gtClass:PpProject|label=projects}}, {{gtClass:VsAgreement|label=agreements}}, {{gtClass:PpLocation|label=places}}, possessions, and {{gtClass:PpValue|label=purposes}} that give them meaning\n\nA posting links to them rather than flattening them into labels."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.723007-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.723007-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "zNBrWIhoTh67NFphRWzxUw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "- What has this vehicle cost?\n- Which expenses supported this project?\n- Which agreements renew next month?\n- What did this software cost over its lifetime?\n- Who benefited from this purchase?"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722795-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.722795-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "FENXET3EToqdhqV3uDZpmQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "## Now the objects can answer"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.723177-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.723177-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "VzWLJsAFT9ClvMbW4tCG3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The account tree becomes one view among many.\n\nThe live objects are the medium."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T09:51:26.723314-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-04T10:06:30.213558-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "13czOMO6SeCMA+gkA7+qAw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Next Essential: [[Subjects and Values]]"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.72059-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-04T09:51:26.72059-04:00"
+		}
+	}
+}

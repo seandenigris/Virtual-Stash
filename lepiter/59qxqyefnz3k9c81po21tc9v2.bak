@@ -37,7 +37,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-07-22T11:06:24.552919-04:00"
+						"dateAndTimeString" : "2026-08-04T08:44:23.723336-04:00"
 					}
 				},
 				"uid" : {
@@ -47,7 +47,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The strict hierarchical tree of accounts necessitated by double entry bookkeeping puts shackles on the user because the real world - the things that the user cares about - does not fit in a hierarchy. The user is therefore forced to triage, wrestling with selecting - and having to live in perpetuity with - the categories/accounts that represent the aspects of transactions that \"matter most\". \n\nFor example, should a martial arts gym membership go in a \"Membership\" account? \"Fitness\"? If one takes guided classes there, would \"Education\" be a better classification? If you also use equipment like a sauna and weightroom, does \"Access Rights\" capture something essential? \n\nWe assert that many of these decisions are arbitrary and cause unintended problems that might not be apparent until data analysis is attempted. \n\nTo have any chance at a satisfying representation, one needs at least a DAG, where any item can appear under unlimited parents. The items in this graph also need to be first-class domain entities, with all the power (e.g. to run reports) of Account objects."
+				"string" : "Strict non-overlapping accounts, typically in a hierarchical tree, necessitated by double entry bookkeeping puts shackles on the user because the real world - the things that the user cares about - does not fit in a hierarchy. The user is therefore forced to triage, wrestling with selecting - and having to live in perpetuity with - the categories/accounts that represent the aspects of transactions that \"matter most\". \n\nFor example, should a martial arts gym membership go in a \"Membership\" account? \"Fitness\"? If one takes guided classes there, would \"Education\" be a better classification? If you also use equipment like a sauna and weightroom, does \"Access Rights\" capture something essential? \n\nWe assert that many of these decisions are arbitrary and cause unintended problems that might not be apparent until data analysis is attempted. \n\nTo have any chance at a satisfying representation, one needs at least a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph), where any item can appear under unlimited parents. The items in this graph also need to be first-class domain entities, with all the power (e.g. to run reports) of Account objects."
 			},
 			{
 				"__type" : "textSnippet",
@@ -79,7 +79,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-07-15T13:25:31.270689-04:00"
+									"dateAndTimeString" : "2026-08-04T08:47:36.892687-04:00"
 								}
 							},
 							"uid" : {
@@ -89,7 +89,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{olObject:uid=beicoj8denmg14nysjl66kcpf}} - \"probably the cleanest commercial example... [but] more than you need for home books\" - [ChatGPT](https://chatgpt.com/c/6a4fc501-0068-83ea-a783-4c6b0a330f8b)"
+							"string" : "{{olObject:uid=beicoj8denmg14nysjl66kcpf|label=Sage Intacct}} - \"probably the cleanest commercial example... [but] more than you need for home books\" - ChatGPT"
 						},
 						{
 							"__type" : "textSnippet",
@@ -116,7 +116,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-07-15T13:28:54.677993-04:00"
+									"dateAndTimeString" : "2026-08-04T08:46:39.806491-04:00"
 								}
 							},
 							"uid" : {
@@ -126,7 +126,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Quicken - \"For personal books… probably the most direct fit to your mental model - [ChatGPT](https://chatgpt.com/c/6a4fc501-0068-83ea-a783-4c6b0a330f8b)\""
+							"string" : "Quicken - \"For personal books… probably the most direct fit to your mental model\" - ChatGPT"
 						},
 						{
 							"__type" : "textSnippet",
@@ -345,7 +345,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2026-07-22T21:53:45.308585-04:00"
+												"dateAndTimeString" : "2026-07-22T21:55:54.159813-04:00"
 											}
 										},
 										"uid" : {
@@ -355,7 +355,7 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "If Atlassian instead billed a material annual amount in advance, the accounting might become:\nAt payment:\n    Debit:  Prepaid Access **TODO: this was not on original list**\n    Credit: Amex\n\nEach month:\n    Debit:  Expense\n    Credit: Prepaid Access"
+										"string" : "If Atlassian instead billed a material annual amount in advance, the accounting might become:\nAt payment:\n    Debit:  Prepaid Access **TODO: this was not on original list**\n    Credit: Amex\n\nEach month:\n    Debit:  Expense\n    Credit: Prepaid Access\n    \n# Obligation versus payment\nThere is another useful distinction:\nAgreement\n    creates recurring obligations\n\nJuly obligation\n    $17.50 due July 15\n    covers July 1–31\n\nInvoice\n    requests settlement of that obligation\n\nCredit-card transaction\n    pays it\nFor an initial implementation, this may be excessive. The split can simply link directly to the subscription.\nBut an explicit obligation object becomes valuable when:\na payment is missed;\nseveral periods are billed together;\na refund occurs;\nthe charge differs from the expected amount;\na free trial postpones billing;\nthe agreement is canceled mid-period;\nseveral seats appear as invoice line items."
 									}
 								]
 							},

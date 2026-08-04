@@ -37,7 +37,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-07-22T11:06:24.552919-04:00"
+						"dateAndTimeString" : "2026-08-04T08:44:23.723336-04:00"
 					}
 				},
 				"uid" : {
@@ -47,7 +47,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The strict hierarchical tree of accounts necessitated by double entry bookkeeping puts shackles on the user because the real world - the things that the user cares about - does not fit in a hierarchy. The user is therefore forced to triage, wrestling with selecting - and having to live in perpetuity with - the categories/accounts that represent the aspects of transactions that \"matter most\". \n\nFor example, should a martial arts gym membership go in a \"Membership\" account? \"Fitness\"? If one takes guided classes there, would \"Education\" be a better classification? If you also use equipment like a sauna and weightroom, does \"Access Rights\" capture something essential? \n\nWe assert that many of these decisions are arbitrary and cause unintended problems that might not be apparent until data analysis is attempted. \n\nTo have any chance at a satisfying representation, one needs at least a DAG, where any item can appear under unlimited parents. The items in this graph also need to be first-class domain entities, with all the power (e.g. to run reports) of Account objects."
+				"string" : "Strict non-overlapping accounts, typically in a hierarchical tree, necessitated by double entry bookkeeping puts shackles on the user because the real world - the things that the user cares about - does not fit in a hierarchy. The user is therefore forced to triage, wrestling with selecting - and having to live in perpetuity with - the categories/accounts that represent the aspects of transactions that \"matter most\". \n\nFor example, should a martial arts gym membership go in a \"Membership\" account? \"Fitness\"? If one takes guided classes there, would \"Education\" be a better classification? If you also use equipment like a sauna and weightroom, does \"Access Rights\" capture something essential? \n\nWe assert that many of these decisions are arbitrary and cause unintended problems that might not be apparent until data analysis is attempted. \n\nTo have any chance at a satisfying representation, one needs at least a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph), where any item can appear under unlimited parents. The items in this graph also need to be first-class domain entities, with all the power (e.g. to run reports) of Account objects."
 			},
 			{
 				"__type" : "textSnippet",
@@ -79,7 +79,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-07-15T13:25:31.270689-04:00"
+									"dateAndTimeString" : "2026-08-04T08:47:36.892687-04:00"
 								}
 							},
 							"uid" : {
@@ -89,7 +89,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{olObject:uid=beicoj8denmg14nysjl66kcpf}} - \"probably the cleanest commercial example... [but] more than you need for home books\" - [ChatGPT](https://chatgpt.com/c/6a4fc501-0068-83ea-a783-4c6b0a330f8b)"
+							"string" : "{{olObject:uid=beicoj8denmg14nysjl66kcpf|label=Sage Intacct}} - \"probably the cleanest commercial example... [but] more than you need for home books\" - ChatGPT"
 						},
 						{
 							"__type" : "textSnippet",
@@ -116,7 +116,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-07-15T13:28:54.677993-04:00"
+									"dateAndTimeString" : "2026-08-04T08:46:39.806491-04:00"
 								}
 							},
 							"uid" : {
@@ -126,7 +126,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Quicken - \"For personal books… probably the most direct fit to your mental model - [ChatGPT](https://chatgpt.com/c/6a4fc501-0068-83ea-a783-4c6b0a330f8b)\""
+							"string" : "Quicken - \"For personal books… probably the most direct fit to your mental model\" - ChatGPT"
 						},
 						{
 							"__type" : "textSnippet",
@@ -191,7 +191,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-07-15T13:26:36.122705-04:00"
+									"dateAndTimeString" : "2026-08-04T08:47:49.779223-04:00"
 								}
 							},
 							"uid" : {
@@ -201,7 +201,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "{{olObject:uid=bxa2q7p4p77y2gknwl4yuaikj}}: They are missing, but here is a brilliant workaround (via [this bugzilla issue](https://bugzilla.gnome.org/show_bug.cgi?id=113772#c6)):"
+							"string" : "{{olObject:uid=bxa2q7p4p77y2gknwl4yuaikj|label=GnuCash}}: They are missing, but here is a brilliant workaround (via [this bugzilla issue](https://bugzilla.gnome.org/show_bug.cgi?id=113772#c6)):"
 						}
 					]
 				},
