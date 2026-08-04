@@ -186,7 +186,9 @@ VsTransaction >> agreementsUnallocatedDescription [
 VsTransaction >> agreementsUnallocatedRemove: anAgreement [
 	"Record that anAgreement no longer awaits allocation."
 
-	^ self agreementsUnallocated remove: anAgreement
+	^ self agreementsUnallocated 
+		remove: anAgreement
+		ifAbsent: [ nil ]
 ]
 
 { #category : 'accessing' }
