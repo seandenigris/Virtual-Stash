@@ -40,7 +40,7 @@ VsSplit >> account: anObject [
 
 { #category : 'accessing' }
 VsSplit >> accountSource [
-	^ accountSource ifNil: [ VsBooks new ]
+	^ self transaction accountSource
 ]
 
 { #category : 'accessing' }
