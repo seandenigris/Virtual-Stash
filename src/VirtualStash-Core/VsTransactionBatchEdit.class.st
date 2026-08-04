@@ -275,7 +275,7 @@ VsTransactionBatchEdit >> beneficiaryDescription [
 { #category : 'as yet unclassified' }
 VsTransactionBatchEdit >> books [
 	
-	^ self splitsFirst accountSource
+	^ self journal entries first accountSource
 ]
 
 { #category : 'as yet unclassified' }
