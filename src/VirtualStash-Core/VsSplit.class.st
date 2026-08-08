@@ -232,9 +232,7 @@ VsSplit >> numberDescription [
 { #category : 'as yet unclassified' }
 VsSplit >> ppValues [
 
-	^ self
-		propertyAt: #ppValues
-		ifAbsentPut: [ OrderedCollection new ]
+	^ self maLazyPropertyUsing: self ppValuesDescription
 ]
 
 { #category : 'as yet unclassified' }
@@ -243,6 +241,18 @@ VsSplit >> ppValues: aCollection [
 	^ self
 		propertyAt: #ppValues
 		putRemovingNil: aCollection
+]
+
+{ #category : 'as yet unclassified' }
+VsSplit >> ppValuesDescription [
+	<magritteDescription>
+
+	^ MAToManyRelationDescription new
+		accessor: #ppValues;
+		gtSearchSource: [ self transaction projectList ];
+		default: IdentitySet new;
+		classes: PpValue withAllSubclasses;
+		yourself.
 ]
 
 { #category : 'accessing' }
