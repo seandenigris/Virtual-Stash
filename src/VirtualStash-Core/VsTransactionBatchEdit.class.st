@@ -329,6 +329,7 @@ VsTransactionBatchEdit >> gtJournalFor: aView [
       title: 'Transactions';
       priority: 1;
       object: [ self journal ];
+      inspectButtonFor: [ self journal ];
       view: #entriesGtViewOn:
 ]
 
