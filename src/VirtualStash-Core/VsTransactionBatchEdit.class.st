@@ -413,6 +413,28 @@ VsTransactionBatchEdit >> projectsDescription [
 		yourself.
 ]
 
+{ #category : 'as yet unclassified' }
+VsTransactionBatchEdit >> scenarioMarkdownTitled: aString [
+
+	^ String streamContents: [ :str | 
+		str << '### ' << aString.
+		
+		self subject ifNotNil: [
+			str crlf; crlf.
+			str << '**Subject:** `' << self subject displayString << '` ({{gtClass:' << self subject className << '}})' ].
+			
+		self projects ifNotEmpty: [
+			str crlf; crlf.
+			str << '**Counts toward:** '.
+			self projects
+				do: [ :p | str << '`' << p displayString << '`' << '` ({{gtClass:' << p className << '}})' ]
+				separatedBy: [ str << ', ' ] ] ]
+
+"
+
+**Counts toward:** Beneficiaries and any related {{gtClass:PpProject|label=projects}}.'"
+]
+
 { #category : 'testing' }
 VsTransactionBatchEdit >> splitChangesRequested [
 	"Answer whether I contain any edit that must target one split."
