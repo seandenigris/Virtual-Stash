@@ -367,7 +367,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+									"dateAndTimeString" : "2026-08-04T17:31:17.101572-04:00"
 								}
 							},
 							"editEmail" : {
@@ -378,17 +378,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+									"dateAndTimeString" : "2026-08-04T17:34:16.709366-04:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "P3mCv4dDRgaOV9B5rbYqgQ=="
+								"uidString" : "jkaRRRu8SjmrX93YDN3/UA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "### Dining out\n\n**Subject:** Dining Out when no richer meal or venue object matters."
+							"string" : "### Alcoholic Beverages\r\n\r\n**Subject:** Alcoholic Beverages ({{gtClass:PpValue}})\r\n\r\n**Counts toward:** Here we can (but don't have to) distinguish between:\n- Dining Out ({{gtClass:PpValue}}) - to track the outrageous overpricing of venue alcohol\n- Otherwise, None (leave blank)"
 						},
 						{
 							"__type" : "textSnippet",
@@ -463,6 +463,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "### Birthday party\n\n**Subject:** The party {{gtClass:PpProject|label=project}} or {{gtClass:PpEvent|label=event}}.\n\n**Other context:** Beneficiaries, {{gtClass:VsAgreement|label=agreements}}, deposits, and balance payments all point back to the same undertaking."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "P3mCv4dDRgaOV9B5rbYqgQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Dining out\n\n**Subject:** Dining Out when no richer meal or venue object matters."
 						}
 					]
 				},
@@ -900,7 +937,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-08-04T10:38:46.89677-04:00"
+									"dateAndTimeString" : "2026-08-04T10:39:19.365552-04:00"
 								}
 							},
 							"uid" : {
@@ -910,7 +947,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "1. Does a real domain object already exist?\n2. What particular thing is the subject?\n3. Would an established `PpValue` serve as the generic subject?\n4. What does the subject count toward?\n5. Who benefits?\n6. Is a Dynabook object type like a {{gtClass:CwSoftware|label=software product}}, {{gtClass:PpVehicle|label=vehicle}}, {{gtClass:VsAgreement|label=agreement}}, {{gtClass:PpEvent|label=event}}, {{gtClass:PpInventory|label=inventory}}, {{gtClass:PpProject|label=project}}, or {{gtClass:MpPerson|label=person}}  involved?\n7. Must any relationship be effective-dated or allocated?\n8. Did search reveal an overlapping `PpValue` before we created another?"
+							"string" : "1. Does a real domain object already exist?\n2. What particular thing is the subject?\n3. Would an established `PpValue` serve as the generic subject?\n4. What does the subject count toward?\n5. Who benefits?\n6. Is a Dynabook object type like a {{gtClass:CwSoftware|label=software product}}, {{gtClass:PpVehicle|label=vehicle}}, {{gtClass:VsAgreement|label=agreement}}, {{gtClass:PpEvent|label=event}}, {{gtClass:PpInventory|label=inventory}}, {{gtClass:PpProject|label=project}}, or {{gtClass:MpPerson|label=person}}  involved?\n7. Must any relationship be effective-dated or allocated?\n8. Did search reveal an overlapping {{gtClass:PpValue}} before we created another?"
 						}
 					]
 				},

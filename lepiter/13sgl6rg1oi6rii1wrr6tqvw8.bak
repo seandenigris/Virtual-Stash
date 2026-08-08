@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "f8a815bd-4ad0-4123-9902-a8d21c74ab12"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Value Graph Example"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-07T17:04:22.971503-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-07T17:04:22.971503-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CmmJi4pZQAOI9Yg9u8jG+g=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Food & Drink\n    Groceries\n        Food and ordinary consumables bought for preparation/use at home.\n    Dining Out\n        Prepared food and drink purchased as an away-from-home dining experience.\n    Alcoholic Beverages\n        Beer, wine, liquor, and similar products regardless of where purchased.\n\nHome & Household\n    Household Supplies\n        Consumable goods used in running the household: detergent, paper goods, cleaners, etc.\n    Furniture & Furnishings\n        Durable things that furnish or outfit living spaces.\n    Kitchen Equipment\n        Durable tools and appliances that furnish or outfit living spaces primarily used to prepare or serve food and drink.\n    Home Maintenance\n        Materials and work that preserve or repair the home itself.\n    Home Services\n        Services performed for the household: cleaning, pest control, trades, etc.\n    Yard Care\n        Goods and services for maintaining lawns, gardens, and exterior grounds.\n\nPersonal\n    Personal Care\n        Products and services for routine grooming, hygiene, and bodily care.\n        Cosmetics\n            Products primarily used to alter or enhance appearance.\n    Clothing\n        Apparel, footwear, and ordinary wearable accessories.\n\nHealth Care\n    Dental Care\n        Professional care specifically for teeth, gums, and oral health.\n    Pharmacy\n        Medicines and pharmacy-dispensed health products.\n    Surgical Care\n        Medical treatment delivered through an operative procedure.\n    Urgent Care\n        Medical care obtained through an urgent-care setting.\n\nFamily & Development\n    Childcare\n        Paid care or supervision of children.\n    Education\n        Formal or structured learning intended to build knowledge or skill.\n\nLeisure\n    Entertainment\n        Experiences or content primarily consumed for enjoyment.\n    Recreation\n        Activities you actively participate in for enjoyment, play, or restoration.\n    Books & Media\n        Purchased books, recordings, films, and other media when the medium itself is the useful grouping.\n\nTechnology\n    Tech Equipment\n        Durable electronic or computing-related physical equipment.\n        Computer Equipment\n            Tech equipment primarily associated with computers.\n        Audio Equipment\n            Headphones, speakers, microphones, and other sound equipment.\n    Communications\n        Services whose primary purpose is connecting or communicating: phone, internet, etc.\n\nTransportation\n    Fuel\n        Energy purchased to operate a vehicle.\n    Parking & Tolls\n        Charges for using or accessing transportation infrastructure.\n    Vehicle Maintenance\n        Work and parts that keep a vehicle operating properly.\n    Vehicle Administration\n        Registration, inspection, title, plates, and similar ownership/compliance costs.\n\nTravel\n    Travel\n        Transportation, lodging, and related spending undertaken away from ordinary home activity.\n\nProfessional Services\n    Financial Administration Services\n        Paid help administering financial affairs rather than providing an investment itself.\n\nInsurance\n    Insurance\n        Premiums or other costs paid to transfer defined financial risks.\n\nMemberships\n    Retail Membership\n        Paid membership in a retailer primarily for access, pricing, rewards, or shopping benefits.\n\nGovernment & Civic\n    Government Fees\n        Charges imposed for licenses, permits, filings, registrations, and similar government actions.\n\nGiving\n    Gifts\n        Things or experiences purchased primarily for another person.\n    Charitable Giving\n        Transfers primarily intended to support a charitable organization or cause.\n\nPets\n    Pet Care\n        Food, supplies, veterinary care, grooming, and other spending for animals."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-07T17:04:21.37725-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-07T17:04:21.37725-04:00"
+		}
+	}
+}

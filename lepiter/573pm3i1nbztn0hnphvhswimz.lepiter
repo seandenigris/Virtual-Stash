@@ -367,7 +367,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+									"dateAndTimeString" : "2026-08-04T17:31:17.101572-04:00"
 								}
 							},
 							"editEmail" : {
@@ -378,17 +378,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+									"dateAndTimeString" : "2026-08-04T17:34:49.818668-04:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "P3mCv4dDRgaOV9B5rbYqgQ=="
+								"uidString" : "jkaRRRu8SjmrX93YDN3/UA=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "### Dining out\n\n**Subject:** Dining Out when no richer meal or venue object matters."
+							"string" : "### Alcoholic Beverages\r\n\r\n**Subject:** Alcoholic Beverages ({{gtClass:PpValue}})\r\n\r\n**Counts toward:** Here we can (but don't have to) distinguish between:\n- `Dining Out` ({{gtClass:PpValue}}) - to track the outrageous overpricing of venue alcohol\n- Otherwise (e.g. enjoying at home, BYOB), None (leave blank)"
 						},
 						{
 							"__type" : "textSnippet",
@@ -463,6 +463,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "### Birthday party\n\n**Subject:** The party {{gtClass:PpProject|label=project}} or {{gtClass:PpEvent|label=event}}.\n\n**Other context:** Beneficiaries, {{gtClass:VsAgreement|label=agreements}}, deposits, and balance payments all point back to the same undertaking."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-04T09:51:26.73724-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "P3mCv4dDRgaOV9B5rbYqgQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "### Dining out\n\n**Subject:** Dining Out when no richer meal or venue object matters."
 						}
 					]
 				},
