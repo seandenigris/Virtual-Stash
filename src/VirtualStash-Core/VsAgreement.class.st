@@ -193,14 +193,24 @@ VsAgreement >> subject: anObject [
 { #category : 'magritte-accessing' }
 VsAgreement >> subjectDescription [
 	<magritteDescription>
+	
+	| source |
+	source := self subjectSelectionSource.
 
 	^ MAToOneRelationDescription new
 		accessor: #subject;
 		label: 'Subject';
 		priority: 200;
 		beRequired;
+		gtSearchSource: [ source ];
+		classes: source subjectClasses;
 		comment: 'The first-class Dynabook object that the agreement concerns, such as a software product, property, work, or service.';
 		yourself
+]
+
+{ #category : 'as yet unclassified' }
+VsAgreement >> subjectSelectionSource [
+	^ VsSubjectSelectionSource new
 ]
 
 { #category : 'accessing' }

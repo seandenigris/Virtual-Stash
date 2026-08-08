@@ -303,12 +303,6 @@ VsSplit >> reconcileDateDescription [
 		yourself
 ]
 
-{ #category : 'magritte-accessing' }
-VsSplit >> softwareCatalog [
-
-	^ CwSoftwareCatalog uniqueInstance
-]
-
 { #category : 'commands' }
 VsSplit >> splitAddCommand [
 	"Answer a command prepared to take money from me into a new sibling
@@ -364,25 +358,23 @@ VsSplit >> subject: anObject [
 { #category : 'magritte-accessing' }
 VsSplit >> subjectDescription [
 	<magritteDescription>
-	
-	| gtSearchSource classes |
-	self flag: 'just to get started. Maybe a general DBSoup source?'.
-	gtSearchSource := PeGtCollectedSearch new.
-	gtSearchSource children 
-		add: self softwareCatalog;
-		add: self projectList.
-		
-	classes := OrderedCollection new
-		addAll: PpValue withAllSubclasses;
-		addAll: CwSoftware withAllSubclasses;
-		yourself.
+
+	| source |
+	source := self subjectSelectionSource.
 
 	^ MAToOneRelationDescription new
 		accessor: #subject;
 		priority: 300;
-		gtSearchSource: [ gtSearchSource ];
-		classes: classes;
+		gtSearchSource: [ source ];
+		classes: source subjectClasses;
 		yourself
+
+]
+
+{ #category : 'accessing - support' }
+VsSplit >> subjectSelectionSource [
+	^ VsSubjectSelectionSource new
+
 ]
 
 { #category : 'accessing - ownership' }
