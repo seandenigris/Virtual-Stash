@@ -65,13 +65,14 @@ VsSplit >> agreement [
 { #category : 'as yet unclassified' }
 VsSplit >> agreement: anAgreement [
 
+	self transaction ifNotNil: [ :t | t counterparty ifNotNil: [ :party |
+		party = anAgreement provider ifFalse: [ self error: 'agreement is for a different counterparty' ] ] ]. 
+
 	self
 		propertyAt: #agreement
 		putRemovingNil: anAgreement.
 		
 	anAgreement ifNil: [ ^ self ].
-	
-	self transaction ifNotNil: [ :t | t counterparty: anAgreement provider ].
 	
 	self ppValues: (self ppValues addAll: anAgreement ppValues)
 ]

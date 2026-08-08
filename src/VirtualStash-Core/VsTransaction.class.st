@@ -107,10 +107,9 @@ VsTransaction >> addressBook: anObject [
 ]
 
 { #category : 'as yet unclassified' }
-VsTransaction >> agreement: aVsAgreement [ 
-	
-	self splits do: [ :aSplit |
-		aSplit agreement: aVsAgreement ].
+VsTransaction >> agreement: aVsAgreement [
+
+	self splitsPrivate do: [ :aSplit | aSplit agreement: aVsAgreement ]
 ]
 
 { #category : 'accessing - agreements' }
@@ -268,7 +267,12 @@ VsTransaction >> commodityDescription [
 
 { #category : 'accessing' }
 VsTransaction >> counterparty [
-	^ counterparty
+
+	counterparty ifNotNil: [ ^ counterparty ].
+	
+	self agreements ifNotEmpty: [ :aCol | ^ aCol atRandom provider ].
+	
+	^ nil
 ]
 
 { #category : 'accessing' }
@@ -448,7 +452,10 @@ VsTransaction >> number: aNumber [
 { #category : 'as yet unclassified' }
 VsTransaction >> ppValues [
 
-  ^ self splitsPrivate flatCollect: #ppValues
+  ^ IdentitySet new
+  	addAll: (self splitsPrivate flatCollect: #ppValues);
+  	addAll: (self agreementsUnallocated flatCollect: #ppValues);
+  	yourself
 ]
 
 { #category : 'as yet unclassified' }

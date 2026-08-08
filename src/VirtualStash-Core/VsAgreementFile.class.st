@@ -76,6 +76,7 @@ VsAgreementFile >> agreementsGtViewFor: aView [
 
 	result := aView columnedList
 		title: 'Agreements';
+		priority: 25;
 		items: [ self agreements ];
 		actionUpdateButton.
 
@@ -104,6 +105,13 @@ VsAgreementFile >> agreementsGtViewFor: aView [
 	^ result
 ]
 
+{ #category : 'accessing' }
+VsAgreementFile >> dbCollectionAccessor [
+	"Used by Dynabook Soup for lookup"
+
+	^ #agreements
+]
+
 { #category : 'as yet unclassified' }
 VsAgreementFile >> transactions [
 
@@ -120,6 +128,7 @@ VsAgreementFile >> transactionsGtViewFor: aView [
   
   ^ aView forward
       title: 'Transactions';
+      priority: 50;
       object: [ self transactions ];
       view: #entriesGtViewOn:;
       inspectButtonFor: [ self transactions ]

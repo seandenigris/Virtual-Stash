@@ -1,15 +1,15 @@
 "
 I represent a durable agreement whose financial consequences may be recorded in VirtualStash.
 
+My optional name identifies this particular agreement in human terms when my subject alone is too generic to do so. For example, an agreement named ExtraCare may have Retail Membership as its subject and CVS as its provider. My name identifies the particular continuing relationship when this detail is not important enough to the user to add it to the value graph to make it the subject.
+
 My provider is the party supplying my subject. My subject is the first-class Dynabook object the agreement concerns—for example, a software product, service, event, property, or provisional PpValue used until a richer domain object emerges.
 
 My ppValues identify the values and projects that I currently support or count toward. They describe why I am maintained rather than what I provide. Splits arising under me do not yet implicitly inherit these relationships.
-
+# Terms
 My terms are effective-dated states of the continuing agreement. They record commercial facts that may change over time without replacing my durable identity. A term's price is a vendor-stated money-per-time quantity, while its billingInterval records how often payment is requested. Use #termsOn: to resolve the term effective on a particular date and #termsCurrent for the term effective today.
 
 Terms begin on their inclusive start date and cease before their exclusive end date. A nil end means that a term remains effective indefinitely. Overlapping terms are ambiguous and cause #termsOn: to signal an error.
-
-The legacy price, billingInterval, and effectiveStart slots remain temporarily so existing instances can be migrated safely with #termsMigrateLegacy. Remove those slots and their obsolete protocol after migration has been completed and verified.
 "
 Class {
 	#name : 'VsAgreement',
@@ -20,9 +20,6 @@ Class {
 		'provider',
 		'subject',
 		'ppValues',
-		'billingInterval',
-		'price',
-		'effectiveStart',
 		'terms'
 	],
 	#category : 'VirtualStash-Core-Agreements',
@@ -51,12 +48,14 @@ VsAgreement >> billingInterval: aQuantity [
 { #category : 'accessing' }
 VsAgreement >> displayStringOn: aStream [
 
-  self displaySubjectOn: aStream.
-  self provider ifNotNil: [ :anObject |
-      aStream
-        nextPutAll: ' — ';
-        display: anObject
-    ]
+	self name
+		ifNotNil: [ :aName | aStream nextPutAll: aName ]
+		ifNil: [ self displaySubjectOn: aStream ].
+
+	self provider ifNotNil: [ :anObject |
+		aStream
+			nextPutAll: ' — ';
+			display: anObject ]
 ]
 
 { #category : 'accessing' }
@@ -77,6 +76,33 @@ VsAgreement >> effectiveStart [
 VsAgreement >> effectiveStart: aDate [
 
 	effectiveStart := aDate
+]
+
+{ #category : 'accessing' }
+VsAgreement >> name [
+
+	^ self
+		propertyAt: #name
+		ifAbsent: [ nil ]
+]
+
+{ #category : 'accessing' }
+VsAgreement >> name: aString [
+
+	^ self
+		propertyAt: #name
+		putRemovingNil: aString
+]
+
+{ #category : 'magritte-accessing' }
+VsAgreement >> nameDescription [
+	<magritteDescription>
+
+	^ MAStringDescription new
+		accessor: #name;
+		priority: 50;
+		comment: 'An optional human-readable name identifying this particular agreement, such as ExtraCare or Wireless Family Plan.';
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -259,6 +285,7 @@ VsAgreement >> termsGtViewFor: aView [
 		title: 'Terms';
 		priority: 20;
 		items: [ self termsSorted ];
+		inspectButtonFor: [ self terms ];
 		actionUpdateButton
 ]
 
