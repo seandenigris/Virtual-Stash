@@ -451,7 +451,8 @@ VsBooks >> taxDocumentsGtViewOn: aView [
 		title: 'Tax Docs' translated;
 		priority: 8;
 		items: [ self taxDocuments ];
-		inspectButtonFor: [ self taxDocuments ]
+		inspectButtonFor: [ self taxDocuments ];
+		actionUpdateButton
 ]
 
 { #category : 'accessing' }
