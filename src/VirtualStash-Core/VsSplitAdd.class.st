@@ -155,7 +155,7 @@ VsSplitAdd class >> to: aTransaction [
 VsSplitAdd >> account [
 	"Answer the account assigned to my draft split."
 
-	^ self split account
+	^ self split maLazyInstVarUsing: (self splitSource accountDescription default: self splitSource account)
 ]
 
 { #category : 'accessing - split' }
@@ -165,22 +165,11 @@ VsSplitAdd >> account: anAccount [
 	self split account: anAccount
 ]
 
-{ #category : 'magritte - split' }
-VsSplitAdd >> accountDescription [
-	<magritteDescription>
-
-	^ self split accountDescription copy
-		accessor: #account;
-		beRequired;
-		comment: 'The account to which the new split will be posted.';
-		yourself
-]
-
 { #category : 'accessing - support' }
 VsSplitAdd >> accountSource [
 	"Answer the source used by split descriptions to select an account."
 
-	^ self split accountSource
+	^ self splitSource accountSource
 ]
 
 { #category : 'accessing - split' }
@@ -393,10 +382,10 @@ VsSplitAdd >> magritteDescription [
 	"Answer my command descriptions combined with flat projections of every
 	writable split description not replaced by a command-specific one."
 
-	| result |
-	result := super magritteDescription.
-	result addAll: self splitDescriptions.
-	^ result
+	| desc |
+	desc := super magritteDescription.
+	desc addAll: self splitDescriptions.
+	^ desc
 ]
 
 { #category : 'magritte' }
@@ -473,7 +462,7 @@ VsSplitAdd >> splitDescriptions [
 	This lets additions automatically gain newly described split fields
 	without duplicating their definitions here."
 
-	^ (self split magritteDescription
+	^ (self splitSource magritteDescription
 		select: [ :description |
 			self splitDescriptionShouldProject: description ])
 		collect: [ :description |

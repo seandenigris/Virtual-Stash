@@ -334,13 +334,17 @@ VsSplit >> splitAddCommand [
 VsSplit >> splitAddGtViewFor: aView [
 	<gtView>
 
+	| cmd |
 	self transaction ifNil: [ ^ aView empty ].
+	
+	cmd :=  self splitAddCommand .
 
 	^ aView forward
 		title: 'Add split';
 		priority: 80;
-		object: [ self splitAddCommand ];
-		view: #maExecutingFormFor:
+		object: [ cmd ];
+		view: #maExecutingFormFor:;
+		inspectButtonFor: [ self splitAddCommand ]
 ]
 
 { #category : 'accessing' }
