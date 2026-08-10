@@ -162,6 +162,9 @@ VsSplit >> beneficiaryDescription [
 
 { #category : 'accessing' }
 VsSplit >> creditAmount [
+
+	self amount ifNil: [ ^ nil ].
+
 	^ self isCredit 
 		ifTrue: [ 
 			self amount * -1;
@@ -171,6 +174,9 @@ VsSplit >> creditAmount [
 
 { #category : 'accessing' }
 VsSplit >> debitAmount [
+
+	self amount ifNil: [ ^ nil ].
+
 	^ self isDebit 
 		ifTrue: [ self amount ]
 		ifFalse: [ nil ]
