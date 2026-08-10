@@ -386,6 +386,12 @@ VsDocument >> tesseractInputFile [
 	^ self resource tesseractInputFile
 ]
 
+{ #category : 'as yet unclassified' }
+VsDocument >> view [
+
+	self resource open
+]
+
 { #category : 'testing' }
 VsDocument >> wantsHOCR [
 	^ false
