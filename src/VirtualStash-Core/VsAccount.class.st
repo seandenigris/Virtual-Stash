@@ -139,25 +139,16 @@ VsAccount >> fullName [
 
 { #category : 'GT Views' }
 VsAccount >> generalJournalGtViewOn: aView [
-	<gtView>
-	
-	| journalBlock |
-	journalBlock := [ 
-		| myTransactions myJournal |
-		
-		myTransactions := self books generalJournal entries select: [ :trans | trans accounts includes: self ].
-		
-		myJournal := VsGeneralJournal new
-			addAll: myTransactions;
-			yourself ].
-	
-	^ aView forward
-		title: 'General Journal' translated;
-		priority: 5;
-		object: journalBlock;
-		view: #entriesGtViewOn:;
-		inspectButtonFor: journalBlock;
-		actionUpdateButton
+
+  <gtView>
+  
+  ^ aView forward
+      title: 'General Journal' translated;
+      priority: 5;
+      object: [ self journal ];
+      view: #entriesGtViewOn:;
+      inspectButtonFor: [ self journal ];
+      actionUpdateButton
 ]
 
 { #category : 'accessing' }
@@ -247,6 +238,17 @@ VsAccount >> issuerDescription [
 		extensible: true;
 		options: MpAddressBook uniqueInstance contacts;
 		yourself
+]
+
+{ #category : 'GT Views' }
+VsAccount >> journal [
+
+  | myTransactions |
+  myTransactions := self books generalJournal entries select: [ :trans | trans accounts includes: self ].
+  
+  ^ VsGeneralJournal new
+      addAll: myTransactions;
+      yourself
 ]
 
 { #category : 'accessing' }
