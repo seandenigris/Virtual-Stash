@@ -46,11 +46,11 @@ VsOfxTransactionImporter >> domainObjectFromDictionary: aDictionary [
 		usingReader: [ :string | string dollars negated ]
 		fromDictionary: aDictionary.
 
-	transaction
-		splitAdd: split;
-		splitAdd: imbalanceSplit.
-
 	^ transaction
+		accountSource: self books;
+		splitAdd: split;
+		splitAdd: imbalanceSplit;
+		yourself.
 ]
 
 { #category : 'accessing' }
