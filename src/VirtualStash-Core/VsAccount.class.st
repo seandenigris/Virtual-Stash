@@ -108,7 +108,7 @@ VsAccount >> childrenDescription [
 	^ MAToManyRelationDescription new
 		accessor: #children;
 		label: 'Children';
-		gtSearchSource: self books chartOfAccounts;
+		gtSearchSource: [ :anAccount | anAccount books chartOfAccounts ];
 		classes: VsAccount allSubclasses;
 		yourself
 ]
