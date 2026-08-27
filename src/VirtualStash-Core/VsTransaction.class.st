@@ -693,7 +693,7 @@ VsTransaction >> splitsPrivate: aCollection [
 { #category : 'as yet unclassified' }
 VsTransaction >> subject: anObject [
 
-	self splits do: [ :s | s subject: anObject ]
+  self splitsPrivate do: [ :s | s subject: anObject ]
 ]
 
 { #category : 'as yet unclassified' }
