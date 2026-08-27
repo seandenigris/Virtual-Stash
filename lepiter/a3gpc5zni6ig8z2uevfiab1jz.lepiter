@@ -1,0 +1,178 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "9f5ea98d-df73-4b13-ab48-f48ad08d89aa"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Issue: Imported external data belongs to the posting"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T09:59:15.399831-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T09:59:31.156602-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "XrzcwrIGRM6Gg1x5QIb6Cw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This means the split for that account, not the transaction as a whole."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T10:01:25.877896-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T10:01:27.498979-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "prqIDtJDRRyAeKzPHzMDLw=="
+				},
+				"code" : "act := DbSoup detectUID: '263njhkc0azlwk7aj3tnw9atw'."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T09:59:34.565555-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T10:01:26.058925-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "rbyOR9THTAOHnNQJLwSl/Q=="
+				},
+				"code" : "act journal iterator\r\t| [ :t | t properties keys select: [ :k | k beginsWith: 'ofx' ] ] flatCollectIt\r\t> Set."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T10:01:29.078308-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T10:10:57.234549-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "E0RWkCL5TX2E6dLxefEUlg=="
+				},
+				"code" : "act journal iterator\r\t| [ :t | \r\t\tofxProps := t properties keys select: [ :k | k beginsWith: 'ofx' ].\r\t\tt splits \r\t\t\tdetect: [ :s | s account = act ]\r\t\t\tifFound: [ :s | \r\t\t\t\tofxProps do: [ :k |\r\t\t\t\t\ts propertyAt: k put: (t propertyAt: k) ].\r\t\t\t\tt \r\t\t\t\t\tpropertyAt: 'importedName'\r\t\t\t\t\tifPresent: [ :tin | \r\t\t\t\t\t\ts \r\t\t\t\t\t\t\tpropertyAt: 'importedName' \r\t\t\t\t\t\t\tput: tin ] ] ] collectIt\r\t> NullAddableObject."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-12T09:58:58.349373-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2026-08-12T09:59:11.914317-04:00"
+		}
+	}
+}

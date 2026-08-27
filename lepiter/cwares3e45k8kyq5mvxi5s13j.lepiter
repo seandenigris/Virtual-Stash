@@ -37,7 +37,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2026-08-07T16:59:04.181517-04:00"
+						"dateAndTimeString" : "2026-08-12T08:36:53.478415-04:00"
 					}
 				},
 				"uid" : {
@@ -48,6 +48,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "[[Essentials]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T08:36:55.329815-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-12T08:36:58.415641-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gSQMRCnaTSOfnUiZLR05lQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Issues]]"
 			},
 			{
 				"__type" : "textSnippet",
