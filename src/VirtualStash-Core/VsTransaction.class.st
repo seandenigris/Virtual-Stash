@@ -391,6 +391,18 @@ VsTransaction >> journalLines [
         ]
 ]
 
+{ #category : 'integrations - mail' }
+VsTransaction >> macMailSearchAmount [
+
+	| amountString aNumber |
+	aNumber := self amount numericalValue abs.
+	amountString :=  aNumber fractionPart isZero
+		ifTrue: [ aNumber integerPart printString ]
+		ifFalse: [ aNumber printShowingDecimalPlaces: 2 ].
+
+	^ CwMacMail reference searchGuiFor: amountString
+]
+
 { #category : 'accessing' }
 VsTransaction >> memo [
 	^ self maLazyInstVarUsing: self memoDescription

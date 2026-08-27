@@ -33,6 +33,8 @@ BaselineOfVirtualStash >> baseline: spec [
 				spec
 					repository: 'github://seandenigris/aconcagua:denigris';
 					loads: #('Development') ];
+			baseline: #'ComputerWorld' with: [
+				spec repository: 'github://seandenigris/Computer-World' ];
 			baseline: #DynabookFoundation with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: #Magritte with: [
@@ -63,7 +65,7 @@ BaselineOfVirtualStash >> baseline: spec [
 
 		spec
 			package: #'VirtualStash-Core' with: [
-				spec requires: #(Aconcagua DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence StateSpecs Talents TheProjectProject) ] ].
+				spec requires: #(Aconcagua #ComputerWorld DynabookFoundation Magritte Mocketry MyPeople NeoCSV PharoEnhancements ResourcesLive SimplePersistence StateSpecs Talents TheProjectProject) ] ].
 
 	spec for: #notGToolkit do: [
 		spec
@@ -74,14 +76,6 @@ BaselineOfVirtualStash >> baseline: spec [
 		spec
 			package: #'VirtualStash-Core' with: [
 				spec requires: #(#'PetitParser2' #'XMLParser') ] ].
-
-	spec for: #notGToolkit do: [
-		spec
-			baseline: #'PetitParser2' with: [
-				spec repository: 'github://seandenigris/PetitParser2' ].
-		spec
-			package: #'VirtualStash-Core' with: [
-				spec requires: #(#'PetitParser2') ] ].
 
 	spec for: #GToolkit do: [
 		spec
