@@ -175,6 +175,13 @@ VsGeneralJournal >> iterator [
 ]
 
 { #category : 'as yet unclassified' }
+VsGeneralJournal >> matchCandidatesFor: aVsTransaction [
+
+	^ self entries select: [ :existingTransaction | 
+		existingTransaction amount numericalValue abs = aVsTransaction amount numericalValue abs and: [ (existingTransaction date - aVsTransaction date) abs <= 4 days ] ].
+]
+
+{ #category : 'as yet unclassified' }
 VsGeneralJournal >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream

@@ -349,23 +349,12 @@ VsTransaction >> gtViewRulesOn: aView [
 		yourself
 ]
 
-{ #category : 'accessing' }
-VsTransaction >> importedName [
-	^ self maLazyPropertyUsing: (self importedNameDescription)
-]
+{ #category : 'as yet unclassified' }
+VsTransaction >> importedNames [
 
-{ #category : 'accessing' }
-VsTransaction >> importedName: aString [
-	self propertyAt: #importedName put: aString
-]
-
-{ #category : 'magritte-accessing' }
-VsTransaction >> importedNameDescription [
-	<magritteDescription>
-	
-	^ MAStringDescription new
-		accessor: #importedName;
-		yourself
+  ^ self splitsPrivate asSet
+  	collect: #importedName
+  	thenReject: [ :e | e isNil ]
 ]
 
 { #category : 'accessing' }

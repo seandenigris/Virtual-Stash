@@ -183,6 +183,25 @@ VsSplit >> debitAmount [
 ]
 
 { #category : 'accessing' }
+VsSplit >> importedName [
+	^ self maLazyPropertyUsing: self importedNameDescription
+]
+
+{ #category : 'accessing' }
+VsSplit >> importedName: aString [
+	self propertyAt: #importedName putRemovingNil: aString
+]
+
+{ #category : 'magritte-accessing' }
+VsSplit >> importedNameDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new
+		accessor: #importedName;
+		yourself
+]
+
+{ #category : 'accessing' }
 VsSplit >> isCredit [
 	^ self amount negative
 ]

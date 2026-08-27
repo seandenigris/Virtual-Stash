@@ -114,6 +114,13 @@ VsOfxTransactionImporter >> initializeSplitWithAccount: anAccount usingReader: a
 		accountSource: self books;
 		account: anAccount;
 		yourself.
+		
+	anAccount = self account ifTrue: [
+		aDictionary keysAndValuesDo: [ :key :val |
+			(self mappedFields includes: key) ifFalse: [
+				split
+					propertyAt: 'ofx', key
+					put: val ] ] ].
 	
 	^ self
 		initializeDomainObject: split
@@ -122,7 +129,12 @@ VsOfxTransactionImporter >> initializeSplitWithAccount: anAccount usingReader: a
 			builder
 				map: 'TRNAMT'
 				fieldTo: #amountDescription
-				using: aReader ]
+				using: aReader.
+			
+			anAccount = self account ifTrue: [ 
+				builder 
+					map: 'NAME' 
+					fieldTo: #importedNameDescription ] ] 
 ]
 
 { #category : 'accessing' }
@@ -131,11 +143,6 @@ VsOfxTransactionImporter >> initializeTransactionFromDictionary: aDictionary [
 	| transaction |
 	transaction := VsTransaction new.
 	
-	aDictionary keysAndValuesDo: [ :key :val |
-		(self mappedFields includes: key) ifFalse: [
-			transaction
-				propertyAt: 'ofx', key
-				put: val ] ].
 	^ self
 		initializeDomainObject: transaction
 		fromRecord: aDictionary
@@ -144,7 +151,6 @@ VsOfxTransactionImporter >> initializeTransactionFromDictionary: aDictionary [
 				map: 'DTPOSTED'
 					fieldTo: #dateDescription
 					using: [ :input | (VsOfxDatetimeParser parse: input) asDate ];
-				map: 'NAME' fieldTo: #importedNameDescription;
 				map: 'MEMO' fieldTo: #memoDescription;
 				map: 'CHECKNUM' fieldTo: #numberDescription ]
 ]

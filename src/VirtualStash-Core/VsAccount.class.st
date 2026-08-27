@@ -322,6 +322,19 @@ VsAccount >> numberDescription [
 		yourself
 ]
 
+{ #category : 'as yet unclassified' }
+VsAccount >> ofxMigrateToSplitFromTransaction [
+
+  self journal iterator | [ :t |
+    | ofxProps |
+    ofxProps := t properties keys select: [ :k | k beginsWith: 'ofx' ].
+    t splitsPrivate detect: [ :s | s account = self ] ifFound: [ :s |
+        ofxProps do: [ :k | s propertyAt: k put: ( t propertyAt: k ) ].
+        t propertyAt: 'importedName' ifPresent: [ :tin | s propertyAt: 'importedName' put: tin ]
+      ]
+  ] collectIt > NullAddableObject
+]
+
 { #category : 'accessing' }
 VsAccount >> openingBalance [
 	^ openingBalance ifNil: [ openingBalance := self openingBalanceDescription default ]
